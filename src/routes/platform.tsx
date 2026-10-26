@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Hand, MonitorSmartphone, Nfc, FlaskRound } from "lucide-react";
-import { PageHero, Section, Eyebrow, Diagram, diagrams, ConceptLabel, Placeholder, seo } from "@/components/site";
+import { PageHero, Section, Eyebrow, Diagram, diagrams, ConceptLabel, seo } from "@/components/site";
 import handpiece from "@/assets/handheld.png.asset.json";
+import acousticValidation from "@/assets/planned_validation.png.asset.json";
+import biocompatibility from "@/assets/biocompatibily.png.asset.json";
 
 export const Route = createFileRoute("/platform")({
   head: () => seo("Product Concept — Cavinova", "Conceptual Cavinova treatment system: ultrasound handpiece, clinical console, NFC treatment tips and microbubble serum cartridges."),
@@ -25,7 +27,8 @@ const flow = [
 
 function Platform() {
   const [a, setA] = useState(0);
-  const P = parts[a] ?? parts[0]!;
+  const P = parts[a] ?? parts[0];
+  if (!P) return null;
   return (
     <>
       <PageHero eyebrow="Product Concept" title="A customizable, professional treatment system">
@@ -69,12 +72,13 @@ function Platform() {
       </Section>
 
       <Section>
-        <Eyebrow>Design &amp; engineering — planned</Eyebrow>
+        <Eyebrow>Development &amp; Validation Roadmap</Eyebrow>
         <div className="mt-6 grid gap-5 md:grid-cols-3">
-          <Diagram enlarge src={handpiece.url} title="3D Handpiece Render" caption="Planned: acoustic output and thermal testing." />
-          <Placeholder title="Transducer Test Data" hint="Add bench-test diagrams. Planned: frequency and intensity verification." />
-          <Placeholder title="Biocompatibility Plan" hint="Add ISO 10993 test-plan diagram. Planned: biocompatibility verification of skin-contact parts." />
+          <Diagram enlarge proportionalPreview src={handpiece.url} title="3D Handpiece Render" caption="Planned: acoustic output and thermal testing." />
+          <Diagram enlarge proportionalPreview src={acousticValidation.url} title="Acoustic Performance Validation" caption="A proposed engineering validation framework evaluating acoustic output, operating frequency, thermal characteristics, microbubble response, and system integration." />
+          <Diagram enlarge proportionalPreview src={biocompatibility.url} title="Safety & Biocompatibility" caption="A planned safety evaluation strategy addressing skin-contact materials, formulation stability, compatibility, irritation considerations, and device handling." />
         </div>
+        <p className="mt-5 text-xs leading-relaxed text-muted-foreground">Conceptual development and validation frameworks prepared for the Rutgers MBS Capstone. No experimental testing or clinical validation by Cavinova is represented.</p>
       </Section>
     </>
   );

@@ -4,13 +4,13 @@ import { TransformWrapper, TransformComponent, type ReactZoomPanPinchRef } from 
 import { ZoomIn, ZoomOut, Maximize, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export function ImageLightbox({ src, title }: { src: string; title: string }) {
+export function ImageLightbox({ src, title, proportionalPreview = false }: { src: string; title: string; proportionalPreview?: boolean }) {
   const [open, setOpen] = useState(false);
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
         <Button variant="ghost" className="relative block h-auto w-full cursor-zoom-in rounded-none p-0 hover:bg-transparent" aria-label={`Enlarge ${title}`}>
-          <img src={src} alt={title} className="block w-full" loading="lazy" />
+          <img src={src} alt={title} className={proportionalPreview ? "block aspect-[3/2] w-full object-contain" : "block w-full"} loading="lazy" />
           <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-md border bg-card/95 px-2.5 py-1.5 text-xs text-card-foreground shadow-soft">
             <ZoomIn aria-hidden="true" />Click to enlarge
           </span>

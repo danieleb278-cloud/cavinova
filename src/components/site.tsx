@@ -146,14 +146,14 @@ export function ConceptLabel() {
   );
 }
 
-export function Diagram({ src, title, caption, enlarge = false }: { src: string; title: string; caption: string; enlarge?: boolean }) {
+export function Diagram({ src, title, caption, enlarge = false, proportionalPreview = false }: { src: string; title: string; caption: string; enlarge?: boolean; proportionalPreview?: boolean }) {
   return (
-    <figure className="overflow-hidden rounded-3xl border bg-card shadow-soft">
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b px-5 py-3">
+    <figure className={`overflow-hidden rounded-3xl border bg-card shadow-soft ${proportionalPreview ? "flex h-full flex-col" : ""}`}>
+      <div className={`flex flex-wrap items-center justify-between gap-2 border-b px-5 py-3 ${proportionalPreview ? "md:min-h-36" : ""}`}>
         <p className="font-serif text-xl">{title}</p>
         <ConceptLabel />
       </div>
-      {enlarge ? <ImageLightbox src={src} title={title} /> : <a href={src} target="_blank" rel="noreferrer"><img src={src} alt={title} className="w-full" loading="lazy" /></a>}
+      {enlarge ? <ImageLightbox src={src} title={title} proportionalPreview={proportionalPreview} /> : <a href={src} target="_blank" rel="noreferrer"><img src={src} alt={title} className="w-full" loading="lazy" /></a>}
       <figcaption className="px-5 py-3 text-xs text-muted-foreground">{caption}</figcaption>
     </figure>
   );
