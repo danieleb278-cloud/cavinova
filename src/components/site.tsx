@@ -82,7 +82,7 @@ export function Footer() {
             <strong className="text-foreground">Disclosure:</strong> Cavinova is a proposed venture developed for the Rutgers
             University MBS Capstone program. Technologies and products presented are conceptual and under evaluation. Cavinova
             does not currently hold rights to the referenced intellectual property (U.S. Patent Application Publication No.
-            US20250073439A1, inventor John H. Shadduck).
+            US20250073439A1, associated with inventor John H. Shadduck).
           </p>
           <p className="text-xs">© {new Date().getFullYear()} Cavinova (conceptual) · New Jersey, USA</p>
         </div>
