@@ -33,7 +33,7 @@ function Home() {
               <Link to="/opportunity" className={`${btn} border bg-card hover:border-primary`}>View the opportunity</Link>
             </div>
           </div>
-          <div className="relative mx-auto w-full max-w-2xl">
+          <div className="relative order-first mx-auto w-full max-w-2xl md:order-none">
             <span aria-hidden className="pointer-events-none absolute -inset-6 rounded-[3rem] bg-blush/30 blur-3xl" />
             <figure className="glass relative overflow-hidden rounded-[2.25rem] p-6 shadow-soft ring-1 ring-rose/20 md:p-9">
               <span aria-hidden className="pointer-events-none absolute -bottom-10 -left-10 h-2/3 w-2/3 rounded-full bg-mint/60 blur-3xl" />
