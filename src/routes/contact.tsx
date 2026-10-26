@@ -8,7 +8,7 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
-const EMAIL = "cavinova.capstone@example.com";
+const EMAIL = "contact.cavinova@gmail.com";
 const cats = ["Academic / Capstone Inquiry", "Technology & Licensing Discussion", "Aesthetic Provider Feedback", "General Information"];
 const field = "w-full rounded-xl border bg-card px-4 py-3 text-sm outline-none focus:border-ring";
 
@@ -50,8 +50,9 @@ function Contact() {
           <input className={field} placeholder="Organization / institution (optional)" value={f.org} onChange={(e) => setF({ ...f, org: e.target.value })} maxLength={150} />
           <textarea className={`${field} min-h-36`} placeholder="Your message" value={f.message} onChange={(e) => setF({ ...f, message: e.target.value })} maxLength={2000} />
           {err && <p className="text-sm text-destructive">{err}</p>}
-          {sent && <p className="flex items-center gap-2 text-sm text-teal-deep"><CheckCircle2 className="h-4 w-4" /> Your email app should now open with your message ready to send.</p>}
-          <button className="rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90">Send inquiry</button>
+          {sent && <p className="flex items-center gap-2 text-sm text-teal-deep"><CheckCircle2 className="h-4 w-4" /> Prepared in your email client — please click send in your email app to complete delivery.</p>}
+          <p className="text-xs text-muted-foreground">Submitting opens your local email application with a pre-addressed message to {EMAIL}. Nothing is sent or stored until you press send in your email app.</p>
+          <button className="rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90">Prepare inquiry email</button>
         </form>
         <aside className="space-y-5">
           <a href={`mailto:${EMAIL}?subject=${encodeURIComponent("Cavinova Academic Inquiry")}`} className="flex items-center gap-3 rounded-3xl border bg-card p-6 hover:border-primary">

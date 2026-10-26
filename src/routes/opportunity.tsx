@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { PageHero, Section, Eyebrow, seo } from "@/components/site";
+import { PageHero, Section, Eyebrow, Diagram, seo } from "@/components/site";
 import { providerEconomics, PATIENT_PRICE, KIT_COST, MONTHLY_LEASE } from "@/lib/economics";
+import strategy from "@/assets/cavinova_commercialization_strategy.png.asset.json";
 
 export const Route = createFileRoute("/opportunity")({
   head: () => seo("Commercial Opportunity — Cavinova", "Market sizing, razor-and-blade model, provider unit economics and five-year commercialization roadmap for Cavinova."),
@@ -38,8 +39,8 @@ function Opportunity() {
       </Section>
 
       <Section className="grid gap-6 md:grid-cols-2">
-        <div className="rounded-3xl border bg-card p-8"><Eyebrow>The razor</Eyebrow><h3 className="mt-3 text-3xl">Capital equipment</h3><p className="mt-2 text-muted-foreground">Console sales or leases at a $45,000 unit target.</p></div>
-        <div className="rounded-3xl border bg-secondary/50 p-8"><Eyebrow>The blade</Eyebrow><h3 className="mt-3 text-3xl">Recurring consumables</h3><p className="mt-2 text-muted-foreground">{usd(KIT_COST)} treatment kit (wholesale to provider), supporting a {usd(PATIENT_PRICE)} patient treatment.</p></div>
+        <div className="rounded-3xl border bg-card p-8"><Eyebrow>The razor</Eyebrow><h3 className="mt-3 text-3xl">Capital equipment</h3><p className="mt-2 text-muted-foreground">Console sales or leases at a $45,000 unit target — a preliminary planning estimate from the Cavinova MBS business plan, subject to validation.</p></div>
+        <div className="rounded-3xl border bg-secondary/50 p-8"><Eyebrow>The blade</Eyebrow><h3 className="mt-3 text-3xl">Recurring consumables</h3><p className="mt-2 text-muted-foreground">{usd(KIT_COST)} treatment kit (wholesale to provider), supporting a {usd(PATIENT_PRICE)} patient treatment — illustrative financial assumptions, subject to validation.</p></div>
       </Section>
 
       <Section>
@@ -50,23 +51,51 @@ function Opportunity() {
           ))}
         </div>
         <div className="mt-6 grid gap-4 md:grid-cols-5">
-          {[["Revenue", usd(e.revenue)], ["Consumables", usd(e.consumables)], ["Lease (illustrative)", usd(e.lease)], ["Net clinic margin", usd(e.net)], ["Console payback", `${e.paybackMonths.toFixed(1)} mo`]].map(([l, val]) => (
+          {[["Revenue", usd(e.revenue)], ["Consumables", usd(e.consumables)], ["Lease (illustrative)", usd(e.lease)], ["Gross clinic contribution", usd(e.contribution)], ["Console payback", `${e.paybackMonths.toFixed(1)} mo`]].map(([l, val]) => (
             <div key={l} className="rounded-2xl border bg-card p-5"><p className="text-xs text-muted-foreground">{l}</p><p className="mt-1 font-serif text-3xl">{val}</p></div>
           ))}
         </div>
         <div className="mt-8 overflow-x-auto rounded-2xl border bg-card">
           <table className="w-full text-sm">
-            <thead className="bg-muted text-left"><tr>{["Treatments/mo", "Revenue", "Consumables", "Lease", "Net margin", "Payback (purchase)"].map((h) => <th key={h} className="px-4 py-3 font-semibold">{h}</th>)}</tr></thead>
+            <thead className="bg-muted text-left"><tr>{["Treatments/mo", "Revenue", "Consumables", "Lease", "Gross contribution", "Payback (purchase)"].map((h) => <th key={h} className="px-4 py-3 font-semibold">{h}</th>)}</tr></thead>
             <tbody>
               {vols.map((n) => { const r = providerEconomics(n); return (
                 <tr key={n} className={`border-t ${n === v ? "bg-accent" : ""}`}>
                   <td className="px-4 py-3">{n}</td><td className="px-4 py-3">{usd(r.revenue)}</td><td className="px-4 py-3">{usd(r.consumables)}</td>
-                  <td className="px-4 py-3">{usd(r.lease)}</td><td className="px-4 py-3 font-semibold">{usd(r.net)}</td><td className="px-4 py-3">{r.paybackMonths.toFixed(1)} mo</td>
+                  <td className="px-4 py-3">{usd(r.lease)}</td><td className="px-4 py-3 font-semibold">{usd(r.contribution)}</td><td className="px-4 py-3">{r.paybackMonths.toFixed(1)} mo</td>
                 </tr>); })}
             </tbody>
           </table>
         </div>
-        <p className="mt-3 text-xs text-muted-foreground">Illustrative only. Lease assumed at {usd(MONTHLY_LEASE)}/month; payback = $45,000 ÷ monthly contribution (revenue − consumables). Excludes labor and overhead.</p>
+        <div className="mt-6 space-y-2 rounded-2xl border border-dashed border-rose/50 bg-accent/50 p-5 text-xs text-muted-foreground">
+          <p><strong className="text-foreground">Inputs &amp; assumptions:</strong> {usd(PATIENT_PRICE)} treatment fee, {usd(KIT_COST)} consumable kit per treatment, and an illustrative monthly equipment lease of {usd(MONTHLY_LEASE)}. Payback = $45,000 console target ÷ monthly contribution (revenue − consumables − lease).</p>
+          <p><strong className="text-foreground">Included costs:</strong> consumable kits and the illustrative equipment lease only.</p>
+          <p><strong className="text-foreground">Excluded costs:</strong> clinician labor, salon/clinic overhead, facility rent, maintenance, equipment insurance, financing costs, and taxes.</p>
+          <p><strong className="text-foreground">Important:</strong> Calculated contribution margin is gross clinic contribution, not net profit. Results are illustrative estimates and do not represent guaranteed financial returns.</p>
+        </div>
+      </Section>
+
+      <Section>
+        <Eyebrow>Commercialization strategy</Eyebrow>
+        <h2 className="mt-3 text-4xl">Three paths to market — one primary</h2>
+        <p className="mt-3 max-w-3xl text-muted-foreground">The business plan evaluates three routes for commercializing ultrasound-assisted topical delivery, all contingent on first securing rights to the foundational IP.</p>
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
+          {[
+            ["Option 1 — Integrated Device & Serum Platform", "Cavinova develops the complete treatment system; revenue from device sales/leasing plus recurring serum sales. Highest control and strongest long-term platform potential. Investment: High · Control: High.", true],
+            ["Option 2 — Serum-Focused Partnership", "Cavinova develops proprietary serum formulations while an established partner supplies or adapts hardware. Lower hardware burden, but shared control and partner dependence. Investment: Moderate · Control: Shared.", false],
+            ["Option 3 — Technology Sublicensing", "Cavinova works with an established industry company that leads development, manufacturing and launch. Lower direct responsibility, but reduced control and upside. Investment: Lower · Control: Limited.", false],
+          ].map(([t, d, primary]) => (
+            <div key={t as string} className={`rounded-3xl border p-7 ${primary ? "border-teal/50 bg-secondary/40 shadow-soft" : "bg-card"}`}>
+              {primary ? <p className="mb-2 inline-block rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">Selected primary strategy</p> : null}
+              <h3 className="text-2xl">{t}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{d}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-4 text-sm text-muted-foreground">Current decision: pursue the integrated device-and-serum platform, while retaining the other models as contingency options if technical, regulatory, or commercial conditions change.</p>
+        <div className="mt-8">
+          <Diagram src={strategy.url} title="Cavinova Commercialization Strategy Options" caption="Three potential paths for commercializing ultrasound-assisted topical delivery technology. Strategy diagram from the Cavinova MBS business plan; no licensing agreement is currently in place." />
+        </div>
       </Section>
 
       <Section>

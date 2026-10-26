@@ -35,7 +35,7 @@ export function Header() {
         <Link to="/" className="shrink-0" aria-label="Cavinova home">
           <img src={logo.url} alt="Cavinova — Advanced Acoustic Aesthetics" className="h-12 w-auto" />
         </Link>
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center gap-1 md:flex">
           {nav.map((n) => (
             <Link
               key={n.to}
@@ -48,12 +48,12 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <button className="lg:hidden" onClick={() => setOpen(!open)} aria-label="Menu">
+        <button className="md:hidden" onClick={() => setOpen(!open)} aria-label="Menu">
           {open ? <X /> : <Menu />}
         </button>
       </div>
       {open && (
-        <nav className="flex flex-col border-t px-4 py-2 lg:hidden">
+        <nav className="flex flex-col border-t px-4 py-2 md:hidden">
           {nav.map((n) => (
             <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="py-2 text-sm"
               activeOptions={{ exact: n.to === "/" }} activeProps={{ className: "text-primary font-medium" }}>
@@ -82,7 +82,7 @@ export function Footer() {
             <strong className="text-foreground">Disclosure:</strong> Cavinova is a proposed venture developed for the Rutgers
             University MBS Capstone program. Technologies and products presented are conceptual and under evaluation. Cavinova
             does not currently hold rights to the referenced intellectual property (U.S. Patent Application Publication No.
-            US20250073439A1, inventor John H. Shadduck).
+            US20250073439A1, associated with inventor John H. Shadduck).
           </p>
           <p className="text-xs">© {new Date().getFullYear()} Cavinova (conceptual) · New Jersey, USA</p>
         </div>

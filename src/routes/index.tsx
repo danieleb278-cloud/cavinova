@@ -22,8 +22,9 @@ function Home() {
               Sound, tuned to <em className="text-primary">unlock</em> the skin barrier.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              Cavinova is a proposed professional skincare platform pairing ultrasound with acoustically responsive microbubble
-              serums — exploring how targeted actives might move beyond the stratum corneum.
+              Most topical actives never make it past the skin's protective barrier. Cavinova is a proposed professional
+              skincare platform pairing ultrasound with acoustically responsive microbubble serums — exploring a non-invasive,
+              needle-free way to help targeted actives move beyond the stratum corneum, with no downtime for clients.
             </p>
             <p className="mt-4 text-xs uppercase tracking-[0.35em] text-teal-deep">Science in Harmony with Skin</p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -48,7 +49,8 @@ function Home() {
           <h2 className="mt-3 text-3xl">The stratum corneum keeps most actives out.</h2>
           <p className="mt-4 text-muted-foreground">
             The skin's outermost layer — tightly packed corneocytes in a lipid matrix — is an effective barrier. Many
-            conventional topicals, especially larger molecules like hyaluronic acid and peptides, remain largely at the surface.
+            conventional topicals, especially larger molecules like hyaluronic acid and peptides, remain largely at the surface,
+            limiting what providers can achieve with creams and serums alone.
           </p>
         </div>
         <div className="rounded-3xl border bg-secondary/50 p-8">
@@ -56,7 +58,8 @@ function Home() {
           <h2 className="mt-3 text-3xl">Sonophoresis meets acoustic cavitation.</h2>
           <p className="mt-4 text-muted-foreground">
             Controlled ultrasound energy activates lipid-shelled microbubbles in the serum. Their oscillation is proposed to
-            create transient, reversible micro-pathways that may enhance active permeation.
+            create transient, reversible micro-pathways that may enhance active permeation — a differentiated, non-invasive
+            modality for professional aesthetic providers, subject to future clinical validation.
           </p>
         </div>
       </Section>
@@ -99,7 +102,8 @@ function Home() {
               <div key={l}><p className="font-serif text-5xl text-blush">{v}</p><p className="mt-2 text-sm opacity-80">{l}</p></div>
             ))}
           </div>
-          <p className="mt-8 text-sm opacity-80">A razor-and-blade model designed for high recurring gross margin on consumables.</p>
+          <p className="mt-8 text-sm opacity-80">A razor-and-blade model: equipment adoption paired with recurring single-use consumable revenue — the combination that makes the device-plus-formulation pairing commercially interesting.</p>
+          <p className="mt-4 text-xs opacity-60">Preliminary planning estimates from the Cavinova MBS business plan — illustrative financial assumptions, subject to validation.</p>
         </div>
       </Section>
 

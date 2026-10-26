@@ -11,7 +11,7 @@ export const Route = createFileRoute("/platform")({
 const parts = [
   { icon: Hand, t: "Ultrasound Applicator / Handpiece", d: "Ergonomic handpiece housing a piezoelectric transducer assembly at the distal tip, tuned to an optimized resonant frequency. Battery, controls and electronics in the body." },
   { icon: MonitorSmartphone, t: "Smart Touchscreen Console", d: "Pre-programmed clinical protocols, energy regulation, and a controlled dual-fluid auto-mixing system for microbubble cartridges and preapproved ingredient blends." },
-  { icon: Nfc, t: "Single-Use Acoustic Treatment Tips", d: "NFC/RFID-authenticated tips supporting sterility and cross-contamination prevention — and forming the recurring consumable." },
+  { icon: Nfc, t: "Single-Use Acoustic Treatment Tips", d: "NFC/RFID-authenticated tips designed to support sterility and cross-contamination prevention — and forming the recurring consumable." },
   { icon: FlaskRound, t: "Active Serum Cartridges", d: "Acoustically responsive lipid-shelled microbubbles combined with Hydration, Brightening or Rejuvenation concentrates." },
 ];
 
