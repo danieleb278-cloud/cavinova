@@ -1,3 +1,3 @@
 # Roadmap
-- [ ] Build 6-page Cavinova site
-- [ ] Feature treatment-system diagrams on /platform, reference on /science and /
+- [x] Build 6-page Cavinova site
+- [x] Feature treatment-system diagrams on /platform, reference on /science and /
