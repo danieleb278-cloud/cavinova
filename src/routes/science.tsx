@@ -11,8 +11,8 @@ export const Route = createFileRoute("/science")({
 const steps = [
   { t: "Topical Application", d: "A microbubble-infused active serum — hyaluronic acid, antioxidants and peptides — is applied to the treatment area." },
   { t: "Acoustic Activation", d: "A controlled ultrasound handpiece delivers regulated acoustic energy into the serum layer." },
-  { t: "Oscillation & Cavitation", d: "Lipid-shelled microbubbles oscillate and cavitate, proposed to create transient, reversible micro-pathways in the stratum corneum lipid bilayer." },
-  { t: "Enhanced Permeation", d: "Actives are proposed to permeate deeper into viable epidermal layers, with the pathways closing again — designed to avoid tissue damage." },
+  { t: "Oscillation & Cavitation", d: "Lipid-shelled microbubbles oscillate and cavitate, hypothesized to create transient, reversible micro-pathways in the stratum corneum lipid bilayer." },
+  { t: "Enhanced Permeation", d: "Actives are proposed to permeate deeper into viable epidermal layers. The approach is designed to operate within parameters intended to minimize tissue stress and avoid permanent cellular damage, subject to future clinical validation." },
 ];
 
 function Visual({ step }: { step: number }) {
