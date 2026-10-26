@@ -71,7 +71,7 @@ function LightboxViewer({ src, title, onClose }: { src: string; title: string; o
         if (!gestureMoved.current && !(event.target instanceof HTMLImageElement)) onClose();
       }}>
         {failed ? <p className="p-8 text-center text-lightbox-foreground" role="alert">The image could not load. Please close and try again.</p> : (
-          <TransformWrapper ref={transform} minScale={1} maxScale={8} centerOnInit wheel={{ step: 0.08 }} doubleClick={{ disabled: true }} panning={{ disabled: scale <= 1.001, velocityDisabled: true }} onPanning={() => { gestureMoved.current = true; }} onPinch={() => { gestureMoved.current = true; }} onTransformed={(_, state) => setScale(state.scale)}>
+          <TransformWrapper ref={transform} minScale={1} maxScale={8} centerOnInit wheel={{ step: 0.08 }} doubleClick={{ disabled: true }} panning={{ disabled: scale <= 1.001, velocityDisabled: true }} onPanning={() => { gestureMoved.current = true; }} onPinch={() => { gestureMoved.current = true; }} onTransform={(_, state) => setScale(state.scale)}>
             <TransformComponent wrapperClass="lightbox-viewport" contentClass="lightbox-image-content">
               <img src={src} alt={title} draggable={false} onLoad={(event) => setNatural({ width: event.currentTarget.naturalWidth, height: event.currentTarget.naturalHeight })} onError={() => setFailed(true)} className="block max-w-none select-none" style={{ width: natural.width * fit, height: natural.height * fit, visibility: fit ? "visible" : "hidden", cursor: scale > 1.001 ? "grab" : "default" }} />
             </TransformComponent>
