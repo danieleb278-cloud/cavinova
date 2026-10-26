@@ -32,8 +32,8 @@ function Platform() {
       </PageHero>
 
       <Section className="space-y-10">
-        <Diagram src={diagrams.handheld} title="A Complete, Customizable Treatment System" caption="Handheld applicator breakdown: handpiece (battery/controls), replaceable serum reservoir, ultrasound transducer in the distal tip, click-in single-use microbubble vial, and Hydration / Brightening / Rejuvenation concentrates, with the 4-step workflow." />
-        <Diagram src={diagrams.console} title="A Customizable, Professional Treatment System" caption="Clinical console with touchscreen, controlled dual-fluid auto-mixing of microbubble cartridge + preapproved ingredient blends, and a professional handpiece delivering 0.25–5 MHz acoustic energy per patent embodiments." />
+        <Diagram enlarge src={diagrams.handheld} title="A Complete, Customizable Treatment System" caption="Handheld applicator breakdown: handpiece (battery/controls), replaceable serum reservoir, ultrasound transducer in the distal tip, click-in single-use microbubble vial, and Hydration / Brightening / Rejuvenation concentrates, with the 4-step workflow." />
+        <Diagram enlarge src={diagrams.console} title="A Customizable, Professional Treatment System" caption="Clinical console with touchscreen, controlled dual-fluid auto-mixing of microbubble cartridge + preapproved ingredient blends, and a professional handpiece delivering 0.25–5 MHz acoustic energy per patent embodiments." />
       </Section>
 
       <Section>

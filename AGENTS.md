@@ -10,4 +10,5 @@
 <!-- LOVABLE:END -->
 
 ## Rules
+- Product Concept image enlargement uses one reusable ImageLightbox with Radix focus management and react-zoom-pan-pinch gestures; thumbnails and original asset URLs stay unchanged to preserve layout and resolution.
 - Before placing an uploaded brand mark, convert it to a transparent, tightly cropped CDN asset (remove the white background via a border-connected flood fill, then un-premultiply against white). Why: opaque white-background uploads show a rectangular seam against the site's tinted glass surfaces; keep the original upload pointer in `src/assets` for reference.

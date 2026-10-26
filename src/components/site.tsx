@@ -5,6 +5,7 @@ import handheld from "@/assets/Cavinova_Customizable_Treatment_System.png.asset.
 import consoleSys from "@/assets/Cavinova_Customizable_Treatment_System_1.png.asset.json";
 import monogram from "@/assets/cavinova_emblem.png.asset.json";
 import wordmark from "@/assets/cavinova_wordmark.png.asset.json";
+import { ImageLightbox } from "@/components/image-lightbox";
 
 export const diagrams = { handheld: handheld.url, console: consoleSys.url };
 
@@ -145,14 +146,14 @@ export function ConceptLabel() {
   );
 }
 
-export function Diagram({ src, title, caption }: { src: string; title: string; caption: string }) {
+export function Diagram({ src, title, caption, enlarge = false }: { src: string; title: string; caption: string; enlarge?: boolean }) {
   return (
     <figure className="overflow-hidden rounded-3xl border bg-card shadow-soft">
       <div className="flex flex-wrap items-center justify-between gap-2 border-b px-5 py-3">
         <p className="font-serif text-xl">{title}</p>
         <ConceptLabel />
       </div>
-      <a href={src} target="_blank" rel="noreferrer"><img src={src} alt={title} className="w-full" loading="lazy" /></a>
+      {enlarge ? <ImageLightbox src={src} title={title} /> : <a href={src} target="_blank" rel="noreferrer"><img src={src} alt={title} className="w-full" loading="lazy" /></a>}
       <figcaption className="px-5 py-3 text-xs text-muted-foreground">{caption}</figcaption>
     </figure>
   );
