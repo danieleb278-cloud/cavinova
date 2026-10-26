@@ -11,35 +11,55 @@ export const Route = createFileRoute("/team")({
 });
 
 const team = [
-  { n: "Danielle Bosworth", r: "Project Manager & Business Plan Lead", b: "Product Design MBS concentration. Licensed cosmetologist with salon & spa operations, B2B sales and treatment-systems experience.", img: danielle.url },
-  { n: "Victoria DeMeola", r: "Co-Founder, Technology & R&D Lead", b: "Biotechnology, genomics, molecular diagnostics and lab operations; leads foundational technology evaluation.", img: victoria.url },
-  { n: "Qiwei Miao", r: "Co-Founder, Market Strategy & Financial Planning Lead", b: "Biology and personal care science; former L'Oréal Research & Innovation experience in formulation and claims evaluation.", img: qiwei.url },
+  {
+    n: "Danielle Bosworth",
+    r: "Project Manager & Business Plan Lead",
+    b: "Danielle combines graduate training in Product Design at Rutgers University with extensive experience in the professional beauty industry. As a licensed cosmetologist, her background includes salon management, B2B sales, product education, and professional treatment systems. Her experience provides a practical understanding of how aesthetic technologies are introduced, adopted, and used by beauty professionals. At Cavinova, Danielle leads project coordination, business plan development, and commercialization strategy, connecting the team's technical research with customer needs, market opportunities, and product development decisions.",
+    img: danielle.url,
+  },
+  {
+    n: "Victoria DeMeola",
+    r: "Co-Founder, Technology & R&D Lead",
+    b: "Victoria brings a scientific background in biotechnology, genomics, molecular diagnostics, and laboratory operations. Her experience provides a foundation for evaluating emerging technologies and understanding the research required to translate scientific discoveries into practical applications. At Cavinova, Victoria leads the technical evaluation of the proposed ultrasound-assisted delivery system, investigating its underlying scientific principles, potential applications, and development requirements. Her work helps identify the technical challenges, testing needs, and research priorities necessary to assess the technology's feasibility.",
+    img: victoria.url,
+  },
+  {
+    n: "Qiwei Miao",
+    r: "Co-Founder, Market Strategy & Financial Planning Lead",
+    b: "Qiwei brings expertise in biology and personal care science, including experience with L'Oréal's Research and Innovation organization. Her background includes cosmetic formulation research, product stability testing, competitive analysis, and the evaluation of product claims. At Cavinova, she applies this expertise to assess the professional skincare market, evaluate competing technologies, and identify opportunities for differentiation. Her understanding of cosmetic formulation and product performance helps connect the proposed technology's scientific potential with the practical expectations of professional skincare providers and their clients.",
+    img: qiwei.url,
+  },
 ];
 
 function Team() {
   return (
     <>
       <PageHero eyebrow="Founding Team" title="Interdisciplinary by design">Rutgers University Master of Business and Science — Capstone team.</PageHero>
-      <Section className="grid gap-6 md:grid-cols-3">
-        {team.map((m) => (
-          <article key={m.n} className="overflow-hidden rounded-3xl border bg-card shadow-soft transition duration-300 hover:-translate-y-1">
-            <img
-              src={m.img}
-              alt={`${m.n} — ${m.r}`}
-              width={1122}
-              height={1402}
-              loading="lazy"
-              decoding="async"
-              className="aspect-[4/5] w-full object-cover object-top"
-            />
-            <div className="h-1 bg-rosegold" />
-            <div className="p-6">
-              <h3 className="text-2xl">{m.n}</h3>
-              <p className="mt-1 text-sm font-semibold text-primary">{m.r}</p>
-              <p className="mt-3 text-sm text-muted-foreground">{m.b}</p>
-            </div>
-          </article>
-        ))}
+      <Section>
+        <div className="mx-auto flex max-w-4xl flex-col gap-6">
+          {team.map((m) => (
+            <article
+              key={m.n}
+              className="grid overflow-hidden rounded-3xl border bg-card shadow-soft transition duration-300 hover:-translate-y-1 sm:grid-cols-[240px_4px_1fr] md:grid-cols-[280px_4px_1fr]"
+            >
+              <img
+                src={m.img}
+                alt={`${m.n} — ${m.r}`}
+                width={1122}
+                height={1402}
+                loading="lazy"
+                decoding="async"
+                className="aspect-[4/5] w-full object-cover object-top sm:aspect-auto sm:h-full"
+              />
+              <div className="h-1 bg-rosegold sm:h-auto sm:w-1" />
+              <div className="p-6 md:p-8">
+                <h3 className="text-2xl">{m.n}</h3>
+                <p className="mt-1 text-sm font-semibold text-primary">{m.r}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{m.b}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </Section>
       <Section>
         <Eyebrow>Advisory &amp; external development strategy</Eyebrow>
