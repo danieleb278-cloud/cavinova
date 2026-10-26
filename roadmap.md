@@ -10,3 +10,5 @@
 - [x] Refine roadmap section: new handpiece description, one discreet disclosure line above the cards, tighter card spacing
 - [x] Contact form submits directly to a built-in database (no email app needed); verified end-to-end
 - [ ] Owner email notifications to contact.cavinova@gmail.com — blocked: needs a verified sender domain Danielle owns (setup dialog shown)
+
+- [x] Replace science mechanism schematic with the four uploaded images, changing with the selected step
