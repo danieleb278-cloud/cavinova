@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Cog, Scale, FlaskConical, Factory } from "lucide-react";
-import { PageHero, Section, Eyebrow, Placeholder, seo } from "@/components/site";
+import { PageHero, Section, Eyebrow, seo } from "@/components/site";
+import danielle from "@/assets/danielle_bosworth.png.asset.json";
+import qiwei from "@/assets/qiwei_miao.png.asset.json";
+import victoria from "@/assets/victoria_demeola.png.asset.json";
 
 export const Route = createFileRoute("/team")({
   head: () => seo("Founding Team — Cavinova", "Meet the interdisciplinary Rutgers MBS Capstone team behind the Cavinova concept."),
@@ -8,9 +11,9 @@ export const Route = createFileRoute("/team")({
 });
 
 const team = [
-  { n: "Danielle Bosworth", r: "Project Manager & Business Plan Lead", b: "Product Design MBS concentration. Licensed cosmetologist with salon & spa operations, B2B sales and treatment-systems experience." },
-  { n: "Victoria DeMeola", r: "Co-Founder, Technology & R&D Lead", b: "Biotechnology, genomics, molecular diagnostics and lab operations; leads foundational technology evaluation." },
-  { n: "Qiwei Miao", r: "Co-Founder, Market Strategy & Financial Planning Lead", b: "Biology and personal care science; former L'Oréal Research & Innovation experience in formulation and claims evaluation." },
+  { n: "Danielle Bosworth", r: "Project Manager & Business Plan Lead", b: "Product Design MBS concentration. Licensed cosmetologist with salon & spa operations, B2B sales and treatment-systems experience.", img: danielle.url },
+  { n: "Victoria DeMeola", r: "Co-Founder, Technology & R&D Lead", b: "Biotechnology, genomics, molecular diagnostics and lab operations; leads foundational technology evaluation.", img: victoria.url },
+  { n: "Qiwei Miao", r: "Co-Founder, Market Strategy & Financial Planning Lead", b: "Biology and personal care science; former L'Oréal Research & Innovation experience in formulation and claims evaluation.", img: qiwei.url },
 ];
 
 function Team() {
@@ -19,9 +22,22 @@ function Team() {
       <PageHero eyebrow="Founding Team" title="Interdisciplinary by design">Rutgers University Master of Business and Science — Capstone team.</PageHero>
       <Section className="grid gap-6 md:grid-cols-3">
         {team.map((m) => (
-          <article key={m.n} className="overflow-hidden rounded-3xl border bg-card">
-            <Placeholder title="Portrait" hint="Upload a 4:5 professional headshot, soft neutral background." className="aspect-[4/5] rounded-none border-0 border-b-2" />
-            <div className="p-6"><h3 className="text-2xl">{m.n}</h3><p className="mt-1 text-sm font-semibold text-primary">{m.r}</p><p className="mt-3 text-sm text-muted-foreground">{m.b}</p></div>
+          <article key={m.n} className="overflow-hidden rounded-3xl border bg-card shadow-soft transition duration-300 hover:-translate-y-1">
+            <img
+              src={m.img}
+              alt={`${m.n} — ${m.r}`}
+              width={1122}
+              height={1402}
+              loading="lazy"
+              decoding="async"
+              className="aspect-[4/5] w-full object-cover object-top"
+            />
+            <div className="h-1 bg-rosegold" />
+            <div className="p-6">
+              <h3 className="text-2xl">{m.n}</h3>
+              <p className="mt-1 text-sm font-semibold text-primary">{m.r}</p>
+              <p className="mt-3 text-sm text-muted-foreground">{m.b}</p>
+            </div>
           </article>
         ))}
       </Section>
