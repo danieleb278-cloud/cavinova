@@ -22,7 +22,7 @@ const inquirySchema = z.object({
 });
 
 function Contact() {
-  const [cat, setCat] = useState(cats[0]);
+  const [cat, setCat] = useState<string>(cats[0] ?? "General Information");
   const [f, setF] = useState({ name: "", email: "", org: "", message: "" });
   const [website, setWebsite] = useState(""); // honeypot — hidden from real visitors
   const [err, setErr] = useState("");
