@@ -2,6 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { CheckCircle2, AlertTriangle, ArrowRight } from "lucide-react";
 import { PageHero, Section, Eyebrow, Diagram, diagrams, seo } from "@/components/site";
+import { Button } from "@/components/ui/button";
+import stepOne from "@/assets/science-step-1.png.asset.json";
+import stepTwo from "@/assets/science-step-2.png.asset.json";
+import stepThree from "@/assets/science-step-3.png.asset.json";
+import stepFour from "@/assets/science-step-4.png.asset.json";
 
 export const Route = createFileRoute("/science")({
   head: () => seo("Science & Technology — Cavinova", "Stratum corneum physics, sonophoresis and acoustic cavitation behind Cavinova's proposed ultrasound-assisted topical delivery."),
@@ -15,25 +20,17 @@ const steps = [
   { t: "Enhanced Permeation", d: "Actives are proposed to permeate deeper into viable epidermal layers. The approach is designed to operate within parameters intended to minimize tissue stress and avoid permanent cellular damage, subject to future clinical validation." },
 ];
 
+const stepImages = [
+  { src: stepOne.url, alt: "Topical application concept: microbubble serum above the stratum corneum and viable epidermis." },
+  { src: stepTwo.url, alt: "Acoustic activation concept: an ultrasound handpiece directs regulated acoustic energy toward the serum layer." },
+  { src: stepThree.url, alt: "Oscillation and cavitation concept: acoustically activated microbubbles at the skin barrier." },
+  { src: stepFour.url, alt: "Enhanced permeation concept: arrows depict proposed transport through the stratum corneum toward viable epidermis." },
+];
+
 function Visual({ step }: { step: number }) {
-  return (
-    <svg viewBox="0 0 400 260" className="w-full">
-      <rect x="0" y="0" width="400" height="260" fill="var(--mist)" />
-      {step >= 1 && <rect x="20" y="20" width="360" height="40" rx="10" fill="var(--blush)" opacity=".55" />}
-      {step >= 1 && Array.from({ length: 12 }, (_, i) => (
-        <circle key={i} cx={40 + i * 29} cy={40} r={step >= 3 ? 9 : 6} fill="none" stroke="var(--rose-deep)" strokeWidth="1.5" opacity={step >= 3 ? 0.4 : 0.9} />
-      ))}
-      {step >= 2 && [0, 1, 2].map((i) => <path key={i} d={`M 150 ${8 - i * 0} q 25 ${-6 - i * 4} 50 0 t 50 0`} stroke="var(--teal)" strokeWidth="2" fill="none" transform={`translate(0 ${-i * 2})`} />)}
-      {Array.from({ length: 9 }, (_, i) => (
-        <rect key={i} x={20 + i * 40} y="70" width="34" height="30" rx="4" fill="var(--card)" stroke="var(--border)" />
-      ))}
-      {step >= 3 && [60, 180, 300].map((x) => <rect key={x} x={x + 14} y="70" width="6" height="30" fill="var(--rose)" opacity=".6" />)}
-      <rect x="20" y="110" width="360" height="130" rx="10" fill="var(--mint)" />
-      {step >= 4 && Array.from({ length: 14 }, (_, i) => <circle key={i} cx={40 + (i * 53) % 330} cy={130 + ((i * 37) % 95)} r="4" fill="var(--rose-deep)" opacity=".7" />)}
-      <text x="24" y="250" fontSize="10" fill="var(--muted-foreground)">Viable epidermis</text>
-      <text x="300" y="95" fontSize="10" fill="var(--muted-foreground)">Stratum corneum</text>
-    </svg>
-  );
+  const image = stepImages[step - 1] ?? stepImages[0];
+  if (!image) return null;
+  return <img src={image.src} alt={image.alt} width={1448} height={1086} className="block aspect-[4/3] w-full object-contain" />;
 }
 
 function Science() {
@@ -61,17 +58,17 @@ function Science() {
         <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_1.2fr]">
           <div className="space-y-3">
             {steps.map((st, i) => (
-              <button key={st.t} onClick={() => setS(i + 1)}
-                className={`w-full rounded-2xl border p-5 text-left transition ${s === i + 1 ? "border-primary bg-accent" : "bg-card hover:border-rose"}`}>
+              <Button variant="ghost" key={st.t} onClick={() => setS(i + 1)} aria-pressed={s === i + 1} aria-controls="mechanism-image"
+                className={`block h-auto w-full whitespace-normal rounded-2xl border p-5 text-left transition ${s === i + 1 ? "border-primary bg-accent" : "bg-card hover:border-rose"}`}>
                 <p className="text-xs font-semibold uppercase tracking-widest text-teal-deep">Step {i + 1}</p>
                 <p className="mt-1 font-serif text-2xl">{st.t}</p>
                 {s === i + 1 && <p className="mt-2 text-sm text-muted-foreground">{st.d}</p>}
-              </button>
+              </Button>
             ))}
           </div>
-          <div className="overflow-hidden rounded-3xl border bg-card p-4 shadow-soft">
+          <div id="mechanism-image" className="self-start overflow-hidden rounded-3xl border bg-card p-4 shadow-soft">
             <Visual step={s} />
-            <p className="px-2 pt-3 text-xs text-muted-foreground">Schematic illustration — not to scale. Step {s} of 4.</p>
+            <p className="px-2 pt-3 text-xs text-muted-foreground">Conceptual mechanism illustration — not to scale; proposed effects have not been validated by Cavinova. Step {s} of 4.</p>
           </div>
         </div>
       </Section>
