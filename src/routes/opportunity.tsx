@@ -3,6 +3,7 @@ import { useState } from "react";
 import { PageHero, Section, Eyebrow, Diagram, seo } from "@/components/site";
 import { providerEconomics, PATIENT_PRICE, KIT_COST, MONTHLY_LEASE } from "@/lib/economics";
 import strategy from "@/assets/cavinova_commercialization_strategy.png.asset.json";
+import roadmap from "@/assets/cavinova_five_year_roadmap.png.asset.json";
 
 export const Route = createFileRoute("/opportunity")({
   head: () => seo("Commercial Opportunity — Cavinova", "Market sizing, razor-and-blade model, provider unit economics and five-year commercialization roadmap for Cavinova."),
@@ -110,10 +111,13 @@ function Opportunity() {
           ].map(([y, t, d]) => (
             <li key={y} className="relative rounded-3xl border bg-card p-6">
               <p className="text-xs font-semibold uppercase tracking-widest text-teal-deep">{y} · Stage gate</p>
-              <h3 className="mt-2 text-2xl">{t}</h3><p className="mt-2 text-sm text-muted-foreground">{d}</p>
+              <h3 className="mt-2 text-2xl leading-tight [overflow-wrap:anywhere]">{t}</h3><p className="mt-3 text-sm text-muted-foreground">{d}</p>
             </li>
           ))}
         </ol>
+        <div className="mt-10">
+          <Diagram enlarge src={roadmap.url} title="Five-Year Commercialization Roadmap" caption="Planned stage-gated milestones from the Cavinova MBS business plan. Illustrative planning timeline only; no IP license, regulatory authorization, or commercial launch has occurred." />
+        </div>
       </Section>
     </>
   );
