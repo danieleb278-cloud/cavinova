@@ -24,7 +24,7 @@ const flow = [
 
 function Platform() {
   const [a, setA] = useState(0);
-  const P = parts[a];
+  const P = parts[a] ?? parts[0]!;
   return (
     <>
       <PageHero eyebrow="Product Concept" title="A customizable, professional treatment system">
