@@ -1,9 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { ImagePlus, Menu, X, FlaskConical } from "lucide-react";
-import logo from "@/assets/Cavinova_Acoustic_Aesthetics_Logo_Final.png.asset.json";
 import handheld from "@/assets/Cavinova_Customizable_Treatment_System.png.asset.json";
 import consoleSys from "@/assets/Cavinova_Customizable_Treatment_System_1.png.asset.json";
+import monogram from "@/assets/cavinova_emblem.png.asset.json";
+import wordmark from "@/assets/cavinova_wordmark.png.asset.json";
 
 export const diagrams = { handheld: handheld.url, console: consoleSys.url };
 
@@ -33,7 +34,7 @@ export function Header() {
     <header className="sticky top-0 z-40 glass">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
         <Link to="/" className="shrink-0" aria-label="Cavinova home">
-          <img src={logo.url} alt="Cavinova — Advanced Acoustic Aesthetics" className="h-12 w-auto" />
+          <img src={monogram.url} alt="Cavinova" className="h-10 w-auto md:h-12" />
         </Link>
         <nav className="hidden items-center gap-1 md:flex">
           {nav.map((n) => (
@@ -71,7 +72,7 @@ export function Footer() {
     <footer className="mt-24 border-t bg-card">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 md:grid-cols-[1fr_2fr]">
         <div>
-          <img src={logo.url} alt="Cavinova" className="h-14 w-auto" />
+          <img src={wordmark.url} alt="Cavinova — Advanced Acoustic Aesthetics" className="h-16 w-auto" />
           <p className="mt-3 text-xs uppercase tracking-[0.3em] text-teal-deep">Science in Harmony with Skin</p>
         </div>
         <div className="space-y-4 text-sm text-muted-foreground">
