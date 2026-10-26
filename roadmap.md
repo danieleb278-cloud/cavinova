@@ -12,3 +12,5 @@
 - [ ] Owner email notifications to contact.cavinova@gmail.com — blocked: needs a verified sender domain Danielle owns (setup dialog shown)
 
 - [x] Replace science mechanism schematic with the four uploaded images, changing with the selected step
+- [x] Five-Year Commercialization Roadmap graphic on /opportunity — swapped to the corrected upload (no figure label), zoomable
+
