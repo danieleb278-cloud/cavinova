@@ -73,7 +73,7 @@ function Platform() {
 
       <Section>
         <Eyebrow>Development &amp; Validation Roadmap</Eyebrow>
-        <div className="mt-6 grid gap-5 md:grid-cols-3">
+        <div className="mt-6 grid auto-rows-fr gap-5 md:grid-cols-3">
           <Diagram enlarge proportionalPreview src={handpiece.url} title="3D Handpiece Render" caption="Planned: acoustic output and thermal testing." />
           <Diagram enlarge proportionalPreview src={acousticValidation.url} title="Acoustic Performance Validation" caption="A proposed engineering validation framework evaluating acoustic output, operating frequency, thermal characteristics, microbubble response, and system integration." />
           <Diagram enlarge proportionalPreview src={biocompatibility.url} title="Safety & Biocompatibility" caption="A planned safety evaluation strategy addressing skin-contact materials, formulation stability, compatibility, irritation considerations, and device handling." />

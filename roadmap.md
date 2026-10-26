@@ -6,4 +6,4 @@
 - [x] Logo placement: pink C monogram in header/footer, full wordmark as the homepage hero visual
 - [x] Add accessible zoomable lightboxes to Product Concept infographics without changing existing layout
 - [x] Replace the 3D Handpiece Render placeholder with the uploaded handheld image and enable enlargement
-- [ ] Add original validation infographics with equal previews and verify independent lightbox controls
+- [x] Add original validation infographics with equal previews and verify independent lightbox controls
