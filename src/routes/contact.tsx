@@ -8,7 +8,7 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
-const EMAIL = "cavinova.capstone@example.com";
+const EMAIL = "contact.cavinova@gmail.com";
 const cats = ["Academic / Capstone Inquiry", "Technology & Licensing Discussion", "Aesthetic Provider Feedback", "General Information"];
 const field = "w-full rounded-xl border bg-card px-4 py-3 text-sm outline-none focus:border-ring";
 
