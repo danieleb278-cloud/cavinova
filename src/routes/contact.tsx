@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Mail, Info, CheckCircle2 } from "lucide-react";
+import { Mail, Info, CheckCircle2, Loader2 } from "lucide-react";
+import { z } from "zod";
 import { PageHero, Section, seo } from "@/components/site";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/contact")({
   head: () => seo("Contact — Cavinova", "Academic, technology, provider-feedback and general inquiries for the Cavinova Rutgers MBS Capstone venture."),
@@ -12,21 +14,43 @@ const EMAIL = "contact.cavinova@gmail.com";
 const cats = ["Academic / Capstone Inquiry", "Technology & Licensing Discussion", "Aesthetic Provider Feedback", "General Information"];
 const field = "w-full rounded-xl border bg-card px-4 py-3 text-sm outline-none focus:border-ring";
 
+const inquirySchema = z.object({
+  name: z.string().trim().min(1, "Please add your name.").max(100),
+  email: z.string().trim().email("Please add a valid email address.").max(150),
+  org: z.string().trim().max(150),
+  message: z.string().trim().min(10, "Please add a message of at least 10 characters.").max(2000),
+});
+
 function Contact() {
   const [cat, setCat] = useState(cats[0]);
   const [f, setF] = useState({ name: "", email: "", org: "", message: "" });
+  const [website, setWebsite] = useState(""); // honeypot — hidden from real visitors
   const [err, setErr] = useState("");
   const [sent, setSent] = useState(false);
+  const [busy, setBusy] = useState(false);
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!f.name.trim() || !/^\S+@\S+\.\S+$/.test(f.email) || f.message.trim().length < 10) {
-      setErr("Please add your name, a valid email and a message of at least 10 characters.");
+    if (website) return; // bot filled the hidden field — silently drop
+    const parsed = inquirySchema.safeParse(f);
+    if (!parsed.success) {
+      setErr(parsed.error.issues[0]?.message ?? "Please review the form.");
       return;
     }
     setErr("");
-    const body = `Name: ${f.name}\nEmail: ${f.email}\nOrganization: ${f.org}\nCategory: ${cat}\n\n${f.message}`;
-    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(`[Cavinova] ${cat}`)}&body=${encodeURIComponent(body)}`;
+    setBusy(true);
+    const { error } = await supabase.from("contact_submissions").insert({
+      category: cat,
+      name: parsed.data.name,
+      email: parsed.data.email,
+      organization: parsed.data.org || null,
+      message: parsed.data.message,
+    });
+    setBusy(false);
+    if (error) {
+      setErr("Something went wrong sending your inquiry. Please try again, or email us directly at " + EMAIL + ".");
+      return;
+    }
     setSent(true);
   };
 
@@ -49,10 +73,18 @@ function Contact() {
           </div>
           <input className={field} placeholder="Organization / institution (optional)" value={f.org} onChange={(e) => setF({ ...f, org: e.target.value })} maxLength={150} />
           <textarea className={`${field} min-h-36`} placeholder="Your message" value={f.message} onChange={(e) => setF({ ...f, message: e.target.value })} maxLength={2000} />
+          {/* Honeypot: invisible to visitors, catches bots */}
+          <input type="text" value={website} onChange={(e) => setWebsite(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 opacity-0" />
           {err && <p className="text-sm text-destructive">{err}</p>}
-          {sent && <p className="flex items-center gap-2 text-sm text-teal-deep"><CheckCircle2 className="h-4 w-4" /> Prepared in your email client — please click send in your email app to complete delivery.</p>}
-          <p className="text-xs text-muted-foreground">Submitting opens your local email application with a pre-addressed message to {EMAIL}. Nothing is sent or stored until you press send in your email app.</p>
-          <button className="rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90">Prepare inquiry email</button>
+          {sent ? (
+            <p className="flex items-center gap-2 text-sm text-teal-deep"><CheckCircle2 className="h-4 w-4" /> Thank you — your inquiry has been sent to the Cavinova team. We read every message and will reply from {EMAIL}.</p>
+          ) : (
+            <p className="text-xs text-muted-foreground">Your inquiry goes straight to the Cavinova team at {EMAIL}. Nothing is published or shared.</p>
+          )}
+          <button disabled={busy || sent} className="flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 disabled:opacity-60">
+            {busy && <Loader2 className="h-4 w-4 animate-spin" />}
+            {sent ? "Inquiry sent" : busy ? "Sending…" : "Send inquiry"}
+          </button>
         </form>
         <aside className="space-y-5">
           <a href={`mailto:${EMAIL}?subject=${encodeURIComponent("Cavinova Academic Inquiry")}`} className="flex items-center gap-3 rounded-3xl border bg-card p-6 hover:border-primary">
