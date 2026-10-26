@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ShieldAlert, Waves, Cpu, Droplets, Stethoscope } from "lucide-react";
 import { Section, Eyebrow, Diagram, diagrams, seo } from "@/components/site";
-import emblem from "@/assets/cavinova_emblem.png.asset.json";
+import wordmark from "@/assets/cavinova_wordmark.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => seo("Cavinova — Advanced Acoustic Aesthetics", "A conceptual Rutgers MBS Capstone venture exploring ultrasound-assisted topical skincare delivery with acoustically responsive microbubbles."),
@@ -33,21 +33,21 @@ function Home() {
               <Link to="/opportunity" className={`${btn} border bg-card hover:border-primary`}>View the opportunity</Link>
             </div>
           </div>
-          <div className="relative mx-auto w-full max-w-xl">
+          <div className="relative mx-auto w-full max-w-2xl">
             <span aria-hidden className="pointer-events-none absolute -inset-6 rounded-[3rem] bg-blush/30 blur-3xl" />
             <figure className="glass relative overflow-hidden rounded-[2.25rem] p-6 shadow-soft ring-1 ring-rose/20 md:p-9">
               <span aria-hidden className="pointer-events-none absolute -bottom-10 -left-10 h-2/3 w-2/3 rounded-full bg-mint/60 blur-3xl" />
               <span aria-hidden className="pointer-events-none absolute -right-8 -top-8 h-1/2 w-1/2 rounded-full bg-accent blur-3xl" />
               <span aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-linear-to-b from-card/80 to-transparent" />
               <img
-                src={emblem.url}
-                alt="Cavinova emblem — a rose letter C crossed by a teal acoustic waveform"
-                width={863}
-                height={588}
+                src={wordmark.url}
+                alt="Cavinova — Advanced Acoustic Aesthetics"
+                width={1686}
+                height={722}
                 className="relative h-auto w-full"
               />
               <figcaption className="relative mt-4 text-center text-[0.68rem] font-semibold uppercase tracking-[0.32em] text-teal-deep">
-                Advanced Acoustic Aesthetics
+                Science in Harmony with Skin
               </figcaption>
             </figure>
           </div>
