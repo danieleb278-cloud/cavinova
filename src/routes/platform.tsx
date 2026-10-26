@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Hand, MonitorSmartphone, Nfc, FlaskRound } from "lucide-react";
 import { PageHero, Section, Eyebrow, Diagram, diagrams, ConceptLabel, Placeholder, seo } from "@/components/site";
+import handpiece from "@/assets/handheld.png.asset.json";
 
 export const Route = createFileRoute("/platform")({
   head: () => seo("Product Concept — Cavinova", "Conceptual Cavinova treatment system: ultrasound handpiece, clinical console, NFC treatment tips and microbubble serum cartridges."),
@@ -32,8 +33,8 @@ function Platform() {
       </PageHero>
 
       <Section className="space-y-10">
-        <Diagram src={diagrams.handheld} title="A Complete, Customizable Treatment System" caption="Handheld applicator breakdown: handpiece (battery/controls), replaceable serum reservoir, ultrasound transducer in the distal tip, click-in single-use microbubble vial, and Hydration / Brightening / Rejuvenation concentrates, with the 4-step workflow." />
-        <Diagram src={diagrams.console} title="A Customizable, Professional Treatment System" caption="Clinical console with touchscreen, controlled dual-fluid auto-mixing of microbubble cartridge + preapproved ingredient blends, and a professional handpiece delivering 0.25–5 MHz acoustic energy per patent embodiments." />
+        <Diagram enlarge src={diagrams.handheld} title="A Complete, Customizable Treatment System" caption="Handheld applicator breakdown: handpiece (battery/controls), replaceable serum reservoir, ultrasound transducer in the distal tip, click-in single-use microbubble vial, and Hydration / Brightening / Rejuvenation concentrates, with the 4-step workflow." />
+        <Diagram enlarge src={diagrams.console} title="A Customizable, Professional Treatment System" caption="Clinical console with touchscreen, controlled dual-fluid auto-mixing of microbubble cartridge + preapproved ingredient blends, and a professional handpiece delivering 0.25–5 MHz acoustic energy per patent embodiments." />
       </Section>
 
       <Section>
@@ -70,7 +71,7 @@ function Platform() {
       <Section>
         <Eyebrow>Design &amp; engineering — planned</Eyebrow>
         <div className="mt-6 grid gap-5 md:grid-cols-3">
-          <Placeholder title="3D Handpiece Render" hint="Drop in a CAD render of the applicator. Planned: acoustic output and thermal testing." />
+          <Diagram enlarge src={handpiece.url} title="3D Handpiece Render" caption="Planned: acoustic output and thermal testing." />
           <Placeholder title="Transducer Test Data" hint="Add bench-test diagrams. Planned: frequency and intensity verification." />
           <Placeholder title="Biocompatibility Plan" hint="Add ISO 10993 test-plan diagram. Planned: biocompatibility verification of skin-contact parts." />
         </div>

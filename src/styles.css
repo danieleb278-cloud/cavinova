@@ -38,6 +38,8 @@
   --color-teal-deep: var(--teal-deep);
   --color-mint: var(--mint);
   --color-mist: var(--mist);
+  --color-lightbox-backdrop: var(--lightbox-backdrop);
+  --color-lightbox-foreground: var(--lightbox-foreground);
 }
 
 :root {
@@ -68,6 +70,8 @@
   --teal-deep: #3f7f77;
   --mint: #d2e7e4;
   --mist: #f5f8f8;
+  --lightbox-backdrop: rgb(18 23 27 / 85%);
+  --lightbox-foreground: #ffffff;
   --gradient-hero: radial-gradient(80% 60% at 20% 10%, color-mix(in oklab, var(--blush) 35%, transparent), transparent 70%),
     radial-gradient(70% 60% at 90% 20%, color-mix(in oklab, var(--mint) 70%, transparent), transparent 70%);
   --gradient-rosegold: linear-gradient(135deg, #f3d3d6, #e7b8b4 40%, #f6e3df 60%, #d9a3a3);
@@ -98,3 +102,10 @@
   100% { transform: scale(1.8); opacity: 0; }
 }
 @utility animate-ring { animation: ring-pulse 2.4s ease-out infinite; }
+
+.lightbox-viewport.react-transform-wrapper {
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+.lightbox-image-content.react-transform-component { width: fit-content; height: fit-content; }
