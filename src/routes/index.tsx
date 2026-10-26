@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ShieldAlert, Waves, Cpu, Droplets, Stethoscope } from "lucide-react";
-import { Section, Eyebrow, Waveform, Diagram, diagrams, seo } from "@/components/site";
+import { Section, Eyebrow, Diagram, diagrams, seo } from "@/components/site";
+import emblem from "@/assets/cavinova_emblem.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => seo("Cavinova — Advanced Acoustic Aesthetics", "A conceptual Rutgers MBS Capstone venture exploring ultrasound-assisted topical skincare delivery with acoustically responsive microbubbles."),
