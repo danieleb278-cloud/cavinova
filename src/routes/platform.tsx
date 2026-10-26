@@ -73,12 +73,12 @@ function Platform() {
 
       <Section>
         <Eyebrow>Development &amp; Validation Roadmap</Eyebrow>
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">Conceptual product designs and proposed validation frameworks. No working prototype, completed testing, or commercially available product is represented.</p>
         <div className="mt-6 grid auto-rows-fr gap-5 md:grid-cols-3">
-          <Diagram enlarge proportionalPreview src={handpiece.url} title="3D Handpiece Render" caption="Planned: acoustic output and thermal testing." />
-          <Diagram enlarge proportionalPreview src={acousticValidation.url} title="Acoustic Performance Validation" caption="A proposed engineering validation framework evaluating acoustic output, operating frequency, thermal characteristics, microbubble response, and system integration." />
-          <Diagram enlarge proportionalPreview src={biocompatibility.url} title="Safety & Biocompatibility" caption="A planned safety evaluation strategy addressing skin-contact materials, formulation stability, compatibility, irritation considerations, and device handling." />
+          <Diagram enlarge proportionalPreview conceptLabel={false} src={handpiece.url} title="3D Handpiece Render" caption="A proposed ergonomic ultrasound applicator featuring integrated controls, a replaceable treatment tip, and a cartridge interface designed to support Cavinova's customizable skincare delivery system." />
+          <Diagram enlarge proportionalPreview conceptLabel={false} src={acousticValidation.url} title="Acoustic Performance Validation" caption="A proposed engineering validation framework evaluating acoustic output, operating frequency, thermal characteristics, microbubble response, and system integration." />
+          <Diagram enlarge proportionalPreview conceptLabel={false} src={biocompatibility.url} title="Safety & Biocompatibility" caption="A planned safety evaluation strategy addressing skin-contact materials, formulation stability, compatibility, irritation considerations, and device handling." />
         </div>
-        <p className="mt-5 text-xs leading-relaxed text-muted-foreground">Conceptual development and validation frameworks prepared for the Rutgers MBS Capstone. No experimental testing or clinical validation by Cavinova is represented.</p>
       </Section>
     </>
   );

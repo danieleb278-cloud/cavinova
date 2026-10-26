@@ -146,15 +146,15 @@ export function ConceptLabel() {
   );
 }
 
-export function Diagram({ src, title, caption, enlarge = false, proportionalPreview = false }: { src: string; title: string; caption: string; enlarge?: boolean; proportionalPreview?: boolean }) {
+export function Diagram({ src, title, caption, enlarge = false, proportionalPreview = false, conceptLabel = true }: { src: string; title: string; caption: string; enlarge?: boolean; proportionalPreview?: boolean; conceptLabel?: boolean }) {
   return (
     <figure className={`overflow-hidden rounded-3xl border bg-card shadow-soft ${proportionalPreview ? "flex h-full flex-col" : ""}`}>
-      <div className={`flex flex-wrap items-center justify-between gap-2 border-b px-5 py-3 ${proportionalPreview ? "md:min-h-36" : ""}`}>
+      <div className={`flex flex-wrap items-center justify-between gap-2 border-b px-5 py-3 ${proportionalPreview ? "md:min-h-20" : ""}`}>
         <p className="font-serif text-xl">{title}</p>
-        <ConceptLabel />
+        {conceptLabel && <ConceptLabel />}
       </div>
       {enlarge ? <ImageLightbox src={src} title={title} proportionalPreview={proportionalPreview} /> : <a href={src} target="_blank" rel="noreferrer"><img src={src} alt={title} className="w-full" loading="lazy" /></a>}
-      <figcaption className="px-5 py-3 text-xs text-muted-foreground">{caption}</figcaption>
+      <figcaption className={`px-5 py-3 text-xs text-muted-foreground ${proportionalPreview ? "mt-auto" : ""}`}>{caption}</figcaption>
     </figure>
   );
 }
