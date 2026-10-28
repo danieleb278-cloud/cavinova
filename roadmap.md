@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Apply approved editorial citations, shared market arithmetic, purchase/lease calculator separation, and truthful team/contact copy; verify preview and relevant tests without publishing
 - [x] Fix stored SEO findings: accessible inquiry fields and calculator controls, sized brand sharing image, and sitemap declaration — verified; changes reach the live site on next publication
 - [x] Complete Google Search Console verification and submit the published sitemap — verified under Danielle’s specified Google account; Google received six URLs with no errors or warnings
 - [x] Build 6-page Cavinova site

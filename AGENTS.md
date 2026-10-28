@@ -10,6 +10,9 @@
 <!-- LOVABLE:END -->
 
 ## Rules
+- Scientific citations use shared reference metadata and reusable inline/page reference components so links stay consistent across pages.
+- Market counts and equipment/annual kit scenarios derive from shared market and economics constants so homepage, opportunity and calculator assumptions remain reconciled.
+- Provider economics returns distinct pre-financing contribution, leased contribution and purchase payback; purchase payback never subtracts lease expense because these are alternative equipment scenarios.
 - The public sitemap uses the shared router-derived inventory with explicit staticData.sitemap decisions; omit lastmod without authoritative page-specific timestamps so future routes stay accurate.
 - Product Concept image enlargement uses one reusable ImageLightbox with Radix focus management and react-zoom-pan-pinch gestures; thumbnails and original asset URLs stay unchanged to preserve layout and resolution.
 - Development roadmap diagrams opt into a shared proportional preview while other diagrams retain their existing sizing; this keeps the three roadmap cards uniform without affecting other content.
