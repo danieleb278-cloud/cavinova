@@ -17,6 +17,7 @@ export const Route = createFileRoute("/opportunity")({
 const usd = (n: number) => n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 const millions = (n: number) => `$${(n / 1000000).toLocaleString("en-US", { maximumFractionDigits: 3 })}M`;
 const count = (n: number) => n.toLocaleString("en-US");
+const percent = (n: number) => Math.round(n * 100);
 const vols = [5, 10, 25, 50];
 
 function Opportunity() {
@@ -32,7 +33,7 @@ function Opportunity() {
         <Eyebrow>Market analysis</Eyebrow>
         <div className="mt-6 grid gap-5 md:grid-cols-3">
           {[
-            ["TAM", `${count(TAM_LOCATIONS)} locations`, `${count(US_MED_SPAS_2023)} med spas × ${HYDRADERMABRASION_SHARE * 100}% hydradermabrasion proxy × ${TEAM_QUALIFICATION_SHARE * 100}% team qualification assumption. ${millions(TAM_EQUIPMENT_POTENTIAL)} one-time equipment potential; ${millions(TAM_ANNUAL_KIT_SCENARIO)}/year illustrative kits scenario.`],
+            ["TAM", `${count(TAM_LOCATIONS)} locations`, `${count(US_MED_SPAS_2023)} med spas × ${percent(HYDRADERMABRASION_SHARE)}% hydradermabrasion proxy × ${percent(TEAM_QUALIFICATION_SHARE)}% team qualification assumption. ${millions(TAM_EQUIPMENT_POTENTIAL)} one-time equipment potential; ${millions(TAM_ANNUAL_KIT_SCENARIO)}/year illustrative kits scenario.`],
             ["SAM", `${count(SAM_LOCATIONS)} locations`, `${TEAM_SERVICEABILITY_SHARE * 100}% of rounded TAM: team serviceability assumption. ${millions(SAM_EQUIPMENT_POTENTIAL)} one-time equipment potential; ${millions(SAM_ANNUAL_KIT_SCENARIO)}/year illustrative kits scenario.`],
             ["SOM", `${count(SOM_LOCATIONS)} locations`, `${TEAM_CAPTURE_SHARE * 100}% of rounded SAM: illustrative team capture assumption, not an adoption forecast.`],
           ].map(([k, v2, d]) => (
@@ -42,7 +43,7 @@ function Opportunity() {
             </div>
           ))}
         </div>
-        <p className="mt-3 text-xs text-muted-foreground">Source inputs: {count(US_MED_SPAS_2023)} U.S. med spas in 2023, reported by AmSpa in 2024.<Cite ids={["E"]} /> Hydradermabrasion share: {HYDRADERMABRASION_SHARE * 100}%.<Cite ids={["F"]} /> This service is a screening proxy, not proof of Cavinova adoption or eligibility; the base universe includes med spas only.</p>
+        <p className="mt-3 text-xs text-muted-foreground">Source inputs: {count(US_MED_SPAS_2023)} U.S. med spas in 2023, reported by AmSpa in 2024.<Cite ids={["E"]} /> Hydradermabrasion share: {percent(HYDRADERMABRASION_SHARE)}%.<Cite ids={["F"]} /> This service is a screening proxy, not proof of Cavinova adoption or eligibility; the base universe includes med spas only.</p>
         <p className="mt-3 text-xs text-muted-foreground">Qualification ({TEAM_QUALIFICATION_SHARE * 100}%), serviceability ({TEAM_SERVICEABILITY_SHARE * 100}%) and capture ({TEAM_CAPTURE_SHARE * 100}%) are team planning assumptions, not AmSpa findings. Counts are rounded sequentially. Equipment potential assumes one {usd(CONSOLE_PRICE)} console per location and is one-time, not annual revenue.</p>
         <p className="mt-3 text-xs text-muted-foreground">Annual consumables use the calculator’s default team scenario of {DEFAULT_MONTHLY_TREATMENTS} treatments/month: {ANNUAL_KITS_PER_LOCATION} kits/year/location at {usd(KIT_COST)}/kit, or {usd(ANNUAL_KIT_REVENUE_PER_LOCATION)}/year/location. These illustrative scenarios are not forecasts and require validation.</p>
       </Section>

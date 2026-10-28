@@ -10,7 +10,7 @@ import biocompatibility from "@/assets/biocompatibily.png.asset.json";
 
 export const Route = createFileRoute("/platform")({
   staticData: { sitemap: true },
-  head: () => seo("Product Concept — Cavinova", "Conceptual Cavinova treatment system: ultrasound handpiece, clinical console, NFC treatment tips and microbubble serum cartridges."),
+  head: () => seo("Product Concept — Cavinova", "Explore proposed Cavinova hardware, candidate ingredient blends and planned engineering evaluations for a Rutgers MBS Capstone concept."),
   component: Platform,
 });
 
@@ -41,11 +41,12 @@ function Platform() {
       <Section className="space-y-10">
         <Diagram enlarge src={diagrams.handheld} title="A Complete, Customizable Treatment System" caption="Conceptual illustration; proposed features require engineering validation. Depicts a handheld applicator, reservoir, transducer, microbubble vial and candidate ingredient concentrates." />
         <Diagram enlarge src={diagrams.console} title="A Customizable, Professional Treatment System" caption="Conceptual illustration; proposed features require engineering validation. Patent embodiments describe 0.25–5 MHz operation; Cavinova operating parameters are not established." />
+        <p className="text-xs text-muted-foreground">Patent-derived architecture and frequency description:<Cite ids={["D"]} /> The unchanged graphics’ embedded “preapproved” wording does not establish ingredient approval.</p>
       </Section>
 
       <Section>
         <Eyebrow>Conceptual architecture</Eyebrow>
-        <p className="mt-3 text-sm text-muted-foreground">Patent-described embodiments inform the architecture; the hardware and consumable features below are team proposals, not validated specifications.<Cite ids={["D"]} /> Embedded diagram wording about “preapproved” blends or operating frequencies does not establish ingredient approval or Cavinova specifications.</p>
+        <p className="mt-3 text-sm text-muted-foreground">Patent-described embodiments inform the architecture; the hardware and consumable features below are team proposals, not validated specifications.<Cite ids={["D"]} /></p>
         <h2 className="mt-3 text-4xl">Hardware &amp; consumables</h2>
         <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_1.3fr]">
           <div className="space-y-2">

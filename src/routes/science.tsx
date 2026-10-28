@@ -64,13 +64,13 @@ function Science() {
                 className={`block h-auto w-full whitespace-normal rounded-2xl border p-5 text-left transition ${s === i + 1 ? "border-primary bg-accent" : "bg-card hover:border-rose"}`}>
                 <p className="text-xs font-semibold uppercase tracking-widest text-teal-deep">Step {i + 1}</p>
                 <p className="mt-1 font-serif text-2xl">{st.t}</p>
-                {s === i + 1 && <p className="mt-2 text-sm text-muted-foreground">{st.d}{i === 2 || i === 3 ? <Cite ids={["C"]} /> : null}</p>}
+                {s === i + 1 && <p className="mt-2 text-sm text-muted-foreground">{st.d}</p>}
               </Button>
             ))}
           </div>
           <div id="mechanism-image" className="self-start overflow-hidden rounded-3xl border bg-card p-4 shadow-soft">
             <Visual step={s} />
-            <p className="px-2 pt-3 text-xs text-muted-foreground">Conceptual mechanism illustration — not to scale; proposed effects have not been validated by Cavinova. Step {s} of 4.</p>
+            <p className="px-2 pt-3 text-xs text-muted-foreground">Conceptual mechanism illustration — not to scale; proposed effects have not been validated by Cavinova. Microbubble research is in experimental models.<Cite ids={["C"]} /> Step {s} of 4.</p>
           </div>
         </div>
       </Section>
@@ -95,6 +95,7 @@ function Science() {
             <Eyebrow>From physics to product</Eyebrow>
             <h2 className="mt-3 text-3xl">How the mechanism maps to hardware</h2>
             <p className="mt-3 text-muted-foreground">The team proposes a console combining microbubble cartridges with candidate ingredient blends and controlled acoustic output, informed by the patent’s described embodiments.<Cite ids={["D"]} /></p>
+            <p className="mt-3 text-xs text-muted-foreground">The unchanged diagram’s embedded “preapproved” and frequency wording does not establish ingredient approval or Cavinova operating parameters.</p>
             <Link to="/platform" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">Explore the product concept <ArrowRight className="h-4 w-4" /></Link>
           </div>
         </div>
