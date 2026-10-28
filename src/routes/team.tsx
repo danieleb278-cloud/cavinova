@@ -7,7 +7,7 @@ import victoria from "@/assets/victoria_demeola.png.asset.json";
 
 export const Route = createFileRoute("/team")({
   staticData: { sitemap: true },
-  head: () => seo("Founding Team — Cavinova", "Meet the interdisciplinary Rutgers MBS Capstone team behind the Cavinova concept."),
+  head: () => seo("Capstone Team — Cavinova", "Meet the interdisciplinary Rutgers MBS Capstone team behind the Cavinova concept."),
   component: Team,
 });
 
@@ -20,13 +20,13 @@ const team = [
   },
   {
     n: "Victoria DeMeola",
-    r: "Co-Founder, Technology & R&D Lead",
+    r: "Technology & R&D Lead",
     b: "Victoria brings a scientific background in biotechnology, genomics, molecular diagnostics, and laboratory operations. Her experience provides a foundation for evaluating emerging technologies and understanding the research required to translate scientific discoveries into practical applications. At Cavinova, Victoria leads the technical evaluation of the proposed ultrasound-assisted delivery system, investigating its underlying scientific principles, potential applications, and development requirements. Her work helps identify the technical challenges, testing needs, and research priorities necessary to assess the technology's feasibility.",
     img: victoria.url,
   },
   {
     n: "Qiwei Miao",
-    r: "Co-Founder, Market Strategy & Financial Planning Lead",
+    r: "Market Strategy & Financial Planning Lead",
     b: "Qiwei brings expertise in biology and personal care science, including experience with L'Oréal's Research and Innovation organization. Her background includes cosmetic formulation research, product stability testing, competitive analysis, and the evaluation of product claims. At Cavinova, she applies this expertise to assess the professional skincare market, evaluate competing technologies, and identify opportunities for differentiation. Her understanding of cosmetic formulation and product performance helps connect the proposed technology's scientific potential with the practical expectations of professional skincare providers and their clients.",
     img: qiwei.url,
   },
@@ -35,7 +35,7 @@ const team = [
 function Team() {
   return (
     <>
-      <PageHero eyebrow="Founding Team" title="Interdisciplinary by design">Rutgers University Master of Business and Science — Capstone team.</PageHero>
+      <PageHero eyebrow="Capstone Team" title="Interdisciplinary by design">Rutgers University Master of Business and Science — Capstone team.</PageHero>
       <Section>
         <div className="mx-auto flex max-w-4xl flex-col gap-6">
           {team.map((m) => (

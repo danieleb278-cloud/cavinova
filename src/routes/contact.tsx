@@ -50,7 +50,7 @@ function Contact() {
     });
     setBusy(false);
     if (error) {
-      setErr("Something went wrong sending your inquiry. Please try again, or email us directly at " + EMAIL + ".");
+      setErr("Something went wrong submitting your inquiry. Please try again, or email us directly at " + EMAIL + ".");
       return;
     }
     setSent(true);
@@ -91,14 +91,15 @@ function Contact() {
           <input type="text" value={website} onChange={(e) => setWebsite(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 opacity-0" />
           {err && <p className="text-sm text-destructive">{err}</p>}
           {sent ? (
-            <p className="flex items-center gap-2 text-sm text-teal-deep"><CheckCircle2 className="h-4 w-4" /> Thank you — your inquiry has been sent to the Cavinova team. We read every message and will reply from {EMAIL}.</p>
+            <p className="flex items-center gap-2 text-sm text-teal-deep"><CheckCircle2 className="h-4 w-4" /> Your inquiry has been submitted.</p>
           ) : (
-            <p className="text-xs text-muted-foreground">Your inquiry goes straight to the Cavinova team at {EMAIL}. Nothing is published or shared.</p>
+            <p className="text-xs text-muted-foreground">Your inquiry is submitted through this website. You can also contact the team directly at {EMAIL}.</p>
           )}
-          <button disabled={busy || sent} className="flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 disabled:opacity-60">
+          <p className="text-xs text-muted-foreground">We collect your name, email and message to respond to inquiries, along with your chosen category and optional organization. Your submission is not displayed publicly.</p>
+          <Button type="submit" disabled={busy || sent} className="flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 disabled:opacity-60">
             {busy && <Loader2 className="h-4 w-4 animate-spin" />}
-            {sent ? "Inquiry sent" : busy ? "Sending…" : "Send inquiry"}
-          </button>
+            {sent ? "Inquiry submitted" : busy ? "Submitting…" : "Submit inquiry"}
+          </Button>
         </form>
         <aside className="space-y-5">
           <a href={`mailto:${EMAIL}?subject=${encodeURIComponent("Cavinova Academic Inquiry")}`} className="flex items-center gap-3 rounded-3xl border bg-card p-6 hover:border-primary">

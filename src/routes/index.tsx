@@ -1,6 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ShieldAlert, Waves, Cpu, Droplets, Stethoscope } from "lucide-react";
 import { Section, Eyebrow, Diagram, diagrams, seo } from "@/components/site";
+import { Cite, References } from "@/components/references";
+import { TAM_LOCATIONS } from "@/lib/market";
+import { CONSOLE_PRICE, KIT_COST, PATIENT_PRICE } from "@/lib/economics";
 import wordmark from "@/assets/cavinova_wordmark.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -24,9 +27,9 @@ function Home() {
               Sound, tuned to <em className="text-primary">unlock</em> the skin barrier.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              Most topical actives never make it past the skin's protective barrier. Cavinova is a proposed professional
+              The skin barrier limits the penetration of many topical ingredients. Cavinova is a proposed professional
               skincare platform pairing ultrasound with acoustically responsive microbubble serums — exploring a non-invasive,
-              needle-free way to help targeted actives move beyond the stratum corneum, with no downtime for clients.
+              needle-free way to help targeted actives move beyond the stratum corneum, with tolerability and recovery time requiring future evaluation.
             </p>
             <p className="mt-4 text-xs uppercase tracking-[0.35em] text-teal-deep">Science in Harmony with Skin</p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -58,20 +61,16 @@ function Home() {
       <Section className="grid gap-10 md:grid-cols-2">
         <div className="rounded-3xl border bg-card p-8">
           <Eyebrow>The core challenge</Eyebrow>
-          <h2 className="mt-3 text-3xl">The stratum corneum keeps most actives out.</h2>
+          <h2 className="mt-3 text-3xl">The skin barrier limits topical delivery.</h2>
           <p className="mt-4 text-muted-foreground">
-            The skin's outermost layer — tightly packed corneocytes in a lipid matrix — is an effective barrier. Many
-            conventional topicals, especially larger molecules like hyaluronic acid and peptides, remain largely at the surface,
-            limiting what providers can achieve with creams and serums alone.
+            The skin's outermost layer — tightly packed corneocytes in a lipid matrix — is an effective barrier. Penetration of topical ingredients, including larger molecules such as hyaluronic acid and peptides, depends on molecular properties, formulation and skin condition.<Cite ids={["A"]} />
           </p>
         </div>
         <div className="rounded-3xl border bg-secondary/50 p-8">
           <Eyebrow>The proposed solution</Eyebrow>
           <h2 className="mt-3 text-3xl">Sonophoresis meets acoustic cavitation.</h2>
           <p className="mt-4 text-muted-foreground">
-            Controlled ultrasound energy activates lipid-shelled microbubbles in the serum. Their oscillation is proposed to
-            create transient, reversible micro-pathways that may enhance active permeation — a differentiated, non-invasive
-            modality for professional aesthetic providers, subject to future clinical validation.
+            Ultrasound-assisted delivery and microbubble effects have been studied in experimental models. Cavinova proposes pairing ultrasound with microbubble serums; microbubble activity may alter barrier permeability depending on formulation and acoustic settings. This has not been established for Cavinova.<Cite ids={["A", "C"]} />
           </p>
         </div>
       </Section>
@@ -83,7 +82,7 @@ function Home() {
           {[
             { icon: Cpu, t: "Advanced Ultrasound Applicator", d: "Piezoelectric handpiece and console delivering regulated acoustic energy." },
             { icon: Droplets, t: "Bio-Acoustic Serum Formulations", d: "Microbubble cartridges paired with hydration, brightening and rejuvenation actives." },
-            { icon: Stethoscope, t: "Professional In-Clinic Protocol", d: "Standardized, provider-administered workflow for med spas and dermatology practices." },
+            { icon: Stethoscope, t: "Professional In-Clinic Protocol", d: "Proposed provider-administered workflow for med spas and dermatology practices." },
           ].map(({ icon: I, t, d }) => (
             <div key={t} className="rounded-3xl border bg-card p-7 shadow-soft">
               <span className="grid h-12 w-12 place-items-center rounded-2xl bg-accent text-primary"><I className="h-5 w-5" /></span>
@@ -102,7 +101,7 @@ function Home() {
             <p className="mt-4 text-muted-foreground">Handheld applicator, click-in microbubble vials and customizable ingredient concentrates — visualized as a concept only.</p>
             <Link to="/platform" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary">See the full product concept <ArrowRight className="h-4 w-4" /></Link>
           </div>
-          <Diagram src={diagrams.handheld} title="Handheld treatment system" caption="Concept illustration. Not a working prototype; not FDA-cleared." />
+          <Diagram src={diagrams.handheld} title="Handheld treatment system" caption="Conceptual illustration; proposed features require engineering validation." />
         </div>
       </Section>
 
@@ -110,12 +109,12 @@ function Home() {
         <div className="rounded-[2rem] bg-foreground p-10 text-background md:p-14">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-mint">Commercial snapshot (planning targets)</p>
           <div className="mt-8 grid gap-8 md:grid-cols-4">
-            {[["$45,000", "Console target price"], ["$35", "Per-treatment consumable kit"], ["$250", "Typical patient treatment price"], ["4,184", "Eligible U.S. locations (TAM)"]].map(([v, l]) => (
+            {[[`$${CONSOLE_PRICE.toLocaleString("en-US")}`, "Illustrative console price"], [`$${KIT_COST}`, "Illustrative consumable kit price"], [`$${PATIENT_PRICE}`, "Illustrative patient treatment price"], [`≈${TAM_LOCATIONS.toLocaleString("en-US")}`, "Potentially addressable U.S. medical-spa locations"]].map(([v, l]) => (
               <div key={l}><p className="font-serif text-5xl text-blush">{v}</p><p className="mt-2 text-sm opacity-80">{l}</p></div>
             ))}
           </div>
           <p className="mt-8 text-sm opacity-80">A razor-and-blade model: equipment adoption paired with recurring single-use consumable revenue — the combination that makes the device-plus-formulation pairing commercially interesting.</p>
-          <p className="mt-4 text-xs opacity-60">Preliminary planning estimates from the Cavinova MBS business plan — illustrative financial assumptions, subject to validation.</p>
+          <p className="mt-4 text-xs opacity-60">Preliminary planning estimates from the Cavinova MBS business plan — illustrative financial assumptions, subject to validation. Location count is based on team screening assumptions; it is not a confirmed eligible-provider count.</p>
         </div>
       </Section>
 
@@ -136,6 +135,7 @@ function Home() {
           Cavinova is a hypothetical, pre-commercial academic venture. Products have not been launched, and the team has not secured ownership or licensing rights to the underlying patent application.
         </p>
       </Section>
+      <References ids={["A", "C"]} />
     </>
   );
 }
