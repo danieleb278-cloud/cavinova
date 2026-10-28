@@ -4,6 +4,7 @@ import { Section, Eyebrow, Diagram, diagrams, seo } from "@/components/site";
 import wordmark from "@/assets/cavinova_wordmark.png.asset.json";
 
 export const Route = createFileRoute("/")({
+  staticData: { sitemap: true },
   head: () => seo("Cavinova — Advanced Acoustic Aesthetics", "A conceptual Rutgers MBS Capstone venture exploring ultrasound-assisted topical skincare delivery with acoustically responsive microbubbles."),
   component: Home,
 });

@@ -6,6 +6,7 @@ import strategy from "@/assets/cavinova_commercialization_strategy.png.asset.jso
 import roadmap from "@/assets/cavinova_five_year_roadmap.png.asset.json";
 
 export const Route = createFileRoute("/opportunity")({
+  staticData: { sitemap: true },
   head: () => seo("Commercial Opportunity — Cavinova", "Market sizing, razor-and-blade model, provider unit economics and five-year commercialization roadmap for Cavinova."),
   component: Opportunity,
 });

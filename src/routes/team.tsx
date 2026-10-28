@@ -6,6 +6,7 @@ import qiwei from "@/assets/qiwei_miao.png.asset.json";
 import victoria from "@/assets/victoria_demeola.png.asset.json";
 
 export const Route = createFileRoute("/team")({
+  staticData: { sitemap: true },
   head: () => seo("Founding Team — Cavinova", "Meet the interdisciplinary Rutgers MBS Capstone team behind the Cavinova concept."),
   component: Team,
 });

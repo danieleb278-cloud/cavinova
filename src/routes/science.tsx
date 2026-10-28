@@ -9,6 +9,7 @@ import stepThree from "@/assets/science-step-3.png.asset.json";
 import stepFour from "@/assets/science-step-4.png.asset.json";
 
 export const Route = createFileRoute("/science")({
+  staticData: { sitemap: true },
   head: () => seo("Science & Technology — Cavinova", "Stratum corneum physics, sonophoresis and acoustic cavitation behind Cavinova's proposed ultrasound-assisted topical delivery."),
   component: Science,
 });
