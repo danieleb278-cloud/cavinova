@@ -6,6 +6,7 @@ import { PageHero, Section, seo } from "@/components/site";
 import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/contact")({
+  staticData: { sitemap: true },
   head: () => seo("Contact — Cavinova", "Academic, technology, provider-feedback and general inquiries for the Cavinova Rutgers MBS Capstone venture."),
   component: Contact,
 });

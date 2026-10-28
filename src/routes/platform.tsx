@@ -7,6 +7,7 @@ import acousticValidation from "@/assets/planned_validation.png.asset.json";
 import biocompatibility from "@/assets/biocompatibily.png.asset.json";
 
 export const Route = createFileRoute("/platform")({
+  staticData: { sitemap: true },
   head: () => seo("Product Concept — Cavinova", "Conceptual Cavinova treatment system: ultrasound handpiece, clinical console, NFC treatment tips and microbubble serum cartridges."),
   component: Platform,
 });

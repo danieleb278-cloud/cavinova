@@ -14,6 +14,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as OpportunityRouteImport } from './routes/opportunity'
 import { Route as PlatformRouteImport } from './routes/platform'
 import { Route as ScienceRouteImport } from './routes/science'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TeamRouteImport } from './routes/team'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +42,11 @@ const ScienceRoute = ScienceRouteImport.update({
   path: '/science',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TeamRoute = TeamRouteImport.update({
   id: '/team',
   path: '/team',
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/opportunity': typeof OpportunityRoute
   '/platform': typeof PlatformRoute
   '/science': typeof ScienceRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/opportunity': typeof OpportunityRoute
   '/platform': typeof PlatformRoute
   '/science': typeof ScienceRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
 }
 export interface FileRoutesById {
@@ -70,14 +78,28 @@ export interface FileRoutesById {
   '/opportunity': typeof OpportunityRoute
   '/platform': typeof PlatformRoute
   '/science': typeof ScienceRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/contact' | '/opportunity' | '/platform' | '/science' | '/team'
+    | '/'
+    | '/contact'
+    | '/opportunity'
+    | '/platform'
+    | '/science'
+    | '/sitemap.xml'
+    | '/team'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/opportunity' | '/platform' | '/science' | '/team'
+  to:
+    | '/'
+    | '/contact'
+    | '/opportunity'
+    | '/platform'
+    | '/science'
+    | '/sitemap.xml'
+    | '/team'
   id:
     | '__root__'
     | '/'
@@ -85,6 +107,7 @@ export interface FileRouteTypes {
     | '/opportunity'
     | '/platform'
     | '/science'
+    | '/sitemap.xml'
     | '/team'
   fileRoutesById: FileRoutesById
 }
@@ -94,6 +117,7 @@ export interface RootRouteChildren {
   OpportunityRoute: typeof OpportunityRoute
   PlatformRoute: typeof PlatformRoute
   ScienceRoute: typeof ScienceRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeamRoute: typeof TeamRoute
 }
 
@@ -134,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ScienceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/team': {
       id: '/team'
       path: '/team'
@@ -150,6 +181,7 @@ const rootRouteChildren: RootRouteChildren = {
   OpportunityRoute: OpportunityRoute,
   PlatformRoute: PlatformRoute,
   ScienceRoute: ScienceRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeamRoute: TeamRoute,
 }
 export const routeTree = rootRouteImport
