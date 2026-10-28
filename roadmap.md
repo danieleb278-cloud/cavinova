@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Fix stored SEO findings: accessible inquiry fields and calculator controls, sized brand sharing image, and sitemap declaration
 - [x] Complete Google Search Console verification and submit the published sitemap — verified under Danielle’s specified Google account; Google received six URLs with no errors or warnings
 - [x] Build 6-page Cavinova site
 - [x] Feature treatment-system diagrams on /platform, reference on /science and /
