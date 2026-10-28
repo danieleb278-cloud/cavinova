@@ -4,6 +4,7 @@ import { PageHero, Section, Eyebrow, Diagram, seo } from "@/components/site";
 import { providerEconomics, PATIENT_PRICE, KIT_COST, MONTHLY_LEASE } from "@/lib/economics";
 import strategy from "@/assets/cavinova_commercialization_strategy.png.asset.json";
 import roadmap from "@/assets/cavinova_five_year_roadmap.png.asset.json";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/opportunity")({
   staticData: { sitemap: true },
@@ -49,7 +50,7 @@ function Opportunity() {
         <Eyebrow>Provider unit economics calculator</Eyebrow>
         <div className="mt-6 flex flex-wrap gap-2">
           {vols.map((n) => (
-            <button key={n} onClick={() => setV(n)} className={`rounded-full border px-5 py-2 text-sm ${v === n ? "border-primary bg-primary text-primary-foreground" : "bg-card"}`}>{n} / month</button>
+            <Button variant="ghost" key={n} aria-label={`${n} treatments per month`} aria-pressed={v === n} onClick={() => setV(n)} className={`h-auto rounded-full border px-5 py-2 text-sm ${v === n ? "border-primary bg-primary text-primary-foreground" : "bg-card"}`}>{n} / month</Button>
           ))}
         </div>
         <div className="mt-6 grid gap-4 md:grid-cols-5">

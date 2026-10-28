@@ -6,6 +6,7 @@ import consoleSys from "@/assets/Cavinova_Customizable_Treatment_System_1.png.as
 import monogram from "@/assets/cavinova_emblem.png.asset.json";
 import wordmark from "@/assets/cavinova_wordmark.png.asset.json";
 import { ImageLightbox } from "@/components/image-lightbox";
+import shareImage from "@/assets/cavinova-share.jpg.asset.json";
 
 export const diagrams = { handheld: handheld.url, console: consoleSys.url };
 
@@ -168,6 +169,11 @@ export function seo(title: string, description: string) {
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: new URL(shareImage.url, "https://cavinova.lovable.app").href },
+      { name: "twitter:image", content: new URL(shareImage.url, "https://cavinova.lovable.app").href },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Cavinova — Advanced Acoustic Aesthetics" },
     ],
   };
 }

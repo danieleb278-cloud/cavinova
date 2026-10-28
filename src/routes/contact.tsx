@@ -4,6 +4,7 @@ import { Mail, Info, CheckCircle2, Loader2 } from "lucide-react";
 import { z } from "zod";
 import { PageHero, Section, seo } from "@/components/site";
 import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/contact")({
   staticData: { sitemap: true },
@@ -64,16 +65,28 @@ function Contact() {
             <p className="mb-2 text-sm font-semibold">Inquiry category</p>
             <div className="grid gap-2 sm:grid-cols-2">
               {cats.map((c) => (
-                <button type="button" key={c} onClick={() => setCat(c)} className={`rounded-xl border px-4 py-3 text-left text-sm ${cat === c ? "border-primary bg-accent text-primary" : ""}`}>{c}</button>
+                <Button variant="ghost" type="button" key={c} aria-pressed={cat === c} onClick={() => setCat(c)} className={`h-auto justify-start whitespace-normal rounded-xl border px-4 py-3 text-left text-sm ${cat === c ? "border-primary bg-accent text-primary" : ""}`}>{c}</Button>
               ))}
             </div>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
-            <input className={field} placeholder="Full name" value={f.name} onChange={(e) => setF({ ...f, name: e.target.value })} maxLength={100} />
-            <input className={field} placeholder="Email" type="email" value={f.email} onChange={(e) => setF({ ...f, email: e.target.value })} maxLength={150} />
+            <div className="space-y-2">
+              <label htmlFor="inquiry-name" className="block text-sm font-semibold">Full name</label>
+              <input id="inquiry-name" autoComplete="name" className={field} placeholder="Full name" value={f.name} onChange={(e) => setF({ ...f, name: e.target.value })} maxLength={100} />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="inquiry-email" className="block text-sm font-semibold">Email</label>
+              <input id="inquiry-email" autoComplete="email" className={field} placeholder="Email" type="email" value={f.email} onChange={(e) => setF({ ...f, email: e.target.value })} maxLength={150} />
+            </div>
           </div>
-          <input className={field} placeholder="Organization / institution (optional)" value={f.org} onChange={(e) => setF({ ...f, org: e.target.value })} maxLength={150} />
-          <textarea className={`${field} min-h-36`} placeholder="Your message" value={f.message} onChange={(e) => setF({ ...f, message: e.target.value })} maxLength={2000} />
+          <div className="space-y-2">
+            <label htmlFor="inquiry-organization" className="block text-sm font-semibold">Organization / institution (optional)</label>
+            <input id="inquiry-organization" autoComplete="organization" className={field} placeholder="Organization / institution (optional)" value={f.org} onChange={(e) => setF({ ...f, org: e.target.value })} maxLength={150} />
+          </div>
+          <div className="space-y-2">
+            <label htmlFor="inquiry-message" className="block text-sm font-semibold">Your message</label>
+            <textarea id="inquiry-message" className={`${field} min-h-36`} placeholder="Your message" value={f.message} onChange={(e) => setF({ ...f, message: e.target.value })} maxLength={2000} />
+          </div>
           {/* Honeypot: invisible to visitors, catches bots */}
           <input type="text" value={website} onChange={(e) => setWebsite(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 opacity-0" />
           {err && <p className="text-sm text-destructive">{err}</p>}
