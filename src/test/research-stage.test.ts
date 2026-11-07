@@ -6,7 +6,7 @@ import { developmentPriorities } from "@/lib/development";
 import { inquiryCategories } from "@/lib/inquiry-categories";
 
 describe("research-stage site rules", () => {
-  it("permanently redirects the retired opportunity page to development", async () => {
+  it("redirects the retired opportunity page to development", async () => {
     const router = createRouter({ routeTree, context: { queryClient: new QueryClient() }, history: createMemoryHistory({ initialEntries: ["/opportunity"] }) });
     await router.load();
     expect(router.state.location.pathname).toBe("/development");
