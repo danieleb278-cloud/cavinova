@@ -5,15 +5,15 @@ import { z } from "zod";
 import { PageHero, Section, seo } from "@/components/site";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { inquiryCategories } from "@/lib/inquiry-categories";
 
 export const Route = createFileRoute("/contact")({
   staticData: { sitemap: true },
-  head: () => seo("Contact — Cavinova", "Ask about Cavinova research or share feedback from skincare professionals on their workflows."),
+  head: () => seo("Contact — Cavinova", "Academic, technology, provider-feedback and general inquiries for the Cavinova Rutgers MBS Capstone venture."),
   component: Contact,
 });
 
 const EMAIL = "contact.cavinova@gmail.com";
+const cats = ["Academic / Capstone Inquiry", "Technology & Licensing Discussion", "Aesthetic Provider Feedback", "General Information"];
 const field = "w-full rounded-xl border bg-card px-4 py-3 text-sm outline-none focus:border-ring";
 
 const inquirySchema = z.object({
@@ -24,7 +24,7 @@ const inquirySchema = z.object({
 });
 
 function Contact() {
-  const [cat, setCat] = useState<string>(inquiryCategories[0].value);
+  const [cat, setCat] = useState<string>(cats[0] ?? "General Information");
   const [f, setF] = useState({ name: "", email: "", org: "", message: "" });
   const [website, setWebsite] = useState(""); // honeypot — hidden from real visitors
   const [err, setErr] = useState("");
@@ -58,14 +58,14 @@ function Contact() {
 
   return (
     <>
-      <PageHero eyebrow="Contact" title="Start a conversation">We welcome questions about the research and feedback from skincare professionals on their workflows.</PageHero>
+      <PageHero eyebrow="Contact" title="Start a conversation">Questions about the capstone, the technology or provider workflows are welcome.</PageHero>
       <Section className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
         <form onSubmit={submit} className="space-y-5 rounded-3xl border bg-card p-8 shadow-soft">
           <div>
             <p className="mb-2 text-sm font-semibold">Inquiry category</p>
             <div className="grid gap-2 sm:grid-cols-2">
-              {inquiryCategories.map((c) => (
-                <Button variant="ghost" type="button" key={c.label} aria-pressed={cat === c.value} onClick={() => setCat(c.value)} className={`h-auto justify-start whitespace-normal rounded-xl border px-4 py-3 text-left text-sm ${cat === c.value ? "border-primary bg-accent text-primary" : ""}`}>{c.label}</Button>
+              {cats.map((c) => (
+                <Button variant="ghost" type="button" key={c} aria-pressed={cat === c} onClick={() => setCat(c)} className={`h-auto justify-start whitespace-normal rounded-xl border px-4 py-3 text-left text-sm ${cat === c ? "border-primary bg-accent text-primary" : ""}`}>{c}</Button>
               ))}
             </div>
           </div>
@@ -102,12 +102,12 @@ function Contact() {
           </Button>
         </form>
         <aside className="space-y-5">
-          <a href={`mailto:${EMAIL}?subject=${encodeURIComponent("Cavinova Research Inquiry")}`} className="flex items-center gap-3 rounded-3xl border bg-card p-6 hover:border-primary">
+          <a href={`mailto:${EMAIL}?subject=${encodeURIComponent("Cavinova Academic Inquiry")}`} className="flex items-center gap-3 rounded-3xl border bg-card p-6 hover:border-primary">
             <Mail className="h-6 w-6 text-primary" /><div><p className="font-semibold">Email the team directly</p><p className="text-sm text-muted-foreground">{EMAIL}</p></div>
           </a>
           <div className="rounded-3xl border border-dashed border-rose/50 bg-accent/60 p-6 text-sm text-muted-foreground">
             <Info className="mb-2 h-5 w-5 text-primary" />
-            Cavinova is an academic, research-stage concept. Messages help us learn; no products or services are available.
+            Cavinova is a pre-commercial student venture. We do not accept orders, investment checks, or commercial licensing contracts.
           </div>
         </aside>
       </Section>

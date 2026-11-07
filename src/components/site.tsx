@@ -1,16 +1,20 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { ImagePlus, Menu, X, FlaskConical } from "lucide-react";
+import handheld from "@/assets/Cavinova_Customizable_Treatment_System.png.asset.json";
+import consoleSys from "@/assets/Cavinova_Customizable_Treatment_System_1.png.asset.json";
 import monogram from "@/assets/cavinova_emblem.png.asset.json";
 import wordmark from "@/assets/cavinova_wordmark.png.asset.json";
+import { Button } from "@/components/ui/button";
 import { ImageLightbox } from "@/components/image-lightbox";
 import shareImage from "@/assets/cavinova-share.jpg.asset.json";
-import { Button } from "@/components/ui/button";
+
+export const diagrams = { handheld: handheld.url, console: consoleSys.url };
 
 const nav = [
   { to: "/", label: "Home" },
   { to: "/science", label: "Science" },
-  { to: "/platform", label: "Technology" },
+  { to: "/platform", label: "Product Concept" },
   { to: "/opportunity", label: "Opportunity" },
   { to: "/team", label: "Team" },
   { to: "/contact", label: "Contact" },
@@ -21,7 +25,7 @@ export function ConceptBanner() {
     <div className="bg-secondary text-secondary-foreground">
       <p className="mx-auto max-w-7xl px-4 py-2 text-center text-xs tracking-wide">
         <FlaskConical className="mr-1.5 inline h-3.5 w-3.5 text-teal-deep" />
-        Academic research-stage concept • Rutgers MBS Capstone • No products available
+        Conceptual Venture • Rutgers MBS Capstone — pre-commercial academic exploration. No products are for sale.
       </p>
     </div>
   );
@@ -78,10 +82,13 @@ export function Footer() {
           <div className="flex flex-wrap gap-x-5 gap-y-2">
             {nav.map((n) => <Link key={n.to} to={n.to} className="hover:text-primary">{n.label}</Link>)}
           </div>
-          <div className="rounded-xl border border-dashed border-rose/50 bg-accent/60 p-4 text-xs leading-relaxed">
-            <strong className="text-foreground">Disclosure:</strong> Cavinova is an academic Rutgers University Master of Business and Science capstone project and a research-stage concept. No performance has been demonstrated, FDA clearance has not been obtained, and no products are available. Cavinova has not secured rights to the cited published U.S. patent application US20250073439A1, associated with inventor John H. Shadduck.
-          </div>
-          <p className="text-xs">© {new Date().getFullYear()} Cavinova academic project · New Jersey, USA</p>
+          <p className="rounded-xl border border-dashed border-rose/50 bg-accent/60 p-4 text-xs leading-relaxed">
+            <strong className="text-foreground">Disclosure:</strong> Cavinova is a proposed venture developed for the Rutgers
+            University MBS Capstone program. Technologies and products presented are conceptual and under evaluation. Cavinova
+            does not currently hold rights to the referenced intellectual property (U.S. Patent Application Publication No.
+            US20250073439A1, associated with inventor John H. Shadduck).
+          </p>
+          <p className="text-xs">© {new Date().getFullYear()} Cavinova (conceptual) · New Jersey, USA</p>
         </div>
       </div>
     </footer>
@@ -167,7 +174,7 @@ export function seo(title: string, description: string) {
       { name: "twitter:image", content: new URL(shareImage.url, "https://cavinova.lovable.app").href },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "Cavinova research-stage academic project" },
+      { property: "og:image:alt", content: "Cavinova — Advanced Acoustic Aesthetics" },
     ],
   };
 }
