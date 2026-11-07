@@ -1,6 +1,6 @@
 # Roadmap
-- [ ] Restore published-version Home, Science, Product Concept, Team, Contact and shared presentation; keep current Opportunity
-- [ ] Verify restored pages, images, Science steps, enlargement and contact validation on desktop/mobile; do not publish
+- [x] Restore published-version Home, Science, Product Concept, Team, Contact and shared presentation; keep current Opportunity
+- [x] Verify restored pages, images, Science steps, enlargement and contact empty validation on desktop/mobile; build OK and 37 tests passed; no publication
 - [x] Restore /opportunity and main/footer navigation; retain Development inline and include both in the sitemap
 - [x] Add approved six-state equipment scenario and equally weighted paths with serum-feasibility starting focus; no financials
 - [x] Verify Home, navigation, Opportunity, Development, safe imagery and desktop/tablet/mobile layouts; automatic build OK, 11 tests passed; nothing published
