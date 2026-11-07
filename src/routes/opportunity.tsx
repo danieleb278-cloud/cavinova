@@ -3,6 +3,7 @@ import { ArrowRight, ScanLine, Percent, MapPin, Radio, Handshake, FlaskConical }
 import { PageHero, Section, Eyebrow, Diagram, seo } from "@/components/site";
 import { equipmentScenario, illustrativeEquipmentLocations, opportunityPaths } from "@/lib/opportunity";
 import { researchVisuals } from "@/lib/research-visuals";
+import serumPackaging from "@/assets/Cavinova_Dual_Chamber_Serum_Concept.png.asset.json";
 
 export const Route = createFileRoute("/opportunity")({
   staticData: { sitemap: true },
@@ -60,6 +61,10 @@ function Opportunity() {
             <Icon aria-hidden className="h-7 w-7 text-primary" />
             <h3 className="mt-5 text-2xl leading-tight">{path.title}</h3>
             <p className="mt-4 leading-relaxed text-muted-foreground">{path.description}</p>
+            {path.title === "Serum only" && <figure className="mt-6">
+              <figcaption className="mb-3 text-sm font-semibold text-teal-deep">Packaging concept</figcaption>
+              <img src={serumPackaging.url} alt="Cavinova dual-chamber squeeze packet concept for manual application." width={1536} height={768} loading="lazy" className="block h-auto w-full rounded-lg object-contain" />
+            </figure>}
           </article>;
         })}
       </div>
