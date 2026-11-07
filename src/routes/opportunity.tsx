@@ -1,105 +1,477 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ScanLine, Percent, MapPin, Radio, Handshake, FlaskConical, Users } from "lucide-react";
-import { PageHero, Section, Eyebrow, seo } from "@/components/site";
-import { equipmentScenario, illustrativeEquipmentLocations, opportunityPaths } from "@/lib/opportunity";
+import type { ReactNode } from "react";
+import {
+  ArrowRight,
+  FlaskConical,
+  SlidersHorizontal,
+  Droplets,
+  BriefcaseBusiness,
+  Hand,
+  Users,
+} from "lucide-react";
+import { Eyebrow, Section, seo } from "@/components/site";
+import { Button } from "@/components/ui/button";
+import { equipmentScenario, illustrativeEquipmentLocations } from "@/lib/opportunity";
+import { references } from "@/lib/references";
+import { researchVisuals } from "@/lib/research-visuals";
 import serumPackaging from "@/assets/Cavinova_Dual_Chamber_Serum_Concept.png.asset.json";
 
 export const Route = createFileRoute("/opportunity")({
   staticData: { sitemap: true },
-  head: () => seo("The Opportunity for Cavinova | Serum First, System Later", "Why Cavinova starts with a microbubble serum concept, what would justify a dedicated system, an illustrative six-state scenario and three paths under consideration."),
+  head: () =>
+    seo(
+      "Opportunity — Cavinova",
+      "Explore the professional market need, Cavinova’s serum-first strategy, and the evidence needed to advance an integrated skincare platform.",
+    ),
   component: Opportunity,
 });
 
-const pathIcons = [Radio, Handshake, FlaskConical];
-const sequence = [
-  { title: "Test the serum", icon: FlaskConical },
-  { title: "Assess practice demand", icon: Users },
-  { title: "Decide whether to build a system", icon: Radio },
+const needs = [
+  {
+    title: "Differentiation",
+    body: "Practices need services they can meaningfully distinguish. Cavinova would test whether ultrasound-assisted delivery offers a reason to add a new treatment.",
+    icon: FlaskConical,
+    tone: "bg-accent",
+  },
+  {
+    title: "Consistency and workflow",
+    body: "Preparation, equipment settings, and training shape how a service runs. A future integrated system would aim to coordinate those steps.",
+    icon: SlidersHorizontal,
+    tone: "bg-secondary/60",
+  },
+  {
+    title: "Formulation efficiency",
+    body: "Premeasured, single-use portions could make serum use more predictable and leave less unused product. Both goals need testing.",
+    icon: Droplets,
+    tone: "bg-card",
+  },
 ];
 
-function Opportunity() {
-  const ext = "underline underline-offset-2 hover:text-primary";
-  return <>
-    <PageHero eyebrow="Opportunity" title="The opportunity for Cavinova">Cavinova is developing a microbubble serum concept for professional ultrasound-assisted skincare. We see an opportunity to pair the serum with a process that’s easier for practices to teach and repeat. Our first step is to find out whether the serum adds enough value on equipment already in use to justify developing a dedicated system.</PageHero>
-    <Section>
-      <Eyebrow>The gap</Eyebrow>
-      <h2 className="mt-3 text-4xl">Where Cavinova sees a gap</h2>
-      <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">Topical products rely on ingredients moving through the skin’s outer barrier (<Link to="/science" className={ext}>see the science</Link>). Microneedling uses small needles to puncture the skin,<sup className="ml-0.5 text-xs"><a href="https://www.fda.gov/medical-devices/aesthetic-cosmetic-devices/microneedling-devices" target="_blank" rel="noreferrer" aria-label="Source: U.S. FDA, Microneedling Devices" className={ext}>FDA</a></sup> while ultrasound facial tools already offer a way to apply sound energy at the surface.<sup className="ml-0.5 text-xs"><a href="https://zemits.com/collections/ultrasound-facial" target="_blank" rel="noreferrer" aria-label="Example of existing ultrasound facial tools" className={ext}>example</a></sup> The question we’re investigating is whether a serum designed for a specific ultrasound setup can improve ingredient delivery and fit into a repeatable professional routine.</p>
-    </Section>
-    <section className="bg-accent/50"><Section>
-      <Eyebrow>Initial development focus</Eyebrow>
-      <h2 className="mt-3 text-4xl">Start with the serum. Test the case for the system.</h2>
-      <div className="mt-6 grid items-center gap-8 md:grid-cols-2 md:gap-12">
-        <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">We’d develop a two-chamber, single-use pack for manual application and test it with one specific ultrasound device and applicator. Keeping the microbubble component separate until use could help it stay stable in storage. A premeasured pack could also simplify preparation and reduce leftover serum. Early work would test those benefits, measure ingredient delivery against comparison setups, and find out whether practices see enough value to adopt it.</p>
-        <figure>
-          <figcaption className="mb-3 text-sm font-semibold text-teal-deep">Packaging concept</figcaption>
-          <img src={serumPackaging.url} alt="Cavinova dual-chamber squeeze packet concept for manual application." width={1774} height={887} loading="lazy" className="block h-auto w-full rounded-lg object-contain" />
-        </figure>
-      </div>
-    </Section></section>
-    <Section>
-      <Eyebrow>The case for a system</Eyebrow>
-      <h2 className="mt-3 text-4xl">What would make a dedicated system worth buying?</h2>
-      <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">A Cavinova system could recognize a cartridge, load the corresponding settings, and dispense a measured amount of serum. For a practice, that could mean fewer manual steps, easier training, and more consistent product use across staff. For Cavinova, the question is whether those advantages are valuable enough to justify building dedicated equipment.</p>
-      <ol className="mt-10 flex flex-col items-stretch gap-3 md:flex-row md:items-center" aria-label="Planned decision sequence">
-        {sequence.map((s, i) => <li key={s.title} className="contents">
-          <div className="flex-1 rounded-3xl border bg-card p-6 shadow-soft">
-            <s.icon aria-hidden className="h-7 w-7 text-primary" />
-            <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-teal-deep">Step {i + 1}</p>
-            <h3 className="mt-1 text-xl leading-tight">{s.title}</h3>
+const participants = [
+  {
+    title: "Practice owners",
+    body: "Weigh demand, differentiation, and what it would take to introduce a service.",
+    icon: BriefcaseBusiness,
+  },
+  {
+    title: "Aesthetic professionals",
+    body: "Need a practical routine, appropriate training, and clear operating instructions.",
+    icon: Hand,
+  },
+  {
+    title: "Treatment clients",
+    body: "Their experience, satisfaction, and interest in returning would shape adoption.",
+    icon: Users,
+  },
+];
+
+const differentiation = [
+  [
+    "Specialized formulation",
+    "A candidate microbubble serum with selected active ingredients, supplied in premeasured single-use packets for manual application.",
+  ],
+  [
+    "Integrated system",
+    "A future device concept that combines separate microbubble and active-ingredient vials, a dual-chamber handpiece, measured dispensing, and acoustic settings established through testing.",
+  ],
+  [
+    "Intelligent consumables",
+    "Authenticated vials could let the system recognize a configuration, load the corresponding settings, and apply operating safeguards.",
+  ],
+] as const;
+
+const stages = [
+  [
+    "Establish technical feasibility",
+    "Investigate stability, acoustic response, ingredient compatibility, delivery, and safety.",
+  ],
+  [
+    "Evaluate professional application",
+    "Assess specific ultrasound setups, professional-use requirements, and provider interest.",
+  ],
+  [
+    "Validate the commercial proposition",
+    "Test willingness to adopt, workflow fit, training needs, and potential repeat consumable demand.",
+  ],
+  [
+    "Advance the integrated platform",
+    "If the evidence supports it, develop the dedicated system with separate vials, automated dispensing, authentication, and treatment controls.",
+  ],
+  [
+    "Expand through qualified partners",
+    "Explore manufacturing, distribution, professional education, and service partnerships.",
+  ],
+] as const;
+
+const ecosystem = [
+  ["Develop and support", "Cavinova develops and supports the proposed platform."],
+  ["Adopt", "Qualified practices could adopt a validated treatment approach."],
+  ["Use", "Each session would use a premeasured, single-use formulation."],
+  ["Replenish", "Practices would reorder as treatment activity warrants."],
+  [
+    "Continue supporting practices",
+    "Ongoing relationships could inform service and future formulations.",
+  ],
+] as const;
+
+const validation = [
+  [
+    "Scientific feasibility",
+    "Does the formulation provide a meaningful and reproducible delivery advantage?",
+  ],
+  [
+    "Safety and regulatory requirements",
+    "What testing, controls, classifications, and authorizations would the intended use require?",
+  ],
+  [
+    "Intellectual property",
+    "Can Cavinova secure the rights it needs and establish freedom to operate?",
+  ],
+  [
+    "Professional-market demand",
+    "Would qualified practices adopt the approach and continue using it?",
+  ],
+  [
+    "Operational feasibility",
+    "Can Cavinova and its suppliers consistently make, supply, and support the formulations and future equipment?",
+  ],
+  ["Commercial viability", "Could the business sustain operations as demand grows?"],
+] as const;
+
+const link =
+  "inline-flex min-h-11 items-center gap-2 font-semibold underline decoration-primary underline-offset-4";
+
+function Heading({
+  eyebrow,
+  title,
+  children,
+}: {
+  eyebrow: string;
+  title: string;
+  children?: ReactNode;
+}) {
+  return (
+    <div className="max-w-4xl">
+      <Eyebrow>{eyebrow}</Eyebrow>
+      <h2 className="mt-3 text-balance text-4xl leading-tight sm:text-5xl">{title}</h2>
+      {children && (
+        <div className="mt-5 space-y-3 leading-relaxed text-muted-foreground">{children}</div>
+      )}
+    </div>
+  );
+}
+
+function Progression({
+  items,
+  label,
+}: {
+  items: readonly (readonly [string, string])[];
+  label: string;
+}) {
+  return (
+    <ol aria-label={label} className="mt-8 grid gap-4 lg:grid-flow-col lg:auto-cols-fr">
+      {items.map(([title, body], index) => (
+        <li
+          key={title}
+          className="relative border-l-2 border-teal/60 pb-3 pl-4 lg:border-l-0 lg:border-t-2 lg:pl-0 lg:pt-4"
+        >
+          <Eyebrow>0{index + 1}</Eyebrow>
+          <h3 className="mt-2 text-xl leading-tight">{title}</h3>
+          <p className="mt-2 leading-relaxed text-muted-foreground">{body}</p>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+function MarketScenario() {
+  return (
+    <aside
+      className="mt-10 rounded-3xl border bg-card p-5 sm:p-7"
+      aria-labelledby="equipment-scenario"
+    >
+      <h3 id="equipment-scenario" className="text-2xl">
+        An illustrative six-state equipment scenario
+      </h3>
+      <p className="mt-3 max-w-3xl leading-relaxed text-muted-foreground">
+        A preliminary team estimate for{" "}
+        {new Intl.ListFormat("en-US").format(equipmentScenario.states)}. Actual qualifying practices
+        and adoption still need validation.
+      </p>
+      <dl className="mt-6 grid gap-5 sm:grid-cols-3">
+        {[
+          [
+            "Estimated med spa screening pool",
+            `≈${equipmentScenario.screenedLocations.toLocaleString("en-US")}`,
+          ],
+          ["Hypothetical cumulative adoption", `${equipmentScenario.cumulativeAdoption * 100}%`],
+          ["Illustrative equipment locations", String(illustrativeEquipmentLocations)],
+        ].map(([title, value]) => (
+          <div key={title} className="border-t border-teal/50 pt-4">
+            <dt className="font-medium">{title}</dt>
+            <dd className="mt-2 font-serif text-4xl tabular-nums text-foreground">{value}</dd>
           </div>
-          {i < sequence.length - 1 && <ArrowRight aria-hidden className="h-6 w-6 shrink-0 self-center rotate-90 text-teal-deep md:rotate-0" />}
-        </li>)}
-      </ol>
-    </Section>
-    <section className="bg-secondary/35"><Section>
-      <Eyebrow>Six-state planning scenario</Eyebrow>
-      <h2 className="mt-3 text-4xl">A screened market. An illustrative assumption.</h2>
-      <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">The team’s market model screens approximately 1,870 medical spas across {equipmentScenario.states.join(", ").replace(", Texas", " and Texas")}. This is a planning base, not established device or formulation compatibility.</p>
-      <div className="mt-10 grid auto-rows-fr gap-6 md:grid-cols-3" aria-label="Illustrative equipment market scenario">
-        <article className="rounded-3xl border bg-card p-6 shadow-soft md:p-8">
-          <ScanLine aria-hidden className="h-7 w-7 text-teal-deep" />
-          <h3 className="mt-5 text-xl">Screened med spas</h3>
-          <p className="mt-4 text-5xl font-semibold tabular-nums text-teal-deep">≈{equipmentScenario.screenedLocations.toLocaleString("en-US")}</p>
-          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">Across six states, based on the team’s market model.</p>
-        </article>
-        <article className="rounded-3xl border bg-accent/60 p-6 shadow-soft md:p-8">
-          <Percent aria-hidden className="h-7 w-7 text-primary" />
-          <h3 className="mt-5 text-xl">Cumulative adoption assumption</h3>
-          <p className="mt-4 text-5xl font-semibold tabular-nums text-primary">{equipmentScenario.cumulativeAdoption * 100}%</p>
-          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">An illustrative assumption for the equipment scenarios, not measured adoption.</p>
-        </article>
-        <article className="rounded-3xl border bg-secondary/50 p-6 shadow-soft md:p-8">
-          <MapPin aria-hidden className="h-7 w-7 text-teal-deep" />
-          <h3 className="mt-5 text-xl">Illustrative SOM</h3>
-          <p className="mt-4 text-5xl font-semibold tabular-nums text-teal-deep">{illustrativeEquipmentLocations}<span className="ml-2 text-base font-normal text-foreground">locations</span></p>
-          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">1,870 × 1% = 18.7, rounded to 19 locations for the illustrative equipment scenario.</p>
-        </article>
+        ))}
+      </dl>
+      <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
+        The 1% scenario gives about 19 locations for equipment planning. The serum-only opportunity
+        depends on which devices and applicators prove compatible. A separate estimate would be
+        needed for that market.
+      </p>
+      <details className="mt-4 border-t">
+        <summary className="flex min-h-11 cursor-pointer items-center font-semibold underline decoration-primary underline-offset-4">
+          How the team estimated the screening pool
+        </summary>
+        <p className="max-w-3xl pb-4 leading-relaxed text-muted-foreground">
+          The team started with AmSpa’s reported 10,488 U.S. med spas for 2023. It applied the
+          reported 57% share offering hydradermabrasion as a proxy for familiarity with
+          equipment-assisted facials, a 70% team assumption for additional practice suitability, and
+          a 44.7% six-state share estimated from ByteScraper’s 2026 directory. The model screens for
+          potential fit using service mix, clinical capability, and operational and financial
+          readiness. It does not identify individual qualified practices or forecast demand.
+        </p>
+        <ul className="pb-3">
+          <li>
+            <a className={link} href={references.E.url}>
+              AmSpa industry report recap
+            </a>
+          </li>
+          <li>
+            <a className={link} href={references.F.url}>
+              AmSpa service-mix context
+            </a>
+          </li>
+          <li>
+            <a
+              className={link}
+              href="https://bytescraper.com/b2b-database/list-of-medical-spas-in-united-states"
+            >
+              ByteScraper U.S. medical spa directory
+            </a>
+          </li>
+        </ul>
+      </details>
+    </aside>
+  );
+}
+
+function Opportunity() {
+  return (
+    <>
+      <div className="bg-hero">
+        <Section className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+          <div>
+            <Eyebrow>The opportunity</Eyebrow>
+            <h1 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl xl:text-6xl">
+              A new approach to professional skincare deserves a new path to market.
+            </h1>
+            <div className="mt-5 space-y-3 leading-relaxed text-muted-foreground">
+              <p>
+                New professional skincare treatments have to offer meaningful value to both
+                practices and clients. Cavinova is investigating where specialized formulations and
+                controlled ultrasound could do that together.
+              </p>
+              <p>
+                Our strategy starts by testing the serum and learning what practices need. Our
+                long-term goal is an integrated platform that coordinates dosing, compatibility, and
+                professional use.
+              </p>
+            </div>
+          </div>
+          <div
+            className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2"
+            aria-label="From serum concept to integrated platform"
+          >
+            <figure className="overflow-hidden rounded-2xl border bg-card shadow-soft">
+              <img
+                src={serumPackaging.url}
+                alt="Cavinova two-chamber manual serum packet concept."
+                width={1774}
+                height={887}
+                className="aspect-[4/3] w-full object-contain"
+              />
+              <figcaption className="border-t p-4">
+                <Eyebrow>Starting point</Eyebrow>
+                <p className="mt-1 font-serif text-xl">Premeasured serum concept</p>
+              </figcaption>
+            </figure>
+            <figure className="overflow-hidden rounded-2xl border bg-card shadow-soft">
+              <img
+                src={researchVisuals.console}
+                alt="Concept rendering of the future Cavinova console and handpiece."
+                className="aspect-[4/3] w-full object-contain"
+              />
+              <figcaption className="border-t p-4">
+                <Eyebrow>Long-term vision</Eyebrow>
+                <p className="mt-1 font-serif text-xl">Integrated system concept</p>
+              </figcaption>
+            </figure>
+          </div>
+        </Section>
       </div>
-      <p className="mt-4 text-xs text-muted-foreground">Source: Cavinova team market model and planning assumptions. Figures are approximate, not independently verified market demand.</p>
-      <div className="mt-8 grid gap-6 border-t pt-6 md:grid-cols-2">
-        <p className="leading-relaxed text-muted-foreground">The 19 locations are a planning estimate for equipment scenarios; no confirmed customers are implied. The retired serviceability and capture inputs are not used in this calculation.</p>
-        <p className="leading-relaxed text-muted-foreground">The serum-only reachable market depends on device-specific compatibility and has yet to be established. The 1% equipment assumption does not apply to the same eligible base for serum only.</p>
+
+      <Section>
+        <Heading
+          eyebrow="The problem worth solving"
+          title="Innovation must deliver more than another treatment option."
+        />
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {needs.map(({ title, body, icon: Icon, tone }) => (
+            <article key={title} className={`rounded-3xl border p-5 sm:p-6 ${tone}`}>
+              <Icon aria-hidden className="size-7 text-teal-deep" />
+              <h3 className="mt-4 text-2xl">{title}</h3>
+              <p className="mt-3 leading-relaxed text-muted-foreground">{body}</p>
+            </article>
+          ))}
+        </div>
+      </Section>
+
+      <div className="bg-secondary/35">
+        <Section>
+          <Heading
+            eyebrow="The initial customer"
+            title="Built around the needs of aesthetic professionals."
+          >
+            <p>
+              We’d start with qualified U.S. medical spas, dermatology practices, and professional
+              aesthetic providers interested in evaluating a needle-free skincare concept. Early
+              evaluation would favor practices with suitable capabilities and staff willing to give
+              structured feedback.
+            </p>
+          </Heading>
+          <div className="mt-7 grid gap-5 md:grid-cols-3" aria-label="People who shape adoption">
+            {participants.map(({ title, body, icon: Icon }) => (
+              <article key={title} className="border-t pt-4">
+                <Icon aria-hidden className="size-6 text-teal-deep" />
+                <h3 className="mt-3 text-2xl">{title}</h3>
+                <p className="mt-2 leading-relaxed text-muted-foreground">{body}</p>
+              </article>
+            ))}
+          </div>
+          <MarketScenario />
+        </Section>
       </div>
-    </Section></section>
-    <Section>
-      <Eyebrow>Options to explore</Eyebrow>
-      <h2 className="mt-3 text-4xl">Three paths under consideration</h2>
-      <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">Results from the serum work would inform which of these paths, if any, we pursue. None is a selected launch route or a partnership in place. Each would depend on feasibility testing, intellectual-property review and applicable regulatory requirements.</p>
-      <div className="mt-8 grid auto-rows-fr gap-6 md:grid-cols-3">
-        {opportunityPaths.map((path, i) => {
-          const Icon = pathIcons[i] ?? FlaskConical;
-          return <article key={path.title} className="flex flex-col rounded-3xl border bg-card p-6 shadow-soft md:p-8">
-            <Icon aria-hidden className="h-7 w-7 text-primary" />
-            <h3 className="mt-5 text-2xl leading-tight">{path.title}</h3>
-            <p className="mt-4 leading-relaxed text-muted-foreground">{path.description}</p>
-          </article>;
-        })}
+
+      <Section>
+        <Heading
+          eyebrow="How Cavinova could differentiate"
+          title="The opportunity is not simply another ultrasound device."
+        >
+          <p>
+            We’d start by establishing the value of the formulation, then test what a dedicated
+            system could add to dosing, compatibility, and the provider’s routine.
+          </p>
+        </Heading>
+        <Progression items={differentiation} label="Proposed sources of differentiation" />
+        <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
+          These proposed advantages depend on technical validation, customer acceptance, and
+          intellectual property review.
+        </p>
+        <Link to="/platform" className={`mt-4 ${link}`}>
+          See the Product Concept <ArrowRight aria-hidden className="size-4" />
+        </Link>
+      </Section>
+
+      <div className="bg-accent/55">
+        <Section>
+          <Heading eyebrow="The path to market" title="Validate what matters. Scale what works.">
+            <p>
+              The serum is our first development priority. A compatible existing device could help
+              us evaluate the approach. The results would guide any equipment partnership or
+              investment in a dedicated Cavinova system.
+            </p>
+          </Heading>
+          <ol
+            aria-label="Conditional commercialization roadmap"
+            className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5"
+          >
+            {stages.map(([title, body], index) => (
+              <li key={title} className="border-l-2 border-primary/50 pl-4">
+                <Eyebrow>Stage {index + 1} · Proposed</Eyebrow>
+                <h3 className="mt-2 text-xl">{title}</h3>
+                <p className="mt-2 leading-relaxed text-muted-foreground">{body}</p>
+              </li>
+            ))}
+          </ol>
+        </Section>
       </div>
-    </Section>
-    <section className="bg-accent/50"><Section className="text-center">
-      <h2 className="text-3xl">Talk with the Cavinova team about the next stage of development</h2>
-      <Link to="/contact" className="mt-6 inline-flex items-center gap-2 font-semibold text-primary">Contact the team <ArrowRight className="h-4 w-4" /></Link>
-    </Section></section>
-  </>;
+
+      <Section>
+        <Heading
+          eyebrow="The commercial ecosystem"
+          title="Beyond the equipment. A continuing treatment relationship."
+        >
+          <p>
+            If practices adopt the approach, each session would use a premeasured portion.
+            Replenishment would depend on actual treatment activity. A future system could tie
+            consumable recognition, formulation compatibility, and the provider’s routine together.
+          </p>
+        </Heading>
+        <div className="rounded-3xl border bg-secondary/35 px-5 pb-2 sm:px-7">
+          <Progression items={ecosystem} label="Proposed recurring consumables ecosystem" />
+        </div>
+        <div className="mt-6 grid gap-5 md:grid-cols-2">
+          <div>
+            <h3 className="text-2xl">For practices</h3>
+            <p className="mt-2 leading-relaxed text-muted-foreground">
+              Potentially distinct services, predictable formulation quantities, coordinated
+              preparation, and future formulation options.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-2xl">For Cavinova</h3>
+            <p className="mt-2 leading-relaxed text-muted-foreground">
+              Potential repeat consumable demand and continuing practice relationships that could
+              inform new formulations and ongoing support.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      <div className="bg-secondary/40">
+        <Section>
+          <Heading
+            eyebrow="The path from promise to proof"
+            title="Commercial potential depends on measurable evidence."
+          >
+            <p>
+              Before advancing, Cavinova needs evidence that the approach can be developed
+              responsibly, used consistently, and adopted by professional practices.
+            </p>
+          </Heading>
+          <dl className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {validation.map(([title, body]) => (
+              <div key={title} className="border-t border-teal/60 pt-4">
+                <dt className="font-serif text-2xl">{title}</dt>
+                <dd className="mt-2 leading-relaxed text-muted-foreground">{body}</dd>
+              </div>
+            ))}
+          </dl>
+        </Section>
+      </div>
+
+      <Section>
+        <Heading
+          eyebrow="Building the next chapter"
+          title="From scientific possibility to professional innovation."
+        >
+          <p>
+            We welcome conversations with researchers, formulation specialists, technology
+            developers, and aesthetic professionals who can help evaluate what this approach would
+            need to succeed.
+          </p>
+        </Heading>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Button asChild className="min-h-11 rounded-full">
+            <Link to="/contact">
+              Connect With Cavinova <ArrowRight aria-hidden />
+            </Link>
+          </Button>
+          <Button asChild variant="outline" className="min-h-11 rounded-full">
+            <Link to="/platform">Explore Our Product Vision</Link>
+          </Button>
+        </div>
+      </Section>
+    </>
+  );
 }
