@@ -387,7 +387,7 @@ function Platform() {
           <Diagram
             enlarge
             conceptLabel={false}
-            src={researchVisuals.console}
+            src="/images/platform/integrated-system.webp"
             title="Cavinova console and handpiece concept"
             caption="Proposed integrated Cavinova system. Conceptual design, not a commercial product."
           />
@@ -462,7 +462,21 @@ function Platform() {
               for automated delivery. One holds the microbubble component and the other holds
               selected active ingredients.
             </p>
-            <VialSchematic />
+            <Diagram
+              enlarge
+              conceptLabel={false}
+              src="/images/platform/dual-vials.webp"
+              title="Two separate click-in vials beside the Cavinova handpiece concept"
+              caption="Packaging concept · future single-use machine vials. The connection design still needs engineering and testing."
+            />
+            <details className="rounded-2xl border bg-card p-4">
+              <summary className="flex min-h-11 cursor-pointer items-center font-semibold underline decoration-primary underline-offset-4">
+                See how the two vials would connect
+              </summary>
+              <div className="mt-3">
+                <VialSchematic />
+              </div>
+            </details>
           </article>
         </div>
       </Section>
