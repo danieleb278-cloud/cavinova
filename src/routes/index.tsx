@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ShieldAlert, Waves, Cpu, Droplets, Stethoscope } from "lucide-react";
-import { Section, Eyebrow, Diagram, diagrams, seo } from "@/components/site";
+import { Section, Eyebrow, Diagram, seo } from "@/components/site";
+import { researchVisuals } from "@/lib/research-visuals";
 import { Cite, References } from "@/components/references";
-import { TAM_LOCATIONS } from "@/lib/market";
-import { CONSOLE_PRICE, KIT_COST, PATIENT_PRICE } from "@/lib/economics";
 import wordmark from "@/assets/cavinova_wordmark.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -76,13 +75,14 @@ function Home() {
       </Section>
 
       <Section>
-        <Eyebrow>Three-pillar synergy</Eyebrow>
-        <h2 className="mt-3 text-4xl">One integrated treatment system</h2>
+        <Eyebrow>Our direction</Eyebrow>
+        <h2 className="mt-3 text-4xl">What we’re building toward</h2>
+        <p className="mt-4 max-w-3xl text-muted-foreground">Our long-term goal is a Cavinova-developed ultrasound system paired with a serum we develop ourselves. We’d start with the serum and test it using a specific ultrasound device and applicator already in use. What we learn will help us decide whether developing a dedicated system is worth pursuing.</p>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {[
-            { icon: Cpu, t: "Advanced Ultrasound Applicator", d: "Piezoelectric handpiece and console delivering regulated acoustic energy." },
-            { icon: Droplets, t: "Bio-Acoustic Serum Formulations", d: "Microbubble cartridges paired with hydration, brightening and rejuvenation actives." },
-            { icon: Stethoscope, t: "Professional In-Clinic Protocol", d: "Proposed provider-administered workflow for med spas and dermatology practices." },
+            { icon: Droplets, t: "The serum", d: "Develop a candidate microbubble serum and evaluate how well it holds up in storage, mixing, and dispensing." },
+            { icon: Cpu, t: "The ultrasound", d: "Test how the serum responds to a specific device and applicator. Use those results to understand what a dedicated Cavinova system would need to do." },
+            { icon: Stethoscope, t: "The professional workflow", d: "Learn how skincare professionals would prepare and apply the serum, and what would make the process practical in their day-to-day work." },
           ].map(({ icon: I, t, d }) => (
             <div key={t} className="rounded-3xl border bg-card p-7 shadow-soft">
               <span className="grid h-12 w-12 place-items-center rounded-2xl bg-accent text-primary"><I className="h-5 w-5" /></span>
@@ -91,35 +91,18 @@ function Home() {
             </div>
           ))}
         </div>
-      </Section>
-
-      <Section>
-        <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.4fr]">
+        <div className="mt-12 grid items-center gap-8 lg:grid-cols-[1fr_1.4fr]">
           <div>
             <Eyebrow>Product concept preview</Eyebrow>
-            <h2 className="mt-3 text-4xl">A complete, customizable treatment system</h2>
-            <p className="mt-4 text-muted-foreground">Handheld applicator, click-in microbubble vials and customizable ingredient concentrates — visualized as a concept only.</p>
+            <h3 className="mt-3 text-3xl">A future Cavinova system</h3>
             <Link to="/platform" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary">See the full product concept <ArrowRight className="h-4 w-4" /></Link>
           </div>
-          <Diagram src={diagrams.handheld} title="Handheld treatment system" caption="Conceptual illustration; proposed features require engineering validation." />
-        </div>
-      </Section>
-
-      <Section>
-        <div className="rounded-[2rem] bg-foreground p-10 text-background md:p-14">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-mint">Commercial snapshot (planning targets)</p>
-          <div className="mt-8 grid gap-8 md:grid-cols-4">
-            {[[`$${CONSOLE_PRICE.toLocaleString("en-US")}`, "Illustrative console price"], [`$${KIT_COST}`, "Illustrative consumable kit price"], [`$${PATIENT_PRICE}`, "Illustrative patient treatment price"], [`≈${TAM_LOCATIONS.toLocaleString("en-US")}`, "Potentially addressable U.S. medical-spa locations"]].map(([v, l]) => (
-              <div key={l}><p className="font-serif text-5xl text-blush">{v}</p><p className="mt-2 text-sm opacity-80">{l}</p></div>
-            ))}
-          </div>
-          <p className="mt-8 text-sm opacity-80">A razor-and-blade model: equipment adoption paired with recurring single-use consumable revenue — the combination that makes the device-plus-formulation pairing commercially interesting.</p>
-          <p className="mt-4 text-xs opacity-60">Preliminary planning estimates from the Cavinova MBS business plan — illustrative financial assumptions, subject to validation. Location count is based on team screening assumptions; it is not a confirmed eligible-provider count.</p>
+          <Diagram src={researchVisuals.handheld} title="Concept illustration of a future Cavinova system" caption="Concept illustration of a future Cavinova system." />
         </div>
       </Section>
 
       <Section className="grid gap-5 md:grid-cols-3">
-        {([["/science", "Science & Technology", "How sonophoresis and cavitation work."], ["/platform", "Product Concept", "Hardware, consumables and workflow."], ["/opportunity", "Commercial Opportunity", "Market sizing, unit economics, roadmap."]] as const).map(([to, t, d]) => (
+        {([["/science", "Science & Technology", "How sonophoresis and cavitation work."], ["/platform", "Product Concept", "Hardware, consumables and workflow."], ["/opportunity", "Commercial Opportunity", "An illustrative market scenario and paths under consideration."]] as const).map(([to, t, d]) => (
           <Link key={to} to={to} className="group rounded-3xl border bg-card p-7 transition hover:border-primary">
             <Waves className="h-5 w-5 text-teal" />
             <h3 className="mt-4 text-2xl">{t}</h3>
