@@ -261,29 +261,31 @@ function Platform() {
       <Section>
         <Heading
           eyebrow="The serum technology"
-          title="One formulation strategy. Two ways to deliver it."
-        >
-          <p>
-            Cavinova's initial product concept uses premeasured packets for manual application. The
-            long-term integrated system envisions authenticated single-use vials for automated
-            point-of-use dispensing.
-          </p>
-        </Heading>
+          title="One technology. Two approaches to professional application."
+        />
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           <article className="grid min-w-0 gap-4 rounded-3xl border border-rose/50 bg-accent/45 p-5 sm:p-6 md:row-span-4 md:grid-rows-subgrid">
-            <h3 className="text-balance text-2xl">
-              Initial format — Premeasured, single-use packets
-            </h3>
-            <p className="leading-relaxed text-muted-foreground">
-              A professional would manually apply the premeasured formulation and use suitable
-              ultrasound equipment under a validated protocol. This approach allows formulation
-              development and potential market entry without dedicated Cavinova equipment.
-            </p>
+            <div>
+              <Eyebrow>Initial development format</Eyebrow>
+              <h3 className="mt-2 text-balance text-2xl">Manually Applied Formulation</h3>
+            </div>
+            <div className="space-y-3 leading-relaxed text-muted-foreground">
+              <p>
+                A professional would manually apply a premeasured, single-use formulation before
+                treatment with suitable existing ultrasound equipment, once compatibility and safety
+                are established.
+              </p>
+              <p>
+                This enables early formulation development and evaluation without requiring a
+                proprietary Cavinova machine. The final packaging configuration remains under
+                consideration.
+              </p>
+            </div>
             <div className="grid aspect-[16/10] place-items-center overflow-hidden rounded-2xl border bg-card">
               <div className="relative aspect-square w-5/8 overflow-hidden">
                 <img
                   src={serumPackaging.url}
-                  alt="Cavinova dual-chamber packet concept for manual application."
+                  alt="Illustrative dual-chamber packet, one packaging concept for the manually applied formulation."
                   width={1774}
                   height={887}
                   loading="lazy"
@@ -291,18 +293,26 @@ function Platform() {
                 />
               </div>
             </div>
-            <p className="text-sm font-semibold">Packaging concept · Manual application</p>
+            <p className="text-sm font-semibold">
+              Illustrative packaging concept · Final format under consideration
+            </p>
           </article>
           <article className="grid min-w-0 gap-4 rounded-3xl border border-teal/55 bg-secondary/45 p-5 sm:p-6 md:row-span-4 md:grid-rows-subgrid">
-            <h3 className="text-balance text-2xl">
-              Future format — Authenticated, single-use vials
-            </h3>
-            <p className="leading-relaxed text-muted-foreground">
-              The proposed integrated platform would use two separate, premeasured vials: one
-              containing microbubbles and the other selected active ingredients. Following
-              authentication, the machine would coordinate dispensing through separate pathways to
-              the specialized transducer tip.
-            </p>
+            <div>
+              <Eyebrow>Future integrated format</Eyebrow>
+              <h3 className="mt-2 text-balance text-2xl">Intelligent, Automated Delivery</h3>
+            </div>
+            <div className="space-y-3 leading-relaxed text-muted-foreground">
+              <p>
+                Cavinova's proposed integrated system would use two separate, premeasured,
+                single-use vials for the microbubble and active-ingredient components.
+              </p>
+              <p>
+                The machine would authenticate the vials, load validated treatment settings, and
+                automatically dispense the components through the specialized transducer tip. The
+                components would stay isolated until the point of use.
+              </p>
+            </div>
             <div className="grid aspect-[16/10] place-items-center overflow-hidden rounded-2xl border bg-card">
               <div className="relative aspect-square w-5/8 overflow-hidden">
                 <img
@@ -315,7 +325,7 @@ function Platform() {
                 />
               </div>
             </div>
-            <p className="text-sm font-semibold">Packaging concept · Machine-assisted dispensing</p>
+            <p className="text-sm font-semibold">Proposed integrated-machine consumables</p>
           </article>
         </div>
       </Section>
