@@ -304,8 +304,9 @@ function Platform() {
             </div>
             <div className="space-y-3 leading-relaxed text-muted-foreground">
               <p>
-                Cavinova's proposed integrated system would use two separate, premeasured,
-                single-use vials for the microbubble and active-ingredient components.
+                If funding and validation support developing the full machine, the integrated system
+                would use two separate, premeasured, single-use vials for the microbubble and
+                active-ingredient components.
               </p>
               <p>
                 The machine would authenticate the vials, load validated treatment settings, and
