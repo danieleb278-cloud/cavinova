@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import {
   ArrowRight,
   ArrowDown,
@@ -8,15 +8,14 @@ import {
   LockKeyhole,
   ShieldCheck,
   SlidersHorizontal,
-  Power,
+  ScanLine,
   Hand,
-  Radio,
   CircleCheck,
 } from "lucide-react";
 import { Diagram, Eyebrow, Section, seo } from "@/components/site";
 import { Button } from "@/components/ui/button";
 import { References } from "@/components/references";
-import { researchVisuals } from "@/lib/research-visuals";
+
 import serumPackaging from "@/assets/Cavinova_Dual_Chamber_Serum_Concept.png.asset.json";
 
 export const Route = createFileRoute("/platform")({
@@ -33,7 +32,7 @@ const features = [
   {
     title: "Two separate vials",
     icon: FlaskConical,
-    body: "Two premeasured, single-use vials would click into the handpiece. Vial A holds the microbubble component. Vial B holds the selected active ingredients. Separate delivery pathways would handle each component. The internal routing and where the components interact still need to be designed and tested.",
+    body: "Two premeasured, single-use vials would click into the handpiece. Vial A holds the microbubble component. Vial B holds the selected active ingredients. Separate delivery pathways would handle each component. Keeping the components separate until dispensing is intended to support stability. Internal routing still needs to be designed and tested.",
   },
   {
     title: "Consumable authentication",
@@ -63,45 +62,12 @@ const features = [
   {
     title: "More predictable serum use",
     icon: Droplets,
-    body: "Premeasured portions and automated dispensing could leave less unused serum and make quantities more consistent. Single-use packaging creates material waste of its own. Product use, packaging waste, and overall environmental impact would need separate evaluation.",
+    body: "Premeasured portions and automated dispensing aim to leave less unused serum and make quantities more consistent. Single-use packaging creates material waste of its own. Product use, packaging waste, and overall environmental impact would need separate evaluation.",
   },
   {
     title: "Guided professional workflow",
     icon: Hand,
     body: "The proposed process runs from vial insertion and authentication through configuration, dispensing, ultrasound, and shutoff. The goal is a repeatable routine with fewer settings for staff to enter by hand.",
-  },
-] as const;
-
-const operation = [
-  {
-    title: "Insert",
-    icon: FlaskConical,
-    body: "The provider inserts the two premeasured vials into the proposed dual-chamber handpiece.",
-  },
-  {
-    title: "Authenticate",
-    icon: LockKeyhole,
-    body: "The system would read both tags and check whether the vials are recognized and compatible.",
-  },
-  {
-    title: "Configure",
-    icon: SlidersHorizontal,
-    body: "After a successful check, the system would load the operating parameters established through testing for that configuration.",
-  },
-  {
-    title: "Dispense",
-    icon: Droplets,
-    body: "The system would dispense the intended amount from the installed vials.",
-  },
-  {
-    title: "Treat",
-    icon: Radio,
-    body: "The system would deliver controlled ultrasound according to the intended protocol.",
-  },
-  {
-    title: "Complete",
-    icon: Power,
-    body: "Operation would end according to the protocol, with automatic shutoff where required.",
   },
 ] as const;
 
@@ -144,16 +110,9 @@ const phases = [
   ],
   [
     "Commercial Platform Expansion",
-    "Evaluate production, equipment leasing, recurring consumables, service, partnerships, and distribution.",
+    "Evaluate production, service, partnerships, and distribution.",
   ],
 ] as const;
-
-const leaseSteps = [
-  "A practice leases Cavinova equipment",
-  "The practice purchases authenticated single-use consumables",
-  "Eligible purchases could earn credits toward the lease",
-  "Qualifying treatment activity could lower the practice’s effective equipment cost",
-];
 
 const choiceClass = "min-h-11 h-auto whitespace-normal px-3 py-2 text-left leading-snug";
 
@@ -220,14 +179,7 @@ function FeatureExplorer() {
   const feature = features[selected];
   const Icon = feature.icon;
   return (
-    <div className="mt-8 grid items-start gap-6 lg:grid-cols-[1.1fr_1fr]">
-      <Diagram
-        enlarge
-        conceptLabel={false}
-        src={researchVisuals.handheld}
-        title="Cavinova treatment handpiece concept"
-        caption="Existing handpiece concept artwork. The feature controls explain the proposed system architecture."
-      />
+    <div className="mt-8 max-w-5xl">
       <div>
         <div role="group" aria-label="Select a machine feature" className="grid grid-cols-2 gap-2">
           {features.map(({ title }, index) => (
@@ -259,96 +211,147 @@ function FeatureExplorer() {
   );
 }
 
+const authentication = {
+  insert: {
+    title: "Insert vials",
+    status: "Awaiting authentication",
+    detail:
+      "Insert the two required consumables. Treatment remains disabled until both are checked.",
+    icon: FlaskConical,
+    tone: "border-white/20 bg-white/5",
+  },
+  scanning: {
+    title: "Authenticating",
+    status: "Checking both consumables",
+    detail: "The concept checks the identity and compatibility of each vial.",
+    icon: ScanLine,
+    tone: "border-teal/60 bg-teal/10",
+  },
+  authorized: {
+    title: "Authorized",
+    status: "Ready for operator start",
+    detail:
+      "Both consumables are recognized. The concept would select the corresponding validated protocol and wait for the provider to start treatment.",
+    icon: CircleCheck,
+    tone: "border-teal/60 bg-teal/15",
+  },
+  locked: {
+    title: "Authentication failed",
+    status: "Treatment locked",
+    detail:
+      "The example active-ingredient vial is unrecognized or incompatible. Ultrasound and automatic dispensing remain disabled.",
+    icon: LockKeyhole,
+    tone: "border-rose/65 bg-rose/15",
+  },
+} as const;
+
 function OperationSequence() {
-  const [stage, setStage] = useState(0);
+  const [state, setState] = useState<keyof typeof authentication>("insert");
   const [recognized, setRecognized] = useState(true);
-  const locked = !recognized && stage === 1;
-  const current = operation[stage];
-  const Icon = locked ? LockKeyhole : current.icon;
-  const lastStage = recognized ? operation.length - 1 : 1;
+  const current = authentication[state];
+  const Icon = current.icon;
+  const scanning = state === "scanning";
+
+  useEffect(() => {
+    if (!scanning) return;
+    const timer = window.setTimeout(() => setState(recognized ? "authorized" : "locked"), 1450);
+    return () => window.clearTimeout(timer);
+  }, [scanning, recognized]);
+
   return (
-    <div className="mt-8 rounded-3xl border bg-card p-4 sm:p-7">
-      <div
-        role="group"
-        aria-label="Consumable recognition scenario"
-        className="mb-5 flex flex-wrap gap-2"
-      >
-        {[true, false].map((valid) => (
+    <div className="mt-8 overflow-hidden rounded-[2rem] border bg-card shadow-soft">
+      <div className="bg-[#10292e] p-4 text-white sm:p-7">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/20 pb-4">
+          <span className="font-serif text-2xl">Cavinova</span>
+          <span className="text-xs font-semibold uppercase tracking-widest text-teal">
+            Concept simulation
+          </span>
+        </div>
+        <div className="mt-5 grid gap-4 lg:grid-cols-[1fr_1.1fr]">
+          <div className="grid grid-cols-2 gap-3" aria-label="Required consumables">
+            {["Microbubble component", "Active ingredients"].map((label, index) => {
+              const status =
+                state === "insert"
+                  ? "Awaiting check"
+                  : scanning
+                    ? "Checking"
+                    : state === "locked" && index === 1
+                      ? "Unrecognized"
+                      : "Recognized";
+              return (
+                <div
+                  key={label}
+                  className={`rounded-2xl border p-3 sm:p-5 ${index === 0 ? "border-rose/55 bg-rose/10" : "border-teal/55 bg-teal/10"} ${scanning ? "motion-safe:animate-pulse" : ""}`}
+                >
+                  <FlaskConical
+                    aria-hidden
+                    className={`mb-3 size-7 ${index === 0 ? "text-blush" : "text-teal"}`}
+                  />
+                  <p className="text-sm font-semibold">Vial {index === 0 ? "A" : "B"}</p>
+                  <p className="mt-1 break-words text-sm">{label}</p>
+                  <p className="mt-3 text-sm font-semibold">{status}</p>
+                </div>
+              );
+            })}
+          </div>
+          <div
+            role="status"
+            aria-atomic="true"
+            className={`rounded-2xl border p-4 sm:p-5 ${current.tone}`}
+          >
+            <Icon
+              aria-hidden
+              className={`size-7 ${state === "locked" ? "text-blush" : "text-teal"} ${scanning ? "motion-safe:animate-pulse" : ""}`}
+            />
+            <h3 className="mt-2 text-2xl">{current.title}</h3>
+            <p className="mt-1 font-semibold">{current.status}</p>
+            <p className="mt-2 leading-relaxed text-white/85">{current.detail}</p>
+          </div>
+        </div>
+      </div>
+      <div className="p-4 sm:p-6">
+        <div
+          role="group"
+          aria-label="Choose an authentication scenario"
+          className="flex flex-wrap gap-2"
+        >
           <Button
-            key={String(valid)}
             type="button"
-            variant="outline"
-            className={`${choiceClass} ${recognized === valid ? "border-primary bg-accent" : ""}`}
-            aria-pressed={recognized === valid}
+            disabled={scanning}
+            className={choiceClass}
             onClick={() => {
-              setRecognized(valid);
-              setStage(valid ? 0 : 1);
+              setRecognized(true);
+              setState("scanning");
             }}
           >
-            {valid ? "Recognized consumables" : "Unrecognized consumable"}
+            Try recognized vials
           </Button>
-        ))}
-      </div>
-      <div
-        role="group"
-        aria-label="Select an operating stage"
-        className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6"
-      >
-        {operation.map(({ title, icon: StageIcon }, index) => (
           <Button
-            key={title}
             type="button"
             variant="outline"
-            aria-pressed={stage === index}
-            aria-controls="platform-operation"
-            disabled={index > lastStage}
-            onClick={() => setStage(index)}
-            className={`${choiceClass} ${stage === index ? "border-primary bg-accent" : ""}`}
+            disabled={scanning}
+            className={choiceClass}
+            onClick={() => {
+              setRecognized(false);
+              setState("scanning");
+            }}
           >
-            <StageIcon aria-hidden />
-            {title}
+            Try an unrecognized vial
           </Button>
-        ))}
-      </div>
-      <div
-        id="platform-operation"
-        aria-live="polite"
-        aria-atomic="true"
-        className={`mt-5 rounded-2xl p-5 ${locked ? "bg-accent" : "bg-secondary/55"}`}
-      >
-        <Icon aria-hidden className="size-6" />
-        <h3 className="mt-2 text-2xl">{locked ? "Treatment locked" : current.title}</h3>
-        <p className="mt-2 leading-relaxed text-muted-foreground">
-          {locked
-            ? "Authentication unsuccessful. Ultrasound activation and automatic dispensing remain disabled."
-            : current.body}
+          <Button
+            type="button"
+            variant="ghost"
+            className={choiceClass}
+            onClick={() => setState("insert")}
+          >
+            Reset simulation
+          </Button>
+        </div>
+        <p className="mt-4 text-sm text-muted-foreground">
+          Illustrates proposed control logic. The interface and authentication capability are
+          conceptual.
         </p>
       </div>
-      <div className="mt-4 flex flex-wrap gap-2">
-        <Button
-          type="button"
-          variant="outline"
-          className="min-h-11"
-          disabled={stage === 0}
-          onClick={() => setStage(stage - 1)}
-        >
-          Previous
-        </Button>
-        <Button
-          type="button"
-          className="min-h-11"
-          disabled={stage === lastStage}
-          onClick={() => setStage(stage + 1)}
-        >
-          Next <ArrowRight aria-hidden />
-        </Button>
-        <Button type="button" variant="ghost" className="min-h-11" onClick={() => setStage(0)}>
-          Restart sequence
-        </Button>
-      </div>
-      <p className="mt-4 text-sm text-muted-foreground">
-        Concept demonstration of intended control logic.
-      </p>
     </div>
   );
 }
@@ -357,7 +360,7 @@ function Platform() {
   return (
     <>
       <div className="bg-hero">
-        <Section className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+        <Section className="grid items-center gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-8">
           <div>
             <Eyebrow>The Cavinova product vision</Eyebrow>
             <h1 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl xl:text-6xl">
@@ -398,14 +401,28 @@ function Platform() {
         <Section>
           <Heading
             eyebrow="Integrated by design"
-            title="Not just ultrasound. A coordinated treatment system."
+            title="Separated for stability. Delivered at the moment of treatment."
           >
             <p>
-              The future system would connect formulation identification, treatment settings,
-              dispensing, and safeguards. Select a feature to see what it would add to the
-              provider’s routine.
+              The proposed system would keep two premeasured, single-use components separate:
+              acoustically responsive microbubbles and selected active ingredients.
+            </p>
+            <p>
+              The pink microbubble and teal active-ingredient pathways are intended to stay isolated
+              until dispensing at the specialized ultrasound tip. The goal is to preserve
+              formulation integrity and coordinate delivery with ultrasound. The mechanism and
+              benefits still need engineering and testing.
             </p>
           </Heading>
+          <div className="mt-7">
+            <Diagram
+              enlarge
+              conceptLabel={false}
+              src="/images/platform/transducer-tip.webp"
+              title="Conceptual transducer tip with separate microbubble and active-ingredient pathways"
+              caption="Conceptual product illustration. Final engineering design subject to validation."
+            />
+          </div>
           <FeatureExplorer />
         </Section>
       </div>
@@ -435,7 +452,7 @@ function Platform() {
         </Heading>
         <div className="mt-8 grid gap-7 md:grid-cols-2">
           <article className="flex min-w-0 flex-col gap-4">
-            <h3 className="text-2xl">Initial format · Manual serum packets</h3>
+            <h3 className="text-2xl">Initial format · Premeasured, single-use packets</h3>
             <p className="leading-relaxed text-muted-foreground">
               A provider would open a premeasured, single-use packet and apply it by hand. This
               format would support testing with suitable existing ultrasound equipment. It is
@@ -456,11 +473,11 @@ function Platform() {
             </figure>
           </article>
           <article className="flex min-w-0 flex-col gap-4">
-            <h3 className="text-2xl">Future format · Click-in machine vials</h3>
+            <h3 className="text-2xl">Future format · Two authenticated, single-use vials</h3>
             <p className="leading-relaxed text-muted-foreground">
               Two separate, premeasured, single-use vials would connect to the proposed handpiece
-              for automated delivery. One holds the microbubble component and the other holds
-              selected active ingredients.
+              for controlled dispensing at the transducer tip. One holds the microbubble component
+              and the other holds selected active ingredients.
             </p>
             <Diagram
               enlarge
@@ -532,52 +549,6 @@ function Platform() {
           ))}
         </ol>
       </Section>
-
-      <div className="bg-secondary/40">
-        <Section>
-          <Heading
-            eyebrow="Designed for long-term partnerships"
-            title="A platform built around equipment and ongoing treatment demand."
-          >
-            <p>
-              Cavinova is exploring equipment leasing as a way to lower upfront costs for practices.
-              Eligible purchases of authenticated consumables could earn credits toward the lease.
-              The economics and terms still need evaluation.
-            </p>
-          </Heading>
-          <ol aria-label="Proposed lease-credit model" className="mt-8 grid gap-3 lg:grid-cols-4">
-            {leaseSteps.map((item, index) => (
-              <li key={item} className="relative rounded-xl border bg-card p-4 font-medium">
-                <span className="mb-2 block text-sm font-semibold text-teal-deep">
-                  0{index + 1}
-                </span>
-                {item}
-              </li>
-            ))}
-          </ol>
-          <div className="mt-7 grid gap-6 md:grid-cols-2">
-            <div className="border-t pt-4">
-              <h3 className="text-2xl">For practices</h3>
-              <p className="mt-2 leading-relaxed text-muted-foreground">
-                Leasing could reduce upfront investment. Measured doses and a coordinated workflow
-                could make consumable needs easier to plan. Lease credits would depend on qualifying
-                purchases.
-              </p>
-            </div>
-            <div className="border-t pt-4">
-              <h3 className="text-2xl">For Cavinova</h3>
-              <p className="mt-2 leading-relaxed text-muted-foreground">
-                Recurring consumable purchases could support service and continued formulation
-                development. Practices may weigh cartridge restrictions against the value of
-                compatibility checks, guided setup, and measured dispensing.
-              </p>
-            </div>
-          </div>
-          <p className="mt-5 text-sm text-muted-foreground">
-            Concept under evaluation. Lease credits and terms have yet to be established.
-          </p>
-        </Section>
-      </div>
 
       <Section>
         <Heading
