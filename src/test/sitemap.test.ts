@@ -5,9 +5,9 @@ import { routeTree } from "@/routeTree.gen";
 import { sitemapStaticPaths, sitemapXML } from "@/lib/sitemap";
 
 describe("Cavinova public sitemap", () => {
-  it("includes exactly the six public pages, excluding the sitemap itself", () => {
+  it("includes Opportunity and Development among the seven public pages", () => {
     const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
-    expect(sitemapStaticPaths(router)).toEqual(["/", "/contact", "/development", "/platform", "/science", "/team"]);
+    expect(sitemapStaticPaths(router)).toEqual(["/", "/contact", "/development", "/opportunity", "/platform", "/science", "/team"]);
   });
 
   it("uses the published origin without invented content-change dates", () => {
