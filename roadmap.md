@@ -1,6 +1,6 @@
 # Roadmap
-- [ ] Apply approved plain-language Home section, serum-first Product Concept and cited Science study; preserve Home hero and Opportunity
-- [ ] Verify desktop/mobile, safe Product Concept enlargement, images, tests and automatic build; leave unpublished
+- [x] Apply approved plain-language Home section, serum-first Product Concept and cited Science study; preserve Home hero and Opportunity
+- [x] Verify desktop/mobile, all images, eight safe Product Concept enlargement checks, Science stepper and study link; 37 tests and automatic build passed, no runtime errors, unpublished
 - [x] Restore published-version Home, Science, Product Concept, Team, Contact and shared presentation; keep current Opportunity
 - [x] Verify restored pages, images, Science steps, enlargement and contact empty validation on desktop/mobile; build OK and 37 tests passed; no publication
 - [x] Restore /opportunity and main/footer navigation; retain Development inline and include both in the sitemap
