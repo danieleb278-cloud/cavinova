@@ -1,4 +1,7 @@
 # Roadmap
+- [ ] Restore /opportunity and main/footer navigation; retain Development inline and include both in the sitemap
+- [ ] Add approved six-state equipment scenario and equally weighted paths with serum-feasibility starting focus; no financials
+- [ ] Verify Home, navigation, Opportunity, Development, safe imagery and desktop/mobile layouts; run tests without publishing
 - [x] Restore original handpiece on Home/Technology, reframed Science stepper and system artwork, planned validation visuals and accessible safe enlargement
 - [x] Add a visual sequence of the four current Development priorities without dates or commercial pathways
 - [x] Verify all images and safe enlarged views on desktop/mobile, six public routes, navigation, redirect and sitemap; preserve contact with empty validation only, no publication
