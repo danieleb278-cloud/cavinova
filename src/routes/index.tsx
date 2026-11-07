@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Droplets, Hand, Waves } from "lucide-react";
 import { Eyebrow, Section, seo } from "@/components/site";
 import { ImageLightbox } from "@/components/image-lightbox";
-import { References } from "@/components/references";
+import { Cite, References, ReferencesLink } from "@/components/references";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
@@ -62,7 +62,7 @@ const possibilities = [
       "Exploring formulations with selected ingredients for different professional skincare applications.",
   },
   {
-    title: "A non-invasive treatment approach",
+    title: "A needle-free concept",
     icon: Waves,
     tone: "border-teal/50 bg-secondary/65",
     description:
@@ -160,6 +160,7 @@ function Home() {
             <p>
               The stratum corneum is the skin's outermost layer. It helps keep harmful substances
               out and limits how readily many topical ingredients pass through.
+              <Cite ids={["A"]} />
             </p>
             <p>
               The challenge is delivering selected ingredients while respecting the skin's
@@ -180,7 +181,10 @@ function Home() {
               />
               <figcaption className="border-t p-5 sm:p-6">
                 <h3 className="text-2xl">{title}</h3>
-                <p className="mt-2 leading-relaxed text-muted-foreground">{caption}</p>
+                <p className="mt-2 leading-relaxed text-muted-foreground">
+                  {caption}
+                  <Cite ids={file === "skin-barrier.webp" ? ["A"] : ["G"]} />
+                </p>
               </figcaption>
             </figure>
           ))}
@@ -228,16 +232,15 @@ function Home() {
           </div>
           <div className="mt-8 max-w-3xl space-y-4 leading-relaxed text-muted-foreground">
             <p>
-              Published research informs this approach. Cavinova's formulation and proposed system
-              still need testing.
+              Published lab studies inform this conceptual illustration.
+              <Cite ids={["C", "P"]} /> Cavinova's formulation and proposed system still need
+              testing.
             </p>
           </div>
           <Link to="/science" className={`mt-6 ${textLink}`}>
             See how the science works <ArrowRight aria-hidden className="h-4 w-4" />
           </Link>
-          <a href="#homepage-references" className={`ml-0 sm:ml-5 ${textLink}`}>
-            Research references
-          </a>
+          <ReferencesLink />
         </Section>
       </div>
 
@@ -342,7 +345,7 @@ function Home() {
       </Section>
 
       <div id="homepage-references" className="scroll-mt-24 [&_ul]:space-y-3 [&_ul]:text-base">
-        <References ids={["A", "C"]} />
+        <References ids={["A", "C", "P", "G"]} />
       </div>
     </>
   );

@@ -3,8 +3,7 @@ import type { ReactNode } from "react";
 import { ArrowRight, Droplets, FlaskConical, Layers3 } from "lucide-react";
 import { Eyebrow, Section, seo } from "@/components/site";
 import { Button } from "@/components/ui/button";
-import { equipmentScenario } from "@/lib/opportunity";
-import { references } from "@/lib/references";
+import { Cite, References } from "@/components/references";
 
 export const Route = createFileRoute("/opportunity")({
   staticData: { sitemap: true },
@@ -18,36 +17,29 @@ export const Route = createFileRoute("/opportunity")({
 
 const landscape = "/images/opportunity/treatment-landscape.webp";
 const comparison = "/images/opportunity/delivery-comparison.webp";
-const sourceClass =
-  "inline-flex min-h-11 items-center gap-2 font-semibold underline decoration-primary underline-offset-4";
-
 const treatments = [
   {
     title: "Conventional topical facials",
-    body: "Topical products support hydration and conditioning. The skin’s outer barrier limits how readily many ingredients pass through.",
-    source: "Skin penetration research",
-    href: "https://pubmed.ncbi.nlm.nih.gov/10839713/",
+    body: "Topical facials aim to hydrate and condition skin. The skin’s outer barrier limits how readily many ingredients pass through.",
+    sources: ["A"],
     x: 22,
   },
   {
     title: "Hydrodermabrasion and serum infusion",
-    body: "Systems such as Hydrafacial combine cleansing, exfoliation, extraction, and hydration, with targeted serums available as boosters.",
-    source: "Hydrafacial treatment overview",
-    href: "https://www.hydrafacial.com/pages/the-treatment",
+    body: "Systems such as Hydrafacial combine cleansing, exfoliation, extraction, and hydration, with targeted serum boosters available in select treatment tiers.",
+    sources: ["H"],
     x: 405,
   },
   {
     title: "Microneedling",
     body: "Small needles intentionally puncture the skin. The procedure has specific uses, training considerations, and potential side effects.",
-    source: "FDA on microneedling",
-    href: "https://www.fda.gov/medical-devices/aesthetic-cosmetic-devices/microneedling-devices",
+    sources: ["M"],
     x: 776,
   },
   {
     title: "Ultrasound-based technologies",
-    body: "Some aesthetic devices use focused ultrasound to lift tissue. Sonophoresis research instead investigates how ultrasound can influence skin permeability.",
-    source: "Ultrasound device indications",
-    href: "https://ultherapy.com/app/uploads/2023/08/1015107IFU-Rev-D.pdf",
+    body: "Some aesthetic devices use focused ultrasound to lift tissue.",
+    sources: ["U"],
     x: 1150,
   },
 ] as const;
@@ -136,7 +128,7 @@ function Artwork({
   );
 }
 
-function MarketScenario() {
+function MarketFocus() {
   return (
     <aside
       className="mt-8 rounded-3xl border bg-card p-5 sm:p-7"
@@ -146,7 +138,7 @@ function MarketScenario() {
         {[
           "U.S. professional aesthetic practices",
           "Med spas in six selected states",
-          `≈${equipmentScenario.screenedLocations.toLocaleString("en-US")} preliminarily screened locations`,
+          "Practices with suitable equipment and service fit",
         ].map((item, index) => (
           <li key={item} className="border-t border-teal/60 pt-4">
             <Eyebrow>0{index + 1}</Eyebrow>
@@ -155,41 +147,10 @@ function MarketScenario() {
         ))}
       </ol>
       <p className="mt-5 leading-relaxed text-muted-foreground">
-        The estimate is a starting point for research. Equipment fit and provider demand still need
-        to be established.
+        AmSpa reports that some med spas already offer equipment-assisted facials such as
+        hydradermabrasion.
+        <Cite ids={["F"]} /> Device compatibility and provider demand still need to be established.
       </p>
-      <details className="mt-4 border-t">
-        <summary className="flex min-h-11 cursor-pointer items-center font-semibold underline decoration-primary underline-offset-4">
-          How the screening estimate was calculated
-        </summary>
-        <p className="max-w-3xl leading-relaxed text-muted-foreground">
-          The team applied AmSpa’s reported 57% hydradermabrasion share to its 2023 count of 10,488
-          U.S. med spas, then applied a 70% team suitability assumption and a 44.7% share for
-          California, Florida, Illinois, New Jersey, New York, and Texas from ByteScraper’s
-          directory. Hydradermabrasion serves as a proxy for experience with equipment-assisted
-          facials. The model does not verify individual locations or measure demand.
-        </p>
-        <ul className="mt-2">
-          <li>
-            <a className={sourceClass} href={references.E.url}>
-              AmSpa industry report recap
-            </a>
-          </li>
-          <li>
-            <a className={sourceClass} href={references.F.url}>
-              AmSpa service-mix data
-            </a>
-          </li>
-          <li>
-            <a
-              className={sourceClass}
-              href="https://bytescraper.com/b2b-database/list-of-med-spas-in-united-states"
-            >
-              ByteScraper U.S. medical spa directory
-            </a>
-          </li>
-        </ul>
-      </details>
     </aside>
   );
 }
@@ -201,8 +162,8 @@ function Opportunity() {
         <Section>
           <Eyebrow>The market opportunity</Eyebrow>
           <h1 className="mt-4 max-w-5xl text-balance text-4xl leading-tight sm:text-5xl xl:text-6xl">
-            Professional skincare offers more treatments than ever. But ingredient delivery remains
-            an opportunity for innovation.
+            Professional skincare offers a range of treatments. Ingredient delivery remains an
+            opportunity for innovation.
           </h1>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
             From advanced facials to microneedling and energy-based treatments, providers have many
@@ -236,15 +197,23 @@ function Opportunity() {
           title="Different treatments. Different approaches to the skin."
         />
         <div className="mt-7 grid gap-5 md:grid-cols-2">
-          {treatments.map(({ title, body, source, href, x }) => (
+          {treatments.map(({ title, body, sources, x }) => (
             <article key={title} className="overflow-hidden rounded-3xl border bg-card">
               <Artwork src={landscape} height={650} frame={[x, 260, 358, 154]} alt="" />
               <div className="p-5 sm:p-6">
                 <h3 className="text-balance text-2xl">{title}</h3>
-                <p className="mt-2 leading-relaxed text-muted-foreground">{body}</p>
-                <a className={sourceClass} href={href}>
-                  {source}
-                </a>
+                <p className="mt-2 leading-relaxed text-muted-foreground">
+                  {body}
+                  <Cite ids={sources} />
+                  {x === 1150 && (
+                    <>
+                      {" "}
+                      Sonophoresis research investigates how ultrasound can influence skin
+                      permeability.
+                      <Cite ids={["B"]} />
+                    </>
+                  )}
+                </p>
               </div>
             </article>
           ))}
@@ -276,6 +245,7 @@ function Opportunity() {
                   <p className="mt-2 leading-relaxed text-muted-foreground">
                     Ingredients are applied at the surface. How readily they pass through depends on
                     the ingredient and formulation.
+                    <Cite ids={["A", "K"]} />
                   </p>
                 </div>
               </div>
@@ -289,8 +259,9 @@ function Opportunity() {
                 <div className="p-5">
                   <h3 className="text-2xl">Proposed Cavinova approach</h3>
                   <p className="mt-2 leading-relaxed text-muted-foreground">
-                    Ultrasound could set microbubbles in motion. Whether that improves delivery of
-                    selected ingredients remains a research question.
+                    Under suitable conditions, ultrasound can set responsive microbubbles in motion.
+                    <Cite ids={["B", "P"]} /> Whether that improves delivery of selected ingredients
+                    remains a research question.
                   </p>
                 </div>
               </div>
@@ -330,7 +301,7 @@ function Opportunity() {
               delivery-focused service.
             </p>
           </Heading>
-          <MarketScenario />
+          <MarketFocus />
         </Section>
       </div>
 
@@ -370,6 +341,7 @@ function Opportunity() {
               <dd className="mt-2 leading-relaxed text-muted-foreground">
                 Published studies give Cavinova a starting point for investigating
                 ultrasound-assisted delivery.
+                <Cite ids={["C", "P"]} />
               </dd>
             </div>
             <div className="border-t pt-4">
@@ -414,6 +386,7 @@ function Opportunity() {
           </Button>
         </div>
       </Section>
+      <References ids={["A", "B", "C", "F", "P", "H", "M", "U", "K"]} />
     </>
   );
 }

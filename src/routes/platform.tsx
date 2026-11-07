@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { Diagram, Eyebrow, Section, seo } from "@/components/site";
 import { Button } from "@/components/ui/button";
-import { References } from "@/components/references";
+import { Cite, References } from "@/components/references";
 import { AuthenticationMachine } from "@/components/authentication-machine";
 
 export const Route = createFileRoute("/platform")({
@@ -220,7 +220,7 @@ function Platform() {
         <Section>
           <Heading
             eyebrow="Integrated by design"
-            title="Separated for stability. Delivered at the moment of treatment."
+            title="Separate until dispensing. Designed to support stability."
           >
             <p>
               The proposed system would keep two premeasured, single-use components separate:
@@ -239,7 +239,7 @@ function Platform() {
               conceptLabel={false}
               src="/images/platform/transducer-tip.webp"
               title="Conceptual transducer tip with separate microbubble and active-ingredient pathways"
-              caption="Conceptual product illustration. Final engineering design subject to validation."
+              caption="Concept illustration. The depicted fluid routing, mixing, dispensing accuracy, and ultrasound settings still need engineering and validation."
             />
           </div>
           <FeatureExplorer />
@@ -370,8 +370,8 @@ function Platform() {
           </Link>
         </Button>
         <p className="mt-6 text-sm text-muted-foreground">
-          A published patent application informed aspects of the concept. Cavinova has yet to secure
-          rights to it or validate a working system.
+          John H. Shadduck’s published application US20250073439A1 informed aspects of the concept.
+          <Cite ids={["D"]} /> Cavinova has yet to secure rights to it or validate a working system.
         </p>
       </Section>
       <References ids={["D"]} />

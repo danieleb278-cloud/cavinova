@@ -3,8 +3,7 @@ import { useState } from "react";
 import { ArrowLeft, ArrowRight, ChevronDown, RotateCcw } from "lucide-react";
 import { Section, Eyebrow, seo } from "@/components/site";
 import { Button } from "@/components/ui/button";
-import { References } from "@/components/references";
-import { references } from "@/lib/references";
+import { Cite, References } from "@/components/references";
 import { ScienceMechanism } from "@/components/science-mechanism";
 
 export const Route = createFileRoute("/science")({
@@ -26,7 +25,7 @@ const steps = [
   {
     title: "Acoustic Activation",
     description:
-      "Ultrasound energy interacts with the serum, causing acoustically responsive microbubbles to oscillate.",
+      "Under suitable conditions, ultrasound can make responsive microbubbles oscillate.",
   },
   {
     title: "Microbubble Activity",
@@ -56,7 +55,7 @@ const evidence = [
   {
     title: "Experimental Delivery Research",
     description:
-      "Park and colleagues measured how much ferulic acid passed through excised pig skin in a laboratory setup. After 30 minutes at 2.47 MHz, one test using ultrasound and microbubbles delivered about 3.1 times as much ferulic acid as ultrasound alone. The experiment used a commercial contrast agent. Cavinova’s formulation, device pairing, and performance in people still need to be tested.",
+      "In a Franz diffusion cell with excised pig skin, Park and colleagues measured how much ferulic acid crossed the skin sample. After 30 minutes at 2.47 MHz, a 1:1,000 dilution of Definity microbubbles yielded about 3.1 times as much delivered ferulic acid as ultrasound alone. Cavinova’s formulation, device pairing, and performance in people still need testing.",
     sources: ["P"],
   },
 ] as const;
@@ -99,8 +98,10 @@ function Science() {
             <div className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
               <p>
                 The skin's protective barrier makes it difficult for many substances to penetrate.
+                <Cite ids={["A"]} />
                 Researchers have studied how ultrasound can temporarily influence that barrier, a
                 process known as sonophoresis.
+                <Cite ids={["B", "G"]} />
               </p>
               <p>
                 Cavinova is exploring how combining ultrasound with acoustically responsive
@@ -173,7 +174,10 @@ function Science() {
                   Step {step + 1} of {steps.length}
                 </Eyebrow>
                 <h3 className="mt-2 text-2xl sm:text-3xl">{active.title}</h3>
-                <p className="mt-3 leading-relaxed text-muted-foreground">{active.description}</p>
+                <p className="mt-3 leading-relaxed text-muted-foreground">
+                  {active.description}
+                  {step > 0 && <Cite ids={step < 3 ? ["B", "P"] : ["C", "P"]} />}
+                </p>
               </div>
               <div className="flex flex-wrap gap-2">
                 <Button
@@ -217,6 +221,7 @@ function Science() {
             Cavinova’s approach draws on published studies of ultrasound-assisted skin permeation
             and responsive microbubbles. Results depend on the formulation, acoustic settings, and
             experimental model.
+            <Cite ids={["B", "C", "P"]} />
           </p>
           <div className="mt-8 max-w-4xl divide-y rounded-2xl border bg-card px-5 sm:px-7">
             {evidence.map(({ title, description, sources }) => (
@@ -228,21 +233,10 @@ function Science() {
                     className="size-5 shrink-0 motion-safe:transition group-open:rotate-180"
                   />
                 </summary>
-                <p className="max-w-3xl leading-relaxed text-muted-foreground">{description}</p>
-                <ul className="mb-5 mt-2 space-y-1">
-                  {sources.map((id) => (
-                    <li key={id}>
-                      <a
-                        href={references[id].url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex min-h-11 items-center text-sm font-semibold underline decoration-primary underline-offset-4"
-                      >
-                        {references[id].label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                <p className="mb-5 max-w-3xl leading-relaxed text-muted-foreground">
+                  {description}
+                  <Cite ids={sources} />
+                </p>
               </details>
             ))}
           </div>
@@ -300,7 +294,7 @@ function Science() {
           </Button>
         </Section>
       </div>
-      <References ids={["B", "C", "P"]} />
+      <References ids={["A", "B", "C", "P", "G"]} />
     </>
   );
 }
