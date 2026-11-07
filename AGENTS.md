@@ -14,8 +14,8 @@
 - Public development priorities come from one shared list so Home and Development stay consistent; the legacy commercial URL redirects permanently to Development.
 - Contact display labels map to existing stored category values so public wording can change without weakening database validation.
 - The public sitemap uses the shared router-derived inventory with explicit staticData.sitemap decisions; omit lastmod without authoritative page-specific timestamps so future routes stay accurate.
-- Product Concept image enlargement uses one reusable ImageLightbox with Radix focus management and react-zoom-pan-pinch gestures; thumbnails and original asset URLs stay unchanged to preserve layout and resolution.
+- Public research illustrations use one reusable ImageLightbox with Radix focus management and react-zoom-pan-pinch gestures; preview and enlargement share the same reviewed safe asset URL so unredacted artwork is never exposed.
 - Development roadmap diagrams opt into a shared proportional preview while other diagrams retain their existing sizing; this keeps the three roadmap cards uniform without affecting other content.
 - Before placing an uploaded brand mark, convert it to a transparent, tightly cropped CDN asset (remove the white background via a border-connected flood fill, then un-premultiply against white). Why: opaque white-background uploads show a rectangular seam against the site's tinted glass surfaces; keep the original upload pointer in `src/assets` for reference.
 
-- Public research-stage pages omit legacy product, mechanism and commercial graphics unless an image is verified clean; stored assets remain for reference.
+- A shared research visual inventory contains only clean originals or reviewed safe derivatives; historical originals stay stored for reference so visual richness can return without restoring retired claims.
