@@ -9,9 +9,8 @@ export function ScienceStepper() {
   return <div className="mt-8 grid items-start gap-8 md:grid-cols-[1fr_1.5fr]">
     <div className="space-y-3" aria-label="Illustrated science sequence">
       {scienceSteps.map((item, i) => <Button key={item.title} variant="ghost" aria-pressed={selected === i} aria-controls="science-illustration" onClick={() => setSelected(i)} className={`h-auto w-full justify-start whitespace-normal rounded-lg border p-4 text-left ${selected === i ? "border-primary bg-accent text-primary" : "bg-card"}`}>
-        <span className="mr-4 text-sm tabular-nums">0{i + 1}</span><span className="text-base">{item.title}</span>
+        <span className="mr-4 self-start text-sm tabular-nums">0{i + 1}</span><span className="min-w-0 flex-1"><span className="block text-base">{item.title}</span>{selected === i && <span className="mt-3 block text-sm font-normal leading-relaxed text-muted-foreground" aria-live="polite">{item.description}</span>}</span>
       </Button>)}
-      <p className="pt-3 text-sm leading-relaxed text-muted-foreground" aria-live="polite">{step.description}</p>
     </div>
     <figure id="science-illustration" className="overflow-hidden rounded-lg border bg-card">
       <ImageLightbox key={step.src} src={step.src} title={step.alt} />
