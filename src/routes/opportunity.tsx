@@ -61,10 +61,6 @@ function Opportunity() {
             <Icon aria-hidden className="h-7 w-7 text-primary" />
             <h3 className="mt-5 text-2xl leading-tight">{path.title}</h3>
             <p className="mt-4 leading-relaxed text-muted-foreground">{path.description}</p>
-            {path.title === "Serum only" && <figure className="mt-6">
-              <figcaption className="mb-3 text-sm font-semibold text-teal-deep">Packaging concept</figcaption>
-              <img src={serumPackaging.url} alt="Cavinova dual-chamber squeeze packet concept for manual application." width={1774} height={887} loading="lazy" className="block h-auto w-full rounded-lg object-contain" />
-            </figure>}
           </article>;
         })}
       </div>
@@ -72,8 +68,16 @@ function Opportunity() {
     <section className="bg-accent/50"><Section>
       <Eyebrow>Initial development focus</Eyebrow>
       <h2 className="mt-3 text-4xl">Where we’d start</h2>
-      <p className="mt-5 max-w-4xl text-lg leading-relaxed text-muted-foreground">Our first opportunity is to test serum feasibility. We plan to evaluate formulation and packaging stability, assess how the serum responds with a specific ultrasound device and applicator, and gather feedback from skincare professionals. Those results will guide which path, if any, we pursue.</p>
-      <Link to="/development" className="mt-6 inline-flex items-center gap-2 font-semibold text-primary">See development priorities <ArrowRight className="h-4 w-4" /></Link>
+      <div className="mt-6 grid items-center gap-8 md:grid-cols-2 md:gap-12">
+        <div>
+          <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">We’d start by developing a standalone serum and testing it with a specific ultrasound device and applicator already in use. We’d look at how the serum performs and how it fits into providers’ workflows. If the results support developing a dedicated device, we’d then decide whether to work with an established equipment partner or build it ourselves.</p>
+          <Link to="/development" className="mt-6 inline-flex items-center gap-2 font-semibold text-primary">See development priorities <ArrowRight className="h-4 w-4" /></Link>
+        </div>
+        <figure>
+          <figcaption className="mb-3 text-sm font-semibold text-teal-deep">Packaging concept</figcaption>
+          <img src={serumPackaging.url} alt="Cavinova dual-chamber squeeze packet concept for manual application." width={1774} height={887} loading="lazy" className="block h-auto w-full rounded-lg object-contain" />
+        </figure>
+      </div>
     </Section></section>
   </>;
 }
