@@ -1,4 +1,7 @@
 # Roadmap
+- [ ] Restore original clean visuals and safe adapted artwork on Home, Science and Technology, with accessible enlargement
+- [ ] Add a visual sequence of the four current Development priorities without dates or commercial pathways
+- [ ] Verify artwork and enlarged views on desktop/mobile, contact preservation, public routes and tests; do not publish
 - [x] Replace public commercial/product positioning with research-stage Home, Science, Technology and Development; retain palette, logos, portraits and stored assets
 - [x] Update team/contact copy, citations and shared disclosure; preserve existing contact validation and database category values
 - [x] Redirect /opportunity permanently to /development; update navigation, sharing metadata and the six-page sitemap
