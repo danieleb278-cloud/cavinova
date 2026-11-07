@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import {
   ArrowRight,
   ArrowDown,
@@ -8,13 +8,13 @@ import {
   LockKeyhole,
   ShieldCheck,
   SlidersHorizontal,
-  ScanLine,
   Hand,
   CircleCheck,
 } from "lucide-react";
 import { Diagram, Eyebrow, Section, seo } from "@/components/site";
 import { Button } from "@/components/ui/button";
 import { References } from "@/components/references";
+import { AuthenticationMachine } from "@/components/authentication-machine";
 
 import serumPackaging from "@/assets/Cavinova_Dual_Chamber_Serum_Concept.png.asset.json";
 
@@ -211,151 +211,6 @@ function FeatureExplorer() {
   );
 }
 
-const authentication = {
-  insert: {
-    title: "Insert vials",
-    status: "Awaiting authentication",
-    detail:
-      "Insert the two required consumables. Treatment remains disabled until both are checked.",
-    icon: FlaskConical,
-    tone: "border-white/20 bg-white/5",
-  },
-  scanning: {
-    title: "Authenticating",
-    status: "Checking both consumables",
-    detail: "The concept checks the identity and compatibility of each vial.",
-    icon: ScanLine,
-    tone: "border-teal/60 bg-teal/10",
-  },
-  authorized: {
-    title: "Authorized",
-    status: "Ready for operator start",
-    detail:
-      "Both consumables are recognized. The concept would select the corresponding validated protocol and wait for the provider to start treatment.",
-    icon: CircleCheck,
-    tone: "border-teal/60 bg-teal/15",
-  },
-  locked: {
-    title: "Authentication failed",
-    status: "Treatment locked",
-    detail:
-      "The example active-ingredient vial is unrecognized or incompatible. Ultrasound and automatic dispensing remain disabled.",
-    icon: LockKeyhole,
-    tone: "border-rose/65 bg-rose/15",
-  },
-} as const;
-
-function OperationSequence() {
-  const [state, setState] = useState<keyof typeof authentication>("insert");
-  const [recognized, setRecognized] = useState(true);
-  const current = authentication[state];
-  const Icon = current.icon;
-  const scanning = state === "scanning";
-
-  useEffect(() => {
-    if (!scanning) return;
-    const timer = window.setTimeout(() => setState(recognized ? "authorized" : "locked"), 1450);
-    return () => window.clearTimeout(timer);
-  }, [scanning, recognized]);
-
-  return (
-    <div className="mt-8 overflow-hidden rounded-[2rem] border bg-card shadow-soft">
-      <div className="bg-[#10292e] p-4 text-white sm:p-7">
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/20 pb-4">
-          <span className="font-serif text-2xl">Cavinova</span>
-          <span className="text-xs font-semibold uppercase tracking-widest text-teal">
-            Concept simulation
-          </span>
-        </div>
-        <div className="mt-5 grid gap-4 lg:grid-cols-[1fr_1.1fr]">
-          <div className="grid grid-cols-2 gap-3" aria-label="Required consumables">
-            {["Microbubble component", "Active ingredients"].map((label, index) => {
-              const status =
-                state === "insert"
-                  ? "Awaiting check"
-                  : scanning
-                    ? "Checking"
-                    : state === "locked" && index === 1
-                      ? "Unrecognized"
-                      : "Recognized";
-              return (
-                <div
-                  key={label}
-                  className={`rounded-2xl border p-3 sm:p-5 ${index === 0 ? "border-rose/55 bg-rose/10" : "border-teal/55 bg-teal/10"} ${scanning ? "motion-safe:animate-pulse" : ""}`}
-                >
-                  <FlaskConical
-                    aria-hidden
-                    className={`mb-3 size-7 ${index === 0 ? "text-blush" : "text-teal"}`}
-                  />
-                  <p className="text-sm font-semibold">Vial {index === 0 ? "A" : "B"}</p>
-                  <p className="mt-1 break-words text-sm">{label}</p>
-                  <p className="mt-3 text-sm font-semibold">{status}</p>
-                </div>
-              );
-            })}
-          </div>
-          <div
-            role="status"
-            aria-atomic="true"
-            className={`rounded-2xl border p-4 sm:p-5 ${current.tone}`}
-          >
-            <Icon
-              aria-hidden
-              className={`size-7 ${state === "locked" ? "text-blush" : "text-teal"} ${scanning ? "motion-safe:animate-pulse" : ""}`}
-            />
-            <h3 className="mt-2 text-2xl">{current.title}</h3>
-            <p className="mt-1 font-semibold">{current.status}</p>
-            <p className="mt-2 leading-relaxed text-white/85">{current.detail}</p>
-          </div>
-        </div>
-      </div>
-      <div className="p-4 sm:p-6">
-        <div
-          role="group"
-          aria-label="Choose an authentication scenario"
-          className="flex flex-wrap gap-2"
-        >
-          <Button
-            type="button"
-            disabled={scanning}
-            className={choiceClass}
-            onClick={() => {
-              setRecognized(true);
-              setState("scanning");
-            }}
-          >
-            Try recognized vials
-          </Button>
-          <Button
-            type="button"
-            variant="outline"
-            disabled={scanning}
-            className={choiceClass}
-            onClick={() => {
-              setRecognized(false);
-              setState("scanning");
-            }}
-          >
-            Try an unrecognized vial
-          </Button>
-          <Button
-            type="button"
-            variant="ghost"
-            className={choiceClass}
-            onClick={() => setState("insert")}
-          >
-            Reset simulation
-          </Button>
-        </div>
-        <p className="mt-4 text-sm text-muted-foreground">
-          Illustrates proposed control logic. The interface and authentication capability are
-          conceptual.
-        </p>
-      </div>
-    </div>
-  );
-}
-
 function Platform() {
   return (
     <>
@@ -438,7 +293,7 @@ function Platform() {
               proceed after authentication, or what would stay disabled if a vial is unrecognized.
             </p>
           </Heading>
-          <OperationSequence />
+          <AuthenticationMachine />
         </Section>
       </div>
 
