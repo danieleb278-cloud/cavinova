@@ -63,7 +63,7 @@ function Opportunity() {
             <p className="mt-4 leading-relaxed text-muted-foreground">{path.description}</p>
             {path.title === "Serum only" && <figure className="mt-6">
               <figcaption className="mb-3 text-sm font-semibold text-teal-deep">Packaging concept</figcaption>
-              <img src={serumPackaging.url} alt="Cavinova dual-chamber squeeze packet concept for manual application." width={1536} height={768} loading="lazy" className="block h-auto w-full rounded-lg object-contain" />
+              <img src={serumPackaging.url} alt="Cavinova dual-chamber squeeze packet concept for manual application." width={1774} height={887} loading="lazy" className="block h-auto w-full rounded-lg object-contain" />
             </figure>}
           </article>;
         })}
