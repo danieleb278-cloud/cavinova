@@ -1,4 +1,7 @@
 # Roadmap
+- [ ] Replace public commercial/product positioning with research-stage Home, Science, Technology and Development pages; preserve brand and contact collection
+- [ ] Update team/contact copy, permanent legacy redirect, navigation, sitemap and sharing metadata; retire unused financial modules safely
+- [ ] Verify all public pages, redirect, sitemap, desktop/mobile navigation, contact validation without real submissions, and full tests; do not publish
 - [x] Apply approved editorial citations, shared market arithmetic, purchase/lease calculator separation, and truthful team/contact copy — 29 tests passed; build and six-page desktop/mobile preview verified without publishing or submitting personal test data
 - [x] Fix stored SEO findings: accessible inquiry fields and calculator controls, sized brand sharing image, and sitemap declaration — verified; changes reach the live site on next publication
 - [x] Complete Google Search Console verification and submit the published sitemap — verified under Danielle’s specified Google account; Google received six URLs with no errors or warnings
