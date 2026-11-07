@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { ArrowRight, Droplets, FlaskConical, Layers3 } from "lucide-react";
 import { Eyebrow, Section, seo } from "@/components/site";
+import { OpportunityFlow } from "@/components/opportunity-flow";
 import { Button } from "@/components/ui/button";
 import { Cite, References } from "@/components/references";
 
@@ -63,14 +64,6 @@ const practiceValue = [
     icon: Layers3,
     tone: "bg-card",
   },
-];
-
-const ecosystem = [
-  "Professional practice",
-  "Offers a validated treatment",
-  "Uses a single-use formulation",
-  "Replenishes as demand warrants",
-  "Potential to add formulations",
 ];
 
 function Heading({
@@ -162,14 +155,20 @@ function Opportunity() {
         <Section>
           <Eyebrow>The market opportunity</Eyebrow>
           <h1 className="mt-4 max-w-5xl text-balance text-4xl leading-tight sm:text-5xl xl:text-6xl">
-            Professional skincare offers a range of treatments. Ingredient delivery remains an
-            opportunity for innovation.
+            An established treatment market. A different approach to ingredient delivery.
           </h1>
-          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            From advanced facials to microneedling and energy-based treatments, providers have many
-            options. Cavinova is investigating whether ultrasound and acoustically responsive
-            microbubbles could help deliver selected topical ingredients.
-          </p>
+          <div className="mt-5 max-w-3xl space-y-3 text-lg leading-relaxed text-muted-foreground">
+            <p>
+              Professional aesthetics already supports a range of treatment technologies and
+              specialized skincare services.
+              <Cite ids={["F", "H"]} />
+            </p>
+            <p>
+              Cavinova is investigating whether acoustically responsive formulations and ultrasound
+              can create a differentiated professional offering with recurring consumable demand and
+              longer-term platform potential.
+            </p>
+          </div>
           <div className="mt-7 overflow-hidden rounded-3xl border shadow-soft">
             <div className="sm:hidden">
               <Artwork
@@ -275,6 +274,36 @@ function Opportunity() {
 
       <Section>
         <Heading
+          eyebrow="The Cavinova opportunity"
+          title="From a differentiated treatment to a scalable professional platform."
+        >
+          <p>
+            Cavinova’s opportunity combines an emerging formulation concept informed by published
+            research
+            <Cite ids={["C", "P"]} /> with an established market for technology-enabled aesthetic
+            services.
+          </p>
+          <p>
+            If validated, the approach could support specialized professional treatments, ongoing
+            formulation replenishment, and eventual expansion into a coordinated
+            equipment-and-consumables platform.
+          </p>
+        </Heading>
+        <OpportunityFlow
+          steps={[
+            { title: "Technology", description: "Ultrasound-responsive microbubble formulations." },
+            { title: "Customer", description: "Professional aesthetic practices." },
+            {
+              title: "Recurring business",
+              description: "Premeasured, single-use treatment formulations.",
+            },
+            { title: "Expansion", description: "An intelligent integrated treatment platform." },
+          ]}
+        />
+      </Section>
+
+      <Section>
+        <Heading
           eyebrow="The professional value proposition"
           title="A differentiated treatment needs to create value in the treatment room."
         />
@@ -307,82 +336,27 @@ function Opportunity() {
 
       <Section>
         <Heading
-          eyebrow="The business opportunity"
-          title="The opportunity extends beyond a single treatment."
+          eyebrow="Investment & strategic interest"
+          title="Interested in helping shape what’s next in professional skincare?"
         >
           <p>
-            If validation supports adoption, each appointment would use a premeasured, single-use
-            formulation. Repeat appointments could drive replenishment and, over time, support
-            additional formulations and an integrated system.
+            Cavinova welcomes conversations with prospective investors, strategic partners, and
+            industry collaborators interested in evaluating an early-stage, science-driven skincare
+            technology opportunity.
           </p>
-        </Heading>
-        <ol
-          aria-label="Proposed treatment and replenishment cycle"
-          className="mt-7 grid gap-3 lg:grid-cols-5"
-        >
-          {ecosystem.map((step, index) => (
-            <li key={step} className="rounded-xl border border-teal/40 bg-secondary/35 p-4">
-              <Eyebrow>0{index + 1}</Eyebrow>
-              <p className="mt-2 font-medium">{step}</p>
-            </li>
-          ))}
-        </ol>
-      </Section>
-
-      <div className="bg-secondary/35">
-        <Section>
-          <Heading
-            eyebrow="The commercial thesis"
-            title="A delivery-focused innovation in an established treatment market."
-          />
-          <dl className="mt-7 grid gap-5 md:grid-cols-3">
-            <div className="border-t pt-4">
-              <dt className="font-serif text-2xl">Scientific foundation</dt>
-              <dd className="mt-2 leading-relaxed text-muted-foreground">
-                Published studies give Cavinova a starting point for investigating
-                ultrasound-assisted delivery.
-                <Cite ids={["C", "P"]} />
-              </dd>
-            </div>
-            <div className="border-t pt-4">
-              <dt className="font-serif text-2xl">Professional application</dt>
-              <dd className="mt-2 leading-relaxed text-muted-foreground">
-                The concept is aimed at practices already familiar with specialized skincare
-                services.
-              </dd>
-            </div>
-            <div className="border-t pt-4">
-              <dt className="font-serif text-2xl">Long-term platform potential</dt>
-              <dd className="mt-2 leading-relaxed text-muted-foreground">
-                A validated formulation could become the basis for an integrated system and
-                recurring consumables.
-              </dd>
-            </div>
-          </dl>
-          <p className="mt-5 leading-relaxed text-muted-foreground">
-            Scientific, regulatory, customer, and commercial questions remain open.
-          </p>
-        </Section>
-      </div>
-
-      <Section>
-        <Heading
-          eyebrow="Connect with Cavinova"
-          title="The next opportunity in skincare may be how ingredients are delivered."
-        >
           <p>
-            We welcome conversations with aesthetic professionals, researchers, and potential
-            development partners about what would make this approach worth pursuing.
+            We’re exploring the scientific, product, and commercial foundations required to advance
+            the concept.
           </p>
         </Heading>
         <div className="mt-6 flex flex-wrap gap-3">
           <Button asChild className="min-h-11 rounded-full">
             <Link to="/contact">
-              Connect With Cavinova <ArrowRight aria-hidden />
+              Discuss the Opportunity <ArrowRight aria-hidden />
             </Link>
           </Button>
           <Button asChild variant="outline" className="min-h-11 rounded-full">
-            <Link to="/science">Explore the Science</Link>
+            <Link to="/platform">Explore the Product Vision</Link>
           </Button>
         </div>
       </Section>

@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Droplets, Hand, Waves } from "lucide-react";
 import { Eyebrow, Section, seo } from "@/components/site";
+import { Button } from "@/components/ui/button";
+import { OpportunityFlow } from "@/components/opportunity-flow";
 import { ImageLightbox } from "@/components/image-lightbox";
 import { Cite, References, ReferencesLink } from "@/components/references";
 
@@ -304,6 +306,64 @@ function Home() {
         </Section>
       </div>
 
+      <div className="border-y bg-secondary/25">
+        <Section>
+          <Eyebrow>Why Cavinova</Eyebrow>
+          <h2 className="mt-3 max-w-4xl text-balance text-4xl leading-tight sm:text-5xl">
+            A scientific opportunity with the potential to become a professional skincare platform.
+          </h2>
+          <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
+            Cavinova is exploring a differentiated ingredient-delivery approach for an established
+            professional aesthetics market. The proposed business begins with specialized
+            acoustically responsive formulations and could expand into an intelligent integrated
+            treatment platform built around ongoing professional use.
+          </p>
+          <OpportunityFlow
+            steps={[
+              {
+                title: "Scientific Differentiation",
+                description: (
+                  <>
+                    An ultrasound-responsive microbubble formulation informed by published delivery
+                    research.
+                    <Cite ids={["C", "P"]} />
+                  </>
+                ),
+              },
+              {
+                title: "Existing Professional Market",
+                description: (
+                  <>
+                    Aesthetic practices already offer specialized technology-assisted treatments.
+                    <Cite ids={["F"]} />
+                  </>
+                ),
+              },
+              {
+                title: "Recurring Consumables Potential",
+                description:
+                  "Premeasured, single-use formulations could support replenishment if provider adoption and treatment demand are demonstrated.",
+              },
+              {
+                title: "Integrated Platform Vision",
+                description:
+                  "A future system could combine automated dispensing, authentication, configuration, and proposed safeguards.",
+              },
+            ]}
+          />
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button asChild className="min-h-11 rounded-full">
+              <Link to="/opportunity">
+                Explore the Opportunity <ArrowRight aria-hidden />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" className="min-h-11 rounded-full">
+              <Link to="/contact">Discuss Cavinova</Link>
+            </Button>
+          </div>
+        </Section>
+      </div>
+
       <Section>
         <Eyebrow>Explore Cavinova</Eyebrow>
         <h2 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl">
@@ -345,7 +405,7 @@ function Home() {
       </Section>
 
       <div id="homepage-references" className="scroll-mt-24 [&_ul]:space-y-3 [&_ul]:text-base">
-        <References ids={["A", "C", "P", "G"]} />
+        <References ids={["A", "C", "F", "P", "G"]} />
       </div>
     </>
   );
