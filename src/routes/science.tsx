@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { PageHero, Section, Eyebrow, seo } from "@/components/site";
 import { Cite, References } from "@/components/references";
+import { ScienceStepper } from "@/components/science-stepper";
 
 export const Route = createFileRoute("/science")({
   staticData: { sitemap: true },
@@ -24,11 +25,17 @@ function Science() {
       </div>
     </Section>
     <section className="bg-secondary/35"><Section>
+      <Eyebrow>Illustrated research concept</Eyebrow>
+      <h2 className="mt-3 text-4xl">Exploring an acoustic pathway</h2>
+      <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">A conceptual sequence connecting topical application, acoustic exposure and questions about delivery. Published laboratory findings do not validate this Cavinova configuration.<Cite ids={["P"]} /></p>
+      <ScienceStepper />
+    </Section></section>
+    <Section>
       <Eyebrow>Technical reference</Eyebrow>
       <h2 className="mt-3 text-3xl">John H. Shadduck’s published application</h2>
       <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">John H. Shadduck’s published U.S. patent application US20250073439A1 is a technical reference describing ultrasound and responsive carriers.<Cite ids={["D"]} /> Cavinova has not secured ownership or licensing rights to that application.</p>
       <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">This reference informs the concept; it does not demonstrate performance of Cavinova’s formulation or proposed use.</p>
-    </Section></section>
+    </Section>
     <Section><Eyebrow>From research to feasibility planning</Eyebrow><h2 className="mt-3 text-3xl">Evaluate the configuration, not just the idea</h2>
       <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">Formulation stability, packaging, acoustic output and bubble response need to be considered together. Compatibility must be established for each configuration.</p>
       <Link to="/platform" className="mt-5 inline-flex items-center gap-2 font-semibold text-primary">Explore the technology <ArrowRight className="h-4 w-4" /></Link>

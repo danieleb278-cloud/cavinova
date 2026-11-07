@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import { Section, Eyebrow, seo } from "@/components/site";
+import { Section, Eyebrow, Diagram, seo } from "@/components/site";
 import { Button } from "@/components/ui/button";
 import { developmentPriorities } from "@/lib/development";
 import wordmark from "@/assets/cavinova_wordmark.png.asset.json";
+import { researchVisuals } from "@/lib/research-visuals";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
@@ -36,6 +37,10 @@ function Home() {
         <h2 className="text-4xl leading-tight">A formulation. An applicator. Questions to investigate.</h2>
         <div><p className="text-lg leading-relaxed text-muted-foreground">The concept pairs a candidate microbubble formulation with an ultrasound applicator. Understanding their interaction means evaluating the formulation and acoustic output together, not assuming that one configuration works with another.</p>
         <Link to="/platform" className="mt-5 inline-flex items-center gap-2 font-semibold text-primary">Explore the technology <ArrowRight className="h-4 w-4" /></Link></div>
+      </div>
+      <div className="mt-10">
+        <Eyebrow>Concept illustration</Eyebrow>
+        <div className="mt-4"><Diagram src={researchVisuals.handheld} title="3D handpiece concept" caption="A proposed ergonomic ultrasound applicator with integrated controls, a replaceable tip and a cartridge interface. An illustration, not a working prototype." enlarge conceptLabel={false} /></div>
       </div>
     </Section>
     <section className="bg-secondary/35">

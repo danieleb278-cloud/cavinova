@@ -9,9 +9,9 @@ export function ImageLightbox({ src, title, proportionalPreview = false }: { src
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        <Button variant="ghost" className="relative block h-auto w-full cursor-zoom-in rounded-none p-0 hover:bg-transparent" aria-label={`Enlarge ${title}`}>
+        <Button variant="ghost" className="relative block h-auto w-full cursor-zoom-in whitespace-normal rounded-none p-0 hover:bg-transparent" aria-label={`Enlarge ${title}`}>
           <img src={src} alt={title} className={proportionalPreview ? "block aspect-[3/2] w-full object-contain" : "block w-full"} loading="lazy" />
-          <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-md border bg-card/95 px-2.5 py-1.5 text-xs text-card-foreground shadow-soft">
+          <span className="flex w-full items-center justify-center gap-1.5 border-t bg-card px-2.5 py-2 text-xs text-card-foreground">
             <ZoomIn aria-hidden="true" />Click to enlarge
           </span>
         </Button>
