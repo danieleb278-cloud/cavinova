@@ -1,60 +1,141 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
-import { Section, Eyebrow, Diagram, seo } from "@/components/site";
-import { Button } from "@/components/ui/button";
-import { developmentPriorities } from "@/lib/development";
+import { ArrowRight, ShieldAlert, Waves, Cpu, Droplets, Stethoscope } from "lucide-react";
+import { Section, Eyebrow, Diagram, diagrams, seo } from "@/components/site";
+import { Cite, References } from "@/components/references";
+import { TAM_LOCATIONS } from "@/lib/market";
+import { CONSOLE_PRICE, KIT_COST, PATIENT_PRICE } from "@/lib/economics";
 import wordmark from "@/assets/cavinova_wordmark.png.asset.json";
-import { researchVisuals } from "@/lib/research-visuals";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
-  head: () => seo("Cavinova — Exploring Ultrasound-Assisted Skincare", "A Rutgers Master of Business and Science capstone exploring ultrasound and acoustically responsive formulations at the concept and feasibility-planning stage."),
+  head: () => seo("Cavinova — Advanced Acoustic Aesthetics", "A conceptual Rutgers MBS Capstone venture exploring ultrasound-assisted topical skincare delivery with acoustically responsive microbubbles."),
   component: Home,
 });
 
+const btn = "inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition";
+
 function Home() {
-  return <>
-    <section className="bg-hero">
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 md:grid-cols-2 md:py-20">
-        <div>
-          <Eyebrow>Rutgers MBS Capstone · Research-stage concept</Eyebrow>
-          <h1 className="mt-5 text-5xl leading-tight md:text-6xl">Exploring ultrasound-assisted skincare.</h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">Cavinova is a Rutgers Master of Business and Science capstone project exploring how ultrasound and acoustically responsive formulations might influence topical ingredient delivery. Our work is at the concept and feasibility-planning stage.</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild className="h-auto whitespace-normal rounded-full px-6 py-3"><Link to="/science">Explore the science <ArrowRight /></Link></Button>
-            <Button asChild variant="outline" className="h-auto whitespace-normal rounded-full px-6 py-3"><Link to="/development">See development priorities</Link></Button>
+  return (
+    <>
+      <section className="relative overflow-hidden bg-hero">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 md:grid-cols-2 md:py-28">
+          <div>
+            <span className="inline-block rounded-full border border-teal/50 bg-card px-4 py-1.5 text-xs font-semibold tracking-wide text-teal-deep">
+              Conceptual Venture • Rutgers MBS Capstone
+            </span>
+            <h1 className="mt-6 text-5xl leading-[1.05] md:text-7xl">
+              Sound, tuned to <em className="text-primary">unlock</em> the skin barrier.
+            </h1>
+            <p className="mt-6 max-w-xl text-lg text-muted-foreground">
+              The skin barrier limits the penetration of many topical ingredients. Cavinova is a proposed professional
+              skincare platform pairing ultrasound with acoustically responsive microbubble serums — exploring a non-invasive,
+              needle-free way to help targeted actives move beyond the stratum corneum, with tolerability and recovery time requiring future evaluation.
+            </p>
+            <p className="mt-4 text-xs uppercase tracking-[0.35em] text-teal-deep">Science in Harmony with Skin</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link to="/science" className={`${btn} bg-primary text-primary-foreground hover:opacity-90`}>Explore the science <ArrowRight className="h-4 w-4" /></Link>
+              <Link to="/opportunity" className={`${btn} border bg-card hover:border-primary`}>View the opportunity</Link>
+            </div>
+          </div>
+          <div className="relative order-first mx-auto w-full max-w-2xl md:order-none">
+            <span aria-hidden className="pointer-events-none absolute -inset-6 rounded-[3rem] bg-blush/30 blur-3xl" />
+            <figure className="glass relative overflow-hidden rounded-[2.25rem] p-6 shadow-soft ring-1 ring-rose/20 md:p-9">
+              <span aria-hidden className="pointer-events-none absolute -bottom-10 -left-10 h-2/3 w-2/3 rounded-full bg-mint/60 blur-3xl" />
+              <span aria-hidden className="pointer-events-none absolute -right-8 -top-8 h-1/2 w-1/2 rounded-full bg-accent blur-3xl" />
+              <span aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-linear-to-b from-card/80 to-transparent" />
+              <img
+                src={wordmark.url}
+                alt="Cavinova — Advanced Acoustic Aesthetics"
+                width={1686}
+                height={722}
+                className="relative h-auto w-full"
+              />
+              <figcaption className="relative mt-4 text-center text-[0.68rem] font-semibold uppercase tracking-[0.32em] text-teal-deep">
+                Science in Harmony with Skin
+              </figcaption>
+            </figure>
           </div>
         </div>
-        <figure className="glass order-first overflow-hidden rounded-3xl p-6 shadow-soft md:order-none md:p-9">
-          <img src={wordmark.url} alt="Cavinova — Advanced Acoustic Aesthetics" width={1686} height={722} className="h-auto w-full" />
-          <figcaption className="mt-5 text-center text-xs font-semibold uppercase tracking-wide text-muted-foreground">Science in Harmony with Skin</figcaption>
-        </figure>
-      </div>
-    </section>
-    <Section>
-      <Eyebrow>Our research focus</Eyebrow>
-      <div className="mt-4 grid gap-8 md:grid-cols-2">
-        <h2 className="text-4xl leading-tight">A formulation. An applicator. Questions to investigate.</h2>
-        <div><p className="text-lg leading-relaxed text-muted-foreground">The concept pairs a candidate microbubble formulation with an ultrasound applicator. Understanding their interaction means evaluating the formulation and acoustic output together, not assuming that one configuration works with another.</p>
-        <Link to="/platform" className="mt-5 inline-flex items-center gap-2 font-semibold text-primary">Explore the technology <ArrowRight className="h-4 w-4" /></Link></div>
-      </div>
-      <div className="mt-10">
-        <Eyebrow>Concept illustration</Eyebrow>
-        <div className="mt-4"><Diagram src={researchVisuals.handheld} title="3D handpiece concept" caption="A proposed ergonomic ultrasound applicator with integrated controls, a replaceable tip and a cartridge interface. An illustration, not a working prototype." enlarge conceptLabel={false} /></div>
-      </div>
-    </Section>
-    <section className="bg-secondary/35">
-      <Section>
-        <Eyebrow>Development priorities</Eyebrow>
-        <h2 className="mt-3 text-4xl">What we need to learn next</h2>
-        <div className="mt-8 grid gap-x-10 gap-y-8 md:grid-cols-2">
-          {developmentPriorities.map((priority, i) => <article key={priority.title} className="border-t pt-5">
-            <p className="text-xs font-semibold text-muted-foreground">0{i + 1} · Planned area</p><h3 className="mt-2 text-2xl">{priority.title}</h3><p className="mt-3 leading-relaxed text-muted-foreground">{priority.description}</p>
-          </article>)}
+      </section>
+
+      <Section className="grid gap-10 md:grid-cols-2">
+        <div className="rounded-3xl border bg-card p-8">
+          <Eyebrow>The core challenge</Eyebrow>
+          <h2 className="mt-3 text-3xl">The skin barrier limits topical delivery.</h2>
+          <p className="mt-4 text-muted-foreground">
+            The skin's outermost layer — tightly packed corneocytes in a lipid matrix — is an effective barrier. Penetration of topical ingredients, including larger molecules such as hyaluronic acid and peptides, depends on molecular properties, formulation and skin condition.<Cite ids={["A"]} />
+          </p>
         </div>
-        <Link to="/development" className="mt-8 inline-flex items-center gap-2 font-semibold text-primary">See development priorities <ArrowRight className="h-4 w-4" /></Link>
-        <div><Link to="/opportunity" className="mt-5 inline-flex items-center gap-2 font-semibold text-primary">Explore the opportunity <ArrowRight className="h-4 w-4" /></Link></div>
+        <div className="rounded-3xl border bg-secondary/50 p-8">
+          <Eyebrow>The proposed solution</Eyebrow>
+          <h2 className="mt-3 text-3xl">Sonophoresis meets acoustic cavitation.</h2>
+          <p className="mt-4 text-muted-foreground">
+            Ultrasound-assisted delivery and microbubble effects have been studied in experimental models. Cavinova proposes pairing ultrasound with microbubble serums; microbubble activity may alter barrier permeability depending on formulation and acoustic settings. This has not been established for Cavinova.<Cite ids={["A", "C"]} />
+          </p>
+        </div>
       </Section>
-    </section>
-  </>;
+
+      <Section>
+        <Eyebrow>Three-pillar synergy</Eyebrow>
+        <h2 className="mt-3 text-4xl">One integrated treatment system</h2>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {[
+            { icon: Cpu, t: "Advanced Ultrasound Applicator", d: "Piezoelectric handpiece and console delivering regulated acoustic energy." },
+            { icon: Droplets, t: "Bio-Acoustic Serum Formulations", d: "Microbubble cartridges paired with hydration, brightening and rejuvenation actives." },
+            { icon: Stethoscope, t: "Professional In-Clinic Protocol", d: "Proposed provider-administered workflow for med spas and dermatology practices." },
+          ].map(({ icon: I, t, d }) => (
+            <div key={t} className="rounded-3xl border bg-card p-7 shadow-soft">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-accent text-primary"><I className="h-5 w-5" /></span>
+              <h3 className="mt-5 text-2xl">{t}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{d}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section>
+        <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.4fr]">
+          <div>
+            <Eyebrow>Product concept preview</Eyebrow>
+            <h2 className="mt-3 text-4xl">A complete, customizable treatment system</h2>
+            <p className="mt-4 text-muted-foreground">Handheld applicator, click-in microbubble vials and customizable ingredient concentrates — visualized as a concept only.</p>
+            <Link to="/platform" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary">See the full product concept <ArrowRight className="h-4 w-4" /></Link>
+          </div>
+          <Diagram src={diagrams.handheld} title="Handheld treatment system" caption="Conceptual illustration; proposed features require engineering validation." />
+        </div>
+      </Section>
+
+      <Section>
+        <div className="rounded-[2rem] bg-foreground p-10 text-background md:p-14">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-mint">Commercial snapshot (planning targets)</p>
+          <div className="mt-8 grid gap-8 md:grid-cols-4">
+            {[[`$${CONSOLE_PRICE.toLocaleString("en-US")}`, "Illustrative console price"], [`$${KIT_COST}`, "Illustrative consumable kit price"], [`$${PATIENT_PRICE}`, "Illustrative patient treatment price"], [`≈${TAM_LOCATIONS.toLocaleString("en-US")}`, "Potentially addressable U.S. medical-spa locations"]].map(([v, l]) => (
+              <div key={l}><p className="font-serif text-5xl text-blush">{v}</p><p className="mt-2 text-sm opacity-80">{l}</p></div>
+            ))}
+          </div>
+          <p className="mt-8 text-sm opacity-80">A razor-and-blade model: equipment adoption paired with recurring single-use consumable revenue — the combination that makes the device-plus-formulation pairing commercially interesting.</p>
+          <p className="mt-4 text-xs opacity-60">Preliminary planning estimates from the Cavinova MBS business plan — illustrative financial assumptions, subject to validation. Location count is based on team screening assumptions; it is not a confirmed eligible-provider count.</p>
+        </div>
+      </Section>
+
+      <Section className="grid gap-5 md:grid-cols-3">
+        {([["/science", "Science & Technology", "How sonophoresis and cavitation work."], ["/platform", "Product Concept", "Hardware, consumables and workflow."], ["/opportunity", "Commercial Opportunity", "Market sizing, unit economics, roadmap."]] as const).map(([to, t, d]) => (
+          <Link key={to} to={to} className="group rounded-3xl border bg-card p-7 transition hover:border-primary">
+            <Waves className="h-5 w-5 text-teal" />
+            <h3 className="mt-4 text-2xl">{t}</h3>
+            <p className="mt-1 text-sm text-muted-foreground">{d}</p>
+            <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">Explore <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
+          </Link>
+        ))}
+      </Section>
+
+      <Section className="pt-0">
+        <p className="flex items-start gap-3 rounded-2xl border border-dashed border-rose/50 bg-accent/50 p-5 text-sm text-muted-foreground">
+          <ShieldAlert className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+          Cavinova is a hypothetical, pre-commercial academic venture. Products have not been launched, and the team has not secured ownership or licensing rights to the underlying patent application.
+        </p>
+      </Section>
+      <References ids={["A", "C"]} />
+    </>
+  );
 }
