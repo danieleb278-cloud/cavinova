@@ -53,6 +53,7 @@ function Home() {
           </article>)}
         </div>
         <Link to="/development" className="mt-8 inline-flex items-center gap-2 font-semibold text-primary">See development priorities <ArrowRight className="h-4 w-4" /></Link>
+        <div><Link to="/opportunity" className="mt-5 inline-flex items-center gap-2 font-semibold text-primary">Explore the opportunity <ArrowRight className="h-4 w-4" /></Link></div>
       </Section>
     </section>
   </>;
