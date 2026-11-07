@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DevelopmentRouteImport } from './routes/development'
 import { Route as OpportunityRouteImport } from './routes/opportunity'
 import { Route as PlatformRouteImport } from './routes/platform'
 import { Route as ScienceRouteImport } from './routes/science'
@@ -25,6 +26,11 @@ const IndexRoute = IndexRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevelopmentRoute = DevelopmentRouteImport.update({
+  id: '/development',
+  path: '/development',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OpportunityRoute = OpportunityRouteImport.update({
@@ -56,6 +62,7 @@ const TeamRoute = TeamRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
+  '/development': typeof DevelopmentRoute
   '/opportunity': typeof OpportunityRoute
   '/platform': typeof PlatformRoute
   '/science': typeof ScienceRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
+  '/development': typeof DevelopmentRoute
   '/opportunity': typeof OpportunityRoute
   '/platform': typeof PlatformRoute
   '/science': typeof ScienceRoute
@@ -75,6 +83,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
+  '/development': typeof DevelopmentRoute
   '/opportunity': typeof OpportunityRoute
   '/platform': typeof PlatformRoute
   '/science': typeof ScienceRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/contact'
+    | '/development'
     | '/opportunity'
     | '/platform'
     | '/science'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/contact'
+    | '/development'
     | '/opportunity'
     | '/platform'
     | '/science'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/contact'
+    | '/development'
     | '/opportunity'
     | '/platform'
     | '/science'
@@ -114,6 +126,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactRoute: typeof ContactRoute
+  DevelopmentRoute: typeof DevelopmentRoute
   OpportunityRoute: typeof OpportunityRoute
   PlatformRoute: typeof PlatformRoute
   ScienceRoute: typeof ScienceRoute
@@ -135,6 +148,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/development': {
+      id: '/development'
+      path: '/development'
+      fullPath: '/development'
+      preLoaderRoute: typeof DevelopmentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/opportunity': {
@@ -178,6 +198,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactRoute: ContactRoute,
+  DevelopmentRoute: DevelopmentRoute,
   OpportunityRoute: OpportunityRoute,
   PlatformRoute: PlatformRoute,
   ScienceRoute: ScienceRoute,
