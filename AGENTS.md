@@ -12,6 +12,7 @@
 ## Rules
 - Scientific citations use shared reference metadata and reusable inline/page reference components so links stay consistent across pages.
 - Public development priorities come from one shared list so Home and Development stay consistent; Opportunity and Development remain separate public routes with inline cross-links and explicit sitemap inclusion.
+- Opportunity scenario inputs and derived equipment-location counts live in one shared module with numerical regression tests so public planning arithmetic cannot drift or inherit retired funnel inputs.
 - Contact display labels map to existing stored category values so public wording can change without weakening database validation.
 - The public sitemap uses the shared router-derived inventory with explicit staticData.sitemap decisions; omit lastmod without authoritative page-specific timestamps so future routes stay accurate.
 - Public research illustrations use one reusable ImageLightbox with Radix focus management and react-zoom-pan-pinch gestures; preview and enlargement share the same reviewed safe asset URL so unredacted artwork is never exposed.
