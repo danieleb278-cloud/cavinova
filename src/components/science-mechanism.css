@@ -1,0 +1,59 @@
+@media (prefers-reduced-motion: no-preference) {
+  .science-wave {
+    animation: science-wave-arrive 1.2s ease-out 2 both;
+  }
+  .science-bubble-soft {
+    animation: science-pulse 1.4s ease-in-out 2;
+  }
+  .science-bubble {
+    animation: science-pulse 1s ease-in-out 3;
+  }
+  .science-ripple {
+    animation: science-ripple-expand 1.35s ease-out 2;
+  }
+  .science-ingredient {
+    animation: science-ingredient-move 1.8s ease-in-out both;
+  }
+}
+
+@keyframes science-wave-arrive {
+  from {
+    transform: translateY(-12px);
+    opacity: 0.18;
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes science-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.13, 0.92);
+  }
+  70% {
+    transform: scale(0.96, 1.06);
+  }
+}
+@keyframes science-ripple-expand {
+  from {
+    transform: scale(0.72);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(1.18);
+    opacity: 0.18;
+  }
+}
+@keyframes science-ingredient-move {
+  from {
+    transform: translateY(var(--science-travel));
+    opacity: 0.68;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -1,113 +1,306 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { CheckCircle2, AlertTriangle, ArrowRight } from "lucide-react";
-import { PageHero, Section, Eyebrow, Diagram, diagrams, seo } from "@/components/site";
+import { ArrowLeft, ArrowRight, ChevronDown, RotateCcw } from "lucide-react";
+import { Section, Eyebrow, seo } from "@/components/site";
 import { Button } from "@/components/ui/button";
-import { Cite, References } from "@/components/references";
-import stepOne from "@/assets/science-step-1.png.asset.json";
-import stepTwo from "@/assets/science-step-2.png.asset.json";
-import stepThree from "@/assets/science-step-3.png.asset.json";
-import stepFour from "@/assets/science-step-4.png.asset.json";
+import { References } from "@/components/references";
+import { references } from "@/lib/references";
+import { ScienceMechanism } from "@/components/science-mechanism";
 
 export const Route = createFileRoute("/science")({
   staticData: { sitemap: true },
-  head: () => seo("Science & Technology — Cavinova", "Explore published sonophoresis and microbubble research alongside the unvalidated Cavinova acoustic topical-delivery concept."),
+  head: () =>
+    seo(
+      "Science & Technology — Cavinova",
+      "Explore the proposed interaction between ultrasound, microbubbles, and the skin barrier, the published evidence, and what Cavinova still needs to test.",
+    ),
   component: Science,
 });
 
 const steps = [
-  { t: "Topical Application", d: "A microbubble-infused active serum — hyaluronic acid, antioxidants and peptides — is applied to the treatment area." },
-  { t: "Acoustic Activation", d: "A controlled ultrasound handpiece delivers regulated acoustic energy into the serum layer." },
-  { t: "Oscillation & Cavitation", d: "Microbubble activity may alter barrier permeability depending on formulation and acoustic settings; this mechanism has not been established for Cavinova." },
-  { t: "Proposed Enhanced Permeation", d: "Enhanced ingredient permeation is proposed, not established for Cavinova. Formulation, acoustic settings, tolerability and recovery time require future evaluation." },
-];
+  {
+    title: "Topical Application",
+    description:
+      "A proposed serum containing acoustically responsive microbubbles and selected active ingredients is applied to the skin surface.",
+  },
+  {
+    title: "Acoustic Activation",
+    description:
+      "Ultrasound energy interacts with the serum, causing acoustically responsive microbubbles to oscillate.",
+  },
+  {
+    title: "Microbubble Activity",
+    description:
+      "Depending on acoustic conditions, microbubble activity can produce localized mechanical effects that may influence the skin barrier.",
+  },
+  {
+    title: "Potential Enhanced Delivery",
+    description:
+      "Published research suggests these mechanisms can increase skin permeability under certain conditions, potentially supporting ingredient delivery. Cavinova's specific formulation has not yet been validated.",
+  },
+] as const;
 
-const stepImages = [
-  { src: stepOne.url, alt: "Topical application concept: microbubble serum above the stratum corneum and viable epidermis." },
-  { src: stepTwo.url, alt: "Acoustic activation concept: an ultrasound handpiece directs regulated acoustic energy toward the serum layer." },
-  { src: stepThree.url, alt: "Oscillation and cavitation concept: acoustically activated microbubbles at the skin barrier." },
-  { src: stepFour.url, alt: "Enhanced permeation concept: arrows depict proposed transport through the stratum corneum toward viable epidermis." },
-];
+const evidence = [
+  {
+    title: "Sonophoresis",
+    description:
+      "Researchers have studied whether ultrasound can help substances pass through skin. Under specific experimental conditions, ultrasound increased skin permeability. The response depends on the ultrasound settings and the substance being studied.",
+    sources: ["B"],
+  },
+  {
+    title: "Acoustic Cavitation",
+    description:
+      "Tiny gas bubbles can expand and contract in response to ultrasound. This motion can create small flows and mechanical forces near the skin surface. Researchers are studying how these effects can change how readily ingredients pass through the outer layer.",
+    sources: ["B", "C"],
+  },
+  {
+    title: "Experimental Delivery Research",
+    description:
+      "Park and colleagues measured how much ferulic acid passed through excised pig skin in a laboratory setup. After 30 minutes at 2.47 MHz, one test using ultrasound and microbubbles delivered about 3.1 times as much ferulic acid as ultrasound alone. The experiment used a commercial contrast agent. Cavinova’s formulation, device pairing, and performance in people still need to be tested.",
+    sources: ["P"],
+  },
+] as const;
 
-function Visual({ step }: { step: number }) {
-  const image = stepImages[step - 1] ?? stepImages[0];
-  if (!image) return null;
-  return <img src={image.src} alt={image.alt} width={1448} height={1086} className="block aspect-[4/3] w-full object-contain" />;
-}
+const challenges = [
+  [
+    "Formulation Stability",
+    "Can the microbubbles remain functional during formulation, storage, and application?",
+  ],
+  [
+    "Acoustic Compatibility",
+    "Which ultrasound frequencies, intensities, and operating conditions produce the desired response?",
+  ],
+  [
+    "Ingredient Delivery",
+    "Does the combined approach meaningfully improve delivery of selected active ingredients under controlled testing conditions?",
+  ],
+  [
+    "Safety",
+    "Can the intended permeability effects be achieved without unacceptable tissue effects?",
+  ],
+  [
+    "Reproducibility",
+    "Can the formulation and treatment conditions consistently produce comparable results?",
+  ],
+];
 
 function Science() {
-  const [s, setS] = useState(1);
+  const [step, setStep] = useState(0);
+  const active = steps[step];
   return (
     <>
-      <PageHero eyebrow="Science & Technology" title="Exploring an acoustic pathway">
-        Low-frequency ultrasound has been studied for sonophoresis. Frequency and beam focusing are different characteristics; this literature does not establish performance of Cavinova’s proposed system.<Cite ids={["A", "B"]} />
-      </PageHero>
+      <div className="bg-hero">
+        <Section className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+          <div>
+            <Eyebrow>The science behind Cavinova</Eyebrow>
+            <h1 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl xl:text-6xl">
+              Can sound change how ingredients move through skin?
+            </h1>
+            <div className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
+              <p>
+                The skin's protective barrier makes it difficult for many substances to penetrate.
+                Researchers have studied how ultrasound can temporarily influence that barrier, a
+                process known as sonophoresis.
+              </p>
+              <p>
+                Cavinova is exploring how combining ultrasound with acoustically responsive
+                microbubbles could create a different approach to topical ingredient delivery.
+              </p>
+            </div>
+            <Button asChild className="mt-6 min-h-11 rounded-full text-base">
+              <a href="#mechanism">
+                Explore the mechanism <ArrowRight aria-hidden />
+              </a>
+            </Button>
+          </div>
+          <img
+            src="/images/home/acoustic-waves.webp"
+            alt="Concept illustration of turquoise sound waves approaching pink microbubbles at the skin surface."
+            width={1672}
+            height={941}
+            className="w-full rounded-3xl border shadow-soft"
+          />
+        </Section>
+      </div>
 
-      <Section className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {[
-          { t: "Stratum corneum barrier", d: "Corneocytes in a lamellar lipid matrix form a principal barrier to topical penetration.", ids: ["A"] as const },
-          { t: "Frequency & beam focusing", d: "Frequency describes acoustic oscillation rate; focusing describes beam geometry. Low-frequency sonophoresis and the proposed low-MHz patent embodiments are not interchangeable.", ids: ["A", "B", "D"] as const },
-          { t: "Sonophoresis", d: "Ultrasound-enhanced molecular transport across skin is documented in published research.", ids: ["A", "B"] as const },
-          { t: "Acoustic cavitation", d: "Bubble activity can affect barrier permeability in experimental models; effects depend on formulation and acoustic settings.", ids: ["B", "C"] as const },
-        ].map(({ t, d, ids }) => (
-          <div key={t} className="rounded-3xl border bg-card p-6"><h3 className="text-2xl">{t}</h3><p className="mt-2 text-sm text-muted-foreground">{d}<Cite ids={[...ids]} /></p></div>
-        ))}
-      </Section>
+      <div id="mechanism" className="scroll-mt-24">
+        <Section>
+          <Eyebrow>Interactive mechanism</Eyebrow>
+          <h2 className="mt-3 text-balance text-4xl leading-tight sm:text-5xl">
+            What happens when sound meets microbubbles?
+          </h2>
+          <p className="mt-4 text-muted-foreground">
+            Explore the proposed mechanism, one step at a time.
+          </p>
+          <div className="mt-8 grid gap-6 rounded-3xl border bg-secondary/35 p-4 sm:p-6 lg:grid-cols-[minmax(0,1.65fr)_minmax(0,1fr)]">
+            <figure className="min-w-0 self-start overflow-hidden rounded-2xl border bg-card">
+              <ScienceMechanism
+                key={step}
+                step={step}
+                title={active.title}
+                description={active.description}
+              />
+              <figcaption className="border-t px-4 py-3 text-sm leading-relaxed text-muted-foreground">
+                Conceptual mechanism illustration based on published scientific principles. Not a
+                simulation or demonstration of Cavinova-specific treatment performance.
+              </figcaption>
+            </figure>
+            <div className="min-w-0 self-center">
+              <div
+                role="group"
+                aria-label="Select a mechanism stage"
+                className="grid grid-cols-2 gap-2"
+              >
+                {steps.map(({ title }, index) => (
+                  <Button
+                    key={title}
+                    variant="outline"
+                    type="button"
+                    aria-pressed={step === index}
+                    aria-controls="mechanism-stage"
+                    onClick={() => setStep(index)}
+                    className={`h-auto min-h-12 justify-start whitespace-normal px-3 py-2 text-left leading-snug ${step === index ? "border-primary bg-accent text-foreground" : ""}`}
+                  >
+                    <span aria-hidden className="font-semibold">
+                      0{index + 1}
+                    </span>
+                    {title}
+                  </Button>
+                ))}
+              </div>
+              <div id="mechanism-stage" aria-live="polite" aria-atomic="true" className="my-5">
+                <Eyebrow>
+                  Step {step + 1} of {steps.length}
+                </Eyebrow>
+                <h3 className="mt-2 text-2xl sm:text-3xl">{active.title}</h3>
+                <p className="mt-3 leading-relaxed text-muted-foreground">{active.description}</p>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  variant="outline"
+                  type="button"
+                  className="min-h-11"
+                  disabled={step === 0}
+                  onClick={() => setStep(step - 1)}
+                >
+                  <ArrowLeft aria-hidden /> Previous
+                </Button>
+                <Button
+                  type="button"
+                  className="min-h-11"
+                  disabled={step === steps.length - 1}
+                  onClick={() => setStep(step + 1)}
+                >
+                  Next <ArrowRight aria-hidden />
+                </Button>
+                <Button
+                  variant="ghost"
+                  type="button"
+                  className="min-h-11"
+                  onClick={() => setStep(0)}
+                >
+                  <RotateCcw aria-hidden /> Restart
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Section>
+      </div>
 
-      <Section>
-        <Eyebrow>Interactive mechanism visualizer</Eyebrow>
-        <h2 className="mt-3 text-4xl">Four steps, step by step</h2>
-        <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_1.2fr]">
-          <div className="space-y-3">
-            {steps.map((st, i) => (
-              <Button variant="ghost" key={st.t} onClick={() => setS(i + 1)} aria-pressed={s === i + 1} aria-controls="mechanism-image"
-                className={`block h-auto w-full whitespace-normal rounded-2xl border p-5 text-left transition ${s === i + 1 ? "border-primary bg-accent" : "bg-card hover:border-rose"}`}>
-                <p className="text-xs font-semibold uppercase tracking-widest text-teal-deep">Step {i + 1}</p>
-                <p className="mt-1 font-serif text-2xl">{st.t}</p>
-                {s === i + 1 && <p className="mt-2 text-sm text-muted-foreground">{st.d}</p>}
-              </Button>
+      <div id="lab-study" className="scroll-mt-24 bg-secondary/40">
+        <Section>
+          <Eyebrow>The scientific evidence</Eyebrow>
+          <h2 className="mt-3 max-w-4xl text-balance text-4xl leading-tight sm:text-5xl">
+            A promising mechanism, supported by published research.
+          </h2>
+          <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
+            Cavinova’s approach draws on published studies of ultrasound-assisted skin permeation
+            and responsive microbubbles. Results depend on the formulation, acoustic settings, and
+            experimental model.
+          </p>
+          <div className="mt-8 max-w-4xl divide-y rounded-2xl border bg-card px-5 sm:px-7">
+            {evidence.map(({ title, description, sources }) => (
+              <details key={title} className="group">
+                <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-3 font-serif text-xl font-semibold [&::-webkit-details-marker]:hidden">
+                  {title}
+                  <ChevronDown
+                    aria-hidden
+                    className="size-5 shrink-0 motion-safe:transition group-open:rotate-180"
+                  />
+                </summary>
+                <p className="max-w-3xl leading-relaxed text-muted-foreground">{description}</p>
+                <ul className="mb-5 mt-2 space-y-1">
+                  {sources.map((id) => (
+                    <li key={id}>
+                      <a
+                        href={references[id].url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex min-h-11 items-center text-sm font-semibold underline decoration-primary underline-offset-4"
+                      >
+                        {references[id].label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
             ))}
           </div>
-          <div id="mechanism-image" className="self-start overflow-hidden rounded-3xl border bg-card p-4 shadow-soft">
-            <Visual step={s} />
-            <p className="px-2 pt-3 text-xs text-muted-foreground">Conceptual mechanism illustration — not to scale; proposed effects have not been validated by Cavinova. Microbubble research is in experimental models.<Cite ids={["C"]} /> Step {s} of 4.</p>
-          </div>
-        </div>
-      </Section>
-
-      <section id="lab-study" className="scroll-mt-28 bg-secondary/35">
-        <Section>
-          <h2 className="text-4xl">What one lab study found</h2>
-          <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">In a laboratory study using excised pig skin, Park and colleagues found that under one set of conditions, ultrasound with microbubbles delivered about 3.1 times as much ferulic acid as ultrasound alone. Cavinova’s formulation, device pairing, and performance in people still need to be tested.<Cite ids={["P"]} /></p>
         </Section>
-      </section>
-
-      <Section className="grid gap-6 md:grid-cols-2">
-        <div className="rounded-3xl border border-teal/40 bg-secondary/40 p-7">
-          <CheckCircle2 className="h-6 w-6 text-teal-deep" />
-          <h3 className="mt-3 text-2xl">Established science</h3>
-          <p className="mt-2 text-sm text-muted-foreground">Ultrasound-enhanced skin permeation (sonophoresis) and acoustic cavitation are well-described physical phenomena with a substantial peer-reviewed literature.<Cite ids={["A", "B", "C"]} /></p>
-        </div>
-        <div className="rounded-3xl border border-rose/50 bg-accent/60 p-7">
-          <AlertTriangle className="h-6 w-6 text-primary" />
-          <h3 className="mt-3 text-2xl">Claimed &amp; under evaluation</h3>
-          <p className="mt-2 text-sm text-muted-foreground">The specific lip and skin delivery systems and methods described in U.S. Patent App. Pub. No. US20250073439A1 (John H. Shadduck) are claims in a published application. Their clinical performance has not been validated by Cavinova and remains under evaluation. Cavinova holds no rights to this IP.<Cite ids={["D"]} /></p>
-        </div>
-      </Section>
+      </div>
 
       <Section>
-        <div className="grid items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
-          <Diagram src={diagrams.console} title="Clinical console concept" caption="Concept informed by patent embodiments describing 0.25–5 MHz operation; Cavinova operating parameters are not established. Conceptual illustration; proposed features require engineering validation." />
-          <div>
-            <Eyebrow>From physics to product</Eyebrow>
-            <h2 className="mt-3 text-3xl">How the mechanism maps to hardware</h2>
-            <p className="mt-3 text-muted-foreground">The team proposes a console combining microbubble cartridges with candidate ingredient blends and controlled acoustic output, informed by the patent’s described embodiments.<Cite ids={["D"]} /></p>
-            <p className="mt-3 text-xs text-muted-foreground">The unchanged diagram’s embedded “preapproved” and frequency wording does not establish ingredient approval or Cavinova operating parameters.</p>
-            <Link to="/platform" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">Explore the product concept <ArrowRight className="h-4 w-4" /></Link>
-          </div>
-        </div>
+        <Eyebrow>From principle to validation</Eyebrow>
+        <h2 className="mt-3 max-w-4xl text-balance text-4xl leading-tight sm:text-5xl">
+          The science is promising. The engineering questions remain.
+        </h2>
+        <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
+          Cavinova must determine whether the proposed formulation and ultrasound conditions can
+          produce safe, consistent, and meaningful results.
+        </p>
+        <ol className="mt-8 grid gap-x-10 gap-y-5 sm:grid-cols-2">
+          {challenges.map(([title, description], index) => (
+            <li key={title} className="grid grid-cols-[2.5rem_1fr] gap-4 border-t pt-5">
+              <span
+                aria-hidden
+                className="grid size-10 place-items-center rounded-full border bg-accent text-sm font-semibold"
+              >
+                0{index + 1}
+              </span>
+              <div>
+                <h3 className="text-2xl">{title}</h3>
+                <p className="mt-2 leading-relaxed text-muted-foreground">{description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
       </Section>
-      <References ids={["A", "B", "C", "D", "P"]} />
+
+      <div className="bg-accent/55">
+        <Section>
+          <Eyebrow>From research to application</Eyebrow>
+          <h2 className="mt-3 max-w-4xl text-balance text-4xl leading-tight sm:text-5xl">
+            Understanding the mechanism is only the beginning.
+          </h2>
+          <div className="mt-5 max-w-3xl space-y-4 leading-relaxed text-muted-foreground">
+            <p>
+              Cavinova’s next challenge is turning these principles into a formulation and routine
+              that can be tested and refined for professional skincare.
+            </p>
+            <p>
+              We’d start by measuring how the serum responds to ultrasound and whether it improves
+              ingredient delivery in controlled tests. Those results would guide decisions about the
+              equipment, formulation, and professional workflow.
+            </p>
+          </div>
+          <Button asChild className="mt-6 min-h-11 rounded-full text-base">
+            <Link to="/platform">
+              Explore the Product Concept <ArrowRight aria-hidden />
+            </Link>
+          </Button>
+        </Section>
+      </div>
+      <References ids={["B", "C", "P"]} />
     </>
   );
 }
