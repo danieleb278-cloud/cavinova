@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { ArrowRight, Droplets, FlaskConical, Layers3 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Eyebrow, Section, seo } from "@/components/site";
 import { OpportunityFlow } from "@/components/opportunity-flow";
 import { Button } from "@/components/ui/button";
@@ -44,27 +44,6 @@ const treatments = [
     x: 1150,
   },
 ] as const;
-
-const practiceValue = [
-  {
-    title: "A distinctive service",
-    body: "A delivery-focused treatment could give practices a new service if testing shows a meaningful benefit.",
-    icon: FlaskConical,
-    tone: "bg-accent",
-  },
-  {
-    title: "Defined treatment quantities",
-    body: "Premeasured, single-use formulations could support clear preparation steps and predictable product use.",
-    icon: Droplets,
-    tone: "bg-secondary/60",
-  },
-  {
-    title: "Room to expand",
-    body: "If testing supports more ingredients, one delivery approach could support a wider range of formulations.",
-    icon: Layers3,
-    tone: "bg-card",
-  },
-];
 
 function Heading({
   eyebrow,
@@ -121,33 +100,6 @@ function Artwork({
   );
 }
 
-function MarketFocus() {
-  return (
-    <aside
-      className="mt-8 rounded-3xl border bg-card p-5 sm:p-7"
-      aria-label="Preliminary market screening"
-    >
-      <ol className="grid gap-4 sm:grid-cols-3">
-        {[
-          "U.S. professional aesthetic practices",
-          "Med spas in six selected states",
-          "Practices with suitable equipment and service fit",
-        ].map((item, index) => (
-          <li key={item} className="border-t border-teal/60 pt-4">
-            <Eyebrow>0{index + 1}</Eyebrow>
-            <p className="mt-2 font-serif text-2xl">{item}</p>
-          </li>
-        ))}
-      </ol>
-      <p className="mt-5 leading-relaxed text-muted-foreground">
-        AmSpa reports that some med spas already offer equipment-assisted facials such as
-        hydradermabrasion.
-        <Cite ids={["F"]} /> Device compatibility and provider demand still need to be established.
-      </p>
-    </aside>
-  );
-}
-
 function Opportunity() {
   return (
     <>
@@ -155,19 +107,40 @@ function Opportunity() {
         <Section>
           <Eyebrow>The market opportunity</Eyebrow>
           <h1 className="mt-4 max-w-5xl text-balance text-4xl leading-tight sm:text-5xl xl:text-6xl">
-            An established treatment market. A different approach to ingredient delivery.
+            An established treatment market. A science-driven opportunity to differentiate.
           </h1>
-          <div className="mt-5 max-w-3xl space-y-3 text-lg leading-relaxed text-muted-foreground">
-            <p>
-              Professional aesthetics already supports a range of treatment technologies and
-              specialized skincare services.
-              <Cite ids={["F", "H"]} />
-            </p>
-            <p>
-              Cavinova is investigating whether acoustically responsive formulations and ultrasound
-              can create a differentiated professional offering with recurring consumable demand and
-              longer-term platform potential.
-            </p>
+          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+            Professional aesthetic practices already invest in specialized services and
+            technology-enabled treatments.
+            <Cite ids={["F", "H"]} /> Cavinova is exploring whether acoustically responsive
+            formulations could create a differentiated professional treatment offering, with
+            recurring consumable demand and long-term integrated-platform potential.
+          </p>
+          <ul className="mt-5 flex flex-wrap gap-2" aria-label="Opportunity themes">
+            {[
+              "Technology differentiation",
+              "Existing professional market",
+              "Recurring formulations",
+            ].map((theme) => (
+              <li
+                key={theme}
+                className="rounded-full border bg-card px-4 py-2 text-sm font-semibold"
+              >
+                {theme}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button asChild className="min-h-11 rounded-full">
+              <a href="#investment-thesis">
+                Explore the Business Opportunity <ArrowRight aria-hidden />
+              </a>
+            </Button>
+            <Button asChild variant="outline" className="min-h-11 rounded-full">
+              <Link to="/contact" search={{ interest: "investment" }}>
+                Discuss the Opportunity
+              </Link>
+            </Button>
           </div>
           <div className="mt-7 overflow-hidden rounded-3xl border shadow-soft">
             <div className="sm:hidden">
@@ -272,92 +245,70 @@ function Opportunity() {
         </Section>
       </div>
 
-      <Section>
-        <Heading
-          eyebrow="The Cavinova opportunity"
-          title="From a differentiated treatment to a scalable professional platform."
-        >
-          <p>
-            Cavinova’s opportunity combines an emerging formulation concept informed by published
-            research
-            <Cite ids={["C", "P"]} /> with an established market for technology-enabled aesthetic
-            services.
-          </p>
-          <p>
-            If validated, the approach could support specialized professional treatments, ongoing
-            formulation replenishment, and eventual expansion into a coordinated
-            equipment-and-consumables platform.
-          </p>
-        </Heading>
-        <OpportunityFlow
-          steps={[
-            { title: "Technology", description: "Ultrasound-responsive microbubble formulations." },
-            { title: "Customer", description: "Professional aesthetic practices." },
-            {
-              title: "Recurring business",
-              description: "Premeasured, single-use treatment formulations.",
-            },
-            { title: "Expansion", description: "An intelligent integrated treatment platform." },
-          ]}
-        />
-      </Section>
-
-      <Section>
-        <Heading
-          eyebrow="The professional value proposition"
-          title="A differentiated treatment needs to create value in the treatment room."
-        />
-        <div className="mt-7 grid gap-4 md:grid-cols-3">
-          {practiceValue.map(({ title, body, icon: Icon, tone }) => (
-            <article key={title} className={`rounded-3xl border p-5 ${tone}`}>
-              <Icon aria-hidden className="size-7 text-teal-deep" />
-              <h3 className="mt-3 text-2xl">{title}</h3>
-              <p className="mt-2 leading-relaxed text-muted-foreground">{body}</p>
-            </article>
-          ))}
-        </div>
-      </Section>
-
-      <div className="bg-accent/55">
+      <div id="investment-thesis" className="scroll-mt-24 bg-hero">
         <Section>
           <Heading
-            eyebrow="The initial commercial audience"
-            title="A focused opportunity within professional aesthetics."
+            eyebrow="Why Cavinova"
+            title="A scientific concept with the potential to become a recurring professional treatment business."
           >
             <p>
-              Prospective providers include qualified med spas, dermatology practices, and aesthetic
-              professionals with suitable equipment, relevant client demand, and interest in a
-              delivery-focused service.
+              Cavinova's proposed opportunity combines delivery-focused formulation technology,
+              established professional treatment channels, ongoing consumable demand, and
+              longer-term integrated equipment potential.
             </p>
           </Heading>
-          <MarketFocus />
+          <OpportunityFlow
+            steps={[
+              {
+                title: "Science-led differentiation",
+                description: (
+                  <>
+                    Ultrasound-responsive microbubble formulations.
+                    <Cite ids={["C", "P"]} />
+                  </>
+                ),
+              },
+              {
+                title: "Professional customer",
+                description: "Aesthetic practices evaluating differentiated treatment services.",
+              },
+              {
+                title: "Recurring treatment demand",
+                description:
+                  "Premeasured, single-use formulations replenished as treatments are performed.",
+              },
+              {
+                title: "Integrated platform expansion",
+                description:
+                  "A future intelligent ultrasound system with authenticated consumables and automated treatment features.",
+              },
+            ]}
+          />
         </Section>
       </div>
 
       <Section>
-        <Heading
-          eyebrow="Investment & strategic interest"
-          title="Interested in helping shape what’s next in professional skincare?"
-        >
-          <p>
-            Cavinova welcomes conversations with prospective investors, strategic partners, and
-            industry collaborators interested in evaluating an early-stage, science-driven skincare
-            technology opportunity.
-          </p>
-          <p>
-            We’re exploring the scientific, product, and commercial foundations required to advance
-            the concept.
-          </p>
-        </Heading>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Button asChild className="min-h-11 rounded-full">
-            <Link to="/contact">
-              Discuss the Opportunity <ArrowRight aria-hidden />
-            </Link>
-          </Button>
-          <Button asChild variant="outline" className="min-h-11 rounded-full">
-            <Link to="/platform">Explore the Product Vision</Link>
-          </Button>
+        <div className="rounded-3xl border bg-secondary/55 p-6 shadow-soft sm:p-10">
+          <Heading
+            eyebrow="Investment & strategic interest"
+            title="Interested in exploring Cavinova's potential?"
+          >
+            <p>
+              We welcome conversations with prospective investors, strategic partners, and industry
+              collaborators interested in evaluating a science-driven professional skincare
+              opportunity.
+            </p>
+          </Heading>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button asChild className="min-h-11 rounded-full">
+              <Link to="/contact" search={{ interest: "investment" }}>
+                Discuss the Opportunity <ArrowRight aria-hidden />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" className="min-h-11 rounded-full">
+              <Link to="/platform">Explore the Product Concept</Link>
+            </Button>
+          </div>
         </div>
       </Section>
       <References ids={["A", "B", "C", "F", "P", "H", "M", "U", "K"]} />

@@ -7,6 +7,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/contact")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    interest: search.interest === "investment" ? ("investment" as const) : undefined,
+  }),
   staticData: { sitemap: true },
   head: () =>
     seo(
@@ -21,8 +24,8 @@ const EMAIL = "contact.cavinova@gmail.com";
 const categories = [
   { label: "Investment interest", stored: "General Information" },
   { label: "Strategic partnership", stored: "Technology & Licensing Discussion" },
-  { label: "Research or technical collaboration", stored: "Academic / Capstone Inquiry" },
-  { label: "Professional aesthetic industry", stored: "Aesthetic Provider Feedback" },
+  { label: "Research collaboration", stored: "Academic / Capstone Inquiry" },
+  { label: "Professional industry inquiry", stored: "Aesthetic Provider Feedback" },
   { label: "General inquiry", stored: "General Information" },
 ] as const;
 const field = "w-full rounded-xl border bg-card px-4 py-3 text-sm outline-none focus:border-ring";
@@ -35,7 +38,9 @@ const inquirySchema = z.object({
 });
 
 function Contact() {
-  const [category, setCategory] = useState<(typeof categories)[number]>(categories[4]);
+  const { interest } = Route.useSearch();
+  const [selectedCategory, setCategory] = useState<(typeof categories)[number]>();
+  const category = selectedCategory ?? (interest === "investment" ? categories[0] : categories[4]);
   const topic = `Inquiry topic: ${category.label}\n\n`;
   const [f, setF] = useState({ name: "", email: "", org: "", message: "" });
   const [website, setWebsite] = useState(""); // honeypot — hidden from real visitors
