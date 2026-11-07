@@ -5,6 +5,7 @@ import monogram from "@/assets/cavinova_emblem.png.asset.json";
 import wordmark from "@/assets/cavinova_wordmark.png.asset.json";
 import { ImageLightbox } from "@/components/image-lightbox";
 import shareImage from "@/assets/cavinova-share.jpg.asset.json";
+import { Button } from "@/components/ui/button";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -47,9 +48,9 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <button className="md:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>
+        <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>
           {open ? <X /> : <Menu />}
-        </button>
+        </Button>
       </div>
       {open && (
         <nav className="flex flex-col border-t px-4 py-2 md:hidden">
