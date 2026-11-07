@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import {
   ArrowRight,
-  ArrowDown,
   FlaskConical,
   Droplets,
   LockKeyhole,
@@ -136,44 +135,6 @@ function Heading({
   );
 }
 
-function VialSchematic() {
-  return (
-    <figure className="flex h-full flex-col justify-center rounded-3xl border bg-secondary/45 p-5 sm:p-7">
-      <figcaption className="mb-6 text-xl font-semibold">
-        Concept schematic · two separate vials
-      </figcaption>
-      <div className="grid grid-cols-2 gap-3 text-center">
-        <div className="rounded-2xl border border-rose/50 bg-accent p-3">
-          <FlaskConical aria-hidden className="mx-auto mb-2 size-7" />
-          <strong className="block">Vial A</strong>
-          <span>Microbubble component</span>
-        </div>
-        <div className="rounded-2xl border border-teal/50 bg-secondary p-3">
-          <FlaskConical aria-hidden className="mx-auto mb-2 size-7" />
-          <strong className="block">Vial B</strong>
-          <span>Active-ingredient formulation</span>
-        </div>
-        <ArrowDown aria-hidden className="mx-auto size-5 text-primary" />
-        <ArrowDown aria-hidden className="mx-auto size-5 text-teal-deep" />
-        <div className="col-span-2 rounded-2xl border bg-card p-3">
-          <strong>Dual-chamber handpiece</strong>
-          <div className="mt-2 grid grid-cols-2 gap-2">
-            <span className="rounded-lg bg-accent p-2">Vial A connection</span>
-            <span className="rounded-lg bg-secondary p-2">Vial B connection</span>
-          </div>
-        </div>
-        <ArrowDown aria-hidden className="col-span-2 mx-auto size-5 text-muted-foreground" />
-        <div className="col-span-2 rounded-xl border bg-card p-3 font-medium">
-          Proposed treatment interface
-        </div>
-      </div>
-      <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-        Internal fluid paths and the point of interaction remain to be engineered.
-      </p>
-    </figure>
-  );
-}
-
 function FeatureExplorer() {
   const [selected, setSelected] = useState(0);
   const feature = features[selected];
@@ -298,57 +259,63 @@ function Platform() {
       </div>
 
       <Section>
-        <Heading eyebrow="The serum technology" title="The innovation begins with the formulation.">
+        <Heading
+          eyebrow="The serum technology"
+          title="One formulation strategy. Two ways to deliver it."
+        >
           <p>
-            We’re investigating how microbubbles and selected skincare ingredients respond to
-            ultrasound. Hyaluronic acid, vitamin C, and niacinamide are candidates for research.
-            Compatibility, stability, safety, delivery, and reproducibility still need testing.
+            Cavinova's initial product concept uses premeasured packets for manual application. The
+            long-term integrated system envisions authenticated single-use vials for automated
+            point-of-use dispensing.
           </p>
         </Heading>
-        <div className="mt-8 grid gap-7 md:grid-cols-2">
-          <article className="flex min-w-0 flex-col gap-4">
-            <h3 className="text-2xl">Initial format · Premeasured, single-use packets</h3>
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
+          <article className="grid min-w-0 gap-4 rounded-3xl border border-rose/50 bg-accent/45 p-5 sm:p-6 md:row-span-4 md:grid-rows-subgrid">
+            <h3 className="text-balance text-2xl">
+              Initial format — Premeasured, single-use packets
+            </h3>
             <p className="leading-relaxed text-muted-foreground">
-              A provider would open a premeasured, single-use packet and apply it by hand. This
-              format would support testing with suitable existing ultrasound equipment. It is
-              separate from the dedicated machine.
+              A professional would manually apply the premeasured formulation and use suitable
+              ultrasound equipment under a validated protocol. This approach allows formulation
+              development and potential market entry without dedicated Cavinova equipment.
             </p>
-            <figure className="overflow-hidden rounded-3xl border bg-card">
-              <img
-                src={serumPackaging.url}
-                alt="Cavinova dual-chamber squeeze packet concept for manual application."
-                width={1774}
-                height={887}
-                loading="lazy"
-                className="block h-auto w-full object-contain"
-              />
-              <figcaption className="border-t px-4 py-3 text-sm text-muted-foreground">
-                Packaging concept · manual application
-              </figcaption>
-            </figure>
-          </article>
-          <article className="flex min-w-0 flex-col gap-4">
-            <h3 className="text-2xl">Future format · Two authenticated, single-use vials</h3>
-            <p className="leading-relaxed text-muted-foreground">
-              Two separate, premeasured, single-use vials would connect to the proposed handpiece
-              for controlled dispensing at the transducer tip. One holds the microbubble component
-              and the other holds selected active ingredients.
-            </p>
-            <Diagram
-              enlarge
-              conceptLabel={false}
-              src="/images/platform/dual-vials.webp"
-              title="Two separate click-in vials beside the Cavinova handpiece concept"
-              caption="Packaging concept · future single-use machine vials. The connection design still needs engineering and testing."
-            />
-            <details className="rounded-2xl border bg-card p-4">
-              <summary className="flex min-h-11 cursor-pointer items-center font-semibold underline decoration-primary underline-offset-4">
-                See how the two vials would connect
-              </summary>
-              <div className="mt-3">
-                <VialSchematic />
+            <div className="grid aspect-[16/10] place-items-center overflow-hidden rounded-2xl border bg-card">
+              <div className="relative aspect-square w-5/8 overflow-hidden">
+                <img
+                  src={serumPackaging.url}
+                  alt="Cavinova dual-chamber packet concept for manual application."
+                  width={1774}
+                  height={887}
+                  loading="lazy"
+                  className="absolute left-[-81%] top-[-2%] h-auto w-[209%] max-w-none"
+                />
               </div>
-            </details>
+            </div>
+            <p className="text-sm font-semibold">Packaging concept · Manual application</p>
+          </article>
+          <article className="grid min-w-0 gap-4 rounded-3xl border border-teal/55 bg-secondary/45 p-5 sm:p-6 md:row-span-4 md:grid-rows-subgrid">
+            <h3 className="text-balance text-2xl">
+              Future format — Authenticated, single-use vials
+            </h3>
+            <p className="leading-relaxed text-muted-foreground">
+              The proposed integrated platform would use two separate, premeasured vials: one
+              containing microbubbles and the other selected active ingredients. Following
+              authentication, the machine would coordinate dispensing through separate pathways to
+              the specialized transducer tip.
+            </p>
+            <div className="grid aspect-[16/10] place-items-center overflow-hidden rounded-2xl border bg-card">
+              <div className="relative aspect-square w-5/8 overflow-hidden">
+                <img
+                  src="/images/platform/dual-vials.webp"
+                  alt="Two separate concept vials with pink and teal caps for the future integrated system."
+                  width={1448}
+                  height={1086}
+                  loading="lazy"
+                  className="absolute left-[-24%] top-[-86%] h-auto w-[341%] max-w-none"
+                />
+              </div>
+            </div>
+            <p className="text-sm font-semibold">Packaging concept · Machine-assisted dispensing</p>
           </article>
         </div>
       </Section>
