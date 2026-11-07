@@ -15,8 +15,6 @@ import { Button } from "@/components/ui/button";
 import { References } from "@/components/references";
 import { AuthenticationMachine } from "@/components/authentication-machine";
 
-import serumPackaging from "@/assets/Cavinova_Dual_Chamber_Serum_Concept.png.asset.json";
-
 export const Route = createFileRoute("/platform")({
   staticData: { sitemap: true },
   head: () =>
@@ -70,26 +68,31 @@ const features = [
   },
 ] as const;
 
-const workflows = [
+const productStages = [
   {
-    title: "Initial Development Path",
-    subtitle: "Manual serum application",
-    steps: [
-      "Select the premeasured packet.",
-      "Open it and apply the formulation by hand.",
-      "Use suitable ultrasound equipment once compatibility, safety, and the protocol are validated.",
-      "Complete the session and required cleanup.",
+    label: "Stage 1 · Initial Serum Concept",
+    title: "Activated by the provider. Applied manually.",
+    tone: "border-rose/50 bg-accent/45",
+    image: "/images/platform/activation-vial.webp",
+    alt: "Exploratory twist-to-activate vial shown before and after the two chambers combine.",
+    caption: "Exploratory initial packaging concept. Not a finalized product design.",
+    paragraphs: [
+      "Cavinova's proposed initial product is a premeasured, single-use formulation intended for professional manual application.",
+      "One packaging concept under consideration is a dual-chamber activation vial that keeps microbubbles and active ingredients separate until preparation. The provider would activate the vial, prepare the formulation, and apply it before treatment with suitable ultrasound equipment once compatibility and safety are established.",
+      "The packaging design and preparation process must be validated for microbubble stability, ingredient compatibility, and treatment performance.",
     ],
   },
   {
-    title: "Long-Term Integrated Vision",
-    subtitle: "A coordinated equipment workflow",
-    steps: [
-      "Insert two premeasured, single-use vials.",
-      "Authenticate both consumables.",
-      "Load the tested operating settings automatically.",
-      "Enable measured dispensing and controlled ultrasound.",
-      "End operation according to the protocol and safety requirements.",
+    label: "Stage 2 · Future Integrated Platform",
+    title: "Authenticated by the machine. Dispensed automatically.",
+    tone: "border-teal/55 bg-secondary/45",
+    image: "/images/platform/dual-vials.webp",
+    alt: "Two separate pink and teal single-use vials beside the proposed Cavinova handpiece.",
+    caption: "Long-term integrated system concept. Engineering and validation required.",
+    paragraphs: [
+      "With sufficient validation, funding, and professional demand, Cavinova aims to develop an integrated ultrasound treatment platform.",
+      "The proposed system uses two separate, premeasured, single-use vials that authenticate with the machine. The microbubble and active-ingredient components remain isolated through separate pathways until dispensing at the specialized transducer tip.",
+      "The system is intended to coordinate formulation delivery, validated treatment settings, and proposed safety controls within one professional workflow.",
     ],
   },
 ] as const;
@@ -259,104 +262,71 @@ function Platform() {
       </div>
 
       <Section>
-        <Heading
-          eyebrow="The serum technology"
-          title="One technology. Two approaches to professional application."
-        />
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
-          <article className="grid min-w-0 gap-4 rounded-3xl border border-rose/50 bg-accent/45 p-5 sm:p-6 md:row-span-4 md:grid-rows-subgrid">
-            <div>
-              <Eyebrow>Initial development format</Eyebrow>
-              <h3 className="mt-2 text-balance text-2xl">Manually Applied Formulation</h3>
-            </div>
-            <div className="space-y-3 leading-relaxed text-muted-foreground">
-              <p>
-                A professional would manually apply a premeasured, single-use formulation before
-                treatment with suitable existing ultrasound equipment, once compatibility and safety
-                are established.
-              </p>
-              <p>
-                This enables early formulation development and evaluation without requiring a
-                proprietary Cavinova machine. The final packaging configuration remains under
-                consideration.
-              </p>
-            </div>
-            <div className="grid aspect-[16/10] place-items-center overflow-hidden rounded-2xl border bg-card">
-              <div className="relative aspect-square w-5/8 overflow-hidden">
-                <img
-                  src={serumPackaging.url}
-                  alt="Illustrative dual-chamber packet, one packaging concept for the manually applied formulation."
-                  width={1774}
-                  height={887}
-                  loading="lazy"
-                  className="absolute left-[-81%] top-[-2%] h-auto w-[209%] max-w-none"
-                />
-              </div>
-            </div>
-            <p className="text-sm font-semibold">
-              Illustrative packaging concept · Final format under consideration
-            </p>
-          </article>
-          <article className="grid min-w-0 gap-4 rounded-3xl border border-teal/55 bg-secondary/45 p-5 sm:p-6 md:row-span-4 md:grid-rows-subgrid">
-            <div>
-              <Eyebrow>Future integrated format</Eyebrow>
-              <h3 className="mt-2 text-balance text-2xl">Intelligent, Automated Delivery</h3>
-            </div>
-            <div className="space-y-3 leading-relaxed text-muted-foreground">
-              <p>
-                If funding and validation support developing the full machine, the integrated system
-                would use two separate, premeasured, single-use vials for the microbubble and
-                active-ingredient components.
-              </p>
-              <p>
-                The machine would authenticate the vials, load validated treatment settings, and
-                automatically dispense the components through the specialized transducer tip. The
-                components would stay isolated until the point of use.
-              </p>
-            </div>
-            <div className="grid aspect-[16/10] place-items-center overflow-hidden rounded-2xl border bg-card">
-              <div className="relative aspect-square w-5/8 overflow-hidden">
-                <img
-                  src="/images/platform/dual-vials.webp"
-                  alt="Two separate concept vials with pink and teal caps for the future integrated system."
-                  width={1448}
-                  height={1086}
-                  loading="lazy"
-                  className="absolute left-[-24%] top-[-86%] h-auto w-[341%] max-w-none"
-                />
-              </div>
-            </div>
-            <p className="text-sm font-semibold">Proposed integrated-machine consumables</p>
-          </article>
-        </div>
-      </Section>
+        <Heading eyebrow="The serum technology" title="The innovation begins with the formulation.">
+          <p>
+            Cavinova's initial development priority is an acoustically responsive formulation
+            designed for professional skincare applications. The team is investigating how
+            microbubbles and selected active ingredients can be maintained, prepared, and applied
+            under conditions that support the proposed ultrasound-assisted delivery mechanism.
+          </p>
+          <p>
+            Early development will focus on formulation stability, ingredient compatibility,
+            packaging feasibility, acoustic response, and safety.
+          </p>
+        </Heading>
 
-      <div className="bg-accent/55">
-        <Section>
-          <Heading
-            eyebrow="Designed for professionals"
-            title="A simpler process. A more integrated experience."
-          >
-            <p>
-              The initial concept starts with a premeasured manual application. The long-term system
-              would automate more of the preparation, configuration, and dispensing.
-            </p>
-          </Heading>
-          <div className="mt-8 grid gap-5 md:grid-cols-2">
-            {workflows.map(({ title, subtitle, steps }) => (
-              <article key={title} className="rounded-3xl border bg-card p-5 sm:p-7">
-                <Eyebrow>{title}</Eyebrow>
-                <h3 className="mt-2 text-2xl">{subtitle}</h3>
-                <ol className="mt-4 list-decimal space-y-2 pl-5 leading-relaxed text-muted-foreground">
-                  {steps.map((item) => (
-                    <li key={item}>{item}</li>
+        <div className="mt-10 border-t pt-8 sm:mt-14 sm:pt-10">
+          <Eyebrow>Product Evolution</Eyebrow>
+          <h3 className="mt-3 text-balance text-3xl leading-tight sm:text-4xl">
+            One innovation. Two stages of development.
+          </h3>
+          <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
+            Cavinova begins with a manually applied formulation and aims to evolve toward a fully
+            integrated professional treatment system, subject to scientific validation, funding, and
+            commercial demand.
+          </p>
+          <div className="mt-7 grid gap-5 md:grid-cols-2">
+            {productStages.map(({ label, title, tone, image, alt, caption, paragraphs }) => (
+              <article
+                key={label}
+                className={`grid min-w-0 gap-4 rounded-3xl border p-5 sm:p-6 md:row-span-4 md:grid-rows-subgrid ${tone}`}
+              >
+                <div>
+                  <Eyebrow>{label}</Eyebrow>
+                  <h4 className="mt-2 text-balance text-2xl">{title}</h4>
+                </div>
+                <div className="overflow-hidden rounded-2xl border bg-card">
+                  <img
+                    src={image}
+                    alt={alt}
+                    width={1448}
+                    height={1086}
+                    loading="lazy"
+                    className="block aspect-[4/3] w-full object-contain"
+                  />
+                </div>
+                <p className="text-sm font-semibold">{caption}</p>
+                <div className="space-y-3 leading-relaxed text-muted-foreground">
+                  {paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
                   ))}
-                </ol>
+                </div>
               </article>
             ))}
           </div>
-        </Section>
-      </div>
+          <div className="mt-7 rounded-2xl border bg-secondary/35 p-5 sm:p-6">
+            <h4 className="text-balance text-2xl">
+              The science stays central. The level of integration evolves.
+            </h4>
+            <p className="mt-2 max-w-3xl leading-relaxed text-muted-foreground">
+              Both approaches are built around premeasured, single-use formulation components and
+              the proposed interaction between acoustic energy and microbubbles. The initial format
+              allows the formulation to be developed independently of proprietary equipment, while
+              the future integrated system could automate more of the treatment experience.
+            </p>
+          </div>
+        </div>
+      </Section>
 
       <Section>
         <Heading
