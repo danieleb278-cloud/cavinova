@@ -1,19 +1,9 @@
 # Roadmap
-- [x] Apply approved editorial citations, shared market arithmetic, purchase/lease calculator separation, and truthful team/contact copy — 29 tests passed; build and six-page desktop/mobile preview verified without publishing or submitting personal test data
-- [x] Fix stored SEO findings: accessible inquiry fields and calculator controls, sized brand sharing image, and sitemap declaration — verified; changes reach the live site on next publication
-- [x] Complete Google Search Console verification and submit the published sitemap — verified under Danielle’s specified Google account; Google received six URLs with no errors or warnings
-- [x] Build 6-page Cavinova site
-- [x] Feature treatment-system diagrams on /platform, reference on /science and /
-- [x] Add three team headshots to /team (Danielle, Qiwei, Victoria)
-- [x] Switch /team to horizontal uniform cards with the full bios Danielle supplied
-- [x] Logo placement: pink C monogram in header/footer, full wordmark as the homepage hero visual
-- [x] Add accessible zoomable lightboxes to Product Concept infographics without changing existing layout
-- [x] Replace the 3D Handpiece Render placeholder with the uploaded handheld image and enable enlargement
-- [x] Add original validation infographics with equal previews and verify independent lightbox controls
-- [x] Refine roadmap section: new handpiece description, one discreet disclosure line above the cards, tighter card spacing
-- [x] Contact form submits directly to a built-in database (no email app needed); verified end-to-end
-- [ ] Owner email notifications to contact.cavinova@gmail.com — blocked: needs a verified sender domain Danielle owns (setup dialog shown)
-
-- [x] Replace science mechanism schematic with the four uploaded images, changing with the selected step
-- [x] Five-Year Commercialization Roadmap graphic on /opportunity — swapped to the corrected upload (no figure label), zoomable
+- [x] Replace public commercial/product positioning with research-stage Home, Science, Technology and Development; retain palette, logos, portraits and stored assets
+- [x] Update team/contact copy, citations and shared disclosure; preserve existing contact validation and database category values
+- [x] Redirect /opportunity permanently to /development; update navigation, sharing metadata and the six-page sitemap
+- [x] Remove public financial/commercial graphics and calculator; retire unused financial modules and obsolete tests
+- [x] Verify six public pages and metadata, HTTP 301 redirect, sitemap, desktop/tablet/mobile navigation, images and overflow; no runtime errors
+- [x] Verify contact category selection and invalid empty submission only; no real test inquiry, database-policy changes, publication or deployment
+- [x] Automatic build passed; full suite passed (6 tests across 3 files)
 

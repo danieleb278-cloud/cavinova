@@ -7,7 +7,7 @@ import { sitemapStaticPaths, sitemapXML } from "@/lib/sitemap";
 describe("Cavinova public sitemap", () => {
   it("includes exactly the six public pages, excluding the sitemap itself", () => {
     const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
-    expect(sitemapStaticPaths(router)).toEqual(["/", "/contact", "/opportunity", "/platform", "/science", "/team"]);
+    expect(sitemapStaticPaths(router)).toEqual(["/", "/contact", "/development", "/platform", "/science", "/team"]);
   });
 
   it("uses the published origin without invented content-change dates", () => {
