@@ -75,6 +75,13 @@ function Science() {
         </div>
       </Section>
 
+      <section id="lab-study" className="scroll-mt-28 bg-secondary/35">
+        <Section>
+          <h2 className="text-4xl">What one lab study found</h2>
+          <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">In a laboratory study using excised pig skin, Park and colleagues found that under one set of conditions, ultrasound with microbubbles delivered about 3.1 times as much ferulic acid as ultrasound alone. Cavinova’s formulation, device pairing, and performance in people still need to be tested.<Cite ids={["P"]} /></p>
+        </Section>
+      </section>
+
       <Section className="grid gap-6 md:grid-cols-2">
         <div className="rounded-3xl border border-teal/40 bg-secondary/40 p-7">
           <CheckCircle2 className="h-6 w-6 text-teal-deep" />
@@ -100,7 +107,7 @@ function Science() {
           </div>
         </div>
       </Section>
-      <References ids={["A", "B", "C", "D"]} />
+      <References ids={["A", "B", "C", "D", "P"]} />
     </>
   );
 }

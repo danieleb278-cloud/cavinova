@@ -19,4 +19,4 @@
 - Development roadmap diagrams opt into a shared proportional preview while other diagrams retain their existing sizing; this keeps the three roadmap cards uniform without affecting other content.
 - Before placing an uploaded brand mark, convert it to a transparent, tightly cropped CDN asset (remove the white background via a border-connected flood fill, then un-premultiply against white). Why: opaque white-background uploads show a rectangular seam against the site's tinted glass surfaces; keep the original upload pointer in `src/assets` for reference.
 
-- The shared research visual inventory supports Opportunity and retained Development illustrations; published-version routes use their original asset imports so restoring a page does not substitute repeated imagery.
+- The shared research visual inventory supplies reviewed Opportunity, Development and Product Concept artwork; Product Concept inline previews and lightboxes use the same reviewed asset to exclude misleading embedded claims while retaining original stored assets.

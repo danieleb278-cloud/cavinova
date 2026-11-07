@@ -57,21 +57,13 @@ function Home() {
         </div>
       </section>
 
-      <Section className="grid gap-10 md:grid-cols-2">
-        <div className="rounded-3xl border bg-card p-8">
-          <Eyebrow>The core challenge</Eyebrow>
-          <h2 className="mt-3 text-3xl">The skin barrier limits topical delivery.</h2>
-          <p className="mt-4 text-muted-foreground">
-            The skin's outermost layer — tightly packed corneocytes in a lipid matrix — is an effective barrier. Penetration of topical ingredients, including larger molecules such as hyaluronic acid and peptides, depends on molecular properties, formulation and skin condition.<Cite ids={["A"]} />
-          </p>
+      <Section>
+        <h2 className="text-4xl">Why getting ingredients into skin is hard</h2>
+        <div className="mt-6 max-w-3xl space-y-5 leading-relaxed text-muted-foreground">
+          <p>The outer layer of your skin acts as a protective barrier. It also limits how much of certain skincare ingredients can get through. How far an ingredient travels depends on its size, how it’s formulated, and the condition of the skin.<Cite ids={["A"]} /></p>
+          <p>Cavinova is exploring whether ultrasound and a serum containing tiny bubbles could help selected ingredients move through that outer layer. We’d start by testing the serum with a specific ultrasound device already in use. Our long-term goal is to develop a Cavinova system that brings the serum, applicator, and preparation steps together for skincare professionals.</p>
         </div>
-        <div className="rounded-3xl border bg-secondary/50 p-8">
-          <Eyebrow>The proposed solution</Eyebrow>
-          <h2 className="mt-3 text-3xl">Sonophoresis meets acoustic cavitation.</h2>
-          <p className="mt-4 text-muted-foreground">
-            Ultrasound-assisted delivery and microbubble effects have been studied in experimental models. Cavinova proposes pairing ultrasound with microbubble serums; microbubble activity may alter barrier permeability depending on formulation and acoustic settings. This has not been established for Cavinova.<Cite ids={["A", "C"]} />
-          </p>
-        </div>
+        <Link to="/science" hash="lab-study" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary">Explore the science <ArrowRight className="h-4 w-4" /></Link>
       </Section>
 
       <Section>
