@@ -243,7 +243,7 @@ function Platform() {
       <Section>
         <Heading
           eyebrow="The treatment experience"
-          title="A Simpler Process. A Smarter Treatment Workflow."
+          title="Simple Process. Smarter Workflow."
         >
           <p>
             Cavinova is designed to bring formulation preparation, treatment setup, and ultrasound
@@ -284,12 +284,11 @@ function Platform() {
 
       <Section>
         <Heading
-          eyebrow="From product vision to business strategy"
-          title="An ambitious platform. A disciplined path to market."
+          eyebrow="WHAT'S NEXT"
+          title="Investing in Validation"
         >
           <p>
-            We’ll test the ultrasound prototype and experimental formulations together. Each milestone
-            will guide how we refine the complete system and what we validate next.
+            Cavinova's initial investment will fund an ultrasound device prototype, two experimental serum formulations, and early testing to evaluate the integrated system's feasibility.
           </p>
         </Heading>
         <Button asChild className="mt-6 min-h-11 rounded-full text-base">
