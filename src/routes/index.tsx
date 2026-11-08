@@ -121,12 +121,10 @@ function Home() {
           <div className="min-w-0">
             <Eyebrow>Cavinova | Advanced Acoustic Aesthetics</Eyebrow>
             <h1 className="mt-5 max-w-xl text-balance text-4xl leading-[1.08] sm:text-5xl xl:text-6xl">
-              Skincare has evolved. But getting ingredients into skin remains a challenge.
+              Skincare Has a Delivery Problem.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Skincare innovation often focuses on what we apply. Cavinova is exploring how
-              ultrasound and acoustically responsive microbubbles could help those ingredients move
-              beyond the skin's outer barrier.
+              Cavinova combines ultrasound with acoustically responsive microbubbles in a noninvasive treatment concept designed to improve the delivery of active skincare ingredients through the skin barrier.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
