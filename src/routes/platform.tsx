@@ -224,7 +224,8 @@ function Platform() {
               Cavinova's proposed dual-vial system keeps the microbubble formulation and active ingredients separate until dispensing. The design aims to protect formulation stability while supporting hygienic, premeasured treatments.
             </p>
             <p>
-               goal is to preserve formulation integrity and coordinate delivery with ultrasound. The mechanism and benefits still need engineering and testing.
+              
+              The goal is to preserve formulation integrity and coordinate delivery with ultrasound. The mechanism and benefits still need engineering and testing.
             </p>
           </Heading>
           <div className="mt-7">
