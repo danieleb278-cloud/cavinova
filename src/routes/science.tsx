@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowLeft, ArrowRight, ChevronDown, RotateCcw } from "lucide-react";
+import { ArrowLeft, ArrowRight, RotateCcw } from "lucide-react";
 import { Section, Eyebrow, seo } from "@/components/site";
 import { Button } from "@/components/ui/button";
 import { Cite, References } from "@/components/references";
@@ -39,49 +39,31 @@ const steps = [
   },
 ] as const;
 
-const evidence = [
+const validationQuestions = [
+  "Keep microbubbles stable and functional through storage and use.",
+  "Confirm compatibility with the proposed ultrasound device.",
+  "Demonstrate repeatable delivery of selected ingredients.",
+  "Identify suitable treatment settings and assess preliminary safety.",
+  "Confirm the workflow is practical for professionals.",
+];
+
+const development = [
   {
-    title: "Sonophoresis",
+    title: "Develop",
     description:
-      "Researchers have studied whether ultrasound can help substances pass through skin. Under specific experimental conditions, ultrasound increased skin permeability. The response depends on the ultrasound settings and the substance being studied.",
-    sources: ["B"],
+      "Build an initial ultrasound prototype and prepare two experimental serum formulations. Establish technical feasibility and address key intellectual property and development requirements.",
   },
   {
-    title: "Acoustic Cavitation",
+    title: "Test",
     description:
-      "Tiny gas bubbles can expand and contract in response to ultrasound. This motion can create small flows and mechanical forces near the skin surface. Researchers are studying how these effects can change how readily ingredients pass through the outer layer.",
-    sources: ["B", "C"],
+      "Compare serum alone, serum with ultrasound, serum with microbubbles, and the full treatment combining all three.",
   },
   {
-    title: "Experimental Delivery Research",
+    title: "Advance",
     description:
-      "In a Franz diffusion cell with excised pig skin, Park and colleagues measured how much ferulic acid crossed the skin sample. After 30 minutes at 2.47 MHz, a 1:1,000 dilution of Definity microbubbles yielded about 3.1 times as much delivered ferulic acid as ultrasound alone. Cavinova’s formulation, device pairing, and performance in people still need testing.",
-    sources: ["P"],
+      "Move into further validation, regulatory work, and manufacturing preparation only when defined technical and safety milestones justify further investment.",
   },
 ] as const;
-
-const challenges = [
-  [
-    "Formulation Stability",
-    "Can the microbubbles remain functional during formulation, storage, and application?",
-  ],
-  [
-    "Acoustic Compatibility",
-    "Which ultrasound frequencies, intensities, and operating conditions produce the desired response?",
-  ],
-  [
-    "Ingredient Delivery",
-    "Does the combined approach meaningfully improve delivery of selected active ingredients under controlled testing conditions?",
-  ],
-  [
-    "Safety",
-    "Can the intended permeability effects be achieved without unacceptable tissue effects?",
-  ],
-  [
-    "Reproducibility",
-    "Can the formulation and treatment conditions consistently produce comparable results?",
-  ],
-];
 
 function Science() {
   const [step, setStep] = useState(0);
@@ -208,80 +190,65 @@ function Science() {
 
       <div id="lab-study" className="scroll-mt-24 bg-secondary/40">
         <Section>
-          <Eyebrow>The scientific evidence</Eyebrow>
-          <h2 className="mt-3 max-w-4xl text-balance text-4xl leading-tight sm:text-5xl">
-            A promising mechanism, supported by published research.
+          <h2 className="text-balance text-4xl leading-tight sm:text-5xl">
+            From Research to Reality
           </h2>
           <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
-            Cavinova’s approach draws on published studies of ultrasound-assisted skin permeation
-            and responsive microbubbles. Results depend on the formulation, acoustic settings, and
-            experimental model.
-            <Cite ids={["B", "C", "P"]} />
+            Published research supports the potential of ultrasound and microbubbles to increase
+            skin permeability and improve ingredient transport.
+            <Cite ids={["B", "C", "P"]} /> Cavinova's challenge is turning that research into a
+            consistent, safe, and practical professional treatment.
           </p>
-          <div className="mt-8 max-w-4xl divide-y rounded-2xl border bg-card px-5 sm:px-7">
-            {evidence.map(({ title, description, sources }) => (
-              <details key={title} className="group">
-                <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-3 font-serif text-xl font-semibold [&::-webkit-details-marker]:hidden">
-                  {title}
-                  <ChevronDown
-                    aria-hidden
-                    className="size-5 shrink-0 motion-safe:transition group-open:rotate-180"
-                  />
-                </summary>
-                <p className="mb-5 max-w-3xl leading-relaxed text-muted-foreground">
-                  {description}
-                  <Cite ids={sources} />
-                </p>
-              </details>
-            ))}
+          <div className="mt-8 grid divide-y overflow-hidden rounded-3xl border bg-card lg:grid-cols-[1.25fr_1fr] lg:divide-x lg:divide-y-0">
+            <div className="space-y-4 p-5 leading-relaxed text-muted-foreground sm:p-7">
+              <h3 className="text-2xl text-foreground">What Research Shows</h3>
+              <p>
+                Laboratory studies show that ultrasound can increase skin permeability under certain
+                conditions. Microbubble activity near the surface can contribute to this effect,
+                which depends on the settings, formulation, and substance being studied.
+                <Cite ids={["B", "C"]} />
+              </p>
+              <p>
+                In a Franz diffusion cell with excised pig skin, Park and colleagues measured how
+                much ferulic acid crossed the sample. After 30 minutes at 2.47 MHz, ultrasound with
+                a 1:1,000 dilution of Definity microbubbles delivered about 3.1 times as much ferulic
+                acid as ultrasound alone.
+                <Cite ids={["P"]} /> The study did not test Cavinova's system or establish how it
+                performs in people.
+              </p>
+            </div>
+            <div className="bg-secondary/30 p-5 sm:p-7">
+              <h3 className="text-2xl">What Cavinova Must Prove</h3>
+              <ul className="mt-4 list-disc space-y-2 pl-5 leading-relaxed text-muted-foreground marker:text-teal-deep">
+                {validationQuestions.map((question) => (
+                  <li key={question}>{question}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </Section>
       </div>
 
-      <Section>
-        <Eyebrow>From principle to validation</Eyebrow>
-        <h2 className="mt-3 max-w-4xl text-balance text-4xl leading-tight sm:text-5xl">
-          The science is promising. The engineering questions remain.
-        </h2>
-        <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
-          Cavinova must determine whether the proposed formulation and ultrasound conditions can
-          produce safe, consistent, and meaningful results.
-        </p>
-        <ol className="mt-8 grid gap-x-10 gap-y-5 sm:grid-cols-2">
-          {challenges.map(([title, description], index) => (
-            <li key={title} className="grid grid-cols-[2.5rem_1fr] gap-4 border-t pt-5">
-              <span
-                aria-hidden
-                className="grid size-10 place-items-center rounded-full border bg-accent text-sm font-semibold"
-              >
-                0{index + 1}
-              </span>
-              <div>
-                <h3 className="text-2xl">{title}</h3>
-                <p className="mt-2 leading-relaxed text-muted-foreground">{description}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </Section>
-
       <div className="bg-accent/55">
         <Section>
-          <Eyebrow>From research to application</Eyebrow>
-          <h2 className="mt-3 max-w-4xl text-balance text-4xl leading-tight sm:text-5xl">
-            Understanding the mechanism is only the beginning.
+          <h2 className="text-balance text-4xl leading-tight sm:text-5xl">
+            Building the Complete System
           </h2>
-          <div className="mt-5 max-w-3xl space-y-4 leading-relaxed text-muted-foreground">
-            <p>
-              Cavinova’s next challenge is turning these principles into a formulation and routine
-              that can be tested and refined for professional skincare.
-            </p>
-            <p>
-              We’d start by measuring how the serum responds to ultrasound and whether it improves
-              ingredient delivery in controlled tests. Those results would guide decisions about the
-              equipment, formulation, and professional workflow.
-            </p>
-          </div>
+          <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
+            Cavinova's development strategy brings the ultrasound device and microbubble
+            formulations together from the beginning. Initial development focuses on a working
+            prototype and two experimental serum formulations, followed by testing of the complete
+            treatment system.
+          </p>
+          <ol className="mt-8 grid gap-5 lg:grid-cols-3">
+            {development.map(({ title, description }, index) => (
+              <li key={title} className="border-t border-foreground/20 pt-4">
+                <Eyebrow>0{index + 1}</Eyebrow>
+                <h3 className="mt-2 text-2xl">{title}</h3>
+                <p className="mt-2 leading-relaxed text-muted-foreground">{description}</p>
+              </li>
+            ))}
+          </ol>
           <Button asChild className="mt-6 min-h-11 rounded-full text-base">
             <Link to="/platform">
               Explore the Product Concept <ArrowRight aria-hidden />
