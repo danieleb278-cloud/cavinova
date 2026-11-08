@@ -99,25 +99,6 @@ const clinicAdvantages = [
   ["Turnkey workflow", "A coordinated system could simplify staff training and daily use."],
 ] as const;
 
-const phases = [
-  [
-    "Formulation Validation",
-    "Study microbubble stability, ingredient compatibility, acoustic response, delivery, safety, and reproducibility.",
-  ],
-  [
-    "Professional and Equipment Feasibility",
-    "Evaluate specific existing ultrasound setups, provider interest, and how the proposed routine would fit into practice.",
-  ],
-  [
-    "Integrated Machine Development",
-    "Use the results to guide development of the dual-vial handpiece, authentication, dispensing, configuration, and safeguards.",
-  ],
-  [
-    "Commercial Platform Expansion",
-    "Evaluate production, service, partnerships, and distribution.",
-  ],
-] as const;
-
 const choiceClass = "min-h-11 h-auto whitespace-normal px-3 py-2 text-left leading-snug";
 
 function Heading({
@@ -299,31 +280,6 @@ function Platform() {
             </dl>
           </aside>
         </div>
-      </Section>
-
-      <Section>
-        <Heading
-          eyebrow="From formulation to platform"
-          title="Start with the serum. Build toward something bigger."
-        >
-          <p>
-            We’d establish whether the formulation works with a suitable ultrasound setup before
-            making a major hardware investment. Early results and provider feedback would guide
-            development toward the integrated Cavinova platform.
-          </p>
-        </Heading>
-        <ol className="mt-8 grid gap-4 lg:grid-cols-4">
-          {phases.map(([title, description], index) => (
-            <li
-              key={title}
-              className={`relative rounded-2xl border p-5 ${index >= 2 ? "bg-secondary/55" : "bg-card"}`}
-            >
-              <Eyebrow>Phase {index + 1} · Planned</Eyebrow>
-              <h3 className="mt-3 text-2xl">{title}</h3>
-              <p className="mt-3 leading-relaxed text-muted-foreground">{description}</p>
-            </li>
-          ))}
-        </ol>
       </Section>
 
       <Section>
