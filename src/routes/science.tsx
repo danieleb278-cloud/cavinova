@@ -123,7 +123,7 @@ function Science() {
         <Section>
           <Eyebrow>Interactive mechanism</Eyebrow>
           <h2 className="mt-3 text-balance text-4xl leading-tight sm:text-5xl">
-            What happens when sound meets microbubbles?
+            How it works.
           </h2>
           <p className="mt-4 text-muted-foreground">
             Explore the proposed mechanism, one step at a time.
