@@ -140,7 +140,7 @@ function Heading({
 
 function FeatureExplorer() {
   const [selected, setSelected] = useState(0);
-  const feature = features[selected];
+  const feature = features[selected]!;
   const Icon = feature.icon;
   return (
     <div className="mt-8 max-w-5xl">
@@ -168,7 +168,7 @@ function FeatureExplorer() {
         >
           <Icon aria-hidden className="size-6 text-teal-deep" />
           <h3 className="mt-2 text-2xl">{feature.title}</h3>
-          <p className="mt-2 leading-relaxed text-muted-foreground">{feature?.body}</p>
+          <p className="mt-2 leading-relaxed text-muted-foreground">{feature.body}</p>
         </div>
       </div>
     </div>

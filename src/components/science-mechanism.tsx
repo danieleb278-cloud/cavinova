@@ -125,10 +125,10 @@ export function ScienceMechanism({
             >
               <circle r={radius} />
               <ellipse
-                cx={-radius * 0.32}
-                cy={-radius * 0.42}
-                rx={radius * 0.27}
-                ry={radius * 0.13}
+                cx={-(radius ?? 0) * 0.32}
+                cy={-(radius ?? 0) * 0.42}
+                rx={(radius ?? 0) * 0.27}
+                ry={(radius ?? 0) * 0.13}
                 fill="#fff"
                 stroke="none"
                 opacity=".83"
@@ -184,7 +184,7 @@ export function ScienceMechanism({
               style={
                 moving
                   ? ({
-                      "--science-travel": `${y - finalY}px`,
+                      "--science-travel": `${(y ?? 0) - (finalY ?? 0)}px`,
                       animationDelay: `${index * 110}ms`,
                     } as React.CSSProperties)
                   : undefined
