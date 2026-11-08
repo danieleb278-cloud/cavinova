@@ -7,7 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/contact")({
-  validateSearch: (search: Record<string, unknown>): { interest?: "investment" } => ({
+  validateSearch: (search: Record<string, unknown>): { interest?: "investment" | undefined } => ({
     interest: search["interest"] === "investment" ? ("investment" as const) : undefined,
   }),
   staticData: { sitemap: true },
