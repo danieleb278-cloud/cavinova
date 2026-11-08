@@ -61,7 +61,7 @@ const development = [
   {
     title: "Advance",
     description:
-      "Move into further validation, regulatory work, and manufacturing preparation only when defined technical and safety milestones justify further investment.",
+      "Each technical and safety milestone unlocks the next step toward further validation, regulatory work, and manufacturing preparation.",
   },
 ] as const;
 

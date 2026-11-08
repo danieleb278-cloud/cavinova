@@ -110,7 +110,7 @@ const phases = [
   ],
   [
     "Integrated Machine Development",
-    "If the evidence supports investment, develop the dual-vial handpiece, authentication, dispensing, configuration, and safeguards.",
+    "Use the results to guide development of the dual-vial handpiece, authentication, dispensing, configuration, and safeguards.",
   ],
   [
     "Commercial Platform Expansion",
@@ -332,8 +332,8 @@ function Platform() {
           title="An ambitious platform. A disciplined path to market."
         >
           <p>
-            We’ll test the ultrasound prototype and experimental formulations together. The results will
-            help determine whether the complete system is ready for further development.
+            We’ll test the ultrasound prototype and experimental formulations together. Each milestone
+            will guide how we refine the complete system and what we validate next.
           </p>
         </Heading>
         <Button asChild className="mt-6 min-h-11 rounded-full text-base">

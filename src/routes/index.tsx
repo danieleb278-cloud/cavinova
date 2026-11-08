@@ -260,7 +260,7 @@ function Home() {
               microbubbles, and the full combination of serum, ultrasound, and microbubbles.
             </p>
             <p>
-              The results will help us decide whether the full system warrants further investment.
+              Each milestone builds the evidence we need to refine the prototype and advance the complete system.
             </p>
           </div>
           <Link to="/opportunity" className={`mt-6 ${textLink}`}>
