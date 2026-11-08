@@ -140,7 +140,7 @@ function Heading({
 
 function FeatureExplorer() {
   const [selected, setSelected] = useState(0);
-  const feature = features[selected];
+  const feature = features[selected]!;
   const Icon = feature.icon;
   return (
     <div className="mt-8 max-w-5xl">

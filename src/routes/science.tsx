@@ -85,7 +85,7 @@ const challenges = [
 
 function Science() {
   const [step, setStep] = useState(0);
-  const active = steps[step];
+  const active = steps[step]!;
   return (
     <>
       <div className="bg-hero">
@@ -97,12 +97,7 @@ function Science() {
             </h1>
             <div className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
               <p>
-                Unlocking the Skin Barrier.
-
                 Research suggests that ultrasound activates acoustically responsive microbubbles, creating temporary pathways through the skin's outermost layer that may allow active ingredients to penetrate more deeply.
-              </p>
-              <p>
-                {"\n"}
               </p>
             </div>
             <Button asChild className="mt-6 min-h-11 rounded-full text-base">
