@@ -270,27 +270,6 @@ function Home() {
         </Section>
       </div>
 
-      <div className="bg-secondary/45">
-        <Section>
-          <Eyebrow>Investment & partnership opportunity</Eyebrow>
-          <h2 className="mt-3 max-w-4xl text-balance text-4xl leading-tight sm:text-5xl">
-            Exploring the next opportunity in professional skincare delivery.
-          </h2>
-          <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
-            Cavinova is developing an ultrasound prototype and acoustically responsive
-            formulations together for professional skincare. We welcome conversations with
-            prospective investors and strategic partners interested in the integrated system.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Button asChild className="min-h-11 rounded-full">
-              <Link to="/opportunity">Explore the Opportunity</Link>
-            </Button>
-            <Button asChild variant="outline" className="min-h-11 rounded-full">
-              <Link to="/contact">Connect With Cavinova</Link>
-            </Button>
-          </div>
-        </Section>
-      </div>
       <Section>
         <Eyebrow>Explore Cavinova</Eyebrow>
         <h2 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl">
