@@ -68,33 +68,35 @@ const features = [
   },
 ] as const;
 
-const productStages = [
+const treatmentSteps = [
   {
-    label: "Stage 1 · Initial Serum Concept",
-    title: "Activated by the provider. Applied manually.",
-    tone: "border-rose/50 bg-accent/45",
-    image: "/images/platform/activation-vial.webp",
-    alt: "Exploratory twist-to-activate vial shown before and after the two chambers combine.",
-    caption: "Exploratory initial packaging concept. Not a finalized product design.",
-    paragraphs: [
-      "Cavinova's proposed initial product is a premeasured, single-use formulation intended for professional manual application.",
-      "One packaging concept under consideration is a dual-chamber activation vial that keeps microbubbles and active ingredients separate until preparation. The provider would activate the vial, prepare the formulation, and apply it before treatment with suitable ultrasound equipment once compatibility and safety are established.",
-      "The packaging design and preparation process must be validated for microbubble stability, ingredient compatibility, and treatment performance.",
-    ],
+    title: "Insert",
+    lead: "Click in the single-use vials.",
+    body: "Premeasured consumables are designed to simplify setup and support clean, consistent preparation.",
+    icon: FlaskConical,
   },
   {
-    label: "Stage 2 · Future Integrated Platform",
-    title: "Authenticated by the machine. Dispensed automatically.",
-    tone: "border-teal/55 bg-secondary/45",
-    image: "/images/platform/dual-vials.webp",
-    alt: "Two separate pink and teal single-use vials beside the proposed Cavinova handpiece.",
-    caption: "Long-term integrated system concept. Engineering and validation required.",
-    paragraphs: [
-      "With sufficient validation, funding, and professional demand, Cavinova aims to develop an integrated ultrasound treatment platform.",
-      "The proposed system uses two separate, premeasured, single-use vials that authenticate with the machine. The microbubble and active-ingredient components remain isolated through separate pathways until dispensing at the specialized transducer tip.",
-      "The system is intended to coordinate formulation delivery, validated treatment settings, and proposed safety controls within one professional workflow.",
-    ],
+    title: "Configure",
+    lead: "The system recognizes the treatment.",
+    body: "Compatible consumables could prompt the system to load the appropriate settings and help reduce manual setup errors.",
+    icon: SlidersHorizontal,
   },
+  {
+    title: "Treat",
+    lead: "Deliver the treatment through one coordinated workflow.",
+    body: "The handpiece is designed to dispense the formulation as ultrasound is applied. Proposed controls are intended to support safer, more consistent operation.",
+    icon: Hand,
+  },
+] as const;
+
+const clinicAdvantages = [
+  ["Premeasured dosing", "Helps support consistent treatment quantities."],
+  ["Less preparation time", "Could streamline setup by reducing manual preparation steps."],
+  ["Reduced product waste", "Single-use portions may help minimize unused serum."],
+  ["Automatic configuration", "Intended to reduce manual adjustments and setup errors."],
+  ["Authentication controls", "Designed to recognize compatible vials and block unrecognized consumables."],
+  ["Safety features", "Proposed lockouts and shutoff controls are intended to support safer operation."],
+  ["Turnkey workflow", "A coordinated system could simplify staff training and daily use."],
 ] as const;
 
 const phases = [
@@ -258,69 +260,44 @@ function Platform() {
       </div>
 
       <Section>
-        <Heading eyebrow="The serum technology" title="The innovation begins with the formulation.">
+        <Heading
+          eyebrow="The treatment experience"
+          title="A Simpler Process. A Smarter Treatment Workflow."
+        >
           <p>
-            Cavinova's initial development priority is an acoustically responsive formulation
-            designed for professional skincare applications. The team is investigating how
-            microbubbles and selected active ingredients can be maintained, prepared, and applied
-            under conditions that support the proposed ultrasound-assisted delivery mechanism.
-          </p>
-          <p>
-            Early development will focus on formulation stability, ingredient compatibility,
-            packaging feasibility, acoustic response, and safety.
+            Cavinova is designed to bring formulation preparation, treatment setup, and ultrasound
+            application into one coordinated professional system.
           </p>
         </Heading>
 
-        <div className="mt-10 border-t pt-8 sm:mt-14 sm:pt-10">
-          <Eyebrow>Product Evolution</Eyebrow>
-          <h3 className="mt-3 text-balance text-3xl leading-tight sm:text-4xl">
-            One innovation. Two stages of development.
-          </h3>
-          <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
-            Cavinova begins with a manually applied formulation and aims to evolve toward a fully
-            integrated professional treatment system, subject to scientific validation, funding, and
-            commercial demand.
-          </p>
-          <div className="mt-7 grid gap-5 md:grid-cols-2">
-            {productStages.map(({ label, title, tone, image, alt, caption, paragraphs }) => (
-              <article
-                key={label}
-                className={`grid min-w-0 gap-4 rounded-3xl border p-5 sm:p-6 md:row-span-4 md:grid-rows-subgrid ${tone}`}
-              >
-                <div>
-                  <Eyebrow>{label}</Eyebrow>
-                  <h4 className="mt-2 text-balance text-2xl">{title}</h4>
+        <div className="mt-8 grid items-start gap-7 lg:grid-cols-2 lg:gap-10">
+          <ol aria-label="Proposed treatment workflow" className="relative space-y-6 before:absolute before:bottom-8 before:left-6 before:top-8 before:w-px before:bg-teal/45">
+            {treatmentSteps.map(({ title, lead, body, icon: Icon }, index) => (
+              <li key={title} className="relative grid grid-cols-[3rem_minmax(0,1fr)] gap-4">
+                <div className="grid size-12 place-items-center rounded-full border bg-secondary text-teal-deep">
+                  <Icon aria-hidden className="size-6" />
                 </div>
-                <div className="overflow-hidden rounded-2xl border bg-card">
-                  <img
-                    src={image}
-                    alt={alt}
-                    width={1448}
-                    height={1086}
-                    loading="lazy"
-                    className="block aspect-[4/3] w-full object-contain"
-                  />
+                <div className="pb-1">
+                  <Eyebrow>0{index + 1}</Eyebrow>
+                  <h3 className="mt-1 text-2xl">{title}</h3>
+                  <p className="mt-2 font-semibold">{lead}</p>
+                  <p className="mt-1 leading-relaxed text-muted-foreground">{body}</p>
                 </div>
-                <p className="text-sm font-semibold">{caption}</p>
-                <div className="space-y-3 leading-relaxed text-muted-foreground">
-                  {paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
-                </div>
-              </article>
+              </li>
             ))}
-          </div>
-          <div className="mt-7 rounded-2xl border bg-secondary/35 p-5 sm:p-6">
-            <h4 className="text-balance text-2xl">
-              The science stays central. The level of integration evolves.
-            </h4>
-            <p className="mt-2 max-w-3xl leading-relaxed text-muted-foreground">
-              Both approaches are built around premeasured, single-use formulation components and
-              the proposed interaction between acoustic energy and microbubbles. The initial format
-              allows the formulation to be developed independently of proprietary equipment, while
-              the future integrated system could automate more of the treatment experience.
-            </p>
-          </div>
+          </ol>
+
+          <aside aria-labelledby="clinic-advantages" className="rounded-3xl border bg-secondary/45 p-5 shadow-soft sm:p-7">
+            <h3 id="clinic-advantages" className="text-3xl">Clinic Advantages</h3>
+            <dl className="mt-3 divide-y">
+              {clinicAdvantages.map(([title, body]) => (
+                <div key={title} className="py-2.5">
+                  <dt className="font-semibold">{title}</dt>
+                  <dd className="mt-0.5 leading-relaxed text-muted-foreground">{body}</dd>
+                </div>
+              ))}
+            </dl>
+          </aside>
         </div>
       </Section>
 
