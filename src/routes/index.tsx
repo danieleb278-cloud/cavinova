@@ -277,10 +277,9 @@ function Home() {
             Exploring the next opportunity in professional skincare delivery.
           </h2>
           <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
-            Cavinova is investigating an acoustically responsive formulation with the potential to
-            support differentiated professional treatments and, eventually, a fully integrated
-            skincare platform. We're interested in conversations with prospective investors and
-            strategic partners who see potential in the approach.
+            Cavinova is developing an ultrasound prototype and acoustically responsive
+            formulations together for professional skincare. We welcome conversations with
+            prospective investors and strategic partners interested in the integrated system.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild className="min-h-11 rounded-full">
@@ -319,8 +318,8 @@ function Home() {
           <div className="max-w-xl">
             <h3 className="text-2xl">Help shape what we test next.</h3>
             <p className="mt-2 leading-relaxed text-muted-foreground">
-              Share what you’d want to see in the research or what would make the approach practical
-              in your treatment room.
+              Tell us what you’d want to see from testing the ultrasound device and formulations
+              together, or what would make the complete system practical in your treatment room.
             </p>
           </div>
           <Link
