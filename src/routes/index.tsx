@@ -135,12 +135,11 @@ function Home() {
         <Eyebrow>The delivery challenge</Eyebrow>
         <div className="mt-4 grid gap-6 lg:grid-cols-2 lg:gap-12">
           <h2 className="text-balance text-4xl leading-tight sm:text-5xl">
-            The skin protects us. That protection also creates a delivery challenge.
+            The Skin Barrier
           </h2>
           <div className="space-y-4 leading-relaxed text-muted-foreground">
             <p>
-              The stratum corneum is the skin's outermost layer. It helps keep harmful substances
-              out and limits how readily many topical ingredients pass through.
+              The skin's outermost layer, the stratum corneum, protects against harmful substances but also limits the penetration of many skincare ingredients. 
               <Cite ids={["A"]} />
             </p>
             <p>
@@ -180,7 +179,7 @@ function Home() {
         <Section>
           <Eyebrow>The innovation</Eyebrow>
           <h2 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl">
-            Two technologies. One proposed delivery system.
+            Better Together.
           </h2>
           <figure className="mt-8 hidden overflow-hidden rounded-3xl border bg-card shadow-soft md:block">
             <ImageLightbox
@@ -228,7 +227,7 @@ function Home() {
       <Section>
         <Eyebrow>Professional potential</Eyebrow>
         <h2 className="mt-4 max-w-3xl text-balance text-4xl leading-tight sm:text-5xl">
-          What could this mean for professional skincare?
+          Made for Professionals
         </h2>
         <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
           If validated, the approach could give skincare professionals more options for delivering
