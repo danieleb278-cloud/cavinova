@@ -7,6 +7,10 @@
     animation: authentication-sweep 620ms ease-in-out 2 alternate;
   }
 
+  .authentication-dock-scan {
+    animation: authentication-dock-pulse 620ms ease-in-out 2;
+  }
+
   .authentication-signal {
     animation: authentication-illuminate 480ms ease-out;
   }
@@ -31,6 +35,12 @@
   to {
     transform: translateY(122px);
     opacity: 1;
+  }
+}
+
+@keyframes authentication-dock-pulse {
+  50% {
+    stroke: #a6fff0;
   }
 }
 
