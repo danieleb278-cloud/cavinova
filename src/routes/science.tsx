@@ -97,7 +97,10 @@ function Science() {
             </h1>
             <div className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
               <p>
-                Research suggests that ultrasound activates acoustically responsive microbubbles, creating temporary pathways through the skin's outermost layer that may allow active ingredients to penetrate more deeply.
+                Research suggests that ultrasound activates acoustically responsive microbubbles,
+                creating temporary pathways through the skin's outermost layer that may allow active
+                ingredients to penetrate more deeply.
+                <Cite ids={["P"]} />
               </p>
             </div>
             <Button asChild className="mt-6 min-h-11 rounded-full text-base">
@@ -286,7 +289,7 @@ function Science() {
           </Button>
         </Section>
       </div>
-      <References ids={["A", "B", "C", "P", "G"]} />
+      <References ids={["B", "C", "P"]} />
     </>
   );
 }
