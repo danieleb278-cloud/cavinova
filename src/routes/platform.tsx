@@ -218,17 +218,13 @@ function Platform() {
         <Section>
           <Heading
             eyebrow="Integrated by design"
-            title="Separate until dispensing. Designed to support stability."
+            title="Separated for Stability"
           >
             <p>
-              The proposed system would keep two premeasured, single-use components separate:
-              acoustically responsive microbubbles and selected active ingredients.
+              Cavinova's proposed dual-vial system keeps the microbubble formulation and active ingredients separate until dispensing. The design aims to protect formulation stability while supporting hygienic, premeasured treatments.
             </p>
             <p>
-              The pink microbubble and teal active-ingredient pathways are intended to stay isolated
-              until dispensing at the specialized ultrasound tip. The goal is to preserve
-              formulation integrity and coordinate delivery with ultrasound. The mechanism and
-              benefits still need engineering and testing.
+              {'\u00a0'}The goal is to preserve formulation integrity and coordinate delivery with ultrasound. The mechanism and benefits still need engineering and testing.
             </p>
           </Heading>
           <div className="mt-7">
@@ -248,11 +244,13 @@ function Platform() {
         <Section>
           <Heading
             eyebrow="Intelligent treatment control"
-            title="Designed to recognize the treatment before delivering it."
+            title="Recognized. Authorized. Ready."
           >
             <p>
-              The proposed workflow starts with the two single-use vials. See how the system would
-              proceed after authentication, or what would stay disabled if a vial is unrecognized.
+              
+              
+              
+              The proposed system uses RFID technology to identify compatible vials, configure treatment settings, and prevent activation when a vial is unrecognized.
             </p>
           </Heading>
           <AuthenticationMachine />
