@@ -20,6 +20,12 @@ const particles = [
   [456, 246, 4],
   [477, 231, 5],
   [553, 241, 4],
+] as const;
+
+const pathways = [
+  { x: 238, exit: 328 },
+  { x: 390, exit: 332 },
+  { x: 553, exit: 336 },
 ];
 
 export function ScienceMechanism({
@@ -160,31 +166,37 @@ export function ScienceMechanism({
         <g
           data-science-layer="delivery-guides"
           fill="none"
-          stroke="#fff"
-          strokeWidth="3"
+          stroke="#fff0f3"
+          strokeWidth="6"
           strokeLinecap="round"
-          opacity=".85"
         >
-          {[274, 360, 444].map((x) => (
-            <path key={x} d={`M${x} 265 v57 m-7 -8 7 8 7 -8`} />
+          {pathways.map(({ x, exit }) => (
+            <path
+              key={x}
+              className="science-pathway"
+              opacity=".75"
+              d={`M${x} 269 q-6 10 -3 18 t6 16 q2 8 -3 ${exit - 305}`}
+            />
           ))}
         </g>
       )}
       <g data-science-layer="ingredients" fill="#c4497b" stroke="#fff4f8" strokeWidth="1.5">
         {particles.map(([x, y, radius], index) => {
-          const moving = step === 3 && index > 0 && index < particles.length - 1;
-          const finalY = moving ? 282 + (index % 3) * 19 : y;
+          const pathway = step === 3 ? pathways.find((path) => path.x === x) : undefined;
+          const finalY = pathway?.exit ?? y;
           return (
             <circle
               key={x}
               cx={x}
               cy={finalY}
               r={radius}
-              className={moving ? "science-ingredient" : undefined}
+              className={pathway ? "science-ingredient" : undefined}
               style={
-                moving
+                pathway
                   ? ({
-                      "--science-travel": `${(y ?? 0) - (finalY ?? 0)}px`,
+                      "--science-travel": `${y - finalY}px`,
+                      "--science-bend-in": `${287 - finalY}px`,
+                      "--science-bend-out": `${303 - finalY}px`,
                       animationDelay: `${index * 110}ms`,
                     } as React.CSSProperties)
                   : undefined
