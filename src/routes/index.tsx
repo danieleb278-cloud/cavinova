@@ -232,7 +232,7 @@ function Home() {
         <Section>
           <Eyebrow>Our development approach</Eyebrow>
           <h2 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl">
-            Prototype and test the complete system.
+            Prototype. Formulate. Test.
           </h2>
           <div className="mt-5 max-w-3xl space-y-3 leading-relaxed text-muted-foreground">
             <p>
