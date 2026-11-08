@@ -77,24 +77,6 @@ const possibilities = [
   },
 ];
 
-const destinations = [
-  {
-    to: "/science",
-    title: "Explore the Science",
-    description: "Understand ultrasound, microbubbles, and the proposed delivery mechanism.",
-  },
-  {
-    to: "/platform",
-    title: "Discover the Product Concept",
-    description: "See how the technology could translate into a professional treatment.",
-  },
-  {
-    to: "/opportunity",
-    title: "Understand the Opportunity",
-    description: "Explore Cavinova's proposed development and commercialization strategy.",
-  },
-] as const;
-
 function Home() {
   return (
     <>
@@ -269,29 +251,7 @@ function Home() {
       </div>
 
       <Section>
-        <Eyebrow>Explore Cavinova</Eyebrow>
-        <h2 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl">
-          A different approach to what skincare can deliver.
-        </h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
-          {destinations.map(({ to, title, description }) => (
-            <Link
-              key={to}
-              to={to}
-              className="group rounded-2xl border bg-card p-5 transition hover:border-primary sm:p-6"
-            >
-              <h3 className="flex items-start justify-between gap-2 text-2xl">
-                {title}{" "}
-                <ArrowRight
-                  aria-hidden
-                  className="mt-1 h-5 w-5 shrink-0 text-primary motion-safe:transition group-hover:translate-x-1"
-                />
-              </h3>
-              <p className="mt-3 leading-relaxed text-muted-foreground">{description}</p>
-            </Link>
-          ))}
-        </div>
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-5 rounded-3xl bg-secondary/65 p-6 sm:p-8">
+        <div className="flex flex-wrap items-center justify-between gap-5 rounded-3xl bg-secondary/65 p-6 sm:p-8">
           <div className="max-w-xl">
             <h3 className="text-2xl">Help shape what we test next.</h3>
             <p className="mt-2 leading-relaxed text-muted-foreground">
