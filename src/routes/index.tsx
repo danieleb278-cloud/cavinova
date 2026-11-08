@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Droplets, Hand, Waves } from "lucide-react";
 import { Eyebrow, Section, seo } from "@/components/site";
-import { Button } from "@/components/ui/button";
 import { ImageLightbox } from "@/components/image-lightbox";
 import { Cite, References, ReferencesLink } from "@/components/references";
 
