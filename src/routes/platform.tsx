@@ -168,7 +168,7 @@ function FeatureExplorer() {
         >
           <Icon aria-hidden className="size-6 text-teal-deep" />
           <h3 className="mt-2 text-2xl">{feature.title}</h3>
-          <p className="mt-2 leading-relaxed text-muted-foreground">{feature.body}</p>
+          <p className="mt-2 leading-relaxed text-muted-foreground">{feature?.body}</p>
         </div>
       </div>
     </div>
