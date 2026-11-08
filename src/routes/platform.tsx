@@ -183,12 +183,11 @@ function Platform() {
           <div>
             <Eyebrow>The Cavinova product vision</Eyebrow>
             <h1 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl xl:text-6xl">
-              More than a serum. An intelligent skincare delivery platform.
+              More Than a Serum
             </h1>
             <div className="mt-5 space-y-3 leading-relaxed text-muted-foreground">
               <p>
-                Cavinova envisions a professional system that pairs acoustically responsive
-                formulations with controlled ultrasound.
+                Cavinova's integrated treatment system is designed to simplify professional application, enhance active ingredient delivery, and support consistent treatment performance.
               </p>
               <p>
                 Premeasured, single-use formulations, automated dispensing, consumable
@@ -196,8 +195,7 @@ function Platform() {
                 repeat.
               </p>
               <p>
-                We’d validate the serum first. Our long-term goal is a complete Cavinova system
-                shaped by scientific evidence and professional demand.
+                .
               </p>
             </div>
             <Button asChild className="mt-6 min-h-11 rounded-full text-base">
