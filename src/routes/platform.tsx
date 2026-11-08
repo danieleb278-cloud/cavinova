@@ -332,9 +332,8 @@ function Platform() {
           title="An ambitious platform. A disciplined path to market."
         >
           <p>
-            Serum testing comes first. The results will help show whether specialized formulations,
-            coordinated equipment, and recurring consumables could support a viable professional
-            platform.
+            We’ll test the ultrasound prototype and experimental formulations together. The results will
+            help determine whether the complete system is ready for further development.
           </p>
         </Heading>
         <Button asChild className="mt-6 min-h-11 rounded-full text-base">

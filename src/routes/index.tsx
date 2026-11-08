@@ -78,23 +78,6 @@ const possibilities = [
   },
 ];
 
-const stages = [
-  {
-    title: "Validate the serum",
-    description:
-      "Investigate formulation stability, acoustic response, safety, and ingredient delivery.",
-  },
-  {
-    title: "Understand professional demand",
-    description: "Evaluate provider interest, treatment workflow, and commercial practicality.",
-  },
-  {
-    title: "Select the right platform",
-    description:
-      "Determine whether compatibility, partnership, or dedicated equipment offers the strongest path forward.",
-  },
-];
-
 const destinations = [
   {
     to: "/science",
@@ -266,40 +249,24 @@ function Home() {
       </Section>
 
       <div className="bg-accent/55">
-        <Section className="grid gap-9 lg:grid-cols-[1fr_0.85fr] lg:gap-14">
-          <div>
-            <Eyebrow>Our development approach</Eyebrow>
-            <h2 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl">
-              Prove the delivery. Then decide how to scale it.
-            </h2>
-            <div className="mt-5 space-y-4 leading-relaxed text-muted-foreground">
-              <p>
-                First, we’d test the serum’s stability, response to ultrasound, safety, and ability
-                to support ingredient delivery.
-              </p>
-              <p>
-                Testing and provider feedback would guide our choice between existing equipment, an
-                equipment partner, and a dedicated Cavinova system.
-              </p>
-            </div>
-            <Link to="/opportunity" className={`mt-6 ${textLink}`}>
-              Explore our commercialization strategy{" "}
-              <ArrowRight aria-hidden className="h-4 w-4 shrink-0" />
-            </Link>
+        <Section>
+          <Eyebrow>Our development approach</Eyebrow>
+          <h2 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl">
+            Prototype and test the complete system.
+          </h2>
+          <div className="mt-5 max-w-3xl space-y-3 leading-relaxed text-muted-foreground">
+            <p>
+              Our first step is to build an ultrasound device prototype alongside two experimental
+              serum formulations. We’ll compare serum alone, serum with ultrasound, serum with
+              microbubbles, and the full combination of serum, ultrasound, and microbubbles.
+            </p>
+            <p>
+              The results will help us decide whether the full system warrants further investment.
+            </p>
           </div>
-          <ol className="relative self-center space-y-7 before:absolute before:bottom-6 before:left-5 before:top-5 before:w-px before:bg-primary/35">
-            {stages.map(({ title, description }, index) => (
-              <li key={title} className="relative grid grid-cols-[2.5rem_1fr] gap-4">
-                <span className="grid h-10 place-items-center rounded-full border border-primary/35 bg-card text-sm font-semibold text-primary">
-                  0{index + 1}
-                </span>
-                <div>
-                  <h3 className="text-2xl">{title}</h3>
-                  <p className="mt-2 leading-relaxed text-muted-foreground">{description}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <Link to="/opportunity" className={`mt-6 ${textLink}`}>
+            Explore the Opportunity <ArrowRight aria-hidden className="h-4 w-4 shrink-0" />
+          </Link>
         </Section>
       </div>
 
