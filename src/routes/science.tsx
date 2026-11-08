@@ -93,19 +93,16 @@ function Science() {
           <div>
             <Eyebrow>The science behind Cavinova</Eyebrow>
             <h1 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl xl:text-6xl">
-              Can sound change how ingredients move through skin?
+              Unlocking the Skin Barrier
             </h1>
             <div className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
               <p>
-                The skin's protective barrier makes it difficult for many substances to penetrate.
-                <Cite ids={["A"]} />
-                Researchers have studied how ultrasound can temporarily influence that barrier, a
-                process known as sonophoresis.
-                <Cite ids={["B", "G"]} />
+                Unlocking the Skin Barrier.
+
+                Research suggests that ultrasound activates acoustically responsive microbubbles, creating temporary pathways through the skin's outermost layer that may allow active ingredients to penetrate more deeply.
               </p>
               <p>
-                Cavinova is exploring how combining ultrasound with acoustically responsive
-                microbubbles could create a different approach to topical ingredient delivery.
+                {"\n"}
               </p>
             </div>
             <Button asChild className="mt-6 min-h-11 rounded-full text-base">
