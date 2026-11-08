@@ -49,19 +49,19 @@ const validationQuestions = [
 
 const development = [
   {
-    title: "Develop",
+    title: "Formulate",
     description:
-      "Build an initial ultrasound prototype and prepare two experimental serum formulations. Establish technical feasibility and address key intellectual property and development requirements.",
+      "Develop two experimental microbubble serum formulations with selected active ingredients for common skin concerns.",
   },
   {
-    title: "Test",
+    title: "Prototype",
     description:
-      "Compare serum alone, serum with ultrasound, serum with microbubbles, and the full treatment combining all three.",
+      "Build an initial ultrasound device designed to work with the formulations as part of one system.",
   },
   {
-    title: "Advance",
+    title: "Validate",
     description:
-      "Each technical and safety milestone unlocks the next step toward further validation, regulatory work, and manufacturing preparation.",
+      "Test ingredient delivery, repeatability, and preliminary safety. Each milestone helps unlock the next stage of development.",
   },
 ] as const;
 
@@ -229,33 +229,32 @@ function Science() {
         </Section>
       </div>
 
-      <div className="bg-accent/55">
-        <Section>
-          <h2 className="text-balance text-4xl leading-tight sm:text-5xl">
-            Building the Complete System
+      <Section>
+        <div className="rounded-3xl border bg-accent/45 p-5 sm:p-8 lg:p-10">
+          <Eyebrow>Our development priority</Eyebrow>
+          <h2 className="mt-3 text-balance text-4xl leading-tight sm:text-5xl">
+            Proving the Concept.
           </h2>
-          <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
-            Cavinova's development strategy brings the ultrasound device and microbubble
-            formulations together from the beginning. Initial development focuses on a working
-            prototype and two experimental serum formulations, followed by testing of the complete
-            treatment system.
+          <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
+            Our first priority is to establish technical feasibility and gather measurable results
+            by developing and testing the ultrasound device and formulations together.
           </p>
-          <ol className="mt-8 grid gap-5 lg:grid-cols-3">
+          <ol className="mt-6 grid gap-5 border-t pt-6 md:grid-cols-3 md:gap-7">
             {development.map(({ title, description }, index) => (
-              <li key={title} className="border-t border-foreground/20 pt-4">
+              <li key={title}>
                 <Eyebrow>0{index + 1}</Eyebrow>
                 <h3 className="mt-2 text-2xl">{title}</h3>
                 <p className="mt-2 leading-relaxed text-muted-foreground">{description}</p>
               </li>
             ))}
           </ol>
-          <Button asChild className="mt-6 min-h-11 rounded-full text-base">
-            <Link to="/platform">
-              Explore the Product Concept <ArrowRight aria-hidden />
-            </Link>
-          </Button>
-        </Section>
-      </div>
+        </div>
+        <Button asChild className="mt-6 min-h-11 rounded-full text-base">
+          <Link to="/platform">
+            Explore the Product Concept <ArrowRight aria-hidden />
+          </Link>
+        </Button>
+      </Section>
       <References ids={["B", "C", "P"]} />
     </>
   );
