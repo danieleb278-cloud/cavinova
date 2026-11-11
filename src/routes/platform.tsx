@@ -390,7 +390,7 @@ function Platform() {
                   width={960}
                   height={960}
                   loading="lazy"
-                  className="aspect-[4/3] w-full object-cover"
+                  className="aspect-square w-full object-cover"
                 />
                 <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <h3 className="text-2xl">{name}</h3>
