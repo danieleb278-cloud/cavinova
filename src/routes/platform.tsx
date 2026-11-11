@@ -20,7 +20,7 @@ export const Route = createFileRoute("/platform")({
   head: () =>
     seo(
       "Product Concept — Cavinova",
-      "Explore Cavinova’s proposed integrated professional skincare system, from premeasured serum packets to an authenticated, dual-vial ultrasound platform.",
+      "Explore Cavinova’s proposed ultrasound facial system with a reusable treatment cup and its longer-term automation concept.",
     ),
   component: Platform,
 });
@@ -166,24 +166,22 @@ function Platform() {
           <div>
             <Eyebrow>The Cavinova product vision</Eyebrow>
             <h1 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl xl:text-6xl">
-              More Than a Serum
+              An ultrasound facial built for the treatment room
             </h1>
             <div className="mt-5 space-y-3 leading-relaxed text-muted-foreground">
               <p>
-                Cavinova's integrated treatment system is designed to simplify professional application, enhance active ingredient delivery, and support consistent treatment performance.
+                The first Cavinova concept pairs a handheld ultrasound applicator with a reusable
+                treatment cup. The esthetician measures the serum, adds a microbubble dose, and uses
+                a preset treatment routine.
               </p>
               <p>
-                Premeasured, single-use formulations, automated dispensing, consumable
-                authentication, and integrated controls could make the process easier to learn and
-                repeat.
-              </p>
-              <p>
-                .
+                Below, explore a longer-term design for automated dispensing and authenticated
+                consumables.
               </p>
             </div>
             <Button asChild className="mt-6 min-h-11 rounded-full text-base">
               <a href="#integrated-system">
-                Explore the proposed system <ArrowRight aria-hidden />
+                Explore the future system concept <ArrowRight aria-hidden />
               </a>
             </Button>
           </div>
@@ -192,7 +190,7 @@ function Platform() {
             conceptLabel={false}
             src="/images/platform/integrated-system.webp"
             title="Cavinova console and handpiece concept"
-            caption="Proposed integrated Cavinova system. Conceptual design, not a commercial product."
+            caption="Concept rendering of the future integrated console and handpiece."
           />
         </Section>
       </div>

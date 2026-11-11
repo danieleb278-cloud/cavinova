@@ -8,8 +8,8 @@ export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
   head: () =>
     seo(
-      "Cavinova — Advanced Acoustic Aesthetics",
-      "Cavinova is exploring how ultrasound and acoustically responsive microbubbles could help deliver selected skincare ingredients.",
+      "Cavinova — A New Premium Facial for Spas",
+      "Cavinova is developing a premium facial system that pairs controlled ultrasound and a microbubble serum for day spas and med spas.",
     ),
   component: Home,
 });
@@ -55,25 +55,25 @@ const comparison = [
 
 const possibilities = [
   {
-    title: "More targeted treatment possibilities",
+    title: "A new service for your menu",
     icon: Droplets,
     tone: "border-rose/40 bg-accent",
     description:
-      "Exploring formulations with selected ingredients for different professional skincare applications.",
+      "Give clients a reason to book an upgrade with a facial built around ultrasound and a dedicated microbubble serum.",
   },
   {
-    title: "A needle-free concept",
+    title: "Designed for the treatment room",
     icon: Waves,
     tone: "border-teal/50 bg-secondary/65",
     description:
-      "Investigating an ultrasound-assisted method that does not rely on needles or intentionally creating wounds in the skin.",
+      "A handheld applicator, a reusable treatment cup, and a preset workflow are the starting point for a service estheticians can learn and repeat.",
   },
   {
-    title: "A possible addition to professional services",
+    title: "Built for repeat visits",
     icon: Hand,
     tone: "border-border bg-card",
     description:
-      "Evaluating whether the technology could become a practical and commercially attractive service for aesthetic providers.",
+      "Our goal is a facial clients want to book again, with serum and microbubble refills that spas can replenish as they treat.",
   },
 ];
 
@@ -83,23 +83,25 @@ function Home() {
       <section className="bg-hero">
         <div className="mx-auto grid max-w-7xl items-center gap-9 px-4 py-12 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12 lg:py-20">
           <div className="min-w-0">
-            <Eyebrow>Cavinova | Advanced Acoustic Aesthetics</Eyebrow>
+            <Eyebrow>Professional skincare</Eyebrow>
             <h1 className="mt-5 max-w-xl text-balance text-4xl leading-[1.08] sm:text-5xl xl:text-6xl">
-              Skincare Has a Delivery Problem.
+              Give clients a reason to book their next facial.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Cavinova combines ultrasound with acoustically responsive microbubbles in a noninvasive treatment concept designed to improve the delivery of active skincare ingredients through the skin barrier.
+              Cavinova is developing a premium facial system for day spas and med spas. It pairs
+              controlled ultrasound with a microbubble serum applied at the skin surface, with the
+              goal of delivering a visible improvement clients want to come back for.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                to="/science"
+                to="/platform"
                 className={`${button} bg-primary text-primary-foreground hover:opacity-90`}
               >
-                Discover the science <ArrowRight aria-hidden className="h-4 w-4" />
+                Explore the facial system <ArrowRight aria-hidden className="h-4 w-4" />
               </Link>
-              <a href="#innovation" className={`${button} border bg-card hover:border-primary`}>
-                Explore Cavinova
-              </a>
+              <Link to="/opportunity" className={`${button} border bg-card hover:border-primary`}>
+                See the opportunity
+              </Link>
             </div>
           </div>
           <img
@@ -212,8 +214,8 @@ function Home() {
           Made for Professionals
         </h2>
         <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
-          If validated, the approach could give skincare professionals more options for delivering
-          selected ingredients.
+          Cavinova is designed around the people who would use it every day. Spa owners get a new
+          service to offer, and estheticians get a workflow built around the treatment room.
         </p>
         <div className="mt-9 grid gap-6 md:grid-cols-3">
           {possibilities.map(({ title, description, icon: Icon, tone }) => (
@@ -253,10 +255,10 @@ function Home() {
       <Section>
         <div className="flex flex-wrap items-center justify-between gap-5 rounded-3xl bg-secondary/65 p-6 sm:p-8">
           <div className="max-w-xl">
-            <h3 className="text-2xl">Help shape what we test next.</h3>
+            <h3 className="text-2xl">Let’s talk about what Cavinova could bring to your spa.</h3>
             <p className="mt-2 leading-relaxed text-muted-foreground">
-              Tell us what you’d want to see from testing the ultrasound device and formulations
-              together, or what would make the complete system practical in your treatment room.
+              If you run a spa, work with estheticians, or want to help bring the concept to market,
+              we’d like to hear from you.
             </p>
           </div>
           <Link

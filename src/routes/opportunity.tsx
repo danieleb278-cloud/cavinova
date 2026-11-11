@@ -11,7 +11,7 @@ export const Route = createFileRoute("/opportunity")({
   head: () =>
     seo(
       "Opportunity — Cavinova",
-      "Explore the professional skincare treatment landscape and the opportunity Cavinova sees in ultrasound-assisted ingredient delivery.",
+      "See how Cavinova plans to help spas introduce a premium ultrasound and microbubble facial with a repeatable service and refill model.",
     ),
   component: Opportunity,
 });
@@ -107,14 +107,13 @@ function Opportunity() {
         <Section>
           <Eyebrow>The market opportunity</Eyebrow>
           <h1 className="mt-4 max-w-5xl text-balance text-4xl leading-tight sm:text-5xl xl:text-6xl">
-            An established treatment market. A science-driven opportunity to differentiate.
+            A premium facial spas can make their own.
           </h1>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            Professional aesthetic practices already invest in specialized services and
-            technology-enabled treatments.
-            <Cite ids={["F", "H"]} /> Cavinova is exploring whether acoustically responsive
-            formulations could create a differentiated professional treatment offering, with
-            recurring consumable demand and long-term integrated-platform potential.
+            Day spas and med spas already offer technology-enabled facials.
+            <Cite ids={["F", "H"]} /> Cavinova is developing a new service for those treatment
+            rooms, pairing an ultrasound handpiece with a microbubble serum. A spa can start with
+            one system and replenish supplies as it serves clients.
           </p>
           <ul className="mt-5 flex flex-wrap gap-2" aria-label="Opportunity themes">
             {[
@@ -249,12 +248,12 @@ function Opportunity() {
         <Section>
           <Heading
             eyebrow="Why Cavinova"
-            title="A scientific concept with the potential to become a recurring professional treatment business."
+            title="From the first installation to the next refill."
           >
             <p>
-              Cavinova's proposed opportunity combines delivery-focused formulation technology,
-              established professional treatment channels, ongoing consumable demand, and
-              longer-term integrated equipment potential.
+              We plan to start with founder-led demos and training in the New York metro. Each
+              installation gives us a chance to learn how estheticians use the system and what
+              brings spas back for refills. That experience informs how we expand into new regions.
             </p>
           </Heading>
           <OpportunityFlow
@@ -270,17 +269,17 @@ function Opportunity() {
               },
               {
                 title: "Professional customer",
-                description: "Aesthetic practices evaluating differentiated treatment services.",
+                description: "Day spas and med spas looking for a premium facial to add to their menus.",
               },
               {
                 title: "Recurring treatment demand",
                 description:
-                  "Premeasured, single-use formulations replenished as treatments are performed.",
+                  "Spas replenish bulk serum and measured microbubble doses as they perform facials.",
               },
               {
-                title: "Integrated platform expansion",
+                title: "Regional expansion",
                 description:
-                  "A future intelligent ultrasound system with authenticated consumables and automated treatment features.",
+                  "Local demos and trainer-led onboarding, supported by online refill ordering.",
               },
             ]}
           />
