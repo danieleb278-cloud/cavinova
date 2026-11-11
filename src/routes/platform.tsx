@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Droplets, Hand, SlidersHorizontal } from "lucide-react";
-import { Diagram, Eyebrow, Section, seo } from "@/components/site";
+import { Eyebrow, Section, seo } from "@/components/site";
 import { Button } from "@/components/ui/button";
 import { Cite, References } from "@/components/references";
 
@@ -114,36 +114,53 @@ function PresetPreview() {
 function Platform() {
   return (
     <>
-      <div className="bg-hero">
-        <Section className="grid items-center gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-          <div>
-            <Eyebrow>Professional cosmetic skincare</Eyebrow>
-            <h1 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl xl:text-6xl">
-              An ultrasound facial built for the treatment room
+      <section
+        aria-labelledby="platform-title"
+        className="relative isolate overflow-hidden bg-[#f5ebe4]"
+      >
+        <div className="mx-auto flex max-w-[92rem] flex-col lg:min-h-[27rem] lg:justify-center xl:min-h-[32rem]">
+          <div className="relative z-10 px-6 pt-12 pb-8 sm:px-10 sm:pt-16 lg:w-[43%] lg:py-10 xl:px-16">
+            <Eyebrow>The Cavinova Platform | Coming 2028</Eyebrow>
+            <h1
+              id="platform-title"
+              className="mt-4 max-w-[12ch] text-4xl leading-[1.03] tracking-tight sm:text-5xl xl:text-6xl"
+            >
+              Advanced technology. Simple by design.
             </h1>
-            <p className="mt-5 leading-relaxed text-muted-foreground">
-              Prepare the microbubble serum in a marked, reusable cup and click it into the
-              handpiece. Both cup sizes use the same connector. Choose the facial and session
-              length, and the software loads the matching ultrasound preset.
+            <p className="mt-5 max-w-md text-lg leading-relaxed">
+              Meet the Cavinova System, a professional acoustic skincare platform designed to make
+              sophisticated treatments surprisingly simple.
             </p>
-            <Button asChild className="mt-6 min-h-11 rounded-full text-base">
-              <a href="#facial-serums">
-                Explore the serum lineup <ArrowRight aria-hidden />
+            <p className="mt-4 max-w-md leading-relaxed text-muted-foreground">
+              From precision-measured serum preparation to automated treatment settings and
+              controlled dispensing, every detail is designed around the way skincare professionals
+              actually work.
+            </p>
+            <Button asChild className="mt-7 min-h-11 rounded-full px-6 text-base">
+              <a href="#system">
+                Explore the System <ArrowRight aria-hidden />
               </a>
             </Button>
           </div>
-          <Diagram
-            enlarge
-            conceptLabel={false}
-            src={`${images}/handheld-refillable-system.png`}
-            title="Handheld Cavinova applicator with an inline refillable reservoir and separate serum bottles"
-            caption="Concept rendering of the handheld applicator. Both reusable reservoir sizes click into the same port. Serums come in separate bottles."
-          />
-        </Section>
-      </div>
+          <div className="relative lg:absolute lg:inset-y-0 lg:right-0 lg:left-[40%]">
+            <img
+              src={`${images}/platform-hero.webp`}
+              alt="Cavinova concept system with a touchscreen base, a white handpiece, and the Hydrate & Glow, Smooth & Firm, and Brighten & Even Tone serums."
+              width={1536}
+              height={1024}
+              fetchPriority="high"
+              className="block h-auto w-full lg:h-full lg:object-cover lg:object-center"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#f5ebe4] to-transparent lg:inset-y-0 lg:right-auto lg:h-auto lg:w-[13%] lg:bg-gradient-to-r"
+            />
+          </div>
+        </div>
+      </section>
 
       <Section>
-        <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
+        <div id="system" className="grid scroll-mt-28 gap-8 lg:grid-cols-2 lg:items-start">
           <div>
             <Eyebrow>The esthetician’s workflow</Eyebrow>
             <h2 className="mt-3 text-balance text-4xl leading-tight sm:text-5xl">
