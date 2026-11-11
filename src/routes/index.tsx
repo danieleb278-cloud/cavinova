@@ -17,8 +17,6 @@ export const Route = createFileRoute("/")({
 const images = "/images/home";
 const button =
   "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold transition";
-const textLink =
-  "inline-flex min-h-11 items-center gap-2 font-semibold text-foreground underline decoration-primary underline-offset-4";
 
 const comparison = [
   {
