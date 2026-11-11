@@ -1,4 +1,22 @@
 export const references = {
+  Topical: {
+    number: 1,
+    url: "https://escholarship.org/uc/item/9sh763nc",
+    label:
+      "Nino, M., Calabrò, G., & Santoianni, P. (2010). Topical delivery of active principles: The field of dermatological research. Dermatology Online Journal, 16(1), 4. doi:10.5070/D39sh763nc.",
+  },
+  Hyaluronic: {
+    number: 2,
+    url: "https://doi.org/10.1021/acsabm.9b01126",
+    label:
+      "Ho, Y.-J., Hsu, H.-C., Kang, S.-T., Fan, C.-H., Chang, C.-W., & Yeh, C.-K. (2020). Ultrasonic transdermal delivery system with acid-base neutralization-generated CO₂ microbubble cavitation. ACS Applied Bio Materials, 3(4), 1968–1975. doi:10.1021/acsabm.9b01126.",
+  },
+  Tone: {
+    number: 4,
+    url: "https://pubmed.ncbi.nlm.nih.gov/16626384/",
+    label:
+      "Hakozaki, T., Takiwaki, H., Miyamoto, K., Sato, Y., & Arase, S. (2006). Ultrasound enhanced skin-lightening effect of vitamin C and niacinamide. Skin Research and Technology, 12(2), 105–113. doi:10.1111/j.0909-752X.2006.00186.x.",
+  },
   A: {
     number: 1,
     url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC19831/",

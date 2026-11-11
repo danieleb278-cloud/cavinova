@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, RotateCcw } from "lucide-react";
 import { Section, Eyebrow, seo } from "@/components/site";
@@ -11,7 +11,7 @@ export const Route = createFileRoute("/science")({
   head: () =>
     seo(
       "Science & Technology — Cavinova",
-      "Explore the proposed interaction between ultrasound, microbubbles, and the skin barrier, the published evidence, and what Cavinova still needs to test.",
+      "Explore published research on ultrasound-assisted ingredient delivery and its potential for professional skincare.",
     ),
   component: Science,
 });
@@ -39,29 +39,53 @@ const steps = [
   },
 ] as const;
 
-const validationQuestions = [
-  "Keep microbubbles stable and functional through storage and use.",
-  "Confirm compatibility with the proposed ultrasound device.",
-  "Demonstrate repeatable delivery of selected ingredients.",
-  "Identify suitable treatment settings and assess preliminary safety.",
-  "Confirm the workflow is practical for professionals.",
-];
+const scienceReferences = ["Topical", "Hyaluronic", "C", "Tone", "B", "P"] as const;
 
-const development = [
+const findings = [
   {
-    title: "Formulate",
+    value: "1–5%",
+    title: "Reported Topical Bioavailability",
     description:
-      "Develop cosmetic serum formulations for hydration, the look of fine lines, and the appearance of uneven tone.",
+      "A published review estimated that roughly 1–5% of the applied dose becomes available in the skin for most commercial dermatological formulations.",
+    source: "Topical",
+    accent: "bg-accent/55",
   },
   {
-    title: "Prototype",
+    value: "2.1×",
+    title: "Greater Hyaluronic Acid Penetration",
     description:
-      "Build an initial ultrasound device designed to work with the formulations as part of one system.",
+      "Researchers reported about 2.1 times the penetration of labeled hyaluronic acid in rat skin using ultrasound-induced CO₂ microbubble cavitation.",
+    source: "Hyaluronic",
+    accent: "bg-secondary/55",
   },
   {
-    title: "Validate",
+    value: "37%",
+    title: "Greater Penetration Depth",
     description:
-      "Evaluate how the serum and handpiece work together, check repeatability, and use the results to refine the facial presets.",
+      "In pigskin, a tracer dye penetrated 37% deeper with 3.5 μm microbubbles than with 1.4 μm microbubbles under the same ultrasound conditions.",
+    source: "C",
+    accent: "bg-muted/50",
+  },
+] as const;
+
+const research = [
+  {
+    title: "Enhanced Skin Permeability",
+    description:
+      "Ultrasound-generated mechanical effects can temporarily alter the skin’s outer barrier, creating pathways for improved topical ingredient transport.",
+    sources: ["Topical", "Hyaluronic"],
+  },
+  {
+    title: "Improved Ingredient Delivery",
+    description:
+      "Experimental studies have demonstrated increased penetration of selected compounds, including hyaluronic acid and vitamin C derivatives, under specific ultrasound and microbubble conditions.",
+    sources: ["Hyaluronic", "C"],
+  },
+  {
+    title: "Visible Cosmetic Applications",
+    description:
+      "A clinical study found greater improvement in facial hyperpigmentation with ultrasound and a topical gel containing niacinamide and a vitamin C derivative than with the gel alone.",
+    sources: ["Tone"],
   },
 ] as const;
 
@@ -75,19 +99,28 @@ function Science() {
           <div>
             <Eyebrow>The science behind Cavinova</Eyebrow>
             <h1 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl xl:text-6xl">
-              How Ultrasound and Microbubbles Work Together
+              The Science of Better Delivery
             </h1>
             <div className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
               <p>
-                Research suggests that ultrasound activates acoustically responsive microbubbles,
-                creating temporary pathways through the skin's outermost layer that may allow active
-                ingredients to penetrate more deeply.
-                <Cite ids={["P"]} />
+                Skincare ingredients have come a long way. But getting them into the skin remains
+                one of formulation science’s biggest challenges.
+              </p>
+              <p>
+                Research has shown that many conventional topical formulations deliver only a small
+                fraction of their applied ingredients into the skin.
+                <Cite ids={["Topical"]} order={scienceReferences} />
+              </p>
+              <p>
+                Cavinova builds on a growing body of scientific research demonstrating how
+                ultrasound and acoustically responsive microbubbles can enhance skin permeability
+                and improve the delivery of selected active ingredients.
+                <Cite ids={["Hyaluronic", "C"]} order={scienceReferences} />
               </p>
             </div>
             <Button asChild className="mt-6 min-h-11 rounded-full text-base">
-              <a href="#mechanism">
-                Explore the mechanism <ArrowRight aria-hidden />
+              <a href="#research-at-a-glance">
+                Explore the Science <ArrowRight aria-hidden />
               </a>
             </Button>
           </div>
@@ -101,12 +134,40 @@ function Science() {
         </Section>
       </div>
 
+      <div id="research-at-a-glance" className="scroll-mt-24">
+        <Section>
+          <Eyebrow>The Research at a Glance</Eyebrow>
+          <h2 className="mt-3 text-balance text-4xl leading-tight sm:text-5xl">
+            The numbers behind better delivery.
+          </h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {findings.map(({ value, title, description, source, accent }) => (
+              <article
+                key={title}
+                className={`rounded-3xl border p-5 shadow-soft sm:p-7 ${accent}`}
+              >
+                <p className="font-serif text-5xl leading-none text-teal-deep sm:text-6xl">
+                  {value}
+                </p>
+                <h3 className="mt-4 text-2xl">{title}</h3>
+                <p className="mt-3 leading-relaxed text-muted-foreground">
+                  {description}
+                  <Cite ids={[source]} order={scienceReferences} />
+                </p>
+              </article>
+            ))}
+          </div>
+          <p className="mt-5 max-w-3xl text-sm italic leading-relaxed text-muted-foreground">
+            These figures come from independent published studies that used different formulations
+            and experimental conditions. The studies did not test the Cavinova system.
+          </p>
+        </Section>
+      </div>
+
       <div id="mechanism" className="scroll-mt-24">
         <Section>
           <Eyebrow>Interactive mechanism</Eyebrow>
-          <h2 className="mt-3 text-balance text-4xl leading-tight sm:text-5xl">
-            How it works.
-          </h2>
+          <h2 className="mt-3 text-balance text-4xl leading-tight sm:text-5xl">How it works.</h2>
           <p className="mt-4 text-muted-foreground">
             Explore the proposed mechanism, one step at a time.
           </p>
@@ -153,7 +214,9 @@ function Science() {
                 <h3 className="mt-2 text-2xl sm:text-3xl">{active.title}</h3>
                 <p className="mt-3 leading-relaxed text-muted-foreground">
                   {active.description}
-                  {step > 0 && <Cite ids={step < 3 ? ["B", "P"] : ["C", "P"]} />}
+                  {step > 0 && (
+                    <Cite ids={step < 3 ? ["B", "P"] : ["C", "P"]} order={scienceReferences} />
+                  )}
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -191,71 +254,31 @@ function Science() {
       <div id="lab-study" className="scroll-mt-24 bg-secondary/40">
         <Section>
           <h2 className="text-balance text-4xl leading-tight sm:text-5xl">
-            From Research to Reality
+            What the Research Shows
           </h2>
-          <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
-            Published research supports the potential of ultrasound and microbubbles to increase
-            skin permeability and improve ingredient transport.
-            <Cite ids={["B", "C", "P"]} /> Cavinova's challenge is turning that research into a
-            consistent, safe, and practical professional treatment.
+          <p className="mt-4 text-xl font-medium">
+            Decades of research. A new opportunity for professional skincare.
           </p>
-          <div className="mt-8 grid divide-y overflow-hidden rounded-3xl border bg-card lg:grid-cols-[1.25fr_1fr] lg:divide-x lg:divide-y-0">
-            <div className="space-y-4 p-5 leading-relaxed text-muted-foreground sm:p-7">
-              <h3 className="text-2xl text-foreground">What Research Shows</h3>
-              <p>
-                Laboratory studies show that ultrasound can increase skin permeability under certain
-                conditions. Microbubble activity near the surface can contribute to this effect,
-                which depends on the settings, formulation, and substance being studied.
-                <Cite ids={["B", "C"]} />
-              </p>
-              <p>
-                In a Franz diffusion cell with excised pig skin, Park and colleagues measured how
-                much ferulic acid crossed the sample. After 30 minutes at 2.47 MHz, ultrasound with
-                a 1:1,000 dilution of Definity microbubbles delivered about 3.1 times as much ferulic
-                acid as ultrasound alone.
-                <Cite ids={["P"]} /> The study did not test Cavinova's system or establish how it
-                performs in people.
-              </p>
-            </div>
-            <div className="bg-secondary/30 p-5 sm:p-7">
-              <h3 className="text-2xl">What Cavinova Must Prove</h3>
-              <ul className="mt-4 list-disc space-y-2 pl-5 leading-relaxed text-muted-foreground marker:text-teal-deep">
-                {validationQuestions.map((question) => (
-                  <li key={question}>{question}</li>
-                ))}
-              </ul>
-            </div>
+          <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
+            Ultrasound-assisted delivery has been studied across a range of topical formulations and
+            active ingredients. Research demonstrates how acoustic energy, particularly when
+            combined with microbubbles, can enhance skin permeability and support the movement of
+            selected ingredients into the skin.
+          </p>
+          <div className="mt-8 grid divide-y overflow-hidden rounded-3xl border bg-card md:grid-cols-3 md:divide-x md:divide-y-0">
+            {research.map(({ title, description, sources }) => (
+              <article key={title} className="p-5 sm:p-7">
+                <h3 className="text-2xl">
+                  {title}
+                  <Cite ids={sources} order={scienceReferences} />
+                </h3>
+                <p className="mt-3 leading-relaxed text-muted-foreground">{description}</p>
+              </article>
+            ))}
           </div>
         </Section>
       </div>
-
-      <Section>
-        <div className="rounded-3xl border bg-accent/45 p-5 sm:p-8 lg:p-10">
-          <Eyebrow>Our development priority</Eyebrow>
-          <h2 className="mt-3 text-balance text-4xl leading-tight sm:text-5xl">
-            Proving the Concept.
-          </h2>
-          <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
-            Our first priority is to establish technical feasibility and gather measurable results
-            by developing and testing the ultrasound device and formulations together.
-          </p>
-          <ol className="mt-6 grid gap-5 border-t pt-6 md:grid-cols-3 md:gap-7">
-            {development.map(({ title, description }, index) => (
-              <li key={title}>
-                <Eyebrow>0{index + 1}</Eyebrow>
-                <h3 className="mt-2 text-2xl">{title}</h3>
-                <p className="mt-2 leading-relaxed text-muted-foreground">{description}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-        <Button asChild className="mt-6 min-h-11 rounded-full text-base">
-          <Link to="/platform">
-            Explore the Product Concept <ArrowRight aria-hidden />
-          </Link>
-        </Button>
-      </Section>
-      <References ids={["B", "C", "P"]} />
+      <References ids={scienceReferences} order={scienceReferences} />
     </>
   );
 }

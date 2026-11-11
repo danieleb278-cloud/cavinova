@@ -6,11 +6,20 @@ function revealReference(id: string) {
   if (details) details.open = true;
 }
 
-export function Cite({ ids }: { ids: readonly ReferenceId[] }) {
+function referenceNumber(id: ReferenceId, order?: readonly ReferenceId[]) {
+  return order ? order.indexOf(id) + 1 : references[id].number;
+}
+
+type CitationProps = {
+  ids: readonly ReferenceId[];
+  order?: readonly ReferenceId[];
+};
+
+export function Cite({ ids, order }: CitationProps) {
   return (
     <sup className="ml-1 inline-flex gap-1 align-super text-xs font-semibold">
       {ids.map((id) => {
-        const number = references[id].number;
+        const number = referenceNumber(id, order);
         const target = `reference-${id}`;
         return (
           <a
@@ -20,7 +29,7 @@ export function Cite({ ids }: { ids: readonly ReferenceId[] }) {
             aria-label={`Go to reference ${number}`}
             className="rounded-sm px-1 underline decoration-primary underline-offset-2 focus-visible:outline-2"
           >
-            [{number}]
+            {order ? number : `[${number}]`}
           </a>
         );
       })}
@@ -40,7 +49,7 @@ export function ReferencesLink() {
   );
 }
 
-export function References({ ids }: { ids: readonly ReferenceId[] }) {
+export function References({ ids, order }: CitationProps) {
   return (
     <section aria-label="References" className="mx-auto max-w-7xl px-4 py-8">
       <details id="page-references" className="scroll-mt-28 border-t">
@@ -54,7 +63,8 @@ export function References({ ids }: { ids: readonly ReferenceId[] }) {
                 rel="noreferrer"
                 className="inline-flex min-h-11 items-center underline decoration-primary underline-offset-2"
               >
-                [{references[id].number}] {references[id].label}
+                {order ? `${referenceNumber(id, order)}.` : `[${references[id].number}]`}{" "}
+                {references[id].label}
               </a>
             </li>
           ))}
