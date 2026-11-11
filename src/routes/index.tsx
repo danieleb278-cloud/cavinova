@@ -238,29 +238,6 @@ function Home() {
         </div>
       </Section>
 
-      <div className="bg-accent/55">
-        <Section>
-          <Eyebrow>Our development approach</Eyebrow>
-          <h2 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl">
-            Prototype. Formulate. Test.
-          </h2>
-          <div className="mt-5 max-w-3xl space-y-3 leading-relaxed text-muted-foreground">
-            <p>
-              We’ll start with the ultrasound prototype and compare serum alone, serum with
-              ultrasound, serum with microbubbles, and the full combination. That work will inform
-              the planned launch formulas and treatment presets.
-            </p>
-            <p>
-              We’ll use what we learn to refine the handpiece, the serum mix, and the facial presets
-              together.
-            </p>
-          </div>
-          <Link to="/opportunity" className={`mt-6 ${textLink}`}>
-            Explore the Opportunity <ArrowRight aria-hidden className="h-4 w-4 shrink-0" />
-          </Link>
-        </Section>
-      </div>
-
       <Section>
         <div className="flex flex-wrap items-center justify-between gap-5 rounded-3xl bg-secondary/65 p-6 sm:p-8">
           <div className="max-w-xl">
