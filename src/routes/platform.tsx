@@ -135,9 +135,9 @@ function Platform() {
           <Diagram
             enlarge
             conceptLabel={false}
-            src={`${images}/reusable-click-in-system.png`}
-            title="Cavinova console, handpiece and two reusable mixing cups"
-            caption="Concept rendering showing one reusable cup clicked into the handpiece and the other size beside it. Both cups fit the same port."
+            src={`${images}/handheld-refillable-system.png`}
+            title="Handheld Cavinova applicator with an inline refillable reservoir and separate serum bottles"
+            caption="Concept rendering of the handheld applicator. Both reusable reservoir sizes click into the same port. Serums come in separate bottles."
           />
         </Section>
       </div>
