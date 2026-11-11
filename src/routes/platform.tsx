@@ -43,7 +43,7 @@ const steps = [
   {
     title: "Prepare the cup",
     description:
-      "Fill the marked cup to the measured line, add a microbubble dose, and mix before fitting the cup to the handpiece.",
+      "Fill the marked cup, add a microbubble dose, and mix. Click the cup into the handpiece. Both cup sizes fit the same port.",
     icon: Droplets,
   },
   {
@@ -122,9 +122,9 @@ function Platform() {
               An ultrasound facial built for the treatment room
             </h1>
             <p className="mt-5 leading-relaxed text-muted-foreground">
-              Cavinova pairs a handheld applicator with a microbubble serum prepared in a marked,
-              reusable cup. Estheticians choose the facial and session length, and the software
-              loads the preset designed for that combination.
+              Prepare the microbubble serum in a marked, reusable cup and click it into the
+              handpiece. Both cup sizes use the same connector. Choose the facial and session
+              length, and the software loads the matching ultrasound preset.
             </p>
             <Button asChild className="mt-6 min-h-11 rounded-full text-base">
               <a href="#facial-serums">
@@ -135,9 +135,9 @@ function Platform() {
           <Diagram
             enlarge
             conceptLabel={false}
-            src={`${images}/reusable-cup-system.png`}
+            src={`${images}/reusable-click-in-system.png`}
             title="Cavinova console, handpiece and two reusable mixing cups"
-            caption="Concept rendering of the Cavinova facial system with small and large reusable cups."
+            caption="Concept rendering showing one reusable cup clicked into the handpiece and the other size beside it. Both cups fit the same port."
           />
         </Section>
       </div>
