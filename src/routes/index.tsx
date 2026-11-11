@@ -1,8 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Droplets, Hand, Waves } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Eyebrow, Section, seo } from "@/components/site";
-import { ImageLightbox } from "@/components/image-lightbox";
-import { Cite, References, ReferencesLink } from "@/components/references";
+import { Cite, References } from "@/components/references";
 import heroRender from "@/assets/luxury-skincare-device-still-life.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -21,23 +20,6 @@ const button =
 const textLink =
   "inline-flex min-h-11 items-center gap-2 font-semibold text-foreground underline decoration-primary underline-offset-4";
 
-const mobileInnovation = [
-  {
-    title: "Acoustically Responsive Serum",
-    description:
-      "A proposed serum with selected active ingredients and tiny bubbles designed to respond to sound.",
-  },
-  {
-    title: "Controlled Ultrasound",
-    description: "Ultrasound would be used to set the microbubbles in motion at the skin surface.",
-  },
-  {
-    title: "The Proposed Interaction",
-    description:
-      "Under suitable ultrasound conditions, microbubble activity may temporarily make the skin more permeable, potentially helping selected ingredients pass through.",
-  },
-];
-
 const comparison = [
   {
     title: "Topical Application",
@@ -51,30 +33,6 @@ const comparison = [
     alt: "Concept illustration of ultrasound waves above skin and selected ingredients moving through the outer layer.",
     caption:
       "Ultrasound-assisted approaches are being investigated for temporarily increasing skin permeability.",
-  },
-];
-
-const possibilities = [
-  {
-    title: "A new service for your menu",
-    icon: Droplets,
-    tone: "border-rose/40 bg-accent",
-    description:
-      "Give clients a reason to book an upgrade with a facial built around ultrasound and a dedicated microbubble serum.",
-  },
-  {
-    title: "Designed for the treatment room",
-    icon: Waves,
-    tone: "border-teal/50 bg-secondary/65",
-    description:
-      "A handheld applicator, two marked reusable cup sizes, and facial presets give estheticians a routine they can learn and repeat.",
-  },
-  {
-    title: "Built for repeat visits",
-    icon: Hand,
-    tone: "border-border bg-card",
-    description:
-      "Our goal is a facial clients want to book again, with serum and microbubble refills that spas can replenish as they treat.",
   },
 ];
 
@@ -169,75 +127,6 @@ function Home() {
         </p>
       </Section>
 
-      <div id="innovation" className="scroll-mt-24 bg-secondary/40">
-        <Section>
-          <Eyebrow>The innovation</Eyebrow>
-          <h2 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl">Better Together.</h2>
-          <figure className="mt-8 hidden overflow-hidden rounded-3xl border bg-card shadow-soft md:block">
-            <ImageLightbox
-              src={`${images}/cavinova-approach.webp`}
-              title="Cavinova concept showing a microbubble serum, controlled ultrasound, and their proposed interaction at the skin surface"
-            />
-          </figure>
-          <div className="mt-6 md:hidden">
-            <figure className="overflow-hidden rounded-2xl border bg-card">
-              {/* Frame the illustration between the embedded labels in the original artwork. */}
-              <div className="relative aspect-[1100/365] overflow-hidden">
-                <img
-                  src={`${images}/cavinova-approach.webp`}
-                  alt="Concept illustration of microbubbles and ultrasound at the skin surface, with arrows showing the proposed movement of ingredients."
-                  width={1672}
-                  height={941}
-                  loading="lazy"
-                  className="absolute left-[-26%] top-[-114%] h-auto w-[152%] max-w-none"
-                />
-              </div>
-            </figure>
-            <dl className="mt-5 divide-y divide-border">
-              {mobileInnovation.map(({ title, description }) => (
-                <div key={title} className="py-4">
-                  <dt className="font-serif text-xl font-semibold leading-snug">{title}</dt>
-                  <dd className="mt-2 leading-relaxed text-muted-foreground">{description}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-          <div className="mt-8 max-w-3xl space-y-4 leading-relaxed text-muted-foreground">
-            <p>
-              Published lab studies inform this conceptual illustration.
-              <Cite ids={["C", "P"]} /> Cavinova's formulation and proposed system still need
-              testing.
-            </p>
-          </div>
-          <Link to="/science" className={`mt-6 ${textLink}`}>
-            See how the science works <ArrowRight aria-hidden className="h-4 w-4" />
-          </Link>
-          <ReferencesLink />
-        </Section>
-      </div>
-
-      <Section>
-        <Eyebrow>Professional potential</Eyebrow>
-        <h2 className="mt-4 max-w-3xl text-balance text-4xl leading-tight sm:text-5xl">
-          Made for Professionals
-        </h2>
-        <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
-          Cavinova is designed around the people who would use it every day. Spa owners get a new
-          service to offer, and estheticians get a workflow built around the treatment room.
-        </p>
-        <div className="mt-9 grid gap-6 md:grid-cols-3">
-          {possibilities.map(({ title, description, icon: Icon, tone }) => (
-            <article key={title} className={`rounded-3xl border p-6 ${tone}`}>
-              <span className="inline-grid size-11 place-items-center rounded-xl border bg-card text-foreground">
-                <Icon aria-hidden className="size-5" />
-              </span>
-              <h3 className="mt-4 text-balance text-2xl">{title}</h3>
-              <p className="mt-3 leading-relaxed text-muted-foreground">{description}</p>
-            </article>
-          ))}
-        </div>
-      </Section>
-
       <Section>
         <div className="flex flex-wrap items-center justify-between gap-5 rounded-3xl bg-secondary/65 p-6 sm:p-8">
           <div className="max-w-xl">
@@ -257,7 +146,7 @@ function Home() {
       </Section>
 
       <div id="homepage-references" className="scroll-mt-24 [&_ul]:space-y-3 [&_ul]:text-base">
-        <References ids={["A", "C", "P", "G"]} />
+        <References ids={["A", "G"]} />
       </div>
     </>
   );
