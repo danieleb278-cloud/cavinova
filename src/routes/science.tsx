@@ -45,24 +45,21 @@ const findings = [
   {
     value: "1–5%",
     title: "Reported Topical Bioavailability",
-    description:
-      "One published review estimates only 1-5% of dermatologic formulation actually make it through the skin barrier.\n1",
+    description: "Reported topical bioavailability in conventional dermatological formulations\n\n1",
     source: "Topical",
     accent: "bg-accent/55",
   },
   {
     value: "2.1×",
     title: "Greater Hyaluronic Acid Penetration",
-    description:
-      "Researchers reported about 2.1 times the penetration of labeled hyaluronic acid in rat skin using ultrasound-induced CO₂ microbubble cavitation.",
+    description: "Greater hyaluronic acid penetration in an experimental study\n\n2",
     source: "Hyaluronic",
     accent: "bg-secondary/55",
   },
   {
-    value: "2×",
+    value: "37%",
     title: "Vitamin C Derivative Permeation",
-    description:
-      "In a pigskin lab study, about twice as much of a vitamin C derivative passed through the skin after 24 hours with ultrasound and microbubbles compared with topical application alone.",
+    description: "Greater penetration depth for a vitamin C derivative\n\n3",
     source: "C",
     accent: "bg-muted/50",
   },
