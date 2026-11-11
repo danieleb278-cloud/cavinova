@@ -46,7 +46,7 @@ const findings = [
     value: "1–5%",
     title: "Reported Topical Bioavailability",
     description:
-      "A published review estimated that roughly 1–5% of the applied dose becomes available in the skin for most commercial dermatological formulations.",
+      "One published review estimates only 1-5% of dermatologic formulation actually make it through the skin barrier.\n1",
     source: "Topical",
     accent: "bg-accent/55",
   },
