@@ -59,10 +59,10 @@ const findings = [
     accent: "bg-secondary/55",
   },
   {
-    value: "37%",
-    title: "Greater Penetration Depth",
+    value: "2×",
+    title: "Vitamin C Derivative Permeation",
     description:
-      "In pigskin, a tracer dye penetrated 37% deeper with 3.5 μm microbubbles than with 1.4 μm microbubbles under the same ultrasound conditions.",
+      "In a pigskin lab study, about twice as much of a vitamin C derivative passed through the skin after 24 hours with ultrasound and microbubbles compared with topical application alone.",
     source: "C",
     accent: "bg-muted/50",
   },
