@@ -82,7 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "google-site-verification", content: "rWHqhu9MhAAblbEZdVupQorCMm1ZoFS6CrsYkBD1G48" },
       { title: "Cavinova — Research-Stage Academic Project" },
-      { name: "description", content: "A Rutgers MBS capstone exploring ultrasound-assisted skincare at the concept and feasibility-planning stage." },
+      { name: "description", content: "Cavinova is a Rutgers MBS capstone concept exploring how ultrasound and acoustically responsive microbubbles could improve delivery of active skincare ingredients through the skin barrier." },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
