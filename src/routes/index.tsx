@@ -126,16 +126,31 @@ function Home() {
       <Section>
         <Eyebrow>The delivery challenge</Eyebrow>
         <div className="mt-4 grid gap-6 lg:grid-cols-2 lg:gap-12">
-          <h2 className="text-balance text-4xl leading-tight sm:text-5xl">The Skin Barrier</h2>
+          <h2 className="text-balance text-4xl leading-tight sm:text-5xl">Great ingredients. One big problem.</h2>
           <div className="space-y-4 leading-relaxed text-muted-foreground">
             <p>
-              The skin's outermost layer, the stratum corneum, protects against harmful substances
-              but also limits the penetration of many skincare ingredients.
-              <Cite ids={["A"]} />
+              Your skin is your body's largest organ, and one of its most important jobs is to protect you.
+
+
+
+
+
+              But the same barrier that keeps harmful substances out also makes it difficult for many beneficial skincare ingredients to get in.
+
+
+
+
+
+              Hyaluronic acid. Vitamin C. Niacinamide. These are ingredients we've known and trusted for years. Their benefits are well established, yet their ability to penetrate the skin can still be limited.
+
+
+
+
+
+              What if the next big breakthrough in skincare isn't a new ingredient, but a better way to deliver the ones we already love?
             </p>
             <p>
-              The challenge is delivering selected ingredients while respecting the skin's
-              protective function.
+              {"\n"}
             </p>
           </div>
         </div>
