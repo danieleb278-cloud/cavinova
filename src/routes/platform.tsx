@@ -123,7 +123,7 @@ function Platform() {
             <Eyebrow>The Cavinova Platform | Coming 2028</Eyebrow>
             <h1
               id="platform-title"
-              className="mt-4 max-w-[12ch] text-4xl leading-[1.03] tracking-tight sm:text-5xl xl:text-6xl"
+              className="mt-4 max-w-[17ch] text-4xl leading-[1.03] tracking-tight sm:text-5xl lg:text-[clamp(2.5rem,3.7vw,3.375rem)]"
             >
               Advanced technology. Simple by design.
             </h1>
@@ -136,7 +136,10 @@ function Platform() {
               controlled dispensing, every detail is designed around the way skincare professionals
               actually work.
             </p>
-            <Button asChild className="mt-7 min-h-11 rounded-full px-6 text-base">
+            <Button
+              asChild
+              className="mt-7 min-h-11 rounded-full bg-[#07545a] px-6 text-base text-white hover:bg-[#063f45]"
+            >
               <a href="#system">
                 Explore the System <ArrowRight aria-hidden />
               </a>
