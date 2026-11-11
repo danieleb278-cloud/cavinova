@@ -119,29 +119,32 @@ function Home() {
             </figure>
           ))}
         </div>
-        <p className="mt-9 border-l-2 border-primary pl-5 font-serif text-2xl leading-snug sm:text-3xl">
-          The opportunity isn't simply developing another active ingredient. It's investigating a
-          different way to deliver it.
-        </p>
       </Section>
 
-      <Section>
-        <div className="flex flex-wrap items-center justify-between gap-5 rounded-3xl bg-secondary/65 p-6 sm:p-8">
-          <div className="max-w-xl">
-            <h3 className="text-2xl">Let’s talk about what Cavinova could bring to your spa.</h3>
-            <p className="mt-2 leading-relaxed text-muted-foreground">
-              If you run a spa, work with estheticians, or want to help bring the concept to market,
-              we’d like to hear from you.
+      <div className="bg-secondary/40">
+        <Section>
+          <Eyebrow>The missing piece</Eyebrow>
+          <h2 className="mt-4 max-w-3xl text-balance text-4xl leading-tight sm:text-5xl">
+            The Missing Piece
+          </h2>
+          <div className="mt-5 max-w-3xl space-y-4 leading-relaxed text-muted-foreground">
+            <p>
+              We've spent years improving what's inside the bottle. Now we're addressing what
+              happens after it touches the skin.
+            </p>
+            <p>
+              Cavinova takes a new approach to ingredient delivery, helping unlock the full
+              potential of skincare ingredients we already know and trust.
             </p>
           </div>
           <Link
-            to="/contact"
-            className={`${button} border bg-card text-foreground hover:border-primary`}
+            to="/platform"
+            className={`mt-8 ${button} bg-primary text-primary-foreground hover:opacity-90`}
           >
-            Contact the Cavinova team <ArrowRight aria-hidden className="h-4 w-4 shrink-0" />
+            Discover the Technology <ArrowRight aria-hidden className="h-4 w-4" />
           </Link>
-        </div>
-      </Section>
+        </Section>
+      </div>
 
       <div id="homepage-references" className="scroll-mt-24 [&_ul]:space-y-3 [&_ul]:text-base">
         <References ids={["A", "G"]} />
