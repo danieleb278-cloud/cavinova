@@ -85,22 +85,29 @@ function Home() {
           <div className="min-w-0">
             <Eyebrow>Professional skincare</Eyebrow>
             <h1 className="mt-5 max-w-xl text-balance text-4xl leading-[1.08] sm:text-5xl xl:text-6xl">
-              Give clients a reason to book their next facial.
+              Great skincare deserves better delivery.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Cavinova is developing a premium facial system for day spas and med spas. It pairs
-              controlled ultrasound with a microbubble serum applied at the skin surface, with the
-              goal of delivering a visible improvement clients want to come back for.
+              The beauty industry has spent decades perfecting what goes into skincare. We're
+              changing how it gets there.
+              <br />
+              <br />
+              Cavinova combines intelligent ultrasound technology with acoustically responsive
+              microbubbles and targeted serums to enhance ingredient delivery into the skin.
+              <br />
+              <br />
+              One intelligent system. Three targeted treatments. A new approach to professional
+              skincare.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/platform"
                 className={`${button} bg-primary text-primary-foreground hover:opacity-90`}
               >
-                Explore the facial system <ArrowRight aria-hidden className="h-4 w-4" />
+                Discover Cavinova <ArrowRight aria-hidden className="h-4 w-4" />
               </Link>
               <Link to="/opportunity" className={`${button} border bg-card hover:border-primary`}>
-                See the opportunity
+                {"\u00a0Bring Cavinova to Your Spa"}
               </Link>
             </div>
           </div>
