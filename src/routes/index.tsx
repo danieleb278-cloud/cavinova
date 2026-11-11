@@ -3,6 +3,7 @@ import { ArrowRight, Droplets, Hand, Waves } from "lucide-react";
 import { Eyebrow, Section, seo } from "@/components/site";
 import { ImageLightbox } from "@/components/image-lightbox";
 import { Cite, References, ReferencesLink } from "@/components/references";
+import heroRender from "@/assets/luxury-skincare-device-still-life.png.asset.json";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
@@ -112,8 +113,8 @@ function Home() {
             </div>
           </div>
           <img
-            src={`${images}/acoustic-waves.webp`}
-            alt="Concept illustration of teal acoustic waves interacting with pink microbubbles at the skin surface."
+            src={heroRender.url}
+            alt="Concept render of a proposed Cavinova handheld ultrasound handpiece with fluid cartridges and three labeled serum bottles arranged on stone pedestals."
             width={1672}
             height={941}
             fetchPriority="high"
