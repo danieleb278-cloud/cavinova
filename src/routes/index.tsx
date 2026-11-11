@@ -123,7 +123,7 @@ function Home() {
 
       <div className="bg-secondary/40">
         <Section>
-          <Eyebrow>The missing piece</Eyebrow>
+          <Eyebrow>The solution</Eyebrow>
           <h2 className="mt-4 max-w-3xl text-balance text-4xl leading-tight sm:text-5xl">
             The Missing Piece
           </h2>
@@ -138,7 +138,7 @@ function Home() {
             </p>
           </div>
           <Link
-            to="/platform"
+            to="/science"
             className={`mt-8 ${button} bg-primary text-primary-foreground hover:opacity-90`}
           >
             Discover the Technology <ArrowRight aria-hidden className="h-4 w-4" />
