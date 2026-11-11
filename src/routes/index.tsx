@@ -130,27 +130,15 @@ function Home() {
           <div className="space-y-4 leading-relaxed text-muted-foreground">
             <p>
               Your skin is your body's largest organ, and one of its most important jobs is to protect you.
-
-
-
-
-
-              But the same barrier that keeps harmful substances out also makes it difficult for many beneficial skincare ingredients to get in.
-
-
-
-
-
-              Hyaluronic acid. Vitamin C. Niacinamide. These are ingredients we've known and trusted for years. Their benefits are well established, yet their ability to penetrate the skin can still be limited.
-
-
-
-
-
-              What if the next big breakthrough in skincare isn't a new ingredient, but a better way to deliver the ones we already love?
             </p>
             <p>
-              {"\n"}
+              But the same barrier that keeps harmful substances out also makes it difficult for many beneficial skincare ingredients to get in.
+            </p>
+            <p>
+              Hyaluronic acid. Vitamin C. Niacinamide. These are ingredients we've known and trusted for years. Their benefits are well established, yet their ability to penetrate the skin can still be limited.
+            </p>
+            <p>
+              What if the next big breakthrough in skincare isn't a new ingredient, but a better way to deliver the ones we already love?
             </p>
           </div>
         </div>
