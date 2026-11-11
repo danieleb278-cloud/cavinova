@@ -37,8 +37,9 @@ export const references = {
   },
   H: {
     number: 8,
-    url: "https://www.hydrafacial.com/pages/the-treatment",
-    label: "Hydrafacial. (n.d.). The treatment. Manufacturer treatment overview.",
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10983707/",
+    label:
+      "Hydradermabrasion through the lens of line-field confocal optical coherence tomography (2024).",
   },
   M: {
     number: 9,
@@ -47,9 +48,9 @@ export const references = {
   },
   U: {
     number: 10,
-    url: "https://ultherapy.com/app/uploads/2023/08/1015107IFU-Rev-D.pdf",
+    url: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfPCD/classification.cfm?ID=OHV",
     label:
-      "Ulthera, Inc. (2023). Ulthera System instructions for use (1015107IFU Rev. D, section 2.1).",
+      "U.S. Food and Drug Administration. Focused ultrasound stimulator system for aesthetic use. Product classification OHV.",
   },
   G: {
     number: 11,

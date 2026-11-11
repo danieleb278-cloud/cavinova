@@ -240,8 +240,8 @@ function Home() {
               the planned launch formulas and treatment presets.
             </p>
             <p>
-              Each milestone builds the evidence we need to refine the prototype and advance the
-              complete system.
+              We’ll use what we learn to refine the handpiece, the serum mix, and the facial presets
+              together.
             </p>
           </div>
           <Link to="/opportunity" className={`mt-6 ${textLink}`}>

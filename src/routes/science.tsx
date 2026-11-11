@@ -51,7 +51,7 @@ const development = [
   {
     title: "Formulate",
     description:
-      "Develop two experimental microbubble serum formulations with selected active ingredients for common skin concerns.",
+      "Develop cosmetic serum formulations for hydration, the look of fine lines, and the appearance of uneven tone.",
   },
   {
     title: "Prototype",
@@ -61,7 +61,7 @@ const development = [
   {
     title: "Validate",
     description:
-      "Test ingredient delivery, repeatability, and preliminary safety. Each milestone helps unlock the next stage of development.",
+      "Evaluate how the serum and handpiece work together, check repeatability, and use the results to refine the facial presets.",
   },
 ] as const;
 
@@ -75,7 +75,7 @@ function Science() {
           <div>
             <Eyebrow>The science behind Cavinova</Eyebrow>
             <h1 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl xl:text-6xl">
-              Unlocking the Skin Barrier
+              How Ultrasound and Microbubbles Work Together
             </h1>
             <div className="mt-6 space-y-4 leading-relaxed text-muted-foreground">
               <p>

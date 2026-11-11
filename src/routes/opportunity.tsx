@@ -21,25 +21,33 @@ const comparison = "/images/opportunity/delivery-comparison.webp";
 const treatments = [
   {
     title: "Conventional topical facials",
-    body: "Topical facials aim to hydrate and condition skin. The skin’s outer barrier limits how readily many ingredients pass through.",
+    body: "A conventional facial relies on the formulation and how it is applied. The skin’s outer barrier limits the passage of many topical ingredients.",
+    advantage:
+      "Cavinova adds controlled ultrasound and a serum designed to respond to it, giving spas a distinct step to build a facial around.",
     sources: ["A"],
     x: 22,
   },
   {
     title: "Hydrodermabrasion and serum infusion",
-    body: "Systems such as Hydrafacial combine cleansing, exfoliation, extraction, and hydration, with targeted serum boosters available in select treatment tiers.",
+    body: "Hydrodermabrasion uses fluid and suction for cleansing, exfoliation, and hydration. Its workflow centers on those steps.",
+    advantage:
+      "Cavinova gives spas a serum-focused option without suction or extraction in the planned treatment workflow.",
     sources: ["H"],
     x: 405,
   },
   {
     title: "Microneedling",
-    body: "Small needles intentionally puncture the skin. The procedure has specific uses, training considerations, and potential side effects.",
+    body: "Microneedling deliberately punctures the skin. That adds a skin-puncture step and associated training and aftercare considerations.",
+    advantage:
+      "Cavinova is designed as a needle-free facial, with the serum and applicator used at the skin surface.",
     sources: ["M"],
     x: 776,
   },
   {
-    title: "Ultrasound-based technologies",
-    body: "Some aesthetic devices use focused ultrasound to lift tissue.",
+    title: "Focused ultrasound procedures",
+    body: "Focused ultrasound can concentrate energy in tissue for specific aesthetic procedures. That is a different use of sound from a topical serum facial.",
+    advantage:
+      "Cavinova pairs sound with responsive microbubbles at the surface and plans presets for each facial and session length.",
     sources: ["U"],
     x: 1150,
   },
@@ -111,9 +119,9 @@ function Opportunity() {
           </h1>
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
             Day spas and med spas already offer technology-enabled facials.
-            <Cite ids={["F", "H"]} /> Cavinova is developing a new service for those treatment
-            rooms, pairing an ultrasound handpiece with a microbubble serum. A spa can start with
-            one system and replenish supplies as it serves clients.
+            <Cite ids={["F", "H"]} /> Cavinova is developing a needle-free cosmetic facial for those
+            treatment rooms. One handpiece pairs with several serums and presets, giving spas a way
+            to tailor the service and replenish the formulas clients come back for.
           </p>
           <ul className="mt-5 flex flex-wrap gap-2" aria-label="Opportunity themes">
             {[
@@ -164,11 +172,11 @@ function Opportunity() {
 
       <Section>
         <Heading
-          eyebrow="The current treatment landscape · What exists today?"
-          title="Different treatments. Different approaches to the skin."
+          eyebrow="The treatment landscape"
+          title="Where Cavinova adds something different"
         />
         <div className="mt-7 grid gap-5 md:grid-cols-2">
-          {treatments.map(({ title, body, sources, x }) => (
+          {treatments.map(({ title, body, advantage, sources, x }) => (
             <article key={title} className="overflow-hidden rounded-3xl border bg-card">
               <Artwork src={landscape} height={650} frame={[x, 260, 358, 154]} alt="" />
               <div className="p-5 sm:p-6">
@@ -176,15 +184,11 @@ function Opportunity() {
                 <p className="mt-2 leading-relaxed text-muted-foreground">
                   {body}
                   <Cite ids={sources} />
-                  {x === 1150 && (
-                    <>
-                      {" "}
-                      Sonophoresis research investigates how ultrasound can influence skin
-                      permeability.
-                      <Cite ids={["B"]} />
-                    </>
-                  )}
                 </p>
+                <div className="mt-4 rounded-2xl bg-secondary/55 p-4">
+                  <h4 className="text-base font-semibold">The Cavinova approach</h4>
+                  <p className="mt-1 leading-relaxed text-muted-foreground">{advantage}</p>
+                </div>
               </div>
             </article>
           ))}
@@ -194,12 +198,12 @@ function Opportunity() {
       <div className="bg-secondary/35">
         <Section>
           <Heading
-            eyebrow="The delivery opportunity · Where Cavinova sees the opening"
-            title="What if the next advancement is not another ingredient, but a different way to deliver it?"
+            eyebrow="Why pair sound and serum?"
+            title="A serum designed to respond to ultrasound"
           >
             <p>
-              Cavinova is studying whether a specialized formulation and suitable ultrasound could
-              produce a useful, repeatable difference in topical ingredient delivery.
+              Sound and serum are designed as a pair. The development goal is to find out whether
+              the combination can make a visible difference in a repeatable cosmetic facial.
             </p>
           </Heading>
           <figure className="mt-7">
@@ -241,15 +245,22 @@ function Opportunity() {
               Conceptual comparison. Cavinova-specific performance still needs testing.
             </figcaption>
           </figure>
+          <aside className="mt-6 max-w-4xl rounded-2xl border bg-card p-5 sm:p-6">
+            <h3 className="text-2xl">Why bubble size matters</h3>
+            <p className="mt-2 leading-relaxed text-muted-foreground">
+              In a published pigskin lab study, a tracer dye penetrated <strong>37% deeper</strong>{" "}
+              after ultrasound with 3.5-micrometer microbubbles than with 1.4-micrometer
+              microbubbles under the same ultrasound setting.
+              <Cite ids={["C"]} /> That finding gives Cavinova a concrete reason to test bubble size
+              alongside the serum and ultrasound settings.
+            </p>
+          </aside>
         </Section>
       </div>
 
       <div id="investment-thesis" className="scroll-mt-24 bg-hero">
         <Section>
-          <Heading
-            eyebrow="Why Cavinova"
-            title="From the first installation to the next refill."
-          >
+          <Heading eyebrow="Why Cavinova" title="From the first installation to the next refill.">
             <p>
               We plan to start with founder-led demos and training in the New York metro. Each
               installation gives us a chance to learn how estheticians use the system and what
@@ -269,7 +280,8 @@ function Opportunity() {
               },
               {
                 title: "Professional customer",
-                description: "Day spas and med spas looking for a premium facial to add to their menus.",
+                description:
+                  "Day spas and med spas looking for a premium facial to add to their menus.",
               },
               {
                 title: "Recurring treatment demand",
