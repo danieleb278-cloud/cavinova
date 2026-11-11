@@ -1,158 +1,111 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
-import {
-  ArrowRight,
-  FlaskConical,
-  Droplets,
-  LockKeyhole,
-  ShieldCheck,
-  SlidersHorizontal,
-  Hand,
-  CircleCheck,
-} from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Droplets, Hand, SlidersHorizontal } from "lucide-react";
 import { Diagram, Eyebrow, Section, seo } from "@/components/site";
 import { Button } from "@/components/ui/button";
 import { Cite, References } from "@/components/references";
-import { AuthenticationMachine } from "@/components/authentication-machine";
 
 export const Route = createFileRoute("/platform")({
   staticData: { sitemap: true },
   head: () =>
     seo(
       "Product Concept — Cavinova",
-      "Explore Cavinova’s proposed ultrasound facial system with a reusable treatment cup and its longer-term automation concept.",
+      "Explore Cavinova’s proposed cosmetic facial system, reusable treatment cups, serum lineup, and preset controls.",
     ),
   component: Platform,
 });
 
-const features = [
+const images = "/images/platform";
+const featuredSerums = [
   {
-    title: "Two separate vials",
-    icon: FlaskConical,
-    body: "Two premeasured, single-use vials would click into the handpiece. Vial A holds the microbubble component. Vial B holds the selected active ingredients. Separate delivery pathways would handle each component. Keeping the components separate until dispensing is intended to support stability. Internal routing still needs to be designed and tested.",
+    name: "Hydrate & Glow",
+    image: "hydrate-and-glow.png",
+    alt: "Concept photo of a teal Hydrate & Glow serum bottle.",
+    description:
+      "A moisture-focused facial for skin that looks dry or dull. The formula is designed for a fresh, dewy finish.",
   },
   {
-    title: "Consumable authentication",
-    icon: LockKeyhole,
-    body: "An electronic tag would identify each required vial. The system would proceed only after recognizing both vials and checking the configuration. If authentication fails, ultrasound and automatic dispensing stay disabled.",
-  },
-  {
-    title: "Automatic configuration",
-    icon: SlidersHorizontal,
-    body: "After authentication, the system would identify the formulation and load the operating settings established through testing. The goal is to reduce manual setup. The required acoustic settings still need to be determined.",
-  },
-  {
-    title: "Measured dispensing",
-    icon: Droplets,
-    body: "The system would dispense a measured amount from the installed vials. The dispensing design and how accurately it delivers that amount still need engineering and validation.",
-  },
-  {
-    title: "Integrated safeguards",
-    icon: ShieldCheck,
-    body: "The concept would block operation with unrecognized consumables, use recognized configurations, and stop under defined conditions. Automatic shutoff and its operating conditions are proposed design requirements that need validation.",
-  },
-  {
-    title: "Single-use verification",
-    icon: CircleCheck,
-    body: "Authentication is intended to distinguish recognized consumables from unrecognized ones. A future enhancement could check whether a vial has already been used or refilled. That capability still needs to be designed and tested.",
-  },
-  {
-    title: "More predictable serum use",
-    icon: Droplets,
-    body: "Premeasured portions and automated dispensing aim to leave less unused serum and make quantities more consistent. Single-use packaging creates material waste of its own. Product use, packaging waste, and overall environmental impact would need separate evaluation.",
-  },
-  {
-    title: "Guided professional workflow",
-    icon: Hand,
-    body: "The proposed process runs from vial insertion and authentication through configuration, dispensing, ultrasound, and shutoff. The goal is a repeatable routine with fewer settings for staff to enter by hand.",
+    name: "Smooth & Firm",
+    image: "smooth-and-firm.png",
+    alt: "Concept photo of a rose Smooth & Firm serum bottle.",
+    description:
+      "A smoothing facial for clients focused on the look of fine lines and a more supple, firm-looking finish.",
   },
 ] as const;
 
-const treatmentSteps = [
+const facials = ["Hydrate & Glow", "Smooth & Firm", "Brighten & Even Tone"] as const;
+const sessions = [
+  { label: "30-minute facial", cup: "Small reusable cup" },
+  { label: "60-minute facial", cup: "Large reusable cup" },
+] as const;
+
+const steps = [
   {
-    title: "Insert",
-    lead: "Click in the single-use vials.",
-    body: "Premeasured consumables are designed to simplify setup and support clean, consistent preparation.",
-    icon: FlaskConical,
+    title: "Prepare the cup",
+    description:
+      "Fill the marked cup to the measured line, add a microbubble dose, and mix before fitting the cup to the handpiece.",
+    icon: Droplets,
   },
   {
-    title: "Configure",
-    lead: "The system recognizes the treatment.",
-    body: "Compatible consumables could prompt the system to load the appropriate settings and help reduce manual setup errors.",
+    title: "Select the facial and time",
+    description:
+      "Choose the facial and session length. The software is designed to load the corresponding ultrasound preset.",
     icon: SlidersHorizontal,
   },
   {
-    title: "Treat",
-    lead: "Deliver the treatment through one coordinated workflow.",
-    body: "The handpiece is designed to dispense the formulation as ultrasound is applied. Proposed controls are intended to support safer, more consistent operation.",
+    title: "Perform the facial",
+    description:
+      "Use the handpiece to apply the prepared serum at the skin surface. Clean the reusable cup and contact surfaces between appointments.",
     icon: Hand,
   },
 ] as const;
 
-const clinicAdvantages = [
-  ["Premeasured dosing", "Helps support consistent treatment quantities."],
-  ["Less preparation time", "Could streamline setup by reducing manual preparation steps."],
-  ["Reduced product waste", "Single-use portions may help minimize unused serum."],
-  ["Automatic configuration", "Intended to reduce manual adjustments and setup errors."],
-  ["Authentication controls", "Designed to recognize compatible vials and block unrecognized consumables."],
-  ["Safety features", "Proposed lockouts and shutoff controls are intended to support safer operation."],
-  ["Turnkey workflow", "A coordinated system could simplify staff training and daily use."],
-] as const;
+function PresetPreview() {
+  const [facial, setFacial] = useState<(typeof facials)[number]>(facials[0]);
+  const [session, setSession] = useState<(typeof sessions)[number]>(sessions[0]);
 
-const choiceClass = "min-h-11 h-auto whitespace-normal px-3 py-2 text-left leading-snug";
-
-function Heading({
-  eyebrow,
-  title,
-  children,
-}: {
-  eyebrow: string;
-  title: string;
-  children?: ReactNode;
-}) {
   return (
-    <div className="max-w-4xl">
-      <Eyebrow>{eyebrow}</Eyebrow>
-      <h2 className="mt-3 text-balance text-4xl leading-tight sm:text-5xl">{title}</h2>
-      {children && (
-        <div className="mt-5 space-y-3 leading-relaxed text-muted-foreground">{children}</div>
-      )}
-    </div>
-  );
-}
-
-function FeatureExplorer() {
-  const [selected, setSelected] = useState(0);
-  const feature = features[selected]!;
-  const Icon = feature.icon;
-  return (
-    <div className="mt-8 max-w-5xl">
-      <div>
-        <div role="group" aria-label="Select a machine feature" className="grid grid-cols-2 gap-2">
-          {features.map(({ title }, index) => (
+    <div className="rounded-3xl border bg-card p-5 shadow-soft sm:p-7">
+      <h3 className="text-2xl">Preview the controls</h3>
+      <fieldset className="mt-5">
+        <legend className="font-semibold">Facial</legend>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {facials.map((name) => (
             <Button
-              key={title}
+              key={name}
               type="button"
-              variant="outline"
-              aria-pressed={selected === index}
-              aria-controls="platform-feature"
-              onClick={() => setSelected(index)}
-              className={`${choiceClass} justify-start ${selected === index ? "border-primary bg-accent" : ""}`}
+              variant={facial === name ? "default" : "outline"}
+              aria-pressed={facial === name}
+              onClick={() => setFacial(name)}
             >
-              {title}
+              {name}
             </Button>
           ))}
         </div>
-        <div
-          id="platform-feature"
-          aria-live="polite"
-          aria-atomic="true"
-          className="mt-4 rounded-2xl border bg-card p-5"
-        >
-          <Icon aria-hidden className="size-6 text-teal-deep" />
-          <h3 className="mt-2 text-2xl">{feature.title}</h3>
-          <p className="mt-2 leading-relaxed text-muted-foreground">{feature.body}</p>
+      </fieldset>
+      <fieldset className="mt-5">
+        <legend className="font-semibold">Session length</legend>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {sessions.map((choice) => (
+            <Button
+              key={choice.label}
+              type="button"
+              variant={session === choice ? "default" : "outline"}
+              aria-pressed={session === choice}
+              onClick={() => setSession(choice)}
+            >
+              {choice.label}
+            </Button>
+          ))}
         </div>
+      </fieldset>
+      <div className="mt-6 rounded-2xl border bg-secondary/50 p-4" aria-live="polite">
+        <p className="font-semibold">
+          {facial} · {session.label}
+        </p>
+        <p className="mt-1 text-sm text-muted-foreground">
+          {session.cup} · Matching ultrasound preset
+        </p>
       </div>
     </div>
   );
@@ -162,141 +115,122 @@ function Platform() {
   return (
     <>
       <div className="bg-hero">
-        <Section className="grid items-center gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-8">
+        <Section className="grid items-center gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
           <div>
-            <Eyebrow>The Cavinova product vision</Eyebrow>
+            <Eyebrow>Professional cosmetic skincare</Eyebrow>
             <h1 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl xl:text-6xl">
               An ultrasound facial built for the treatment room
             </h1>
-            <div className="mt-5 space-y-3 leading-relaxed text-muted-foreground">
-              <p>
-                The first Cavinova concept pairs a handheld ultrasound applicator with a reusable
-                treatment cup. The esthetician measures the serum, adds a microbubble dose, and uses
-                a preset treatment routine.
-              </p>
-              <p>
-                Below, explore a longer-term design for automated dispensing and authenticated
-                consumables.
-              </p>
-            </div>
+            <p className="mt-5 leading-relaxed text-muted-foreground">
+              Cavinova pairs a handheld applicator with a microbubble serum prepared in a marked,
+              reusable cup. Estheticians choose the facial and session length, and the software
+              loads the preset designed for that combination.
+            </p>
             <Button asChild className="mt-6 min-h-11 rounded-full text-base">
-              <a href="#integrated-system">
-                Explore the future system concept <ArrowRight aria-hidden />
+              <a href="#facial-serums">
+                Explore the serum lineup <ArrowRight aria-hidden />
               </a>
             </Button>
           </div>
           <Diagram
             enlarge
             conceptLabel={false}
-            src="/images/platform/integrated-system.webp"
-            title="Cavinova console and handpiece concept"
-            caption="Concept rendering of the future integrated console and handpiece."
+            src={`${images}/reusable-cup-system.png`}
+            title="Cavinova console, handpiece and two reusable mixing cups"
+            caption="Concept rendering of the Cavinova facial system with small and large reusable cups."
           />
         </Section>
       </div>
 
-      <div id="integrated-system" className="scroll-mt-24">
-        <Section>
-          <Heading
-            eyebrow="Integrated by design"
-            title="Separated for Stability"
-          >
-            <p>
-              Cavinova's proposed dual-vial system keeps the microbubble formulation and active ingredients separate until dispensing. The design aims to protect formulation stability while supporting hygienic, premeasured treatments.
-            </p>
-            <p>
-              {'\u00a0'}The goal is to preserve formulation integrity and coordinate delivery with ultrasound. The mechanism and benefits still need engineering and testing.
-            </p>
-          </Heading>
-          <div className="mt-7">
-            <Diagram
-              enlarge
-              conceptLabel={false}
-              src="/images/platform/transducer-tip.webp"
-              title="Conceptual transducer tip with separate microbubble and active-ingredient pathways"
-              caption="Concept illustration. The depicted fluid routing, mixing, dispensing accuracy, and ultrasound settings still need engineering and validation."
-            />
-          </div>
-          <FeatureExplorer />
-        </Section>
-      </div>
-
-      <div className="bg-secondary/35">
-        <Section>
-          <Heading
-            eyebrow="Intelligent treatment control"
-            title="Recognized. Authorized. Ready."
-          >
-            <p>
-              
-              
-              
-              The proposed system uses RFID technology to identify compatible vials, configure treatment settings, and prevent activation when a vial is unrecognized.
-            </p>
-          </Heading>
-          <AuthenticationMachine />
-        </Section>
-      </div>
-
       <Section>
-        <Heading
-          eyebrow="The treatment experience"
-          title="Simple Process. Smarter Workflow."
-        >
-          <p>
-            Cavinova is designed to bring formulation preparation, treatment setup, and ultrasound
-            application into one coordinated professional system.
-          </p>
-        </Heading>
-
-        <div className="mt-8 grid items-start gap-7 lg:grid-cols-2 lg:gap-10">
-          <ol aria-label="Proposed treatment workflow" className="relative space-y-6 before:absolute before:bottom-8 before:left-6 before:top-8 before:w-px before:bg-teal/45">
-            {treatmentSteps.map(({ title, lead, body, icon: Icon }, index) => (
-              <li key={title} className="relative grid grid-cols-[3rem_minmax(0,1fr)] gap-4">
-                <div className="grid size-12 place-items-center rounded-full border bg-secondary text-teal-deep">
-                  <Icon aria-hidden className="size-6" />
-                </div>
-                <div className="pb-1">
-                  <Eyebrow>0{index + 1}</Eyebrow>
-                  <h3 className="mt-1 text-2xl">{title}</h3>
-                  <p className="mt-2 font-semibold">{lead}</p>
-                  <p className="mt-1 leading-relaxed text-muted-foreground">{body}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-
-          <aside aria-labelledby="clinic-advantages" className="rounded-3xl border bg-secondary/45 p-5 shadow-soft sm:p-7">
-            <h3 id="clinic-advantages" className="text-3xl">Clinic Advantages</h3>
-            <dl className="mt-3 divide-y">
-              {clinicAdvantages.map(([title, body]) => (
-                <div key={title} className="py-2.5">
-                  <dt className="font-semibold">{title}</dt>
-                  <dd className="mt-0.5 leading-relaxed text-muted-foreground">{body}</dd>
-                </div>
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
+          <div>
+            <Eyebrow>The esthetician’s workflow</Eyebrow>
+            <h2 className="mt-3 text-balance text-4xl leading-tight sm:text-5xl">
+              Choose the facial. Set the time.
+            </h2>
+            <ol className="mt-7 space-y-5">
+              {steps.map(({ title, description, icon: Icon }) => (
+                <li key={title} className="flex items-start gap-4">
+                  <span className="grid size-10 shrink-0 place-items-center rounded-full border bg-secondary text-teal-deep">
+                    <Icon aria-hidden className="size-5" />
+                  </span>
+                  <div>
+                    <h3 className="text-xl">{title}</h3>
+                    <p className="mt-1 leading-relaxed text-muted-foreground">{description}</p>
+                  </div>
+                </li>
               ))}
-            </dl>
-          </aside>
+            </ol>
+          </div>
+          <PresetPreview />
         </div>
       </Section>
 
-      <Section>
-        <Heading
-          eyebrow="WHAT'S NEXT"
-          title="Investing in Validation"
-        >
-          <p>
-            Cavinova's initial investment will fund an ultrasound device prototype, two experimental serum formulations, and early testing to evaluate the integrated system's feasibility.
+      <div id="facial-serums" className="scroll-mt-24 bg-secondary/35">
+        <Section>
+          <Eyebrow>Planned launch serums</Eyebrow>
+          <h2 className="mt-3 text-balance text-4xl leading-tight sm:text-5xl">
+            Give clients a facial that fits their skin goals.
+          </h2>
+          <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
+            The starter package is planned to include trial sizes of the launch formulas. Spas can
+            then replenish their most-used serums in full-size bottles and order the microbubble
+            doses separately.
           </p>
-        </Heading>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {featuredSerums.map((serum) => (
+              <article key={serum.name} className="overflow-hidden rounded-3xl border bg-card">
+                <img
+                  src={`${images}/${serum.image}`}
+                  alt={serum.alt}
+                  width={960}
+                  height={960}
+                  loading="lazy"
+                  className="aspect-[4/3] w-full object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-2xl">{serum.name}</h3>
+                  <p className="mt-2 leading-relaxed text-muted-foreground">{serum.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            <div className="rounded-2xl border bg-card p-5">
+              <h3 className="text-xl">Brighten &amp; Even Tone</h3>
+              <p className="mt-2 leading-relaxed text-muted-foreground">
+                Also planned for launch, with a focus on the appearance of uneven tone and dark
+                spots.
+              </p>
+            </div>
+            <div className="rounded-2xl border bg-card p-5">
+              <h3 className="text-xl">Planned additions</h3>
+              <p className="mt-2 leading-relaxed text-muted-foreground">
+                Texture &amp; Polish will focus on the look of uneven texture. Signature Radiance
+                will offer an all-over glow facial.
+              </p>
+            </div>
+          </div>
+        </Section>
+      </div>
+
+      <Section>
+        <h2 className="text-balance text-4xl leading-tight sm:text-5xl">
+          Bring a new facial to the spa menu.
+        </h2>
+        <p className="mt-5 max-w-2xl leading-relaxed text-muted-foreground">
+          Cavinova is developing the handpiece, serum preparation, and presets together so spas can
+          offer a consistent experience across the menu.
+        </p>
         <Button asChild className="mt-6 min-h-11 rounded-full text-base">
           <Link to="/opportunity">
-            Explore the Opportunity <ArrowRight aria-hidden />
+            Explore the opportunity <ArrowRight aria-hidden />
           </Link>
         </Button>
         <p className="mt-6 text-sm text-muted-foreground">
           John H. Shadduck’s published application US20250073439A1 informed aspects of the concept.
-          <Cite ids={["D"]} /> Cavinova has yet to secure rights to it or validate a working system.
+          <Cite ids={["D"]} /> Cavinova has yet to secure rights to the application.
         </p>
       </Section>
       <References ids={["D"]} />

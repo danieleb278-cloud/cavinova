@@ -66,7 +66,7 @@ const possibilities = [
     icon: Waves,
     tone: "border-teal/50 bg-secondary/65",
     description:
-      "A handheld applicator, a reusable treatment cup, and a preset workflow are the starting point for a service estheticians can learn and repeat.",
+      "A handheld applicator, two marked reusable cup sizes, and facial presets give estheticians a routine they can learn and repeat.",
   },
   {
     title: "Built for repeat visits",
@@ -118,12 +118,11 @@ function Home() {
       <Section>
         <Eyebrow>The delivery challenge</Eyebrow>
         <div className="mt-4 grid gap-6 lg:grid-cols-2 lg:gap-12">
-          <h2 className="text-balance text-4xl leading-tight sm:text-5xl">
-            The Skin Barrier
-          </h2>
+          <h2 className="text-balance text-4xl leading-tight sm:text-5xl">The Skin Barrier</h2>
           <div className="space-y-4 leading-relaxed text-muted-foreground">
             <p>
-              The skin's outermost layer, the stratum corneum, protects against harmful substances but also limits the penetration of many skincare ingredients. 
+              The skin's outermost layer, the stratum corneum, protects against harmful substances
+              but also limits the penetration of many skincare ingredients.
               <Cite ids={["A"]} />
             </p>
             <p>
@@ -162,9 +161,7 @@ function Home() {
       <div id="innovation" className="scroll-mt-24 bg-secondary/40">
         <Section>
           <Eyebrow>The innovation</Eyebrow>
-          <h2 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl">
-            Better Together.
-          </h2>
+          <h2 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl">Better Together.</h2>
           <figure className="mt-8 hidden overflow-hidden rounded-3xl border bg-card shadow-soft md:block">
             <ImageLightbox
               src={`${images}/cavinova-approach.webp`}
@@ -238,12 +235,13 @@ function Home() {
           </h2>
           <div className="mt-5 max-w-3xl space-y-3 leading-relaxed text-muted-foreground">
             <p>
-              Our first step is to build an ultrasound device prototype alongside two experimental
-              serum formulations. We’ll compare serum alone, serum with ultrasound, serum with
-              microbubbles, and the full combination of serum, ultrasound, and microbubbles.
+              We’ll start with the ultrasound prototype and compare serum alone, serum with
+              ultrasound, serum with microbubbles, and the full combination. That work will inform
+              the planned launch formulas and treatment presets.
             </p>
             <p>
-              Each milestone builds the evidence we need to refine the prototype and advance the complete system.
+              Each milestone builds the evidence we need to refine the prototype and advance the
+              complete system.
             </p>
           </div>
           <Link to="/opportunity" className={`mt-6 ${textLink}`}>
