@@ -44,8 +44,8 @@ const scienceReferences = ["Topical", "Hyaluronic", "C", "Tone", "B", "P"] as co
 const findings = [
   {
     value: "1–5%",
-    title: "Reported Topical Bioavailability",
-    description: "Reported topical bioavailability in conventional dermatological formulations\n\n1",
+    title: "Of the applied dose reaches the skin",
+    description: "Research reports that many conventional dermatological formulations deliver only a small fraction of their active ingredients into the skin\n\n1",
     source: "Topical",
     accent: "bg-accent/55",
   },
