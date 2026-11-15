@@ -23,12 +23,12 @@ export function Cite({ ids, order }: CitationProps) {
         const target = `reference-${id}`;
         return (
           <span key={id} className="inline-flex items-baseline">
-            {index > 0 && <span aria-hidden>,&nbsp;</span>}
+            {index > 0 && <span aria-hidden className="ml-px">,&nbsp;</span>}
             <a
               href={`#${target}`}
               onClick={() => revealReference(target)}
               aria-label={`Go to reference ${number}`}
-              className="rounded-sm px-1 underline decoration-primary underline-offset-2 focus-visible:outline-2"
+              className="rounded-sm underline decoration-primary underline-offset-2 focus-visible:outline-2"
             >
               {order ? number : `[${number}]`}
             </a>
