@@ -156,42 +156,38 @@ function Opportunity() {
     <>
       <div className="bg-hero">
         <Section>
-          <Eyebrow>The market opportunity</Eyebrow>
+          <Eyebrow>Why Cavinova?</Eyebrow>
           <h1 className="mt-4 max-w-5xl text-balance text-4xl leading-tight sm:text-5xl xl:text-6xl">
-            A premium facial spas can make their own.
+            A different approach to professional skincare.
           </h1>
-          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            Day spas and med spas already offer technology-enabled facials.
-            <Cite ids={["F", "H"]} /> Cavinova is developing a needle-free cosmetic facial for those
-            treatment rooms. One handpiece pairs with several serums and presets, giving spas a way
-            to tailor the service and replenish the formulas clients come back for.
-          </p>
-          <ul className="mt-5 flex flex-wrap gap-2" aria-label="Opportunity themes">
+          <div className="mt-5 max-w-3xl space-y-3 text-lg leading-relaxed text-muted-foreground">
+            <p>
+              Not every skincare innovation requires a new active ingredient or another complex
+              treatment system.
+            </p>
+            <p>
+              Cavinova’s proposed platform brings established skincare ingredients and advanced
+              acoustic delivery technology together in one system designed for the professional spa
+              environment.
+            </p>
+          </div>
+          <ul className="mt-6 grid gap-3 md:grid-cols-3" aria-label="Platform design goals">
             {[
-              "Technology differentiation",
-              "Existing professional market",
-              "Recurring formulations",
-            ].map((theme) => (
-              <li
-                key={theme}
-                className="rounded-full border bg-card px-4 py-2 text-sm font-semibold"
-              >
-                {theme}
+              ["Targeted Treatments", "A planned collection of formulations for different skincare goals."],
+              ["Simplified Operation", "Automated treatment settings and a streamlined preparation process."],
+              ["Designed for More Spas", "A versatile professional platform built around accessible adoption and ongoing treatment opportunities."],
+            ].map(([title, description]) => (
+              <li key={title} className="rounded-2xl border bg-card/85 p-4 sm:p-5">
+                <p className="font-semibold">{title}</p>
+                <p className="mt-1 leading-relaxed text-muted-foreground">{description}</p>
               </li>
             ))}
           </ul>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Button asChild className="min-h-11 rounded-full">
-              <a href="#investment-thesis">
-                Explore the Business Opportunity <ArrowRight aria-hidden />
-              </a>
-            </Button>
-            <Button asChild variant="outline" className="min-h-11 rounded-full">
-              <Link to="/contact" search={{ interest: "investment" }}>
-                Discuss the Opportunity
-              </Link>
-            </Button>
-          </div>
+          <Button asChild className="mt-6 min-h-11 rounded-full">
+            <Link to="/platform">
+              Explore the Cavinova System <ArrowRight aria-hidden />
+            </Link>
+          </Button>
           <div className="mt-7 overflow-hidden rounded-3xl border shadow-soft">
             <div className="sm:hidden">
               <Artwork
