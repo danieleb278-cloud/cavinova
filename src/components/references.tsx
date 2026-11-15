@@ -17,13 +17,13 @@ type CitationProps = {
 
 export function Cite({ ids, order }: CitationProps) {
   return (
-    <sup className="ml-1 inline-flex gap-1 align-super text-xs font-semibold">
+    <sup className="ml-1 inline-flex align-super text-xs font-semibold">
       {ids.map((id, index) => {
         const number = referenceNumber(id, order);
         const target = `reference-${id}`;
         return (
-          <span key={id} className="inline-flex">
-            {index > 0 && <span aria-hidden>,</span>}
+          <span key={id} className="inline-flex items-baseline">
+            {index > 0 && <span aria-hidden>,&nbsp;</span>}
             <a
               href={`#${target}`}
               onClick={() => revealReference(target)}
