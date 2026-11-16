@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, RotateCcw } from "lucide-react";
 import { Section, Eyebrow, seo } from "@/components/site";
+import { Artwork } from "@/components/artwork";
 import { Button } from "@/components/ui/button";
 import { Cite, References } from "@/components/references";
 import { ScienceMechanism } from "@/components/science-mechanism";
@@ -39,7 +40,8 @@ const steps = [
   },
 ] as const;
 
-const scienceReferences = ["Topical", "Hyaluronic", "C", "Tone", "B", "P"] as const;
+const scienceReferences = ["Topical", "Hyaluronic", "C", "Tone", "B", "P", "A", "K"] as const;
+const comparison = "/images/opportunity/delivery-comparison.webp";
 
 const findings = [
   {
@@ -273,6 +275,67 @@ function Science() {
               </article>
             ))}
           </div>
+        </Section>
+      </div>
+      <div id="sound-and-serum" className="scroll-mt-24">
+        <Section>
+          <Eyebrow>Why pair sound and serum?</Eyebrow>
+          <h2 className="mt-3 text-balance text-4xl leading-tight sm:text-5xl">
+            A serum designed to respond to ultrasound
+          </h2>
+          <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
+            Sound and serum are designed as a pair. The development goal is to find out whether the
+            combination can make a visible difference in a repeatable cosmetic facial.
+          </p>
+          <figure className="mt-7">
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="overflow-hidden rounded-3xl border bg-card">
+                <Artwork
+                  src={comparison}
+                  height={374}
+                  frame={[66, 65, 592, 216]}
+                  alt="Skin cross-section with topical ingredients shown at the surface."
+                />
+                <div className="p-5">
+                  <h3 className="text-2xl">Conventional topical application</h3>
+                  <p className="mt-2 leading-relaxed text-muted-foreground">
+                    Ingredients are applied at the surface. How readily they pass through depends on
+                    the ingredient and formulation.
+                    <Cite ids={["A", "K"]} order={scienceReferences} />
+                  </p>
+                </div>
+              </div>
+              <div className="overflow-hidden rounded-3xl border bg-card">
+                <Artwork
+                  src={comparison}
+                  height={374}
+                  frame={[662, 65, 592, 216]}
+                  alt="Conceptual skin cross-section showing ultrasound waves, microbubbles, and arrows suggesting possible ingredient movement."
+                />
+                <div className="p-5">
+                  <h3 className="text-2xl">Proposed Cavinova approach</h3>
+                  <p className="mt-2 leading-relaxed text-muted-foreground">
+                    Under suitable conditions, ultrasound can set responsive microbubbles in motion.
+                    <Cite ids={["B", "P"]} order={scienceReferences} /> Whether that improves
+                    delivery of selected ingredients remains a research question.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <figcaption className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Conceptual comparison. Cavinova-specific performance still needs testing.
+            </figcaption>
+          </figure>
+          <aside className="mt-6 max-w-4xl rounded-2xl border bg-card p-5 sm:p-6">
+            <h3 className="text-2xl">Why bubble size matters</h3>
+            <p className="mt-2 leading-relaxed text-muted-foreground">
+              In a published pigskin lab study, a tracer dye penetrated <strong>37% deeper</strong>{" "}
+              after ultrasound with 3.5-micrometer microbubbles than with 1.4-micrometer
+              microbubbles under the same ultrasound setting.
+              <Cite ids={["C"]} order={scienceReferences} /> That finding gives Cavinova a concrete
+              reason to test bubble size alongside the serum and ultrasound settings.
+            </p>
+          </aside>
         </Section>
       </div>
       <References ids={scienceReferences} order={scienceReferences} />

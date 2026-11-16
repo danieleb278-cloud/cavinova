@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { ArrowRight, Droplet, Droplets, FlaskConical, Hand, Layers, Sparkles, Waves } from "lucide-react";
 import { Eyebrow, Section, seo } from "@/components/site";
+import { Artwork } from "@/components/artwork";
 import { ImageLightbox } from "@/components/image-lightbox";
 import { OpportunityFlow } from "@/components/opportunity-flow";
 import { Button } from "@/components/ui/button";
@@ -18,7 +19,6 @@ export const Route = createFileRoute("/opportunity")({
 });
 
 const landscape = "/images/opportunity/treatment-landscape.webp";
-const comparison = "/images/opportunity/delivery-comparison.webp";
 const workflowImage = "/images/platform/rear-vial-workflow.png";
 const workflowAlt =
   "Cavinova concept showing serum and a freeze-dried microbubble tab mixed in a vial, the vial attaching at the rear, and the ultrasound plate resting against the cheek.";
@@ -122,41 +122,6 @@ function Heading({
       {children && (
         <div className="mt-5 space-y-3 leading-relaxed text-muted-foreground">{children}</div>
       )}
-    </div>
-  );
-}
-
-// Frame the supplied artwork without baking its small labels into the webpage.
-function Artwork({
-  src,
-  height,
-  frame,
-  alt,
-}: {
-  src: string;
-  height: number;
-  frame: [number, number, number, number];
-  alt: string;
-}) {
-  const [x, y, width, visibleHeight] = frame;
-  return (
-    <div
-      className="relative overflow-hidden bg-card"
-      style={{ aspectRatio: width / visibleHeight }}
-    >
-      <img
-        src={src}
-        width={1536}
-        height={height}
-        alt={alt}
-        loading="lazy"
-        className="absolute h-auto max-w-none"
-        style={{
-          width: `${153600 / width}%`,
-          left: `${(-100 * x) / width}%`,
-          top: `${(-100 * y) / visibleHeight}%`,
-        }}
-      />
     </div>
   );
 }
@@ -366,69 +331,6 @@ function Opportunity() {
         </aside>
       </Section>
 
-      <div className="bg-secondary/35">
-        <Section>
-          <Heading
-            eyebrow="Why pair sound and serum?"
-            title="A serum designed to respond to ultrasound"
-          >
-            <p>
-              Sound and serum are designed as a pair. The development goal is to find out whether
-              the combination can make a visible difference in a repeatable cosmetic facial.
-            </p>
-          </Heading>
-          <figure className="mt-7">
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="overflow-hidden rounded-3xl border bg-card">
-                <Artwork
-                  src={comparison}
-                  height={374}
-                  frame={[66, 65, 592, 216]}
-                  alt="Skin cross-section with topical ingredients shown at the surface."
-                />
-                <div className="p-5">
-                  <h3 className="text-2xl">Conventional topical application</h3>
-                  <p className="mt-2 leading-relaxed text-muted-foreground">
-                    Ingredients are applied at the surface. How readily they pass through depends on
-                    the ingredient and formulation.
-                    <Cite ids={["A", "K"]} />
-                  </p>
-                </div>
-              </div>
-              <div className="overflow-hidden rounded-3xl border bg-card">
-                <Artwork
-                  src={comparison}
-                  height={374}
-                  frame={[662, 65, 592, 216]}
-                  alt="Conceptual skin cross-section showing ultrasound waves, microbubbles, and arrows suggesting possible ingredient movement."
-                />
-                <div className="p-5">
-                  <h3 className="text-2xl">Proposed Cavinova approach</h3>
-                  <p className="mt-2 leading-relaxed text-muted-foreground">
-                    Under suitable conditions, ultrasound can set responsive microbubbles in motion.
-                    <Cite ids={["B", "P"]} /> Whether that improves delivery of selected ingredients
-                    remains a research question.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <figcaption className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Conceptual comparison. Cavinova-specific performance still needs testing.
-            </figcaption>
-          </figure>
-          <aside className="mt-6 max-w-4xl rounded-2xl border bg-card p-5 sm:p-6">
-            <h3 className="text-2xl">Why bubble size matters</h3>
-            <p className="mt-2 leading-relaxed text-muted-foreground">
-              In a published pigskin lab study, a tracer dye penetrated <strong>37% deeper</strong>{" "}
-              after ultrasound with 3.5-micrometer microbubbles than with 1.4-micrometer
-              microbubbles under the same ultrasound setting.
-              <Cite ids={["C"]} /> That finding gives Cavinova a concrete reason to test bubble size
-              alongside the serum and ultrasound settings.
-            </p>
-          </aside>
-        </Section>
-      </div>
-
       <div id="investment-thesis" className="scroll-mt-24 bg-hero">
         <Section>
           <Heading eyebrow="Why Cavinova" title="From the first installation to the next refill.">
@@ -493,7 +395,7 @@ function Opportunity() {
           </div>
         </div>
       </Section>
-      <References ids={["A", "B", "C", "F", "P", "H", "M", "U", "K"]} />
+      <References ids={["A", "C", "F", "P", "H", "M", "U"]} />
     </>
   );
 }
