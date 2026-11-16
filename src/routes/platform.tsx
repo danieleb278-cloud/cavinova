@@ -23,9 +23,9 @@ const features = [
     benefit: "Less Prep. Less Waste.",
     detail:
       "Straightforward measurements simplify preparation, help control product use, and reduce unnecessary serum waste.",
-    src: `${images}/rear-vial-dispensing.png`,
+    src: `${images}/reservoirs-and-serums.png`,
     fit: "object-contain",
-    alt: "Cavinova handpiece with a clear serum reservoir vial attached at the rear.",
+    alt: "Two sizes of clear screw-in reservoir vials beside Cavinova’s Hydrate & Glow, Smooth & Firm, and Brighten & Even Tone serum bottles.",
     accent: "bg-[#e2f1ee]",
     icon: Clock3,
   },
