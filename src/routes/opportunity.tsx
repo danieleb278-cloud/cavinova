@@ -19,22 +19,22 @@ export const Route = createFileRoute("/opportunity")({
 
 const landscape = "/images/opportunity/treatment-landscape.webp";
 const comparison = "/images/opportunity/delivery-comparison.webp";
-const homeImages = "/images/home";
+const workflowImage = "/images/platform/rear-vial-workflow.png";
+const workflowAlt =
+  "Cavinova concept showing serum and a freeze-dried microbubble tab mixed in a vial, the vial attaching at the rear, and the ultrasound plate resting against the cheek.";
 
 const mobileInnovation = [
   {
-    title: "Acoustically Responsive Serum",
-    description:
-      "A proposed serum with selected active ingredients and tiny bubbles designed to respond to sound.",
+    title: "Mix just before use",
+    description: "Combine the serum and a freeze-dried microbubble tab in the reservoir vial.",
   },
   {
-    title: "Controlled Ultrasound",
-    description: "Ultrasound would be used to set the microbubbles in motion at the skin surface.",
+    title: "Attach the reservoir",
+    description: "Screw the prepared vial into the rear port of the handpiece.",
   },
   {
-    title: "The Proposed Interaction",
-    description:
-      "Under suitable ultrasound conditions, microbubble activity may temporarily make the skin more permeable, potentially helping selected ingredients pass through.",
+    title: "Dispense during the facial",
+    description: "The handpiece is designed to dispense the mixture at the edge of the ultrasound plate.",
   },
 ];
 
@@ -240,23 +240,20 @@ function Opportunity() {
           <h2 className="mt-4 text-balance text-4xl leading-tight sm:text-5xl">Better Together.</h2>
           <figure className="mt-8 hidden overflow-hidden rounded-3xl border bg-card shadow-soft md:block">
             <ImageLightbox
-              src={`${homeImages}/cavinova-approach.webp`}
-              title="Cavinova concept showing a microbubble serum, controlled ultrasound, and their proposed interaction at the skin surface"
+              src={workflowImage}
+              title={workflowAlt}
             />
           </figure>
           <div className="mt-6 md:hidden">
             <figure className="overflow-hidden rounded-2xl border bg-card">
-              {/* Frame the illustration between the embedded labels in the original artwork. */}
-              <div className="relative aspect-[1100/365] overflow-hidden">
-                <img
-                  src={`${homeImages}/cavinova-approach.webp`}
-                  alt="Concept illustration of microbubbles and ultrasound at the skin surface, with arrows showing the proposed movement of ingredients."
-                  width={1672}
-                  height={941}
-                  loading="lazy"
-                  className="absolute left-[-26%] top-[-114%] h-auto w-[152%] max-w-none"
-                />
-              </div>
+              <img
+                src={workflowImage}
+                alt={workflowAlt}
+                width={1672}
+                height={941}
+                loading="lazy"
+                className="block h-auto w-full"
+              />
             </figure>
             <dl className="mt-5 divide-y divide-border">
               {mobileInnovation.map(({ title, description }) => (
@@ -269,7 +266,7 @@ function Opportunity() {
           </div>
           <div className="mt-8 max-w-3xl space-y-4 leading-relaxed text-muted-foreground">
             <p>
-              Published lab studies inform this conceptual illustration.
+              Published lab studies inform Cavinova’s approach to ultrasound and microbubbles.
               <Cite ids={["C", "P"]} /> Cavinova's formulation and proposed system still need
               testing.
             </p>

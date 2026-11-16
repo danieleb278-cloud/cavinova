@@ -23,9 +23,9 @@ const features = [
     benefit: "Less Prep. Less Waste.",
     detail:
       "Straightforward measurements simplify preparation, help control product use, and reduce unnecessary serum waste.",
-    src: `${images}/rear-vial-workflow.png`,
+    src: `${images}/rear-vial-dispensing.png`,
     fit: "object-contain",
-    alt: "Better Together concept illustration showing serum and a freeze-dried microbubble tab mixed in a vial, the vial attaching at the rear, and the ultrasound plate resting against the cheek.",
+    alt: "Cavinova handpiece with a clear serum reservoir vial attached at the rear.",
     accent: "bg-[#e2f1ee]",
     icon: Clock3,
   },
