@@ -1,10 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { ArrowRight, Droplet, Droplets, FlaskConical, Hand, Layers, Sparkles, Waves } from "lucide-react";
+import { ArrowRight, Droplet, FlaskConical, Layers, Sparkles, Waves } from "lucide-react";
 import { Eyebrow, Section, seo } from "@/components/site";
 import { Artwork } from "@/components/artwork";
 import { ImageLightbox } from "@/components/image-lightbox";
-import { OpportunityFlow } from "@/components/opportunity-flow";
 import { Button } from "@/components/ui/button";
 import { Cite, References, ReferencesLink } from "@/components/references";
 
@@ -35,30 +34,6 @@ const mobileInnovation = [
   {
     title: "Dispense during the facial",
     description: "The handpiece is designed to dispense the mixture at the edge of the ultrasound plate.",
-  },
-];
-
-const possibilities = [
-  {
-    title: "A new service for your menu",
-    icon: Droplets,
-    tone: "border-rose/40 bg-accent",
-    description:
-      "Give clients a reason to book an upgrade with a facial built around ultrasound and a dedicated microbubble serum.",
-  },
-  {
-    title: "Designed for the treatment room",
-    icon: Waves,
-    tone: "border-teal/50 bg-secondary/65",
-    description:
-      "A handheld applicator, two marked reusable cup sizes, and facial presets give estheticians a routine they can learn and repeat.",
-  },
-  {
-    title: "Built for repeat visits",
-    icon: Hand,
-    tone: "border-border bg-card",
-    description:
-      "Our goal is a facial clients want to book again, with serum and microbubble refills that spas can replenish as they treat.",
   },
 ];
 
@@ -257,28 +232,6 @@ function Opportunity() {
       </div>
 
       <Section>
-        <Eyebrow>Professional potential</Eyebrow>
-        <h2 className="mt-4 max-w-3xl text-balance text-4xl leading-tight sm:text-5xl">
-          Made for Professionals
-        </h2>
-        <p className="mt-5 max-w-3xl leading-relaxed text-muted-foreground">
-          Cavinova is designed around the people who would use it every day. Spa owners get a new
-          service to offer, and estheticians get a workflow built around the treatment room.
-        </p>
-        <div className="mt-9 grid gap-6 md:grid-cols-3">
-          {possibilities.map(({ title, description, icon: Icon, tone }) => (
-            <article key={title} className={`rounded-3xl border p-6 ${tone}`}>
-              <span className="inline-grid size-11 place-items-center rounded-xl border bg-card text-foreground">
-                <Icon aria-hidden className="size-5" />
-              </span>
-              <h3 className="mt-4 text-balance text-2xl">{title}</h3>
-              <p className="mt-3 leading-relaxed text-muted-foreground">{description}</p>
-            </article>
-          ))}
-        </div>
-      </Section>
-
-      <Section>
         <Heading eyebrow="Cavinova at Home" title="Skincare that goes home with your clients">
           <p>
             The proposed take-home collection pairs each Cavinova serum with a companion
@@ -330,46 +283,6 @@ function Opportunity() {
           </p>
         </aside>
       </Section>
-
-      <div id="investment-thesis" className="scroll-mt-24 bg-hero">
-        <Section>
-          <Heading eyebrow="Why Cavinova" title="From the first installation to the next refill.">
-            <p>
-              We plan to start with founder-led demos and training in the New York metro. Each
-              installation gives us a chance to learn how estheticians use the system and what
-              brings spas back for refills. That experience informs how we expand into new regions.
-            </p>
-          </Heading>
-          <OpportunityFlow
-            steps={[
-              {
-                title: "Science-led differentiation",
-                description: (
-                  <>
-                    Ultrasound-responsive microbubble formulations.
-                    <Cite ids={["C", "P"]} />
-                  </>
-                ),
-              },
-              {
-                title: "Professional customer",
-                description:
-                  "Day spas and med spas looking for a premium facial to add to their menus.",
-              },
-              {
-                title: "Recurring treatment demand",
-                description:
-                  "Spas replenish bulk serum and measured microbubble doses as they perform facials.",
-              },
-              {
-                title: "Regional expansion",
-                description:
-                  "Local demos and trainer-led onboarding, supported by online refill ordering.",
-              },
-            ]}
-          />
-        </Section>
-      </div>
 
       <Section>
         <div className="rounded-3xl border bg-secondary/55 p-6 shadow-soft sm:p-10">
