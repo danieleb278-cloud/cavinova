@@ -61,7 +61,7 @@ const serums = [
   {
     name: "Hydrate & Glow",
     category: "Hydration + Radiance",
-    image: "hydrate-and-glow.png",
+    image: "hydrate-and-glow-pump.png",
     description:
       "Designed to replenish moisture and improve the appearance of dry, dull, or dehydrated skin, leaving the complexion looking fresh, supple, and luminous.",
     ideal: "Dryness, dehydration, and dull-looking skin.",
@@ -73,7 +73,7 @@ const serums = [
   {
     name: "Smooth & Firm",
     category: "Firmness + Smoothness",
-    image: "smooth-and-firm.png",
+    image: "smooth-and-firm-pump.png",
     description:
       "Focused on improving the appearance of fine lines, supporting a firmer-looking complexion, and leaving skin looking smoother and more refined.",
     ideal: "Fine lines, loss of firmness, and uneven-looking texture.",
@@ -85,7 +85,7 @@ const serums = [
   {
     name: "Brighten & Even Tone",
     category: "Brightness + Even Tone",
-    image: "brighten-and-even-tone.webp",
+    image: "brighten-and-even-tone-pump.png",
     description:
       "Created to address the appearance of dullness and uneven skin tone, helping reveal a brighter, more balanced-looking complexion.",
     ideal: "Dullness, visible discoloration, and uneven-looking tone.",
