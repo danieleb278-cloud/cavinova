@@ -11,3 +11,14 @@ describe("approved six-state equipment scenario", () => {
     expect(illustrativeEquipmentLocations).toBe(19);
   });
 });
+
+describe("take-home pairing lineup", () => {
+  it("starts with the three pairings inspired by the in-spa serums", () =>
+    expect(
+      takeHomePairings.filter((p) => p.stage === "starting").map((p) => p.name),
+    ).toEqual(["Hydrate & Glow", "Smooth & Firm", "Brighten & Even Tone"]));
+  it("plans exactly two further pairings over time", () =>
+    expect(
+      takeHomePairings.filter((p) => p.stage === "planned").map((p) => p.name),
+    ).toEqual(["Texture & Polish", "Signature Radiance"]));
+});
