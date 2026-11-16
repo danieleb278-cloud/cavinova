@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, RotateCcw } from "lucide-react";
 import { Section, Eyebrow, seo } from "@/components/site";
+import { Artwork } from "@/components/artwork";
 import { Button } from "@/components/ui/button";
 import { Cite, References } from "@/components/references";
 import { ScienceMechanism } from "@/components/science-mechanism";
@@ -39,7 +40,8 @@ const steps = [
   },
 ] as const;
 
-const scienceReferences = ["Topical", "Hyaluronic", "C", "Tone", "B", "P"] as const;
+const scienceReferences = ["Topical", "Hyaluronic", "C", "Tone", "B", "P", "A", "K"] as const;
+const comparison = "/images/opportunity/delivery-comparison.webp";
 
 const findings = [
   {
