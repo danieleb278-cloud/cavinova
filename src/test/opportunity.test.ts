@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { equipmentScenario, illustrativeEquipmentLocations } from "@/lib/opportunity";
+import { takeHomePairings } from "@/routes/opportunity";
 
 describe("approved six-state equipment scenario", () => {
   it("uses the team's approximately 1,870 screened med spas", () => expect(equipmentScenario.screenedLocations).toBe(1870));
