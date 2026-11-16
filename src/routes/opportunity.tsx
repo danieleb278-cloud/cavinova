@@ -300,44 +300,44 @@ function Opportunity() {
       </Section>
 
       <Section>
-        <div className="overflow-hidden rounded-3xl border bg-card shadow-soft lg:grid lg:grid-cols-[minmax(0,1.02fr)_minmax(0,1fr)] lg:items-center">
-          <figure className="overflow-hidden border-b border-border lg:border-b-0 lg:border-r">
+        <div className="overflow-hidden rounded-3xl border bg-card shadow-soft">
+          <div className="px-6 pt-8 sm:px-10 sm:pt-10">
+            <Eyebrow>Professional Starter Package</Eyebrow>
+            <h2 className="mt-3 text-balance text-4xl leading-tight sm:text-5xl">
+              Try all three serums before stocking up.
+            </h2>
+            <p className="mt-5 max-w-4xl leading-relaxed text-muted-foreground">
+              The proposed starter package brings together the Cavinova professional system, one
+              trial bottle each of Hydrate &amp; Glow, Smooth &amp; Firm, and Brighten &amp; Even
+              Tone, and nine individually packaged microbubble doses. Your team can try all three in
+              the treatment room and choose which serums to keep on hand in full size.
+            </p>
+          </div>
+          <figure className="mt-8 overflow-hidden border-y border-border">
             <ImageLightbox src={starterPackage} title={starterPackageAlt} />
           </figure>
-          <div className="p-6 sm:p-8">
-            <Heading
-              eyebrow="Professional Starter Package"
-              title="Try all three serums before stocking up."
-            >
-              <p>
-                The proposed starter package brings together the Cavinova professional system, one
-                trial bottle each of Hydrate &amp; Glow, Smooth &amp; Firm, and Brighten &amp; Even
-                Tone, and nine individually packaged microbubble doses. Your team can try all three
-                in the treatment room and choose which serums to keep on hand in full size.
+          <div className="grid gap-6 px-6 py-8 sm:grid-cols-2 sm:px-10 sm:py-10">
+            <div>
+              <h3 className="text-base font-semibold">Easy to restock</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                We’re planning online reordering for professional serums and treatment supplies,
+                with refill bundles to help spas save and optional scheduled shipments to make
+                restocking easier.
               </p>
-            </Heading>
-            <div className="mt-6 grid gap-5 sm:grid-cols-2">
-              <div>
-                <h3 className="text-base font-semibold">Easy to restock</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                  We’re planning online reordering for professional serums and treatment supplies,
-                  with refill bundles to help spas save and optional scheduled shipments to make
-                  restocking easier.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-base font-semibold">A direct line to Cavinova</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                  Have a question about the system, starter package, or refills? Reach the Cavinova
-                  team through our website.
-                </p>
-              </div>
             </div>
-            <Button asChild className="mt-7 min-h-11 rounded-full">
-              <Link to="/contact">
-                Contact Cavinova <ArrowRight aria-hidden />
-              </Link>
-            </Button>
+            <div>
+              <h3 className="text-base font-semibold">A direct line to Cavinova</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                Have a question about the system, starter package, or refills?{" "}
+                <Link
+                  to="/contact"
+                  className="font-semibold text-teal-deep underline decoration-teal-deep/40 underline-offset-4 hover:decoration-teal-deep"
+                >
+                  Reach the Cavinova team
+                </Link>{" "}
+                through our website.
+              </p>
+            </div>
           </div>
         </div>
       </Section>
