@@ -6,6 +6,7 @@ import { Artwork } from "@/components/artwork";
 import { ImageLightbox } from "@/components/image-lightbox";
 import { Button } from "@/components/ui/button";
 import { Cite, References, ReferencesLink } from "@/components/references";
+import boosterWandAsset from "@/assets/take-home-booster-wand.png.asset.json";
 
 export const Route = createFileRoute("/opportunity")({
   staticData: { sitemap: true },
@@ -21,6 +22,10 @@ const landscape = "/images/opportunity/treatment-landscape.webp";
 const workflowImage = "/images/platform/rear-vial-workflow.png";
 const workflowAlt =
   "Cavinova concept showing serum and a freeze-dried microbubble tab mixed in a vial, the vial attaching at the rear, and the ultrasound plate resting against the cheek.";
+
+const boosterWand = boosterWandAsset.url;
+const boosterWandAlt =
+  "Concept rendering of the proposed Cavinova take-home booster wand resting on a stone countertop beside a folded towel.";
 
 const mobileInnovation = [
   {
@@ -270,17 +275,22 @@ function Opportunity() {
             </div>
           ))}
         </div>
-        <aside className="mt-6 max-w-3xl rounded-2xl border bg-card p-5 sm:p-6">
-          <p className="inline-flex items-center gap-2 rounded-full border bg-secondary/60 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-teal-deep">
-            <FlaskConical aria-hidden className="size-3.5" /> In development
-          </p>
-          <h3 className="mt-3 font-serif text-xl font-semibold leading-snug">
-            Take-home booster wand
-          </h3>
-          <p className="mt-2 leading-relaxed text-muted-foreground">
-            We’re developing an optional, battery-powered booster pen designed for use with
-            Cavinova’s take-home serums.
-          </p>
+        <aside className="mt-6 max-w-3xl overflow-hidden rounded-2xl border bg-card sm:grid sm:grid-cols-2 sm:items-stretch">
+          <figure className="overflow-hidden border-b border-border sm:border-b-0 sm:border-r">
+            <ImageLightbox src={boosterWand} title={boosterWandAlt} />
+          </figure>
+          <div className="p-5 sm:p-6">
+            <p className="inline-flex items-center gap-2 rounded-full border bg-secondary/60 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-teal-deep">
+              <FlaskConical aria-hidden className="size-3.5" /> In development
+            </p>
+            <h3 className="mt-3 font-serif text-xl font-semibold leading-snug">
+              Take-home booster wand
+            </h3>
+            <p className="mt-2 leading-relaxed text-muted-foreground">
+              We’re developing an optional, battery-powered booster pen designed for use with
+              Cavinova’s take-home serums.
+            </p>
+          </div>
         </aside>
       </Section>
 
