@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { ArrowRight, Droplets, Hand, Waves } from "lucide-react";
+import { ArrowRight, Droplet, Droplets, FlaskConical, Hand, Layers, Sparkles, Waves } from "lucide-react";
 import { Eyebrow, Section, seo } from "@/components/site";
 import { ImageLightbox } from "@/components/image-lightbox";
 import { OpportunityFlow } from "@/components/opportunity-flow";
@@ -61,6 +61,16 @@ const possibilities = [
       "Our goal is a facial clients want to book again, with serum and microbubble refills that spas can replenish as they treat.",
   },
 ];
+
+// Take-home lineup: three pairings inspired by the in-spa serums, two planned over time.
+export const takeHomePairings = [
+  { name: "Hydrate & Glow", stage: "starting", icon: Droplet },
+  { name: "Smooth & Firm", stage: "starting", icon: Waves },
+  { name: "Brighten & Even Tone", stage: "starting", icon: Sparkles },
+  { name: "Texture & Polish", stage: "planned", icon: Layers },
+  { name: "Signature Radiance", stage: "planned", icon: Sparkles },
+] as const;
+
 const treatments = [
   {
     title: "Conventional topical facials",
