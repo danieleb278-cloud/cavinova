@@ -330,7 +330,7 @@ function Opportunity() {
           {(["starting", "planned"] as const).map((stage) => (
             <div key={stage} className="flex flex-wrap items-center gap-2">
               <span
-                className={`text-xs font-semibold uppercase tracking-[0.2em] ${
+                className={`w-full text-xs font-semibold uppercase tracking-[0.2em] sm:w-auto ${
                   stage === "starting" ? "text-teal-deep" : "text-muted-foreground"
                 }`}
               >
