@@ -3,15 +3,13 @@ import { useState } from "react";
 import { ArrowRight, Clock3, Droplet, GraduationCap, Layers, Sparkles, Waves } from "lucide-react";
 import { Eyebrow, Section, seo } from "@/components/site";
 import { Button } from "@/components/ui/button";
-import handpieceReservoir from "@/assets/handpiece-with-reservoir.png.asset.json";
-import removableFluidPath from "@/assets/removable-fluid-path.png.asset.json";
 
 export const Route = createFileRoute("/platform")({
   staticData: { sitemap: true },
   head: () =>
     seo(
       "Product Concept — Cavinova",
-      "Explore Cavinova’s proposed cosmetic facial system, reusable treatment cups, serum lineup, and preset controls.",
+      "Explore Cavinova’s proposed cosmetic facial system, reusable rear-mounted reservoirs, serum lineup, and preset controls.",
     ),
   component: Platform,
 });
@@ -21,24 +19,26 @@ const features = [
   {
     title: "Precision-Measured Preparation",
     description:
-      "Choose your serum and measure the amount needed for a 30- or 60-minute facial using the reusable preparation cup. Add the freeze-dried microbubbles, mix, and click the prepared cup directly into the handpiece.",
+      "Measure the serum for a 30- or 60-minute facial in the matching reusable vial. Add the freeze-dried microbubble tab, mix, and screw the vial into the rear port on the handpiece.",
     benefit: "Less Prep. Less Waste.",
     detail:
       "Straightforward measurements simplify preparation, help control product use, and reduce unnecessary serum waste.",
-    src: handpieceReservoir.url,
-    alt: "Cavinova handpiece with a filled reservoir cup installed and a second filled reservoir standing beside it.",
+    src: `${images}/rear-vial-workflow.png`,
+    fit: "object-contain",
+    alt: "Better Together concept illustration showing serum and a freeze-dried microbubble tab mixed in a vial, the vial attaching at the rear, and the ultrasound plate resting against the cheek.",
     accent: "bg-[#e2f1ee]",
     icon: Clock3,
   },
   {
     title: "Automatic Serum Dispensing",
     description:
-      "The Cavinova handpiece automatically dispenses the prepared formulation during treatment through an integrated delivery system.",
+      "The handpiece is designed to dispense the prepared mixture through small outlets at the edge of the flat ultrasound plate during the facial.",
     benefit: "More Consistent Application.",
     detail:
       "Controlled dispensing helps standardize serum use across treatments, reducing manual application and opportunities for operator error.",
-    src: removableFluidPath.url,
-    alt: "Diagram comparing the assembled Cavinova handpiece with its fluid-path reservoir installed and detached.",
+    src: `${images}/rear-vial-dispensing.png`,
+    fit: "object-cover",
+    alt: "Cavinova handpiece concept with a rear screw-in vial and three small dispensing outlets along the edge of the flat ultrasound plate.",
     accent: "bg-[#f6e8e9]",
     icon: Layers,
   },
@@ -49,7 +49,8 @@ const features = [
     benefit: "Simpler Training. Greater Confidence.",
     detail:
       "Preset treatment parameters reduce manual adjustments, simplify staff training, and support a more standardized professional treatment experience.",
-    src: `${images}/touchscreen-controls.webp`,
+    src: `${images}/rear-vial-system.png`,
+    fit: "object-contain",
     alt: "Cavinova touchscreen showing three serum presets and 30- and 60-minute sessions.",
     accent: "bg-[#f6eddf]",
     icon: GraduationCap,
@@ -305,12 +306,12 @@ function Platform() {
           </div>
           <div className="relative lg:absolute lg:inset-y-0 lg:right-0 lg:left-[40%]">
             <img
-              src={`${images}/platform-hero.webp`}
-              alt="Cavinova concept system with a touchscreen base, a white handpiece, and the Hydrate & Glow, Smooth & Firm, and Brighten & Even Tone serums."
-              width={1536}
-              height={1024}
+              src={`${images}/rear-vial-system.png`}
+              alt="Cavinova concept with a larger touchscreen, a docked handpiece with a rear reservoir, and interchangeable vials for 30- and 60-minute facials."
+              width={1672}
+              height={941}
               fetchPriority="high"
-              className="block h-auto w-full lg:h-full lg:object-cover lg:object-center"
+              className="block h-auto w-full lg:h-full lg:object-contain lg:object-center"
             />
             <div
               aria-hidden
@@ -333,7 +334,7 @@ function Platform() {
         </div>
         <div className="mt-9 divide-y">
           {features.map(
-            ({ title, description, benefit, detail, src, alt, accent, icon: Icon }) => (
+            ({ title, description, benefit, detail, src, alt, fit, accent, icon: Icon }) => (
               <article
                 key={title}
                 className="grid items-center gap-4 py-5 first:pt-0 last:pb-0 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)_auto_minmax(0,1.35fr)] lg:gap-6"
@@ -344,7 +345,7 @@ function Platform() {
                   width={768}
                   height={512}
                   loading="lazy"
-                  className="aspect-[3/2] w-full rounded-2xl object-cover"
+                  className={`aspect-[3/2] w-full rounded-2xl ${fit}`}
                 />
                 <div>
                   <h3 className="font-sans text-sm font-bold tracking-wide text-teal-deep uppercase">
