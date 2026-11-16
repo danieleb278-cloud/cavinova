@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { ArrowRight, Droplet, Droplets, FlaskConical, Hand, Layers, Sparkles, Waves } from "lucide-react";
 import { Eyebrow, Section, seo } from "@/components/site";
+import { Artwork } from "@/components/artwork";
 import { ImageLightbox } from "@/components/image-lightbox";
 import { OpportunityFlow } from "@/components/opportunity-flow";
 import { Button } from "@/components/ui/button";
@@ -18,7 +19,6 @@ export const Route = createFileRoute("/opportunity")({
 });
 
 const landscape = "/images/opportunity/treatment-landscape.webp";
-const comparison = "/images/opportunity/delivery-comparison.webp";
 const workflowImage = "/images/platform/rear-vial-workflow.png";
 const workflowAlt =
   "Cavinova concept showing serum and a freeze-dried microbubble tab mixed in a vial, the vial attaching at the rear, and the ultrasound plate resting against the cheek.";
@@ -122,6 +122,41 @@ function Heading({
       {children && (
         <div className="mt-5 space-y-3 leading-relaxed text-muted-foreground">{children}</div>
       )}
+    </div>
+  );
+}
+
+// Frame the supplied artwork without baking its small labels into the webpage.
+function Artwork({
+  src,
+  height,
+  frame,
+  alt,
+}: {
+  src: string;
+  height: number;
+  frame: [number, number, number, number];
+  alt: string;
+}) {
+  const [x, y, width, visibleHeight] = frame;
+  return (
+    <div
+      className="relative overflow-hidden bg-card"
+      style={{ aspectRatio: width / visibleHeight }}
+    >
+      <img
+        src={src}
+        width={1536}
+        height={height}
+        alt={alt}
+        loading="lazy"
+        className="absolute h-auto max-w-none"
+        style={{
+          width: `${153600 / width}%`,
+          left: `${(-100 * x) / width}%`,
+          top: `${(-100 * y) / visibleHeight}%`,
+        }}
+      />
     </div>
   );
 }
