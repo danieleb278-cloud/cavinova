@@ -313,6 +313,59 @@ function Opportunity() {
         </div>
       </Section>
 
+      <Section>
+        <Heading eyebrow="Cavinova at Home" title="Skincare that goes home with your clients">
+          <p>
+            The proposed take-home collection pairs each Cavinova serum with a companion
+            moisturizer. It starts with three pairings inspired by the in-spa options: Hydrate &
+            Glow, Smooth & Firm, and Brighten & Even Tone. Two more pairings, Texture & Polish and
+            Signature Radiance, are planned over time.
+          </p>
+          <p>
+            Spas can recommend a matching routine at checkout and give clients a reason to return
+            for their favorites.
+          </p>
+        </Heading>
+        <div className="mt-7 space-y-3">
+          {(["starting", "planned"] as const).map((stage) => (
+            <div key={stage} className="flex flex-wrap items-center gap-2">
+              <span
+                className={`text-xs font-semibold uppercase tracking-[0.2em] ${
+                  stage === "starting" ? "text-teal-deep" : "text-muted-foreground"
+                }`}
+              >
+                {stage === "starting" ? "Starting with" : "Planned over time"}
+              </span>
+              {takeHomePairings
+                .filter((pairing) => pairing.stage === stage)
+                .map(({ name, icon: Icon }) => (
+                  <span
+                    key={name}
+                    className={`inline-flex items-center gap-2 rounded-full border bg-card px-3 py-1.5 text-sm ${
+                      stage === "starting" ? "" : "border-dashed"
+                    }`}
+                  >
+                    <Icon aria-hidden className="size-4 text-teal-deep" />
+                    {name}
+                  </span>
+                ))}
+            </div>
+          ))}
+        </div>
+        <aside className="mt-6 max-w-3xl rounded-2xl border bg-card p-5 sm:p-6">
+          <p className="inline-flex items-center gap-2 rounded-full border bg-secondary/60 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-teal-deep">
+            <FlaskConical aria-hidden className="size-3.5" /> In development
+          </p>
+          <h3 className="mt-3 font-serif text-xl font-semibold leading-snug">
+            Take-home booster wand
+          </h3>
+          <p className="mt-2 leading-relaxed text-muted-foreground">
+            We’re developing an optional, battery-powered booster pen designed for use with
+            Cavinova’s take-home serums.
+          </p>
+        </aside>
+      </Section>
+
       <div className="bg-secondary/35">
         <Section>
           <Heading
