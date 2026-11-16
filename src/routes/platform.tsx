@@ -3,6 +3,8 @@ import { useState } from "react";
 import { ArrowRight, Clock3, Droplet, GraduationCap, Layers, Sparkles, Waves } from "lucide-react";
 import { Eyebrow, Section, seo } from "@/components/site";
 import { Button } from "@/components/ui/button";
+import handpieceReservoir from "@/assets/handpiece-with-reservoir.png.asset.json";
+import removableFluidPath from "@/assets/removable-fluid-path.png.asset.json";
 
 export const Route = createFileRoute("/platform")({
   staticData: { sitemap: true },
@@ -23,8 +25,8 @@ const features = [
     benefit: "Less Prep. Less Waste.",
     detail:
       "Straightforward measurements simplify preparation, help control product use, and reduce unnecessary serum waste.",
-    image: "measured-preparation.webp",
-    alt: "Reusable graduated preparation cup beside the handpiece’s click-in connection.",
+    src: handpieceReservoir.url,
+    alt: "Cavinova handpiece with a filled reservoir cup installed and a second filled reservoir standing beside it.",
     accent: "bg-[#e2f1ee]",
     icon: Clock3,
   },
@@ -35,8 +37,8 @@ const features = [
     benefit: "More Consistent Application.",
     detail:
       "Controlled dispensing helps standardize serum use across treatments, reducing manual application and opportunities for operator error.",
-    image: "automatic-dispensing.webp",
-    alt: "A drop of serum forming at the Cavinova handpiece’s dispensing tip.",
+    src: removableFluidPath.url,
+    alt: "Diagram comparing the assembled Cavinova handpiece with its fluid-path reservoir installed and detached.",
     accent: "bg-[#f6e8e9]",
     icon: Layers,
   },
@@ -47,7 +49,7 @@ const features = [
     benefit: "Simpler Training. Greater Confidence.",
     detail:
       "Preset treatment parameters reduce manual adjustments, simplify staff training, and support a more standardized professional treatment experience.",
-    image: "touchscreen-controls.webp",
+    src: `${images}/touchscreen-controls.webp`,
     alt: "Cavinova touchscreen showing three serum presets and 30- and 60-minute sessions.",
     accent: "bg-[#f6eddf]",
     icon: GraduationCap,
@@ -331,13 +333,13 @@ function Platform() {
         </div>
         <div className="mt-9 divide-y">
           {features.map(
-            ({ title, description, benefit, detail, image, alt, accent, icon: Icon }) => (
+            ({ title, description, benefit, detail, src, alt, accent, icon: Icon }) => (
               <article
                 key={title}
                 className="grid items-center gap-4 py-5 first:pt-0 last:pb-0 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)_auto_minmax(0,1.35fr)] lg:gap-6"
               >
                 <img
-                  src={`${images}/${image}`}
+                  src={src}
                   alt={alt}
                   width={768}
                   height={512}
