@@ -7,6 +7,7 @@ import { ImageLightbox } from "@/components/image-lightbox";
 import { Button } from "@/components/ui/button";
 import { Cite, References, ReferencesLink } from "@/components/references";
 import boosterWandAsset from "@/assets/take-home-booster-wand.png.asset.json";
+import starterPackageAsset from "@/assets/professional-starter-package.png.asset.json";
 
 export const Route = createFileRoute("/opportunity")({
   staticData: { sitemap: true },
@@ -26,6 +27,10 @@ const workflowAlt =
 const boosterWand = boosterWandAsset.url;
 const boosterWandAlt =
   "Concept rendering of the proposed Cavinova take-home booster wand resting on a stone countertop beside a folded towel.";
+
+const starterPackage = starterPackageAsset.url;
+const starterPackageAlt =
+  "Concept rendering of the proposed Cavinova professional starter package: the tabletop system with its handpiece, three trial serum bottles, and a pack of nine microbubble doses.";
 
 const mobileInnovation = [
   {
@@ -292,6 +297,49 @@ function Opportunity() {
             </p>
           </div>
         </aside>
+      </Section>
+
+      <Section>
+        <div className="overflow-hidden rounded-3xl border bg-card shadow-soft lg:grid lg:grid-cols-[minmax(0,1.02fr)_minmax(0,1fr)] lg:items-center">
+          <figure className="overflow-hidden border-b border-border lg:border-b-0 lg:border-r">
+            <ImageLightbox src={starterPackage} title={starterPackageAlt} />
+          </figure>
+          <div className="p-6 sm:p-8">
+            <Heading
+              eyebrow="Professional Starter Package"
+              title="Try all three serums before stocking up."
+            >
+              <p>
+                The proposed starter package brings together the Cavinova professional system, one
+                trial bottle each of Hydrate &amp; Glow, Smooth &amp; Firm, and Brighten &amp; Even
+                Tone, and nine individually packaged microbubble doses. Your team can try all three
+                in the treatment room and choose which serums to keep on hand in full size.
+              </p>
+            </Heading>
+            <div className="mt-6 grid gap-5 sm:grid-cols-2">
+              <div>
+                <h3 className="text-base font-semibold">Easy to restock</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                  We’re planning online reordering for professional serums and treatment supplies,
+                  with refill bundles to help spas save and optional scheduled shipments to make
+                  restocking easier.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-base font-semibold">A direct line to Cavinova</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                  Have a question about the system, starter package, or refills? Reach the Cavinova
+                  team through our website.
+                </p>
+              </div>
+            </div>
+            <Button asChild className="mt-7 min-h-11 rounded-full">
+              <Link to="/contact">
+                Contact Cavinova <ArrowRight aria-hidden />
+              </Link>
+            </Button>
+          </div>
+        </div>
       </Section>
 
       <Section>
