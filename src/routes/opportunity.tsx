@@ -58,34 +58,42 @@ export const takeHomePairings = [
 
 const treatments = [
   {
-    title: "Conventional topical facials",
-    body: "A conventional facial relies on the formulation and how it is applied. The skin’s outer barrier limits the passage of many topical ingredients.",
-    advantage:
-      "Cavinova adds controlled ultrasound and a serum designed to respond to it, giving spas a distinct step to build a facial around.",
+    title: "Traditional Facials",
+    lead: "A familiar experience built around topical skincare.",
+    body: "Traditional facials cleanse, exfoliate, and hydrate. They remain a staple of professional skincare and typically rely on topical application.",
+    advantageTitle: "Go Beyond the Traditional Facial.",
+    advantageBody:
+      "Give clients a reason to upgrade with a signature facial designed around targeted serum options.",
     sources: ["A"],
     x: 22,
   },
   {
-    title: "Hydrodermabrasion and serum infusion",
-    body: "Hydrodermabrasion uses fluid and suction for cleansing, exfoliation, and hydration. Its workflow centers on those steps.",
-    advantage:
-      "Cavinova gives spas a serum-focused option without suction or extraction in the planned treatment workflow.",
+    title: "Infusion & Hydradermabrasion",
+    lead: "A service centered on cleansing and exfoliation.",
+    body: "Treatments such as Hydrafacial combine exfoliation, suction-based extraction, and topical serums for a refreshed, hydrated look.",
+    advantageTitle: "Make Ingredient Delivery the Priority.",
+    advantageBody:
+      "Cavinova’s proposed facial is built around the application of targeted skincare formulations, giving spas a distinct service to add alongside cleansing and extraction.",
     sources: ["H"],
     x: 405,
   },
   {
     title: "Microneedling",
-    body: "Microneedling deliberately punctures the skin. That adds a skin-puncture step and associated training and aftercare considerations.",
-    advantage:
-      "Cavinova is designed as a needle-free facial, with the serum and applicator used at the skin surface.",
+    lead: "Advanced treatments can involve needles and recovery time.",
+    body: "Microneedling uses controlled punctures and is used for concerns such as fine lines and certain scars. Redness, swelling, and sensitivity can follow. Provider requirements vary by procedure and jurisdiction.",
+    advantageTitle: "Advanced Skincare. No Needles Required.",
+    advantageBody:
+      "Cavinova is designed as a needle-free professional facial with options focused on hydration, radiance, smoother- and firmer-looking skin, and a more even-looking tone.",
     sources: ["M"],
     x: 776,
   },
   {
-    title: "Focused ultrasound procedures",
-    body: "Focused ultrasound can concentrate energy in tissue for specific aesthetic procedures. That is a different use of sound from a topical serum facial.",
-    advantage:
-      "Cavinova pairs sound with responsive microbubbles at the surface and plans presets for each facial and session length.",
+    title: "Energy-Based Aesthetics",
+    lead: "Powerful technology designed for different treatment goals.",
+    body: "Laser, radiofrequency, and focused ultrasound are used for a range of aesthetic goals. Depending on the procedure, these can include resurfacing, heating, or tissue remodeling.",
+    advantageTitle: "Advanced Technology. Focused on Skincare.",
+    advantageBody:
+      "Cavinova brings acoustic technology to a professional facial centered on targeted formulations and cosmetic appearance goals.",
     sources: ["U"],
     x: 1150,
   },
@@ -171,26 +179,62 @@ function Opportunity() {
 
       <Section>
         <Heading
-          eyebrow="The treatment landscape"
-          title="Where Cavinova adds something different"
-        />
+          eyebrow="The professional skincare landscape"
+          title="Your clients already love facials. Give them a reason to upgrade."
+        >
+          <p>
+            From traditional facials to advanced aesthetic services, spas have more options than
+            ever. Cavinova is developing a signature facial centered on targeted skincare
+            ingredients clients already know.
+          </p>
+        </Heading>
         <div className="mt-7 grid gap-5 md:grid-cols-2">
-          {treatments.map(({ title, body, advantage, sources, x }) => (
-            <article key={title} className="overflow-hidden rounded-3xl border bg-card">
+          {treatments.map(({ title, lead, body, advantageTitle, advantageBody, sources, x }) => (
+            <article
+              key={title}
+              className="flex flex-col overflow-hidden rounded-3xl border bg-card"
+            >
               <Artwork src={landscape} height={650} frame={[x, 260, 358, 154]} alt="" />
-              <div className="p-5 sm:p-6">
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
                 <h3 className="text-balance text-2xl">{title}</h3>
-                <p className="mt-2 leading-relaxed text-muted-foreground">
+                <p className="mt-2 font-semibold">{lead}</p>
+                <p className="mb-4 mt-2 leading-relaxed text-muted-foreground">
                   {body}
                   <Cite ids={sources} />
                 </p>
-                <div className="mt-4 rounded-2xl bg-secondary/55 p-4">
-                  <h4 className="text-base font-semibold">The Cavinova approach</h4>
-                  <p className="mt-1 leading-relaxed text-muted-foreground">{advantage}</p>
+                <div className="mt-auto rounded-2xl bg-secondary/55 p-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-deep">
+                    The Cavinova Advantage
+                  </p>
+                  <h4 className="mt-1.5 text-base font-semibold">{advantageTitle}</h4>
+                  <p className="mt-1 leading-relaxed text-muted-foreground">{advantageBody}</p>
                 </div>
               </div>
             </article>
           ))}
+        </div>
+        <div className="mt-10 rounded-3xl border bg-secondary/55 p-6 shadow-soft sm:p-10">
+          <div className="max-w-4xl">
+            <Eyebrow>Why Choose Cavinova?</Eyebrow>
+            <h2 className="mt-3 text-balance text-4xl leading-tight sm:text-5xl">
+              More than another facial.
+            </h2>
+            <div className="mt-5 space-y-3 leading-relaxed text-muted-foreground">
+              <p>
+                Cavinova gives spas a way to build a signature service around the skincare goals
+                clients care about, with three professional serum options and a needle-free
+                workflow.
+              </p>
+              <p className="font-semibold text-foreground">
+                More treatment options. A stronger reason to choose your spa.
+              </p>
+            </div>
+          </div>
+          <Button asChild className="mt-6 min-h-11 rounded-full">
+            <Link to="/platform">
+              Explore the Cavinova System <ArrowRight aria-hidden />
+            </Link>
+          </Button>
         </div>
       </Section>
 
