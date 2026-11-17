@@ -58,34 +58,42 @@ export const takeHomePairings = [
 
 const treatments = [
   {
-    title: "Conventional topical facials",
-    body: "A conventional facial relies on the formulation and how it is applied. The skin’s outer barrier limits the passage of many topical ingredients.",
-    advantage:
-      "Cavinova adds controlled ultrasound and a serum designed to respond to it, giving spas a distinct step to build a facial around.",
+    title: "Traditional Facials",
+    lead: "A familiar experience built around topical skincare.",
+    body: "Traditional facials cleanse, exfoliate, and hydrate. They remain a staple of professional skincare and typically rely on topical application.",
+    advantageTitle: "Go Beyond the Traditional Facial.",
+    advantageBody:
+      "Give clients a reason to upgrade with a signature facial designed around targeted serum options.",
     sources: ["A"],
     x: 22,
   },
   {
-    title: "Hydrodermabrasion and serum infusion",
-    body: "Hydrodermabrasion uses fluid and suction for cleansing, exfoliation, and hydration. Its workflow centers on those steps.",
-    advantage:
-      "Cavinova gives spas a serum-focused option without suction or extraction in the planned treatment workflow.",
+    title: "Infusion & Hydradermabrasion",
+    lead: "A service centered on cleansing and exfoliation.",
+    body: "Treatments such as Hydrafacial combine exfoliation, suction-based extraction, and topical serums for a refreshed, hydrated look.",
+    advantageTitle: "Make Ingredient Delivery the Priority.",
+    advantageBody:
+      "Cavinova’s proposed facial is built around the application of targeted skincare formulations, giving spas a distinct service to add alongside cleansing and extraction.",
     sources: ["H"],
     x: 405,
   },
   {
     title: "Microneedling",
-    body: "Microneedling deliberately punctures the skin. That adds a skin-puncture step and associated training and aftercare considerations.",
-    advantage:
-      "Cavinova is designed as a needle-free facial, with the serum and applicator used at the skin surface.",
+    lead: "Advanced treatments can involve needles and recovery time.",
+    body: "Microneedling uses controlled punctures and is used for concerns such as fine lines and certain scars. Redness, swelling, and sensitivity can follow. Provider requirements vary by procedure and jurisdiction.",
+    advantageTitle: "Advanced Skincare. No Needles Required.",
+    advantageBody:
+      "Cavinova is designed as a needle-free professional facial with options focused on hydration, radiance, smoother- and firmer-looking skin, and a more even-looking tone.",
     sources: ["M"],
     x: 776,
   },
   {
-    title: "Focused ultrasound procedures",
-    body: "Focused ultrasound can concentrate energy in tissue for specific aesthetic procedures. That is a different use of sound from a topical serum facial.",
-    advantage:
-      "Cavinova pairs sound with responsive microbubbles at the surface and plans presets for each facial and session length.",
+    title: "Energy-Based Aesthetics",
+    lead: "Powerful technology designed for different treatment goals.",
+    body: "Laser, radiofrequency, and focused ultrasound are used for a range of aesthetic goals. Depending on the procedure, these can include resurfacing, heating, or tissue remodeling.",
+    advantageTitle: "Advanced Technology. Focused on Skincare.",
+    advantageBody:
+      "Cavinova brings acoustic technology to a professional facial centered on targeted formulations and cosmetic appearance goals.",
     sources: ["U"],
     x: 1150,
   },
