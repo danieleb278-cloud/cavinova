@@ -198,11 +198,11 @@ function Opportunity() {
               <div className="flex flex-1 flex-col p-5 sm:p-6">
                 <h3 className="text-balance text-2xl">{title}</h3>
                 <p className="mt-2 font-semibold">{lead}</p>
-                <p className="mt-2 leading-relaxed text-muted-foreground">
+                <p className="mb-4 mt-2 leading-relaxed text-muted-foreground">
                   {body}
                   <Cite ids={sources} />
                 </p>
-                <div className="mt-auto rounded-2xl bg-secondary/55 p-4 pt-4 [margin-top:auto]">
+                <div className="mt-auto rounded-2xl bg-secondary/55 p-4">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-deep">
                     The Cavinova Advantage
                   </p>
