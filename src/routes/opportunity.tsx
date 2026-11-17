@@ -179,26 +179,62 @@ function Opportunity() {
 
       <Section>
         <Heading
-          eyebrow="The treatment landscape"
-          title="Where Cavinova adds something different"
-        />
+          eyebrow="The professional skincare landscape"
+          title="Your clients already love facials. Give them a reason to upgrade."
+        >
+          <p>
+            From traditional facials to advanced aesthetic services, spas have more options than
+            ever. Cavinova is developing a signature facial centered on targeted skincare
+            ingredients clients already know.
+          </p>
+        </Heading>
         <div className="mt-7 grid gap-5 md:grid-cols-2">
-          {treatments.map(({ title, body, advantage, sources, x }) => (
-            <article key={title} className="overflow-hidden rounded-3xl border bg-card">
+          {treatments.map(({ title, lead, body, advantageTitle, advantageBody, sources, x }) => (
+            <article
+              key={title}
+              className="flex flex-col overflow-hidden rounded-3xl border bg-card"
+            >
               <Artwork src={landscape} height={650} frame={[x, 260, 358, 154]} alt="" />
-              <div className="p-5 sm:p-6">
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
                 <h3 className="text-balance text-2xl">{title}</h3>
+                <p className="mt-2 font-semibold">{lead}</p>
                 <p className="mt-2 leading-relaxed text-muted-foreground">
                   {body}
                   <Cite ids={sources} />
                 </p>
-                <div className="mt-4 rounded-2xl bg-secondary/55 p-4">
-                  <h4 className="text-base font-semibold">The Cavinova approach</h4>
-                  <p className="mt-1 leading-relaxed text-muted-foreground">{advantage}</p>
+                <div className="mt-auto rounded-2xl bg-secondary/55 p-4 pt-4 [margin-top:auto]">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-deep">
+                    The Cavinova Advantage
+                  </p>
+                  <h4 className="mt-1.5 text-base font-semibold">{advantageTitle}</h4>
+                  <p className="mt-1 leading-relaxed text-muted-foreground">{advantageBody}</p>
                 </div>
               </div>
             </article>
           ))}
+        </div>
+        <div className="mt-10 rounded-3xl border bg-secondary/55 p-6 shadow-soft sm:p-10">
+          <div className="max-w-4xl">
+            <Eyebrow>Why Choose Cavinova?</Eyebrow>
+            <h2 className="mt-3 text-balance text-4xl leading-tight sm:text-5xl">
+              More than another facial.
+            </h2>
+            <div className="mt-5 space-y-3 leading-relaxed text-muted-foreground">
+              <p>
+                Cavinova gives spas a way to build a signature service around the skincare goals
+                clients care about, with three professional serum options and a needle-free
+                workflow.
+              </p>
+              <p className="font-semibold text-foreground">
+                More treatment options. A stronger reason to choose your spa.
+              </p>
+            </div>
+          </div>
+          <Button asChild className="mt-6 min-h-11 rounded-full">
+            <Link to="/platform">
+              Explore the Cavinova System <ArrowRight aria-hidden />
+            </Link>
+          </Button>
         </div>
       </Section>
 
