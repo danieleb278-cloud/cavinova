@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Eyebrow, Section, seo } from "@/components/site";
 import { Cite, References } from "@/components/references";
-import heroRender from "@/assets/luxury-skincare-device-still-life.png.asset.json";
+import heroRender from "@/assets/luxury-skincare-device-still-life-updated.png.asset.json";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
